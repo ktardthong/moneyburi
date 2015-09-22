@@ -1,0 +1,30 @@
+body{
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    color: #777777;
+	padding-top: 60px;
+    background-color: #F1F1F1;
+}
+
+a {
+    color: #777777;
+    text-decoration: none;
+}
+a:hover{
+    color: #ff9600;
+}
+a {
+    background-color: transparent;
+}
+.card{
+    background: #ffffff;
+}
+.white_bg{
+    background: #ffffff;
+}
+
+.bottom_border{
+    /*border-style: solid;*/
+    border-bottom: solid 1px #fefefe;
+    padding-bottom: 8px;
+}
