@@ -8,6 +8,8 @@ use Validator;
 use App\User;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use Socialite;
+use Illuminate\Routing\Controller;
 
 class PagesController extends Controller
 {
@@ -32,6 +34,58 @@ class PagesController extends Controller
     }
 
 
+    public function loginFB(Request $request)
+    {
+        return Socialite::driver('facebook')
+                ->scopes(['email','user_friends','user_location','user_birthday'])
+                ->redirect();
+    }
+
+
+    public function loginFbCallback(Request $request)
+    {
+        $socialize_user =  Socialite::driver('facebook')->user();
+        dd($socialize_user);
+        echo $facebook_user_id = $socialize_user->getId(); // unique facebook user id
+        $user = User::where('email', $socialize_user->email)->first();
+
+        $location = Location::get();
+        $city       =   $location->cityName;
+        $country    =   $location->countryName;
+
+
+        if (!$user) {
+            $user = new User;
+            $user->fb_id        = $facebook_user_id;
+            $user->firstname    = $socialize_user->user['first_name'];
+            $user->lastname     = $socialize_user->user['last_name'];
+            $user->username     = $socialize_user->name;
+            $user->email        = $socialize_user->email;
+            $user->avatar       = $socialize_user->avatar;
+            $user->gender       = $socialize_user->user['gender'];
+            $user->provider     = "facebook";
+            $user->provider_id  = "1";
+            $user->access_token = $socialize_user->token;
+            $user->city         = $city;
+            $user->country      = $country;
+            //$user->save();
+
+            $page_title = "Beerhit!";
+            $page_descs = "what hit you?";
+            $data = array('page_title' => $page_title,
+                'page_descs' => $page_descs,
+                'user'       => $user
+            );
+            return view('edit.register_user',$data);
+        }
+
+        // login
+        Auth::loginUsingId($user->id);
+
+        return redirect("/profile/$user->username");
+    }
+
+
     public function logout()
     {
         Auth::logout();
@@ -41,19 +95,11 @@ class PagesController extends Controller
 
     public function register()
     {
-        $page_title     =   "money_bkk!";
-        $page_descs     =   "what hit you?";
+        $page_title     =   "Welcome - Moneyburi!";
+        $page_descs     =   "";
         return view('pages.register',compact('page_title','page_descs'));
     }
 
-
-    public function init_setup()
-    {
-        $page_title     =   "money_bkk!";
-        $page_descs     =   "what hit you?";
-        $user_data      = User::find(Auth::user()->id);
-        return view('pages.init_setup',compact('page_title','page_descs','user_data'));
-    }
 
     public function post_init_setup(Request $request)
     {
@@ -129,27 +175,31 @@ class PagesController extends Controller
         }
     }
 
+
+
     public function post_register(Request $request)
     {
         $page_title     =   "money_bkk!";
         $page_descs     =   "what hit you?";
 
 
-        $data = array(  'name'      =>$request->name,
-                        'email'     =>$request->email,
-                        'firstname' =>$request->firstname,
-                        'lastname'  =>$request->lastname,
-                        'password'  =>$request->password
+        $data = array(  'email'     =>$request->email,
+                        'password'  =>$request->password,
+                        'cpassword' =>$request->confirmpassword
         );
 
-        if(empty($data['name']))
+
+        //Verification
+        if($data['password']!= $data['cpassword'])
         {
-            return redirect('register')->withErrors("Username is empty");
+            return redirect('register')->withErrors("password mismatch");
         }
-        elseif(empty($data['email']))
+
+        if(empty($data['email']))
         {
             return redirect('register')->withErrors("email is empty");
         }
+        //end verification
 
         //Check if this email is already registered
         $user =  User::where('email', $request->email)->first();
@@ -183,9 +233,6 @@ class PagesController extends Controller
     protected function createUser(array $data)
     {
         return User::create([
-            'username'  => $data['name'],
-            'firstname' => $data['firstname'],
-            'lastname'  => $data['lastname'],
             'email'     => $data['email'],
             'password'  => md5($data['password']),
         ]);
@@ -196,7 +243,6 @@ class PagesController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);

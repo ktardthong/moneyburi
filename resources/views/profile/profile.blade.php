@@ -69,19 +69,19 @@
                                     <div id="spendableContainer"></div>
 
                                     <div id="spendableOverview">
-                                         <ul class="list-group container lead">
 
+                                         <ul class="list-group container lead">
                                             <div>
-                                               <span class="label label-default label-success pull-right">150</span>
+                                               <span class="pull-right">150</span>
                                                started today
                                             </div>
                                             <div>
-                                               <span class="label label-default label-default pull-right">50</span>
+                                               <span class="pull-right">50</span>
                                                spent today
                                             </div>
                                             <hr>
                                             <div>
-                                                <span class="label label-default label-default pull-right">100</span>
+                                                <span class="pull-right">100</span>
                                                 remaining today
                                             </div>
                                             <hr>
@@ -90,15 +90,15 @@
                                         <p>
                                             <ul class="list-group container lead">
                                             <div>
-                                                <span class="label label-default label-info pull-right">400</span>
+                                                <span class="pull-right">400</span>
                                                 this week
                                             </div>
                                             <div>
-                                                <span class="label label-default label-success pull-right">2,000</span>
+                                                <span class="pull-right">2,000</span>
                                                 this month
                                             </div>
                                              <div>
-                                                <span class="label label-default label-success pull-right">18,000</span>
+                                                <span class="pull-right">18,000</span>
                                                 this year
                                              </div>
                                             </ul>
@@ -112,9 +112,9 @@
                 </div>
 
 
-                <div class="bg-faded row">
+                <div class="row">
 
-                    <div class="col-xs-12 col-sm-6">
+                    <div class="col-xs-12 col-sm-3">
                         <div class="card card-block">
                             <h4 class="card-title">Notification / Coaching</h4>
                             <ul class="list-group container">
@@ -128,23 +128,58 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-12 col-sm-6">
+                    <div class="col-xs-12 col-sm-3">
                         <div class="card card-block">
-                            <h4 class="card-title">Account</h4>
+                            <h4 class="card-title strong">Goal</h4>
+                            <ul class="list-group container lead">
+                               <select >
+                                <option selected>Select your goal</option>
+                                <option>Get out of debt</option>
+                                <option>Travel</option>
+                                <option>Buy something</option>
+                               </select>
+                               <p>
+                                <label>How much?</label><input type="number">
+                               </p>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-3">
+
+                        <div class="card card-block">
+                            <h4 class="card-title">Account
+                                <small><small>since July 2015</small></small></h4>
                             <ul class="list-group container lead">
                                 <div>
-                                   <span class="label label-default label-success pull-right">14,000</span>
+                                   <span class="pull-right">14,000</span>
                                    Cash
                                 </div>
                                 <div>
-                                    <span class="label label-default label-default pull-right">-2,000</span>
+                                    <span class="pull-right">-2,000</span>
                                     Credit card
+                                    <ul class="list-unstyled">
+                                        <ul>
+                                            <li>
+                                                <span class="pull-right">-800</span>
+                                                Kbank
+                                            </li>
+                                            <li>
+                                                <span class="pull-right">-1,200</span>
+                                                SCB</li>
+                                        </ul>
+
+                                    </ul>
                                 </div>
                             </ul>
                         </div>
+                    </div>
 
+                    <div class="col-xs-12 col-sm-3">
                         <div class="card card-block">
                             <h4 class="card-title strong">Spending Categories</h4>
+                            <ul class="list-group container lead">
                             <div>
                                <span class="label label-default label-success pull-right">14,000</span>
                                <a href="">Shopping</a>
@@ -153,20 +188,8 @@
                                 <span class="label label-default label-info pull-right">-2,000</span>
                                 <a href="">Groceries</a>
                             </div>
+                            </ul>
                         </div>
-
-                        <div class="card card-block">
-                            <h4 class="card-title strong">Goal</h4>
-                            <div>
-                               <span class="label label-default label-success pull-right">14,000</span>
-                               <a href="">Shopping</a>
-                            </div>
-                            <div>
-                                <span class="label label-default label-info pull-right">-2,000</span>
-                                <a href="">Groceries</a>
-                            </div>
-                        </div>
-
                     </div>
 
                 </div>
@@ -208,13 +231,13 @@
     var data = [
         {
             value: 50,
-            color: "#FDB45C",
-            highlight: "#5AD3D1",
+            color: "#a0a0a0",
+            highlight: "#fefefe",
             label: "Spent"
         },
         {
             value: 100,
-            color: "#ff9600",
+            color: "#88d2db",
             highlight: "#FFC870",
             label: "Spendable"
         }

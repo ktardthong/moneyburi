@@ -14,6 +14,13 @@ return [
     |
     */
 
+    'facebook' => [
+        'client_id'     => getenv('FB_ID'),
+        'client_secret' => getenv('FB_SECRET'),
+        'scopes'        => ['user_friends','user_location','user_birthday'],
+        'redirect'      => getenv('FB_CALLBACK'),
+    ],
+
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),

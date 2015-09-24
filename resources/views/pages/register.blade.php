@@ -11,33 +11,49 @@
 
 @section('content')
      <div class="container">
+        @if($errors->any())
+            <h4>
+                <div class="alert alert-danger" role="alert">{{$errors->first()}}</div>
+            </h4>
+        @endif
 
-          <form class="form-signin" method="post" action="/login">
+        <form class="form-signin" method="post" action="/register">
 
             {!! csrf_field() !!}
 
-            <h2 class="form-signin-heading">Please sign in</h2>
+            <h2 class="form-signin-heading" align="center">Welcome!</h2>
 
             <label for="inputEmail" class="sr-only">Email address</label>
             <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
 
+            <br>
+
             <label for="inputPassword" class="sr-only">Password</label>
             <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+            <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
+            <input name="confirmpassword" type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
+
+            <div align="center">
+            or
+            <br>
+            <a href="/login/fb">facebook</a>
+            </div>
 
             <div class="checkbox">
               <label>
                 <input type="checkbox" value="remember-me"> Remember me
               </label>
             </div>
-            <a href="/login/fb">facebook</a>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-          </form>
+
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">
+        </form>
 
      </div> <!-- /container -->
 
      <style>
      body {
-       padding-top: 40px;
+       /*padding-top: 40px;*/
        padding-bottom: 40px;
        background-color: #eee;
      }
@@ -71,7 +87,7 @@
        border-bottom-left-radius: 0;
      }
      .form-signin input[type="password"] {
-       margin-bottom: 10px;
+       /*margin-bottom: 10px;*/
        border-top-left-radius: 0;
        border-top-right-radius: 0;
      }

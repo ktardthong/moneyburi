@@ -11,7 +11,8 @@ a {
     text-decoration: none;
 }
 a:hover{
-    color: #ff9600;
+    color: #88d2db;
+    text-decoration: none;
 }
 a {
     background-color: transparent;
@@ -27,4 +28,23 @@ a {
     /*border-style: solid;*/
     border-bottom: solid 1px #fefefe;
     padding-bottom: 8px;
+}
+
+.borderless:focus{
+    background: #f9f9f9;
+}
+.borderless{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-image: none;
+    border-radius: .25rem;
+    border-bottom: 1px solid #ccc;
+    /*width: 20px;*/
 }

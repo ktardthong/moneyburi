@@ -32,6 +32,7 @@
 
 
     {{-- in house code --}}
+    <script src="/js/global.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/chart.min.js"></script>
     <link rel="stylesheet" href="/css/angular_route.css" >
@@ -48,10 +49,13 @@
             </button>
 
            <div class="collapse navbar-toggleable-xs" id="navbar-header">
-              <ul class="nav navbar-nav ">
+              <ul class="nav navbar-nav pull-right">
                 @if(Auth::user())
                     <li class="nav-item">
                       <a class="nav-link" href="/profile">profile</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/logout">log out</a>
                     </li>
                 @else
                     <li class="nav-item">
@@ -61,16 +65,12 @@
                       <a class="nav-link" href="/login">Login</a>
                     </li>
                 @endif
-                <li class="nav-item">
-                  <a class="nav-link" href="#">About</a>
-                </li>
               </ul>
            </div>
       </div>
     </nav>
 
 
-    <div class="page @{{ pageClass }}" ng-view></div>
     <div class="container">
 
 	    @yield('content')
