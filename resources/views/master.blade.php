@@ -38,6 +38,10 @@
     <link rel="stylesheet" href="/css/angular_route.css" >
     <link rel="stylesheet" href="/css/global.css" >
 
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/css/component.css" />
+    <script src="/js/modernizr.min.js"></script>
+
   </head>
 
 <body ng-app="App">

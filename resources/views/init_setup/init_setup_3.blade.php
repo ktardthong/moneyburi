@@ -125,33 +125,24 @@
 
         </div>
 
-        <nav>
-          <ul class="pagination">
-            <li>
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-              </a>
-            </li>
-            <li>
-              <a href="/init_setup">1</a>
-            </li>
-            <li>
-                <a href="/init_setup_1">2</a></li>
-            <li  class="active">
-                <a href="/init_setup_2">3</a></li>
-            <li>
-                <a href="/init_setup_3">4</a></li>
-            <li>
-                <a href="/init_setup_4">5</a></li>
-            <li>
-              <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+
+        <ul class="pager">
+            <li><a href="/init_setup_2">Previous</a></li>
+            <li><a href="/init_setup_4">Previous</a></li>
+        </ul>
+
+        <div style="max-width: 200px">
+
+            <ul class="dotstyle dotstyle-scaleup" align="center">
+                <li><a href="/init_setup_1">User</a></li>
+                <li><a href="/init_setup_2">Status</a></li>
+                <li class="current"><a href="/init_setup_3">Finance</a></li>
+                <li><a href="/init_setup_4">Saving</a></li>
+            </ul>
+
+        </div>
+
+
     </div> <!-- /container -->
 
     <script>

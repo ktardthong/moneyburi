@@ -79,12 +79,21 @@
             </div>
         </div>
 
-        <nav>
-          <ul class="pager">
+        <ul class="pager">
             <li><a href="/init_setup_1">Previous</a></li>
             <li><a href="/init_setup_3">Next</a></li>
-          </ul>
-        </nav>
+        </ul>
+
+        <div style="max-width: 200px">
+
+            <ul class="dotstyle dotstyle-scaleup" align="center">
+                <li><a href="/init_setup_1">User</a></li>
+                <li class="current"><a href="/init_setup_2">Status</a></li>
+                <li><a href="/init_setup_3">Finance</a></li>
+                <li><a href="/init_setup_4">Saving</a></li>
+            </ul>
+
+        </div>
     </div> <!-- /container -->
 
     <script>

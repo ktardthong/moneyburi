@@ -53,17 +53,13 @@
 
         <nav>
           <ul class="pager">
-            <li><a href="/init_setup_4">Previous</a></li>
-            <li><a href="/init_complete">Complete</a></li>
+            <li><a href="/init_setup_4">previous</a></li>
           </ul>
         </nav>
     </div> <!-- /container -->
 
     <script>
-//    var mthly_income = localStorage.getItem('mthly_income');
-//    var mthly_bill = localStorage.getItem('mthly_bill');
-//    var mthly_spendable = mthly_income - mthly_bill;
-//
+
     var app = angular.module('App', []);
 
     app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
