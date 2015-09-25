@@ -104,9 +104,14 @@ class PagesController extends Controller
     //When setup complete, route to this url to update the init_setup flg
     public function complete_setup(Request $request)
     {
+        //Update the init_setup to 1, meaning user will no longer see the welcome screen
         $user_data      =   User::find(Auth::user()->id);
         $user_data->init_setup = 1;
         $user_data->save();
+
+        return redirect('/profile');
+
+
     }
 
 
