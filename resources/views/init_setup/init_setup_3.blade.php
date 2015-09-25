@@ -26,7 +26,7 @@
 
                 <label class="btn btn-circle radioGender" id="creditCard_true" style="width:100px;height: 100px" >
                 <input type="radio" name="gender" autocomplete="off" value="male">
-                    Yes
+                    <img src="/img/cc.png" style="padding-top: 12px" width="50px">
                 </label>
             </div>
 
@@ -109,8 +109,8 @@
                     <option ng-repeat="category in BillList.categories" value="@{{category.id}}">@{{category.name}}</option>
                 </select>
 
-                <input type="text" ng-model="BillList.billText"  class=""
-                       placeholder="Add new bill here">
+                <input type="text" ng-model="BillList.billText"  class="borderless"
+                       placeholder="Amount">
 
                 <input class="btn btn-primary btn-sm" type="submit" value="+">
 
@@ -119,7 +119,6 @@
             <ul class="unstyled">
                 <li ng-repeat="bill in BillList.billItem">
                     <span class="">@{{bill.text}}</span>
-                    test
                 </li>
             </ul>
 
@@ -160,39 +159,33 @@
 
     var app = angular.module('App', []);
 
+        app.controller('thisController', function($scope, $http) {
+
+        });
+
       app.controller('AddCardController', function() {
         var cardList = this;
 
         cardList.addCard = function() {
 
             console.log("test click add card");
-//          cardList.cardItem.push({text:cardList.issuer});
-//          cardList.cardText= '';
-//
-//          var cardData = cardList.issuer + cardList.cardtype;
-//          localStorage["cardData"] = JSON.stringify(cardData);
-
-
-//          var storedNames = JSON.parse(localStorage["cardData"]);
 
         };
       });
 
 
 
-      app.controller('AddBillController', function() {
+      app.controller('AddBillController', function($scope, $http) {
         var billList = this;
 
         billList.billItem = [];
         billList.totalBill = 0;
 
-        billList.categories = [{
-                "id": "1",
-                    "name": "Indoor"
-            }, {
-                "id": "2",
-                    "name": "Outdoor"
-        }];
+
+        $http.get("/ajax/billCate")
+        .success(function(response) {
+            billList.categories = response;
+        });
 
         billList.addBill = function() {
 

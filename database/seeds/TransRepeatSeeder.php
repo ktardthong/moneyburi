@@ -8,10 +8,10 @@ class TransRepeatSeeder extends Seeder
     {
         DB::table('trans_repeat')->delete();
 
-        $data = [['id' => 0, 'name'  => 'None'],
-                 ['id' => 1, 'name'  => 'Daily'],
-                 ['id' => 2, 'name'  => 'Weekly'],
-                 ['id' => 3, 'name'  => 'Monthly']
+        $data = [['id' => 1, 'name'  => 'None'],
+                 ['id' => 2, 'name'  => 'Daily'],
+                 ['id' => 3, 'name'  => 'Weekly'],
+                 ['id' => 4, 'name'  => 'Monthly']
                 ];
         DB::table('trans_repeat')->insert($data);
     }
