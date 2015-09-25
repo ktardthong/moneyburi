@@ -49,6 +49,9 @@ Route::get('/init_setup_5', function () {
     $page_descs = "";
     return view('init_setup.init_setup_5', compact('page_title', 'page_descs', 'user_data'));
 });
+Route::get('/init_complete','PagesController@complete_setup');
+//END INIT SETUP
+
 
 Route::get('login/fb', 'PagesController@loginFB');
 

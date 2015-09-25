@@ -14,15 +14,16 @@ class CreateTransactionTable extends Migration
     {
         Schema::create('transaction', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('uid');
-            $table->tinyInteger('flg')->default(1);
-            $table->integer('cate_id');
-            $table->string('note')->nullable();
-            $table->date('trans_date');
-            $table->decimal('amount', 18, 2);
-            $table->tinyInteger('trans_type');
-            $table->tinyInteger('repeat');
-            $table->tinyInteger('pmt_type');
+            $table->integer('uid');                     //user_id
+            $table->tinyInteger('flg')->default(1);     //if transaction is active
+            $table->integer('cate_id');                 //transaction categories
+            $table->tinyInteger('trans_type');          //1 =expense, 2= income
+            $table->tinyInteger('trans_repeat');        //repeat type 0=none, 1=daily,2=weekly,3=monthly,4 = yearly
+            $table->tinyInteger('pmt_type');            //types of payment, 0 = cash,1 =credit
+            $table->decimal('amount', 18, 2);           //amount
+            $table->biginteger('location')->default(0); //facebook location ID
+            $table->string('note')->nullable();         //transaction note
+            $table->date('trans_date');                 //transaction date
 
             $table->timestamps();
         });

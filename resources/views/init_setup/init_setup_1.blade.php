@@ -24,6 +24,19 @@
             </div>
         </div>
 
+        <div class="card card-block" style="max-width: 400px">
+
+            <h4 class="card-title strong">What do you do?</h4>
+
+            <div class="lead">
+                <select class="form-conrol input-lg">
+                    <option>Student</option>
+                    <option>Office worker</option>
+                    <option>Freelance</option>
+                </select>
+            </div>
+        </div>
+
         <nav>
           <ul class="pager">
             <li><a href="/init_setup">Previous</a></li>

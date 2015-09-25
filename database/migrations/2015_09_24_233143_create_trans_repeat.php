@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoryCoreTable extends Migration
+class CreateTransRepeat extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,9 @@ class CreateCategoryCoreTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_core', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->index();
-            $table->string('th_name')->index();
-            $table->tinyInteger('flg');
-            $table->string('icon');
+        Schema::create('trans_repeat', function (Blueprint $table) {
+            $table->integer('id');
+            $table->string('name');          //repeat name
             $table->timestamps();
         });
     }

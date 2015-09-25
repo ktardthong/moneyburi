@@ -41,6 +41,10 @@
                         Saving: @{{ ng_mthly_saving }}
                     </li>
                 </ul>
+
+                <form ng-submit="setupItem.completeThis()" class="lead" ng-controller="SetupController as setupItem">
+                    <input class="btn btn-primary btn-sm btn-block" type="submit" value="Complete">
+                </form>
             </div>
 
 
@@ -50,16 +54,16 @@
         <nav>
           <ul class="pager">
             <li><a href="/init_setup_4">Previous</a></li>
-            <li><a href="/profile">Complete</a></li>
+            <li><a href="/init_complete">Complete</a></li>
           </ul>
         </nav>
     </div> <!-- /container -->
 
     <script>
-    var mthly_income = localStorage.getItem('mthly_income');
-    var mthly_bill = localStorage.getItem('mthly_bill');
-    var mthly_spendable = mthly_income - mthly_bill;
-
+//    var mthly_income = localStorage.getItem('mthly_income');
+//    var mthly_bill = localStorage.getItem('mthly_bill');
+//    var mthly_spendable = mthly_income - mthly_bill;
+//
     var app = angular.module('App', []);
 
     app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
@@ -71,7 +75,16 @@
       $scope.ng_mthly_saving    = localStorage.getItem('mthly_saving');
 
     }]);
-                listLocalStorage();
+    listLocalStorage();
 
+
+    app.controller('SetupController', function($scope,$location) {
+        var setup = this;
+
+        setup.completeThis = function() {
+          window.location.href = '/init_complete';
+        };
+
+      });
     </script>
 @stop

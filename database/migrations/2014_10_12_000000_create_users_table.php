@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username')->unique();
+            $table->biginteger('fb_id')->nullable();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
@@ -22,11 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('gender');
             $table->string('city');
             $table->string('country');
+            $table->string('avatar');
             $table->date('birthdate');
             $table->tinyInteger('init_setup')->default(0);
             $table->rememberToken();
-            $table->tinyInteger('prefer_pmt')->default(0);
-            $table->decimal('budget_alloc', 18, 2)->default(0);
             $table->decimal('mth_income', 18, 2)->default(0);
             $table->decimal('net_worth', 18, 2)->default(0);
             $table->timestamps();

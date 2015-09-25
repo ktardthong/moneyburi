@@ -101,52 +101,12 @@ class PagesController extends Controller
     }
 
 
-    public function post_init_setup(Request $request)
+    //When setup complete, route to this url to update the init_setup flg
+    public function complete_setup(Request $request)
     {
-        $user_data = [
-                     'prefer_pmt'    => $request->prefer_pmt,
-                     'mth_income'    => $request->mth_income,
-                     'net_worth'     => $request->net_worth,
-                     ];
-
-        $expense_data = [
-                        'cate_id'       => $request->cate_id,
-                        'mth_expense'   => $request->mth_expense]
-                        ;
-
-        $x=0;
-        DB::table('users')
-            ->where('id', Auth::user()->id)
-            ->update($user_data);
-
-        // Assuming expenses create on the first day
-        $first_day = date('Y-m-01');
-        foreach ($expense_data['cate_id'] as $c) {
-            $data = [
-                "uid"        => Auth::user()->id,
-                "trans_date" => $first_day,
-                "amount"     => $expense_data['mth_expense'][$x],
-                "cate_id"    => $c,
-                "trans_type" => 0,
-                "repeat"     => 1,
-                "note"       => null,
-                "pmt_type"   => $request->prefer_pmt
-            ];
-            $data = [
-                    "amount_cap"   =>   $expense_data['mth_expense'][$x],
-                    "cate_id"      =>   $c,
-                    "recurring"    =>   1,
-                    "uid"          =>   Auth::user()->id,
-                    "start_date"   =>   $first_day
-                    ];
-            Budget::newBudget($data);
-//            Transaction::create($data);
-            $x++;
-            print_r($data);
-        }
-
-        print_r($user_data);
-        print_r($expense_data);
+        $user_data      =   User::find(Auth::user()->id);
+        $user_data->init_setup = 1;
+        $user_data->save();
     }
 
 

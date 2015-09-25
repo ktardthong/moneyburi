@@ -48,3 +48,15 @@ a {
     border-bottom: 1px solid #ccc;
     /*width: 20px;*/
 }
+
+
+.btn-circle:hover
+{
+    border-bottom: 2px solid #f9f9f9;
+}
+.btn-circle:active, .btn-circle.active
+{
+
+    background-size: cover;
+    background-image: url('/img/circle.gif');
+}

@@ -15,9 +15,17 @@
 
         <div class="card card-block" style="max-width: 400px">
 
-            <h4 class="card-title strong">What year you were born?</h4>
+            <h4 class="card-title strong">When is your birthday?</h4>
 
             <div class="lead">
+                <select>
+                    <?php
+                    for($day=1;$day<=31;$day++):?>
+                        <option><?=$day?></option>
+                    <?php
+                    endfor;
+                    ?>
+                </select>
                 <?php
                 echo '<select name="birthYear" id="birthYear">';
                 $cur_year = date('Y');
