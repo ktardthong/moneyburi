@@ -21,8 +21,8 @@ class UserTableSeeder extends Seeder
             'birthdate' =>  '1990-01-01',
         ]);
 
-        factory(App\User::class, 20)->create()->each(function($u) {
-            $u->posts()->save(factory(App\Post::class)->make());
-        });
+//        factory(App\User::class, 20)->create()->each(function($u) {
+//            $u->posts()->save(factory(App\Post::class)->make());
+//        });
     }
 }
