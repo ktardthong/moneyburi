@@ -11,6 +11,7 @@ class UserjobSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users_jobs')->delete();
         $data = [
                     ['id' => 1,     'name'  => 'Student'],
                     ['id' => 2,     'name'  => 'Salary man/woman'],

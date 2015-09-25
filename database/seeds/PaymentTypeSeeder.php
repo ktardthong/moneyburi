@@ -11,6 +11,8 @@ class PaymentTypeSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('payment_types')->delete();
+
         $data = [
                 ['id' => 1,     'name'  => 'Cash'],
                 ['id' => 2,     'name'  => 'Credit Card']

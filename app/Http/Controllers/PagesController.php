@@ -95,7 +95,7 @@ class PagesController extends Controller
 
     public function register()
     {
-        $page_title     =   "Welcome - Moneyburi!";
+        $page_title     =   "Welcome - Moneyburi";
         $page_descs     =   "";
         return view('pages.register',compact('page_title','page_descs'));
     }

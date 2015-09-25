@@ -11,6 +11,8 @@ class CategoryCoreSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('category_core')->delete();
+
         $data = [
                     ['id' => 1,  'flg'=> 1, 'name'  => 'Transport'],
                     ['id' => 2,  'flg'=> 1, 'name'  => 'Food'],
