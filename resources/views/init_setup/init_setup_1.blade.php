@@ -10,7 +10,7 @@
 
 
 @section('content')
-    <div class="container" align="center">
+    <div class="container" align="center" ng-controller="thisController">
 
         <form action="/init_setup_2" method="post">
         <div class="card card-block" style="max-width: 400px">
@@ -29,11 +29,19 @@
             <h4 class="card-title strong">What do you do?</h4>
 
             <div class="lead">
-                <select class="form-conrol input-lg">
-                    <option>Student</option>
-                    <option>Office worker</option>
-                    <option>Freelance</option>
-                </select>
+            <div class="btn-group">
+                <button type="button"
+                        class="btn btn-secondary dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Select</button>
+
+                <div class="dropdown-menu">
+                  <a class="dropdown-item"
+                     href="#"
+                     ng-repeat="x in items" value="@{{ x.id }}">@{{ x.name}}</a>
+                </div>
+
+              </div>
             </div>
         </div>
 
@@ -59,7 +67,28 @@
     </div> <!-- /container -->
 
     <script>
-       $('#init_firstname').val(localStorage.getItem('firstname'));
-       $('#init_lastname').val(localStorage.getItem('lastname'));
+        $(function(){
+
+            $(".dropdown-menu a").click(function(){
+              var selText = $(this).text();
+              $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+            });
+
+//            $("#btnSearch").click(function(){
+//                alert($('.btn-select').text()+", "+$('.btn-select2').text());
+//            });
+
+        });
+
+        var app = angular.module('App', []);
+        app.controller('thisController', function($scope, $http) {
+            $http.get("/ajax/geUserJobs")
+            .success(function(response) {
+                $scope.items = response;
+            });
+        });
+
+        $('#init_firstname').val(localStorage.getItem('firstname'));
+        $('#init_lastname').val(localStorage.getItem('lastname'));
     </script>
 @stop

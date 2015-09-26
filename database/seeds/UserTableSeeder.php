@@ -14,17 +14,31 @@ class UserTableSeeder extends Seeder
         DB::table('users')->delete();
 
         DB::table('users')->insert([
-            'firstname' => str_random(10),
-            'lastname'  => str_random(10),
-            'email'     => 'test_user_'.str_random(10).'@gmail.com',
-            'gender'    => 'male',
-            'city'      => 'Bangkok',
-            'country'   => 'Thailand',
-            'birthdate' =>  '1990-01-01',
-        ]);
-
-//        factory(App\User::class, 20)->create()->each(function($u) {
-//            $u->posts()->save(factory(App\Post::class)->make());
-//        });
+                                    [
+                                        'id'        => 1,
+                                        'firstname' => 'John',
+                                        'lastname'  => 'Doe',
+                                        'password'  => md5('test'),
+                                        'email'     => 'john.doe@moneyburi.com',
+                                        'gender'    => 'male',
+                                        'city'      => 'Bangkok',
+                                        'country'   => 'Thailand',
+                                        'currency'  =>  2,
+                                        'birthdate' =>  '1990-01-01',
+                                    ],
+                                    [
+                                        'id'        => 2,
+                                        'firstname' => 'Mary',
+                                        'lastname'  => 'Jane',
+                                        'password'  => md5('test'),
+                                        'email'     => 'mary.jane@moneyburi.com',
+                                        'gender'    => 'female',
+                                        'city'      => 'Tokyo',
+                                        'country'   => 'Japan',
+                                        'currency'  =>  3,
+                                        'birthdate' =>  '1990-01-01',
+                                    ]
+                                    ]
+                                    );
     }
 }

@@ -17,6 +17,7 @@ class CreateCurrencies extends Migration
             $table->tinyInteger('flg');         //Active flag
             $table->string('currency_code');    //currency code i.e. THB
             $table->string('currency_desc');    //currency description
+            $table->string('currency_sym');    //currency symbols
             $table->timestamps();
         });
     }

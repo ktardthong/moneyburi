@@ -14,7 +14,7 @@ class CreateCcIssuer extends Migration
     {
         Schema::create('cc_issuer', function (Blueprint $table) {
             $table->integer('id');
-            $table->string('name');          //Issuer banks, scb, kbank etc
+            $table->string('name');          //Issuer
             $table->timestamps();
         });
     }

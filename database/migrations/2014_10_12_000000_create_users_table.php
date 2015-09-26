@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('gender');
             $table->string('city');
             $table->string('country');
+            $table->string('currency');     //user's currency
             $table->string('avatar');
             $table->date('birthdate');
             $table->tinyInteger('init_setup')->default(0);

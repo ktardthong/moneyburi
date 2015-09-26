@@ -21,6 +21,25 @@ Route::post('/add_transaction', 'TransactionController@add_transaction');
 
 
 
+//Facebook login
+Route::get('login/fb', 'PagesController@loginFB');
+Route::get('login/fb/callback', 'PagesController@loginFBCallback');
+
+
+
+//Ajax
+Route::get('ajax/geUserJobs', 'AjaxController@getUserJob');
+Route::get('ajax/billCate', 'AjaxController@billCate');
+Route::get('ajax/ccIssuer', 'AjaxController@ccIssuer');
+Route::get('ajax/ccTypes', 'AjaxController@ccTypes');
+Route::get('ajax/currency', 'AjaxController@user_currencies');
+
+
+
+
+
+
+
 //Init setup
 Route::get('/init_setup',function () {
     $page_title = "First time set up - Welcome - Moneyburi";
@@ -56,7 +75,9 @@ Route::get('/init_complete','PagesController@complete_setup');
 //END INIT SETUP
 
 
-Route::get('login/fb', 'PagesController@loginFB');
 
+<<<<<<< HEAD
 Route::get('login/fb/callback', 'PagesController@loginFBCallback');
 
+=======
+>>>>>>> 3fbe392de2434d8c5458bd3b3ef9382b853629ed

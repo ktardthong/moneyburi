@@ -10,7 +10,7 @@
 
 
 @section('content')
-    <div class="container">
-    test
+    <div class="container" align="center">
+        <img src="/img/home_screen.gif" style="max-width: 400px;">
     </div>
 @stop
