@@ -16,6 +16,9 @@ Route::post('/profile/update','ProfileController@update');
 
 //Transaction
 Route::get('/showTransaction','TransactionController@show');
+Route::post('/add_transaction', 'TransactionController@add_transaction');
+
+
 
 
 //Init setup
@@ -56,3 +59,4 @@ Route::get('/init_complete','PagesController@complete_setup');
 Route::get('login/fb', 'PagesController@loginFB');
 
 Route::get('login/fb/callback', 'PagesController@loginFBCallback');
+

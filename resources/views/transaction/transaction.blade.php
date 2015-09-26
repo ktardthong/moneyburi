@@ -1,40 +1,56 @@
-<div class="row">
+@extends('master')
 
-    <div class="btn-group btn-block" data-toggle="buttons">
-        <label class="btn btn-info active">
-        <input type="radio" name="options" id="option1" autocomplete="off" checked> Cash
-        </label>
-        <label class="btn btn-info">
-        <input type="radio" name="options" id="option2" autocomplete="off"> Credit Card
-        </label>
-    </div>
+@section('title')
+    {{ $page_title }}
+@stop
 
-    <div class="btn-group btn-block" data-toggle="buttons">
-        <label class="btn btn-info active">
-          <input type="radio" name="options" id="option1" autocomplete="off" checked> Expense
-        </label>
-        <label class="btn btn-info">
-          <input type="radio" name="options" id="option2" autocomplete="off"> Income
-        </label>
-    </div>
+@section('description')
+    {{$page_descs}}
+@stop
 
-    <p>
-        <input type="date" class="input input-md form-control" value>
-    </p>
 
-    <p>
-        <input type="number" placeholder="Amount" class="input input-md form-control">
-    </p>
+@section('content')
 
-    <p>
-        <input type="text" placeholder="Location" class="input input-md form-control">
-    </p>
+    <form class="transaction" method="post" action="/add_transaction">
+        {!! csrf_field() !!}
 
-    <p>
-        <input type="text" placeholder="note" class="input input-md form-control">
-    </p>
+        <div class="btn-group btn-block" data-toggle="buttons">
+            <label class="btn btn-info active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked> Cash
+            </label>
+            <label class="btn btn-info">
+            <input type="radio" name="options" id="option2" autocomplete="off"> Credit Card
+            </label>
+        </div>
 
-    <button type="button" class="btn btn-default btn-sm pull-left" id="backAddTransaction"><i class="fa fa-arrow-left fa"></i> back</button>
-    <button type="button" class="btn btn-info btn-sm pull-right">+ Add</button>
+        <div class="btn-group btn-block" data-toggle="buttons">
+            <label class="btn btn-info active">
+              <input type="radio" name="options" id="option1" autocomplete="off" checked> Expense
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" name="options" id="option2" autocomplete="off"> Income
+            </label>
+        </div>
 
-</div>
+        <p>
+            <input type="date" class="input input-md form-control" value>
+        </p>
+
+        <p>
+            <input type="number" placeholder="Amount" class="input input-md form-control">
+        </p>
+
+        <p>
+            <input type="text" placeholder="Location" class="input input-md form-control">
+        </p>
+
+        <p>
+            <input type="text" placeholder="note" class="input input-md form-control">
+        </p>
+
+        <button type="button" class="btn btn-default btn-sm pull-left" id="backAddTransaction"><i class="fa fa-arrow-left fa"></i> back</button>
+        <button type="submit" class="btn btn-info btn-sm pull-right">+ Add</button>
+
+    </form>
+
+@stop
