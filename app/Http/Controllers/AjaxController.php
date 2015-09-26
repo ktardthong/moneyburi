@@ -21,4 +21,14 @@ class AjaxController extends Controller
     {
         return \App\CateCore::get();
     }
+
+    public function ccIssuer()
+    {
+        return \App\CardApp::cc_issuer();
+    }
+
+    public function ccTypes()
+    {
+        return \App\CardApp::cc_types();
+    }
 }

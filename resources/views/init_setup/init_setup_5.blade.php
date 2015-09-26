@@ -27,7 +27,8 @@
 
                 <br>
                 Born in
-                @{{ ng_brithyear }}
+                @{{ ng_birthday }} - @{{ ng_birthmonth | date: 'MMMM'}} - @{{ ng_birthyear }}
+
                 <br>
 
                 <ul class="nav nav-pills nav-stacked">
@@ -62,13 +63,18 @@
 
     var app = angular.module('App', []);
 
-    app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
+    app.controller('MainCtrl', ['$scope', '$window', function($scope, $filter) {
       $scope.ng_firstname       = localStorage.getItem('firstname');
       $scope.ng_lastname        = localStorage.getItem('lastname');
-      $scope.ng_brithyear       = localStorage.getItem('BirthYear');
+      $scope.ng_birthyear       = localStorage.getItem('birthYear');
+      $scope.ng_birthmonth      = new Date(localStorage.getItem('birthMonth'));
+      $scope.ng_birthday        = localStorage.getItem('birthDay');
       $scope.ng_mthly_income    = localStorage.getItem('mthly_income');
       $scope.ng_mthly_bill      = localStorage.getItem('mthly_bill');
       $scope.ng_mthly_saving    = localStorage.getItem('mthly_saving');
+
+
+
 
     }]);
     listLocalStorage();

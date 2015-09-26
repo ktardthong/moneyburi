@@ -12,6 +12,22 @@
 @section('content')
     <div class="container" align="center">
 
+        <div class="card card-block" style="max-width: 400px">
+
+            <h4 class="card-title strong">Currency?</h4>
+
+            <div class="btn-group lead" data-toggle="buttons">
+
+                <select>
+                    <option>THB</option>
+                    <option>USD</option>
+                    <option>JPY</option>
+                </select>
+
+            </div>
+
+        </div>
+
         {{-- Credit card --}}
         <div class="card card-block" style="max-width: 400px">
 
@@ -34,51 +50,53 @@
 
 
         {{-- Pick a card --}}
-        <div class="card card-block" style="max-width: 400px" id="addCreditCard" ng-controller="AddCardController as CardList">
+        <div class="card card-block" style="max-width: 400px" id="addCreditCard" ng-controller="AddCardController">
 
             <h4 class="card-title strong">Which card?</h4>
 
             <div class="btn-group lead" data-toggle="buttons">
 
-                <form ng-submit="CardList.addCard()" class="lead">
-                    <div class="lead" >
-                        <ul class="nav nav-pills nav-stacked">
-                            <li class="nav-item clearfix">
+                <div class="lead" >
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="nav-item clearfix">
+
                             Issuer
-                            <select ng-model="CardList.issuer">
-                                <option>BBL</option>
-                                <option>KBANK</option>
-                                <option>SCB</option>
+                            <select ng-model="ng_ccIssuer">
+                                <option ng-selected="ccIssuer.selected== BBL"
+                                        ng-repeat="ccIssuer in ccIssuer">@{{ ccIssuer.name }}</option>
                             </select>
                             <p>
                             Type
-                            <select ng-model="CardList.cardtype">
-                                <option>Visa</option>
-                                <option>Master Card</option>
-                                <option>Amex</option>
+                            <select ng-model="ng_ccTypes">
+                                <option ng-selected="ccIssuer.selected== BBL"
+                                        ng-repeat="ccType in ccTypes">@{{ ccType.name }}</option>
                             </select>
                             </p>
 
                             <p>
-                            Credit Limit
-                            <input type="text" class="input-lg" placeholder="Credit limit" ng-model="CardList.cardLimit">
+                            <input type="text" class="input-lg form-control" placeholder="Credit limit" ng-model="ng_cardLimit">
                             </p>
 
-                            <input type="text" class="input-lg" placeholder="Note for this card" ng-model="CardList.cardNote">
+                            <input type="text" class="input-lg form-control" placeholder="Note for this card" ng-model="ng_cardNote">
 
-                            <input class="btn btn-primary btn-sm" type="submit" value="+">
+                            <p>
+                            <input class="btn btn-primary btn-block" type="submit" value="Add card" ng-click="addCard()" >
+                            </p>
 
-                            </li>
-                        </ul>
-                    </div>
-                </form>
+                        </li>
+                    </ul>
+                </div>
 
-                <ul class="unstyled">
-                    <li ng-repeat="card in CardList.cardItem">
-                        <span class="">@{{card.text}}</span>
-                        test
-                    </li>
-                </ul>
+
+                <div ng-repeat="card in cardItem" class="card card-block">
+
+                    <span class="pull-right">@{{card.issuer}}</span>
+                    <span class="">@{{card.type}}</span>
+                    <span class="">@{{card.cclimit}}</span>
+                    <span class="">@{{card.ccnote}}</span>
+
+                </div>
+
 
             </div>
 
@@ -101,7 +119,7 @@
 
             <h4 class="card-title strong">Bill</h4>
 
-            <p ng-model="ttlBill" ng-model="""></p>
+            <p ng-model="ttlBill" ng-model="">ttl</p>
 
             <form ng-submit="BillList.addBill()" class="lead">
 
@@ -159,19 +177,36 @@
 
     var app = angular.module('App', []);
 
-        app.controller('thisController', function($scope, $http) {
+        app.controller('AddCardController', function($scope,$http) {
 
+            var cardList = this;
+            $scope.cardItem = [];
+
+            $http.get("/ajax/ccIssuer")
+            .success(function(response) {
+                $scope.ccIssuer = response;
+            });
+
+            $http.get("/ajax/ccTypes")
+            .success(function(response) {
+                $scope.ccTypes = response;
+            });
+
+            $scope.addCard = function() {
+                $scope.cardItem.push({
+                                        type:$scope.ng_ccTypes,
+                                        issuer:$scope.ng_ccIssuer,
+                                        cclimit:$scope.ng_cardLimit,
+                                        ccnote: $scope.ng_cardNote
+                                      });
+
+                localStorage["addCards"] = JSON.stringify($scope.cardItem);
+
+                var listCards = JSON.parse(localStorage["addCards"]);
+                console.log(listCards);
+
+            };
         });
-
-      app.controller('AddCardController', function() {
-        var cardList = this;
-
-        cardList.addCard = function() {
-
-            console.log("test click add card");
-
-        };
-      });
 
 
 
@@ -202,7 +237,6 @@
 
           console.log(billList.totalBill)
         };
-//        localStorage["names"] = JSON.stringify(names);
 
       });
       listLocalStorage();
