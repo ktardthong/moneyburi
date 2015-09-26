@@ -31,4 +31,9 @@ class AjaxController extends Controller
     {
         return \App\CardApp::cc_types();
     }
+
+    public function user_currencies()
+    {
+        return \App\CardApp::user_currencies();
+    }
 }

@@ -43,6 +43,16 @@
                     </li>
                 </ul>
 
+                {{-- User Card list --}}
+                <div ng-repeat="card in ng_cardList track by card.type" class="card card-block">
+
+                    <span class="pull-right">@{{card.issuer}}</span>
+                    <span class="">@{{card.type}}</span>
+                    <span class="">@{{card.cclimit}}</span>
+                    <span class="">@{{card.ccnote}}</span>
+
+                </div>
+
                 <form ng-submit="setupItem.completeThis()" class="lead" ng-controller="SetupController as setupItem">
                     <input class="btn btn-primary btn-sm btn-block" type="submit" value="Complete">
                 </form>
@@ -72,10 +82,8 @@
       $scope.ng_mthly_income    = localStorage.getItem('mthly_income');
       $scope.ng_mthly_bill      = localStorage.getItem('mthly_bill');
       $scope.ng_mthly_saving    = localStorage.getItem('mthly_saving');
-
-
-
-
+      $scope.ng_cardList        = JSON.parse(localStorage["userCards"]);
+//      JSON.parse(localStorage["userCards"])
     }]);
     listLocalStorage();
 

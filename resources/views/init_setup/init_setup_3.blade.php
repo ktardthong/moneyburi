@@ -10,7 +10,7 @@
 
 
 @section('content')
-    <div class="container" align="center">
+    <div class="container" align="center"  ng-controller="AddCardController">
 
         <div class="card card-block" style="max-width: 400px">
 
@@ -18,10 +18,8 @@
 
             <div class="btn-group lead" data-toggle="buttons">
 
-                <select>
-                    <option>THB</option>
-                    <option>USD</option>
-                    <option>JPY</option>
+                <select id="currencySelect" ng-model="ng_currency">
+                    <option ng-repeat="currency in currencies">@{{ currency.currency_code }}</option>>
                 </select>
 
             </div>
@@ -50,7 +48,7 @@
 
 
         {{-- Pick a card --}}
-        <div class="card card-block" style="max-width: 400px" id="addCreditCard" ng-controller="AddCardController">
+        <div class="card card-block" style="max-width: 400px" id="addCreditCard">
 
             <h4 class="card-title strong">Which card?</h4>
 
@@ -163,6 +161,10 @@
     </div> <!-- /container -->
 
     <script>
+     $('#currencySelect').change(function() {
+        localStorage.setItem('userCurrency', $('#currencySelect').val());
+        listLocalStorage();
+    });
     $('#creditCard_true').click(function() {
         $('#addCreditCard').show('slow');
     });
@@ -179,8 +181,14 @@
 
         app.controller('AddCardController', function($scope,$http) {
 
+
             var cardList = this;
             $scope.cardItem = [];
+
+            $http.get("/ajax/currency")
+            .success(function(response) {
+                $scope.currencies = response;
+            });
 
             $http.get("/ajax/ccIssuer")
             .success(function(response) {
@@ -200,9 +208,9 @@
                                         ccnote: $scope.ng_cardNote
                                       });
 
-                localStorage["addCards"] = JSON.stringify($scope.cardItem);
+                localStorage["userCards"] = JSON.stringify($scope.cardItem);
 
-                var listCards = JSON.parse(localStorage["addCards"]);
+                var listCards = JSON.parse(localStorage["userCards"]);
                 console.log(listCards);
 
             };
