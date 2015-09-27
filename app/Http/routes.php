@@ -25,11 +25,16 @@ Route::get('login/fb/callback', 'PagesController@loginFBCallback');
 
 
 //Ajax
-Route::get('ajax/geUserJobs', 'AjaxController@getUserJob');
-Route::get('ajax/billCate', 'AjaxController@billCate');
-Route::get('ajax/ccIssuer', 'AjaxController@ccIssuer');
-Route::get('ajax/ccTypes', 'AjaxController@ccTypes');
-Route::get('ajax/currency', 'AjaxController@user_currencies');
+Route::get('ajax/geUserJobs',   'AjaxController@getUserJob');
+Route::get('ajax/billCate',     'AjaxController@billCate');
+Route::get('ajax/ccIssuer',     'AjaxController@ccIssuer');
+Route::get('ajax/ccTypes',      'AjaxController@ccTypes');
+Route::get('ajax/currency',     'AjaxController@user_currencies');
+Route::get('ajax/userData',     'AjaxController@userData');
+
+Route::post('ajax/userFinance',  'AjaxController@userFinanceData');
+Route::post('ajax/userName',    'AjaxController@userInfoUpdate');
+Route::post('ajax/userStatus',  'AjaxController@userStatus');
 
 
 
