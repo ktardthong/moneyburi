@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\User;
 use Auth;
+use Stevebauman\Location\Facades\Location;
 use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
@@ -27,7 +28,8 @@ class ProfileController extends Controller
         {
             return redirect('/init_setup');
         }
-
+        $location = Location::get();
+        print_r($location);
         return view('profile.profile',compact('page_title','page_descs'));
     }
 }

@@ -10,7 +10,8 @@
 
 
 @section('content')
-    <div class="row">
+    {{-- Main container--}}
+    <div class="row" ng-controller="profileController">
 
             <div class="col-sm-12">
 
@@ -25,7 +26,7 @@
                                     <a href="#">
                                         <img src="/img/user_avatar.gif" class="img-circle">
                                          <br>
-                                         John Doe
+                                         @{{userData.firstname }} @{{ userData.lastname }}
                                     </a>
                                 </li>
                                 <li class="active">
@@ -37,6 +38,7 @@
                                     <i class="fa fa-pencil-square-o"></i>Add Transaction</a></li>
                                 <li><a href="#">Spending Categories</a></li>
                                 <li><a href="#">Goal</a></li>
+                                <li><a href="#">Edit</a></li>
                             </ul>
                         </div>
                     </div>
@@ -72,7 +74,7 @@
 
                                          <ul class="list-group container lead">
                                             <div>
-                                               <span class="pull-right">150</span>
+                                               <span class="pull-right">@{{ userData.d_spendable | number: 0 }}</span>
                                                started today
                                             </div>
                                             <div>
@@ -128,68 +130,19 @@
                         </div>
                     </div>
 
+                    {{-- Goals--}}
                     <div class="col-xs-12 col-sm-3">
-                        <div class="card card-block">
-                            <h4 class="card-title strong">Goal</h4>
-                            <ul class="list-group container lead">
-                               <select >
-                                <option selected>Select your goal</option>
-                                <option>Get out of debt</option>
-                                <option>Travel</option>
-                                <option>Buy something</option>
-                               </select>
-                               <p>
-                                <label>How much?</label><input type="number">
-                               </p>
-                            </ul>
-                        </div>
+                        <div class="slide-animate" ng-include="'/app/html/card_goals.html'"></div>
                     </div>
 
-
+                    {{-- Account--}}
                     <div class="col-xs-12 col-sm-3">
-
-                        <div class="card card-block">
-                            <h4 class="card-title">Account
-                                <small><small>since July 2015</small></small></h4>
-                            <ul class="list-group container lead">
-                                <div>
-                                   <span class="pull-right">14,000</span>
-                                   Cash
-                                </div>
-                                <div>
-                                    <span class="pull-right">-2,000</span>
-                                    Credit card
-                                    <ul class="list-unstyled">
-                                        <ul>
-                                            <li>
-                                                <span class="pull-right">-800</span>
-                                                Kbank
-                                            </li>
-                                            <li>
-                                                <span class="pull-right">-1,200</span>
-                                                SCB</li>
-                                        </ul>
-
-                                    </ul>
-                                </div>
-                            </ul>
-                        </div>
+                        <div class="slide-animate" ng-include="'/app/html/card_account.html'"></div>
                     </div>
 
+                    {{-- Spending Categories --}}
                     <div class="col-xs-12 col-sm-3">
-                        <div class="card card-block">
-                            <h4 class="card-title strong">Spending Categories</h4>
-                            <ul class="list-group container lead">
-                            <div>
-                               <span class="label label-default label-success pull-right">14,000</span>
-                               <a href="">Shopping</a>
-                            </div>
-                            <div>
-                                <span class="label label-default label-info pull-right">-2,000</span>
-                                <a href="">Groceries</a>
-                            </div>
-                            </ul>
-                        </div>
+                        <div class="slide-animate" ng-include="'/app/html/card_spendingCate.html'"></div>
                     </div>
 
                 </div>
@@ -222,6 +175,35 @@
 
 
     <script>
+
+
+        var app = angular.module('App', ['ngAnimate']);
+
+        app.controller('profileController', function($scope, $http) {
+
+            $http.get("/ajax/userData")
+            .success(function(response) {
+                $scope.userData = response;
+            });
+
+
+            /*$scope.addData = function() {
+                $.ajax({
+                        method: "POST",
+                        url: "/ajax/userPlan",
+                        data:  {    mth_saving:     $('#mthlySaving').html(),
+                                    mth_spending:   $('#mthlySpendable').html(),
+                                    dd_spending:    $('#dailySpendable').html(),
+                                    dd_saving:      $('#dailySaving').html()
+                               }
+                        })
+                        .done(function( msg ) {
+                            window.location.href = '/init_complete';
+                        });
+            };*/
+
+        });
+
 
     function spendableDough()
     {

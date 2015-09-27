@@ -52,7 +52,7 @@
                 <div class="col-xs-12 col-sm-6">
                     Save
                     <div>
-                    Monthly <span id="mthlySaving">@{{savingPlan}}</span>
+                    Monthly <span id="mthlySaving">@{{savingPlan | number:0}}</span>
                     </div>
                     <div>
                     Daily <span id="dailySaving">@{{savingPlan/30 | number:0}}</span>
@@ -62,7 +62,7 @@
                 <div class="col-xs-12 col-sm-6">
                     Spend
                     <div>
-                    Monthly  <span id="mthlySpendable"> @{{ ng_mthly_spendable - savingPlan }}</span>
+                    Monthly  <span id="mthlySpendable"> @{{ ng_mthly_spendable - savingPlan | number:0}}</span>
                     </div>
                     <div>
                         Daily<span id="dailySpendable"> @{{ (ng_mthly_spendable - savingPlan)/30 | number:0}}</span>
