@@ -92,9 +92,6 @@
     </div> <!-- /container -->
 
     <script>
-//        var mthly_income = localStorage.getItem('mthly_income');
-//        var mthly_bill = localStorage.getItem('mthly_bill');
-//        var mthly_spendable = mthly_income - mthly_bill;
 
         var app = angular.module('App', []);
 
@@ -117,28 +114,9 @@
                                }
                         })
                         .done(function( msg ) {
-//                            window.location.href = '/init_setup_3';
+                            window.location.href = '/init_complete';
                         });
             };
-
-
-//        app.controller('thisController',function($scope, $http) {
-//
-//            $scope.addData = function() {
-//                console.log('end log');
-////                console.log($('#dailySpendable').val());
-//
-//            };
-//
-//            $http.get("/ajax/userData")
-//             .success(function(response) {
-//                  $scope.userData = response;
-//             });
-////          $scope.ng_mthly_income    = $scope.ser;
-//              $scope.ng_mthly_bill      =  1000;
-////              $scope.ng_mthly_spendable =  mthly_spendable;
-
-
 
         });
 

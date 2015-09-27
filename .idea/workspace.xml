@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47099775-becf-4d23-af73-a2ab9433cfba" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_09_25_150742_create_cc_users.php" afterPath="$PROJECT_DIR$/database/migrations/2015_09_25_150742_create_cc_users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AjaxController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AjaxController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/init_setup/init_setup_3.blade.php" afterPath="$PROJECT_DIR$/resources/views/init_setup/init_setup_3.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/init_setup/init_setup_4.blade.php" afterPath="$PROJECT_DIR$/resources/views/init_setup/init_setup_4.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
     </list>
     <ignored path="moneyburi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,39 +27,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="init_setup_2.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/init_setup/init_setup_2.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="2584">
-              <caret line="128" column="20" selection-start-line="128" selection-start-column="20" selection-end-line="128" selection-end-column="20" />
-              <folding>
-                <element signature="e#255#279#0#HTML" expanded="true" />
-                <element signature="e#1267#1291#0#HTML" expanded="true" />
-                <element signature="e#1498#1531#0#HTML" expanded="true" />
-                <element signature="e#1673#1697#0#HTML" expanded="true" />
-                <element signature="e#1813#1846#0#HTML" expanded="true" />
-                <element signature="e#1976#2000#0#HTML" expanded="true" />
-                <element signature="e#2113#2137#0#HTML" expanded="true" />
-                <element signature="e#2332#2365#0#HTML" expanded="true" />
-                <element signature="e#2491#2516#0#HTML" expanded="true" />
-                <element signature="e#2623#2656#0#HTML" expanded="true" />
-                <element signature="e#2779#2804#0#HTML" expanded="true" />
-                <element signature="e#3055#3079#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="init_setup_5.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/init_setup/init_setup_5.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.384615" vertical-offset="1167" max-vertical-offset="1785">
-              <caret line="83" column="70" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="init_setup_3.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/init_setup/init_setup_3.blade.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -83,8 +45,8 @@
       <file leaf-file-name="init_setup_4.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/init_setup/init_setup_4.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56130266" vertical-offset="1458" max-vertical-offset="2516">
-              <caret line="108" column="41" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
+            <state vertical-scroll-proportion="-1.6609195" vertical-offset="1156" max-vertical-offset="2142">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#255#279#0#HTML" expanded="true" />
                 <element signature="e#2808#2832#0#HTML" expanded="true" />
@@ -862,27 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/init_setup/init_setup_3.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.653847" vertical-offset="3230" max-vertical-offset="4811">
-          <caret line="217" column="15" selection-start-line="214" selection-start-column="0" selection-end-line="217" selection-end-column="15" />
-          <folding>
-            <element signature="e#283#307#0#HTML" expanded="true" />
-            <element signature="e#534#560#0#HTML" expanded="true" />
-            <element signature="e#1134#1158#0#HTML" expanded="true" />
-            <element signature="e#1962#1986#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/init_setup/init_setup_5.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.384615" vertical-offset="1167" max-vertical-offset="1785">
-          <caret line="83" column="70" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/init_setup/init_setup_1.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.9444447" vertical-offset="1059" max-vertical-offset="1717">
@@ -898,27 +839,6 @@
         <state vertical-scroll-proportion="0.18545455" vertical-offset="119" max-vertical-offset="969">
           <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/init_setup/init_setup_2.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="2584">
-          <caret line="128" column="20" selection-start-line="128" selection-start-column="20" selection-end-line="128" selection-end-column="20" />
-          <folding>
-            <element signature="e#255#279#0#HTML" expanded="true" />
-            <element signature="e#1267#1291#0#HTML" expanded="true" />
-            <element signature="e#1498#1531#0#HTML" expanded="true" />
-            <element signature="e#1673#1697#0#HTML" expanded="true" />
-            <element signature="e#1813#1846#0#HTML" expanded="true" />
-            <element signature="e#1976#2000#0#HTML" expanded="true" />
-            <element signature="e#2113#2137#0#HTML" expanded="true" />
-            <element signature="e#2332#2365#0#HTML" expanded="true" />
-            <element signature="e#2491#2516#0#HTML" expanded="true" />
-            <element signature="e#2623#2656#0#HTML" expanded="true" />
-            <element signature="e#2779#2804#0#HTML" expanded="true" />
-            <element signature="e#3055#3079#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -940,10 +860,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/init_setup/init_setup_5.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7836364" vertical-offset="1167" max-vertical-offset="1785">
+          <caret line="94" column="48" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/init_setup/init_setup_2.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6642984" vertical-offset="1989" max-vertical-offset="2584">
+          <caret line="139" column="65" selection-start-line="139" selection-start-column="53" selection-end-line="139" selection-end-column="65" />
+          <folding>
+            <element signature="e#255#279#0#HTML" expanded="true" />
+            <element signature="e#1267#1291#0#HTML" expanded="true" />
+            <element signature="e#1498#1531#0#HTML" expanded="true" />
+            <element signature="e#1673#1697#0#HTML" expanded="true" />
+            <element signature="e#1813#1846#0#HTML" expanded="true" />
+            <element signature="e#1976#2000#0#HTML" expanded="true" />
+            <element signature="e#2113#2137#0#HTML" expanded="true" />
+            <element signature="e#2332#2365#0#HTML" expanded="true" />
+            <element signature="e#2491#2516#0#HTML" expanded="true" />
+            <element signature="e#2623#2656#0#HTML" expanded="true" />
+            <element signature="e#2779#2804#0#HTML" expanded="true" />
+            <element signature="e#3055#3079#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/init_setup/init_setup_3.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.653847" vertical-offset="3230" max-vertical-offset="4811">
+          <caret line="217" column="15" selection-start-line="214" selection-start-column="0" selection-end-line="217" selection-end-column="15" />
+          <folding>
+            <element signature="e#283#307#0#HTML" expanded="true" />
+            <element signature="e#534#560#0#HTML" expanded="true" />
+            <element signature="e#1134#1158#0#HTML" expanded="true" />
+            <element signature="e#1962#1986#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/init_setup/init_setup_4.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56130266" vertical-offset="1458" max-vertical-offset="2516">
-          <caret line="108" column="41" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
+        <state vertical-scroll-proportion="-1.6609195" vertical-offset="1156" max-vertical-offset="2142">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="e#255#279#0#HTML" expanded="true" />
             <element signature="e#2808#2832#0#HTML" expanded="true" />
