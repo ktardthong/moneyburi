@@ -20,9 +20,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->string('gender');
+            $table->integer('status');                      //0 -> single, 3 -> married
+            $table->integer('job');                         //user job -> users_jobs table
             $table->string('city');
             $table->string('country');
-            $table->string('currency');     //user's currency
+            $table->integer('currency')->default(2);        //currency from currencies table, default->THB
             $table->string('avatar');
             $table->date('birthdate');
             $table->tinyInteger('init_setup')->default(0);

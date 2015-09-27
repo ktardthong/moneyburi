@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="@yield('description')">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+
     <link rel="icon" href="../../favicon.ico">
 
     <title>@yield('title')</title>
@@ -41,7 +44,14 @@
     <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="/css/component.css" />
     <script src="/js/modernizr.min.js"></script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
+    </script>
   </head>
 
 <body ng-app="App">

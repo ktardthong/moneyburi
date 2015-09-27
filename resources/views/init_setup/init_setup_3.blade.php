@@ -12,6 +12,18 @@
 @section('content')
     <div class="container" align="center"  ng-controller="AddCardController">
 
+        {{-- Income --}}
+        <div class="card card-block" style="max-width: 400px">
+
+            <h4 class="card-title strong">Income per month</h4>
+
+            <div class="lead">
+                <input name="mthly_income" type="number" class="borderless fetchData" style="text-align: center" placeholder="Amount">
+            </div>
+
+        </div>
+
+
         <div class="card card-block" style="max-width: 400px">
 
             <h4 class="card-title strong">Currency?</h4>
@@ -19,7 +31,7 @@
             <div class="btn-group lead" data-toggle="buttons">
 
                 <select id="currencySelect" ng-model="ng_currency">
-                    <option ng-repeat="currency in currencies">@{{ currency.currency_code }}</option>>
+                    <option ng-repeat="currency in currencies" value="@{{ currency.id }}">@{{ currency.currency_code }}</option>>
                 </select>
 
             </div>
@@ -101,16 +113,7 @@
         </div>
 
 
-        {{-- Income --}}
-        <div class="card card-block" style="max-width: 400px">
 
-            <h4 class="card-title strong">Income per month</h4>
-
-            <div class="lead">
-                <input name="mthly_income" type="number" class="borderless fetchData" style="text-align: center" placeholder="Amount">
-            </div>
-
-        </div>
 
         {{-- Expense --}}
         <div class="card card-block" style="max-width: 400px" ng-controller="AddBillController as BillList">
@@ -141,9 +144,9 @@
         </div>
 
 
-        <ul class="pager">
+        <ul class="pager" ng-controller="thisController">
             <li><a href="/init_setup_2">Previous</a></li>
-            <li><a href="/init_setup_4">Previous</a></li>
+            <li><a href="#" ng-click="addData()">Next</a></li>
         </ul>
 
         <div style="max-width: 200px">
@@ -162,8 +165,9 @@
 
     <script>
      $('#currencySelect').change(function() {
-        localStorage.setItem('userCurrency', $('#currencySelect').val());
-        listLocalStorage();
+//        localStorage.setItem('userCurrency', $('#currencySelect').val());
+
+//        listLocalStorage();
     });
     $('#creditCard_true').click(function() {
         $('#addCreditCard').show('slow');
@@ -176,11 +180,34 @@
     $('#addCreditCard').hide();
 
 
+    var cardData = [];
+
 
     var app = angular.module('App', []);
 
-        app.controller('AddCardController', function($scope,$http) {
+        app.controller('thisController', function($scope,$http) {
 
+            $scope.addData = function() {
+
+                console.log();
+                console.log(JSON.parse(cardData));
+
+                $.ajax({
+                    method: "POST",
+                    url:    "/ajax/userFinance",
+                    data:   {
+                                currency:  $('#currencySelect').val(),
+                                cards:      JSON.parse(cardData)
+                            }
+                    })
+                    .done(function( msg ) {
+                        //window.location.href = '/init_setup_4';
+                    });
+            };
+
+        });
+
+        app.controller('AddCardController', function($scope,$http) {
 
             var cardList = this;
             $scope.cardItem = [];
@@ -208,10 +235,7 @@
                                         ccnote: $scope.ng_cardNote
                                       });
 
-                localStorage["userCards"] = JSON.stringify($scope.cardItem);
-
-                var listCards = JSON.parse(localStorage["userCards"]);
-                console.log(listCards);
+                cardData = JSON.stringify($scope.cardItem);
 
             };
         });
@@ -248,5 +272,7 @@
 
       });
       listLocalStorage();
+
+
     </script>
 @stop
