@@ -13,12 +13,13 @@ class CreateCcUsers extends Migration
     public function up()
     {
         Schema::create('cc_users', function (Blueprint $table) {
-            $table->integer('id');
-            $table->tinyInteger('flg');     //Active flag
-            $table->integer('uid');         //user id
-            $table->integer('cc_issuer');   //cc issuer
-            $table->integer('cc_types');    //cc types
-            $table->integer('limit');       //cc limit
+            $table->increments('id');
+            $table->tinyInteger('flg')->default(1);     // Active flag, default active when added
+            $table->integer('uid');                     // user id
+            $table->integer('cc_issuer');               // cc issuer
+            $table->integer('cc_types');                // cc types
+            $table->integer('cc_limit');                   // cc limit
+            $table->string('card_notes');                   // cc limit
             $table->timestamps();
         });
     }

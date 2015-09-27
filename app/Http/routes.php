@@ -34,7 +34,8 @@ Route::get('ajax/ccIssuer',     'AjaxController@ccIssuer');
 Route::get('ajax/ccTypes',      'AjaxController@ccTypes');
 Route::get('ajax/currency',     'AjaxController@user_currencies');
 Route::get('ajax/userData',     'AjaxController@userData');
-
+//AJAX POST
+Route::post('ajax/userPlan',     'AjaxController@userplan');
 Route::post('ajax/userFinance',  'AjaxController@userFinanceData');
 Route::post('ajax/userName',    'AjaxController@userInfoUpdate');
 Route::post('ajax/userStatus',  'AjaxController@userStatus');

@@ -18,7 +18,8 @@
             <h4 class="card-title strong">Income per month</h4>
 
             <div class="lead">
-                <input name="mthly_income" type="number" class="borderless fetchData" style="text-align: center" placeholder="Amount">
+                <input  name="mthly_income" type="number" class="borderless fetchData" id="mthlyIncome"
+                        style="text-align: center" placeholder="Amount">
             </div>
 
         </div>
@@ -73,13 +74,13 @@
                             Issuer
                             <select ng-model="ng_ccIssuer">
                                 <option ng-selected="ccIssuer.selected== BBL"
-                                        ng-repeat="ccIssuer in ccIssuer">@{{ ccIssuer.name }}</option>
+                                        ng-repeat="ccIssuer in ccIssuer" value="@{{ ccIssuer.id }}">@{{ ccIssuer.name }}</option>
                             </select>
                             <p>
                             Type
                             <select ng-model="ng_ccTypes">
                                 <option ng-selected="ccIssuer.selected== BBL"
-                                        ng-repeat="ccType in ccTypes">@{{ ccType.name }}</option>
+                                        ng-repeat="ccType in ccTypes" value="@{{ ccType.id }}">@{{ ccType.name }}</option>
                             </select>
                             </p>
 
@@ -164,11 +165,7 @@
     </div> <!-- /container -->
 
     <script>
-     $('#currencySelect').change(function() {
-//        localStorage.setItem('userCurrency', $('#currencySelect').val());
 
-//        listLocalStorage();
-    });
     $('#creditCard_true').click(function() {
         $('#addCreditCard').show('slow');
     });
@@ -181,7 +178,7 @@
 
 
     var cardData = [];
-
+    var mthly_income ='';
 
     var app = angular.module('App', []);
 
@@ -189,19 +186,22 @@
 
             $scope.addData = function() {
 
-                console.log();
-                console.log(JSON.parse(cardData));
+                if(cardData.length > 0)
+                {
+                    cardData = JSON.parse(cardData);
+                }
 
                 $.ajax({
                     method: "POST",
                     url:    "/ajax/userFinance",
                     data:   {
-                                currency:  $('#currencySelect').val(),
-                                cards:      JSON.parse(cardData)
+                                mthlyInc:   $('#mthlyIncome').val(),
+                                currency:   $('#currencySelect').val(),
+                                cards:      cardData
                             }
                     })
                     .done(function( msg ) {
-                        //window.location.href = '/init_setup_4';
+                        window.location.href = '/init_setup_4';
                     });
             };
 
@@ -226,7 +226,6 @@
             .success(function(response) {
                 $scope.ccTypes = response;
             });
-
             $scope.addCard = function() {
                 $scope.cardItem.push({
                                         type:$scope.ng_ccTypes,
@@ -238,6 +237,7 @@
                 cardData = JSON.stringify($scope.cardItem);
 
             };
+
         });
 
 
