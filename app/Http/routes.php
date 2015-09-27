@@ -29,6 +29,7 @@ Route::get('login/fb/callback', 'PagesController@loginFBCallback');
 //Ajax
 Route::get('ajax/geUserJobs',   'AjaxController@getUserJob');
 Route::get('ajax/billCate',     'AjaxController@billCate');
+Route::get('ajax/transRepeat',  'AjaxController@transRepeat');
 Route::get('ajax/ccIssuer',     'AjaxController@ccIssuer');
 Route::get('ajax/ccTypes',      'AjaxController@ccTypes');
 Route::get('ajax/currency',     'AjaxController@user_currencies');

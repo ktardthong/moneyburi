@@ -23,6 +23,11 @@ class AjaxController extends Controller
         return CateCore::get();
     }
 
+    public function transRepeat()
+    {
+        return \App\TransRepeat::get();
+    }
+
     public function ccIssuer()
     {
         return \App\CardApp::cc_issuer();

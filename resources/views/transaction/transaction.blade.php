@@ -17,19 +17,19 @@
 
             <div class="btn-group btn-block" data-toggle="buttons">
                 <label class="btn btn-info active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked> Cash
+                <input type="radio" name="pmt_type" value="1" id="cash" autocomplete="off" checked> Cash
                 </label>
                 <label class="btn btn-info">
-                <input type="radio" name="options" id="option2" autocomplete="off"> Credit Card
+                <input type="radio" name="pmt_type" value="2" id="credit" autocomplete="off"> Credit Card
                 </label>
             </div>
 
             <div class="btn-group btn-block" data-toggle="buttons">
                 <label class="btn btn-info active">
-                  <input type="radio" name="options" id="option1" autocomplete="off" checked> Expense
+                  <input type="radio" name="trans_type" value="1" id="expense" autocomplete="off" checked> Expense
                 </label>
                 <label class="btn btn-info">
-                  <input type="radio" name="options" id="option2" autocomplete="off"> Income
+                  <input type="radio" name="trans_type" value="2" id="income" autocomplete="off"> Income
                 </label>
             </div>
 
@@ -37,21 +37,20 @@
                 <input type="date" name="trans_date" class="input input-md form-control" value>
             </p>
 
+            <p>
+                <select id="cate" name="cate_id" type="button" class="btn btn-secondary btn-block dropdown-toggle"
+                        style="line-height: 38px; height: 38px;">
+                    <option >Select Category</option>
+                    <option ng-repeat="c in cateCore" value="@{{ c.id }}">@{{ c.name}}</option>
+                </select>
+            </p>
 
             <p>
-
-                 <div class="btn-group">
-                    <button type="button"
-                            class="btn btn-secondary dropdown-toggle"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false">Select</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item"
-                           href="#"
-                           ng-repeat="c in cateCore" value="@{{c.id}}">@{{c.name}}</a>
-                    </div>
-                 </div>
+                <select id="repeat" name="trans_repeat" type="button" class="btn btn-secondary btn-block dropdown-toggle"
+                        style="line-height: 38px; height: 38px;">
+                    <option >How Frequent</option>
+                    <option ng-repeat="t in transRepeat" value="@{{ t.id }}">@{{ t.name}}</option>
+                </select>
             </p>
 
             <p>
@@ -78,7 +77,7 @@
 
             $(".dropdown-menu a").click(function(){
                 var selText = $(this).text();
-                $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+                $(this).parents('.btn').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
             });
 
 
@@ -90,10 +89,16 @@
                     .success(function(response) {
                         $scope.cateCore = response;
                     });
+
+            $http.get("/ajax/transRepeat")
+                    .success(function(response) {
+                        $scope.transRepeat = response;
+                    });
         });
 
 //        $('#init_firstname').val(localStorage.getItem('firstname'));
 //        $('#init_lastname').val(localStorage.getItem('lastname'));
+
     </script>
 
 @stop
