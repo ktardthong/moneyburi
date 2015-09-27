@@ -30,6 +30,11 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('init_setup')->default(0);
             $table->rememberToken();
             $table->decimal('mth_income', 18, 2)->default(0);
+            $table->decimal('mth_bill', 18, 2)->default(0);
+            $table->decimal('mth_spendable', 18, 2)->default(0);
+            $table->decimal('mth_saving', 18, 2)->default(0);
+            $table->decimal('d_saving', 18, 2)->default(0);
+            $table->decimal('d_spendable', 18, 2)->default(0);
             $table->decimal('net_worth', 18, 2)->default(0);
             $table->timestamps();
         });

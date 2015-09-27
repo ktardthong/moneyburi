@@ -10,10 +10,11 @@
 
 
 @section('content')
-    <div class="container" align="center" >
+    <div class="container" align="center" ng-controller="thisController">
 
 
-        <div class="card card-block" style="max-width: 400px" ng-controller="MainCtrl">
+        <div class="card card-block" style="max-width: 400px" >
+
 
             <h4 class="card-title strong">Saving</h4>
 
@@ -21,7 +22,7 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li class="nav-item clearfix">
                         <p class="pull-left"> Income   </p>
-                        <p class="pull-right" id="mthly_income">@{{ng_mthly_income}} </p>
+                        <p class="pull-right" id="mthly_income">@{{userData.mth_income}} </p>
                     </li>
                     <li class="nav-item clearfix">
                         <p class="pull-left"> - Bills   </p>
@@ -40,7 +41,7 @@
                     <li class="nav-item clearfix">
                         <p class="pull-left"> Spendable  </p>
                         <p class="pull-right" id="mthly_spendable" ng-model="mthly_spendable">
-                        @{{ ng_mthly_spendable - savingPlan }}
+                        @{{ (userData.mth_income -1000) - savingPlan }}
                         </p>
                     </li>
                 </ul>
@@ -51,20 +52,20 @@
                 <div class="col-xs-12 col-sm-6">
                     Save
                     <div>
-                    Monthly @{{savingPlan}}
+                    Monthly <span id="mthlySaving">@{{savingPlan}}</span>
                     </div>
                     <div>
-                    Daily @{{savingPlan/30 | number:0}}
+                    Daily <span id="dailySaving">@{{savingPlan/30 | number:0}}</span>
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-6">
                     Spend
                     <div>
-                    Monthly  @{{ ng_mthly_spendable - savingPlan }}
+                    Monthly  <span id="mthlySpendable"> @{{ ng_mthly_spendable - savingPlan }}</span>
                     </div>
                     <div>
-                    Daily @{{ (ng_mthly_spendable - savingPlan)/30 | number:0}}
+                        Daily<span id="dailySpendable"> @{{ (ng_mthly_spendable - savingPlan)/30 | number:0}}</span>
                     </div>
                 </div>
 
@@ -75,7 +76,7 @@
 
         <ul class="pager">
             <li><a href="/init_setup_3">Previous</a></li>
-            <li><a href="/init_setup_5">Next</a></li>
+            <li><a href="#" ng-click="addData()">Complete!</a></li>
         </ul>
 
         <div style="max-width: 200px">
@@ -91,29 +92,56 @@
     </div> <!-- /container -->
 
     <script>
-        var mthly_income = localStorage.getItem('mthly_income');
-        var mthly_bill = localStorage.getItem('mthly_bill');
-        var mthly_spendable = mthly_income - mthly_bill;
+//        var mthly_income = localStorage.getItem('mthly_income');
+//        var mthly_bill = localStorage.getItem('mthly_bill');
+//        var mthly_spendable = mthly_income - mthly_bill;
 
         var app = angular.module('App', []);
 
-        app.controller('MainCtrl', ['$scope', '$window', function($scope, $window) {
-          $scope.ng_mthly_income    = $window.mthly_income;
-          $scope.ng_mthly_bill      = $window.mthly_bill;
-          $scope.ng_mthly_spendable = $window.mthly_spendable;
-        }]);
+        app.controller('thisController', function($scope, $http) {
+
+            $http.get("/ajax/userData")
+            .success(function(response) {
+                $scope.userData = response;
+            });
 
 
-        /*$('#ng_mthly_spendable').attr('value', mthly_spendable);
-        $('#maxSpendable').attr('max',mthly_spendable);
-        $('#mthly_income').html(mthly_income);
-        $('#mthly_bill').html(mthly_bill);
-        $('#mthly_spendable').html(mthly_spendable);*/
+            $scope.addData = function() {
+                $.ajax({
+                        method: "POST",
+                        url: "/ajax/userPlan",
+                        data:  {    mth_saving:     $('#mthlySaving').html(),
+                                    mth_spending:   $('#mthlySpendable').html(),
+                                    dd_spending:    $('#dailySpendable').html(),
+                                    dd_saving:      $('#dailySaving').html()
+                               }
+                        })
+                        .done(function( msg ) {
+//                            window.location.href = '/init_setup_3';
+                        });
+            };
+
+
+//        app.controller('thisController',function($scope, $http) {
+//
+//            $scope.addData = function() {
+//                console.log('end log');
+////                console.log($('#dailySpendable').val());
+//
+//            };
+//
+//            $http.get("/ajax/userData")
+//             .success(function(response) {
+//                  $scope.userData = response;
+//             });
+////          $scope.ng_mthly_income    = $scope.ser;
+//              $scope.ng_mthly_bill      =  1000;
+////              $scope.ng_mthly_spendable =  mthly_spendable;
 
 
 
-        console.log(">>"+localStorage.getItem('mthly_income'));
-        listLocalStorage();
+        });
+
     </script>
 
 

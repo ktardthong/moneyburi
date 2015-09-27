@@ -41,13 +41,40 @@ class AjaxController extends Controller
     {
         if(Auth::user()) {
 
-            if(Auth::user()) {
-                echo $request->currency;
+            //Update Currency
+            DB::table('users')
+                ->where('id', Auth::user()->id)
+                ->update([
+                        'mth_income'    =>   $request->mthlyInc,
+                        'currency'      =>   $request->currency,
+                ]);
+
+            //Add Cards
+            $cardsData = $request->cards;
+            if(!empty($cardsData))
+            {
                 foreach($request->cards as $card)
                 {
-                    print_r($card);
-                }
+
+                    DB::table('cc_users')->insert(
+                        [
+                            'flg'       => 1,
+                            'uid'       => 3,
+                            'cc_issuer' => $card['issuer'],
+                            'cc_types'  => $card['type'],
+                            'cc_limit'  => $card['cclimit'],
+                            'card_notes'=> $card['ccnote']
+                        ]
+                    );
+
+                }//End foreach
             }
+            else
+            {
+                echo "empty request";
+            }
+
+
 
         }
     }
@@ -91,6 +118,24 @@ class AjaxController extends Controller
                     'status'    =>  $request->status
                 ]);
         }
+    }
+
+    public function userplan(Request $request)
+    {
+        if(Auth::user()){
+            echo ">>>";
+            echo $request->dd_saving;
+            echo $request->dd_spending;
+            DB::table('users')
+                ->where('id', Auth::user()->id)
+                ->update([
+                    'mth_saving'    =>  $request->mth_saving,
+                    'mth_spendable' =>  $request->mth_spending,
+                    'd_saving'      =>  $request->dd_saving,
+                    'd_spendable'   =>  $request->dd_spending
+                ]);
+        }
+
     }
 
 }
