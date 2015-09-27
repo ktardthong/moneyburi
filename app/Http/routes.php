@@ -20,7 +20,6 @@ Route::post('/add_transaction', 'TransactionController@add_transaction');
 
 
 
-
 //Facebook login
 Route::get('login/fb', 'PagesController@loginFB');
 Route::get('login/fb/callback', 'PagesController@loginFBCallback');
@@ -73,11 +72,3 @@ Route::get('/init_setup_5', function () {
 });
 Route::get('/init_complete','PagesController@complete_setup');
 //END INIT SETUP
-
-
-
-<<<<<<< HEAD
-Route::get('login/fb/callback', 'PagesController@loginFBCallback');
-
-=======
->>>>>>> 3fbe392de2434d8c5458bd3b3ef9382b853629ed

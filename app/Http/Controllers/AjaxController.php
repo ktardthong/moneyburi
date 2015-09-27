@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\User;
 use App\UserJobs;
+use App\CateCore;
 use Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,7 @@ class AjaxController extends Controller
 
     public function billCate()
     {
-        return \App\CateCore::get();
+        return CateCore::get();
     }
 
     public function ccIssuer()

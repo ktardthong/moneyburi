@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use Illuminate\Http\Request;
+use Symfony\Component\VarDumper\Tests\Caster\CasterTest;
 use Validator;
 use App\User;
 use Auth;
@@ -17,7 +18,8 @@ class TransactionController extends Controller
     {
         $page_title     =   "moneyburi!";
         $page_descs     =   "";
-        return view('transaction.transaction',compact('page_title','page_descs'));
+
+        return view('transaction.transaction',compact('page_title','page_descs', 'cates'));
     }
 
     protected function createTransaction(array $data)
@@ -61,6 +63,5 @@ class TransactionController extends Controller
 
         return redirect('/profile');
     }
-
 
 }
