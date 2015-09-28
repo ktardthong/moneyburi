@@ -21,7 +21,7 @@
 
                     <div class="col-xs-12 col-sm-3">
                         <div class="card card-block">
-                             <ul class="nav nav-sidebar">
+                            <ul class="nav nav-sidebar">
                                 <li class="active" align="center">
                                     <a href="#">
                                         <img src="/img/user_avatar.gif" class="img-circle">
@@ -29,6 +29,14 @@
                                          @{{userData.firstname }} @{{ userData.lastname }}
                                     </a>
                                 </li>
+
+                                <div>
+
+                                     <select ng-model="template" ng-options="t.name for t in templates">
+                                         <option value="">(blank)</option>
+                                     </select>
+
+
                                 <li class="active">
                                     <a href="#" title="Overview" data-toggle="tooltip" data-placement="top">
                                     <i class="fa fa-home"></i> <span class="sr-only">(current)</span> Home </a></li>
@@ -38,77 +46,15 @@
                                     <i class="fa fa-pencil-square-o"></i>Add Transaction</a></li>
                                 <li><a href="#">Spending Categories</a></li>
                                 <li><a href="#">Goal</a></li>
-                                <li><a href="#">Edit</a></li>
+                                <li><a href="#" ng-click="showEdit()">Edit</a></li>
+                                </div>
                             </ul>
                         </div>
                     </div>
 
+                    {{-- Main cards, default card_spendable--}}
                     <div class="col-xs-12 col-sm-9">
-                        <div class="card card-block">
-                            <h4 class="card-title">Spendable</h4>
-
-                            <div class="container-fluid" align="center">
-
-                                {{-- Graph section--}}
-                                <div class="col-xs-12 col-sm-7">
-
-                                    <div style="position: relative;" class="row">
-                                        <div style="width: 100%; height: 40px; position: absolute;
-                                                    top: 50%; left: 0; margin-top: -20px;
-                                                    line-height:19px; text-align: center;
-                                                    z-index: 999999999999999">
-                                            <p class="display-1">100</p>
-                                        </div>
-
-                                        <canvas id="budgetChart" onclick="spendableDough()"></canvas>
-                                    </div>
-                                    <a href="#" class="lead" id="addTransaction"> + Add transaction</a>
-
-                                </div>
-
-                                <div class="col-xs-12 col-sm-5">
-
-                                    <div id="spendableContainer"></div>
-
-                                    <div id="spendableOverview">
-
-                                         <ul class="list-group container lead">
-                                            <div>
-                                               <span class="pull-right">@{{ userData.d_spendable | number: 0 }}</span>
-                                               started today
-                                            </div>
-                                            <div>
-                                               <span class="pull-right">50</span>
-                                               spent today
-                                            </div>
-                                            <hr>
-                                            <div>
-                                                <span class="pull-right">100</span>
-                                                remaining today
-                                            </div>
-                                            <hr>
-                                        </ul>
-
-                                        <p>
-                                            <ul class="list-group container lead">
-                                            <div>
-                                                <span class="pull-right">400</span>
-                                                this week
-                                            </div>
-                                            <div>
-                                                <span class="pull-right">2,000</span>
-                                                this month
-                                            </div>
-                                             <div>
-                                                <span class="pull-right">18,000</span>
-                                                this year
-                                             </div>
-                                            </ul>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="slide-animate" ng-include="template.url"></div>
                     </div>
 
                 </div>
@@ -179,6 +125,19 @@
 
         var app = angular.module('App', ['ngAnimate']);
 
+        app.controller('profileEdit', function($scope, $http) {
+            $http.get("/ajax/userData")
+            .success(function(response) {
+                $scope.userData = response;
+            });
+
+            $scope.mthlyIncome  =   $scope.userData.mth_income;
+            $scope.mthlyBill    =   $scope.userData.mth_bill;
+            $scope.mthlySaving  =   $scope.userData.mth_saving;
+
+            $scope.mthlySpendable = $scope.mthlyIncome - ($scope.mthlyBill - $scope.mthlySaving) ;
+        });
+
         app.controller('profileController', function($scope, $http) {
 
             $http.get("/ajax/userData")
@@ -186,68 +145,28 @@
                 $scope.userData = response;
             });
 
+            $http.get("/ajax/currency")
+            .success(function(response) {
+                $scope.currencies = response;
+            });
 
-            /*$scope.addData = function() {
-                $.ajax({
-                        method: "POST",
-                        url: "/ajax/userPlan",
-                        data:  {    mth_saving:     $('#mthlySaving').html(),
-                                    mth_spending:   $('#mthlySpendable').html(),
-                                    dd_spending:    $('#dailySpendable').html(),
-                                    dd_saving:      $('#dailySaving').html()
-                               }
-                        })
-                        .done(function( msg ) {
-                            window.location.href = '/init_complete';
-                        });
-            };*/
+            $scope.templates =
+              [ { name: 'Spendable' , url: '/app/html/card_spendable.html'},
+                { name: 'Account'   , url: '/app/html/card_account.html'},
+                { name: 'Goals'     , url: '/app/html/card_goals.html'},
+                { name: 'Edit'      , url: '/app/html/card_userEdit.html'}
+              ];
+            $scope.template = $scope.templates[0];
+
+            $scope.showEdit = function(page) {
+                console.log('edit '+page);
+
+            };
 
         });
 
 
-    function spendableDough()
-    {
-        alert("test");
-    }
 
-    var data = [
-        {
-            value: 50,
-            color: "#a0a0a0",
-            highlight: "#fefefe",
-            label: "Spent"
-        },
-        {
-            value: 100,
-            color: "#88d2db",
-            highlight: "#FFC870",
-            label: "Spendable"
-        }
-    ];
-   var ctx = document.getElementById("budgetChart").getContext("2d");
-   var myDoughnutChart = new Chart(ctx).Doughnut(data,{
-                            responsive: true,
-                            maintainAspectRatio: true,
-
-                            //Boolean - Whether we should show a stroke on each segment
-                            segmentShowStroke : true,
-
-                            //String - The colour of each segment stroke
-                            segmentStrokeColor : "#fff",
-
-                            //Number - The width of each segment stroke
-                            segmentStrokeWidth : 2,
-
-                            //Number - The percentage of the chart that we cut out of the middle
-                            percentageInnerCutout : 80, // This is 0 for Pie charts
-
-                            //Number - Amount of animation steps
-                            animationSteps : 100,
-
-                            //Boolean - Whether we animate the rotation of the Doughnut
-                            animateRotate : true
-
-                            });
 
     </script>
 
