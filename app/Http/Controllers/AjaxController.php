@@ -65,7 +65,7 @@ class AjaxController extends Controller
                     DB::table('cc_users')->insert(
                         [
                             'flg'       => 1,
-                            'uid'       => 3,
+                            'uid'       => Auth::user()->id,
                             'cc_issuer' => $card['issuer'],
                             'cc_types'  => $card['type'],
                             'cc_limit'  => $card['cclimit'],
