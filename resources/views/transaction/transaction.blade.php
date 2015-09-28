@@ -73,16 +73,6 @@
 
 
     <script>
-        $(function(){
-
-            $(".dropdown-menu a").click(function(){
-                var selText = $(this).text();
-                $(this).parents('.btn').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
-            });
-
-
-        });
-
         var app = angular.module('App', []);
         app.controller('transaction', function($scope, $http) {
             $http.get("/ajax/billCate")
@@ -95,10 +85,6 @@
                         $scope.transRepeat = response;
                     });
         });
-
-//        $('#init_firstname').val(localStorage.getItem('firstname'));
-//        $('#init_lastname').val(localStorage.getItem('lastname'));
-
     </script>
 
 @stop
