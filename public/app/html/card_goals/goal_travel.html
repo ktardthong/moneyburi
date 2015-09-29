@@ -1,0 +1,57 @@
+<div class="card card-block" ng-controller="goalController" style="margin: auto">
+
+    <h4 class="card-title strong">Travel</h4>
+
+
+    <div >
+        {{ travelGoals.id }}
+    </div>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12">
+
+            <p>
+                <span>Where to?</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="travelLocation" id="travelLocation">
+            </p>
+
+            <p>
+                <span>Travel Budget</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="travelAmount" id="travelAmount">
+            </p>
+
+
+            <p>
+                <span>Number of travelers</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="travelPax" id="travelPax">
+            </p>
+
+            <p>
+                <span>Nights</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="travelNights" id="travelNights">
+            </p>
+
+        </div>
+    </div>
+
+    <!-- Your Plan-->
+    <div class="col-xs-12 col-sm-6">
+
+        <h4 class="card-title strong">Your Goal</h4>
+        <p>
+            <span>When you want to go?</span>
+
+
+            <month-select-list></month-select-list><br/>
+            <div year-drop offset="0" range="10"></div>
+        </p>
+        <span>Saving per month</span>
+        <input placeholder="" class="input input-lg borderless" id="travelSavingMth">
+        <span id="mthPmt"></span>
+
+    </div>
+
+    {{ monthSelect }}
+    <button class="btn btn-block" ng-click="setGoalTravel()">Set Goal!</button>
+
+</div>

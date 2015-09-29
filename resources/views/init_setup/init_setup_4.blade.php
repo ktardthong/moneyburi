@@ -76,7 +76,7 @@
 
         <ul class="pager">
             <li><a href="/init_setup_3">Previous</a></li>
-            <li><a href="#" ng-click="addData()">Complete!</a></li>
+            <li><a href="#" ng-click="spendableAddData()">Complete!</a></li>
         </ul>
 
         <div style="max-width: 200px">
@@ -90,37 +90,5 @@
 
         </div>
     </div> <!-- /container -->
-
-    <script>
-
-        var app = angular.module('App', []);
-
-        app.controller('thisController', function($scope, $http) {
-
-            $http.get("/ajax/userData")
-            .success(function(response) {
-                $scope.userData = response;
-            });
-
-
-            $scope.addData = function() {
-                $.ajax({
-                        method: "POST",
-                        url: "/ajax/userPlan",
-                        data:  {    mth_saving:     $('#mthlySaving').html(),
-                                    mth_spending:   $('#mthlySpendable').html(),
-                                    dd_spending:    $('#dailySpendable').html(),
-                                    dd_saving:      $('#dailySaving').html()
-                               }
-                        })
-                        .done(function( msg ) {
-                            window.location.href = '/init_complete';
-                        });
-            };
-
-        });
-
-    </script>
-
 
 @stop

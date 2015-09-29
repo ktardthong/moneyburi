@@ -1,0 +1,22 @@
+<div class="card card-block" ng-controller="goalController">
+
+    <h4 class="card-title strong">Debts</h4>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <p>
+                <span>How much</span>
+                <input placeholder="" class="input input-lg" ng-model="debtAmount">
+            </p>
+
+            <p>
+                <span>Period</span>
+                <input placeholder="" class="input input-lg" ng-model="debtPeriod">
+            </p>
+            >> debt per month {{ debtAmount / debtPeriod}}
+            <br>
+            {{ userData.mth_income }} - {{ userData.mth_bill }} - {{ userData.mth_saving }} = {{ userData.mth_spendable }}
+        </div>
+    </div>
+</div>
+

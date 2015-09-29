@@ -3,6 +3,7 @@ namespace App;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Auth;
 
 class CardApp  extends  Eloquent{
 //    protected $table = 'user_jobs';
@@ -33,5 +34,17 @@ class CardApp  extends  Eloquent{
                 ->select('id', 'currency_code','currency_desc','currency_sym')
                 ->get();
         return json_encode($data);
+    }
+
+
+    public static function getUserTravelGoal()
+    {
+        if(Auth::user())
+        {
+            $data = DB::table('goal_travel')
+                    ->where('uid',Auth::user()->id)
+                ->get();
+            return json_encode($data);
+        }
     }
 }

@@ -37,16 +37,18 @@
                                      </select>
 
 
-                                <li class="active">
-                                    <a href="#" title="Overview" data-toggle="tooltip" data-placement="top">
-                                    <i class="fa fa-home"></i> <span class="sr-only">(current)</span> Home </a></li>
-                                <li><a href="#" title="Overview" data-toggle="tooltip" data-placement="top">
-                                    <i class="fa fa-line-chart"></i> Transaction</a></li>
-                                <li><a href="#" title="Add Transaction" data-toggle="tooltip" data-placement="top">
-                                    <i class="fa fa-pencil-square-o"></i>Add Transaction</a></li>
-                                <li><a href="#">Spending Categories</a></li>
-                                <li><a href="#">Goal</a></li>
-                                <li><a href="#" ng-click="showEdit()">Edit</a></li>
+                                    {{--<li class="active">
+                                        <a href="#" title="Overview" data-toggle="tooltip" data-placement="top">
+                                        <i class="fa fa-home"></i> <span class="sr-only">(current)</span> Home </a></li>
+                                    <li><a href="#" title="Overview" data-toggle="tooltip" data-placement="top">
+                                        <i class="fa fa-line-chart"></i> Transaction</a></li>
+                                    <li><a href="#" title="Add Transaction" data-toggle="tooltip" data-placement="top">
+                                        <i class="fa fa-pencil-square-o"></i>Add Transaction</a></li>
+                                    <li><a href="#">Spending Categories</a></li>
+                                    <li><a href="#">Goal</a></li>
+                                    <li><a href="#" ng-click="showEdit()">Edit</a></li>--}}
+
+
                                 </div>
                             </ul>
                         </div>
@@ -78,7 +80,7 @@
 
                     {{-- Goals--}}
                     <div class="col-xs-12 col-sm-3">
-                        <div class="slide-animate" ng-include="'/app/html/card_goals.html'"></div>
+                        {{--<div class="slide-animate" ng-include="'/app/html/card_goals.html'"></div>--}}
                     </div>
 
                     {{-- Account--}}
@@ -95,90 +97,4 @@
             </div>
 
     </div>
-
-
-
-    {{--<footer class="footer hidden-sm">--}}
-        {{--<div class="container">--}}
-               {{--<nav class="navbar navbar-light bg-faded">--}}
-                 {{--<ul class="nav navbar-nav">--}}
-                   {{--<li class="nav-item active">--}}
-                     {{--<a class="nav-link" href="#"> <i class="fa fa-home"></i></a>--}}
-                   {{--</li>--}}
-                   {{--<li class="nav-item">--}}
-                     {{--<a class="nav-link" href="#"><i class="fa fa-line-chart"></i></a>--}}
-                   {{--</li>--}}
-                   {{--<li class="nav-item">--}}
-                     {{--<a class="nav-link" href="#"><i class="fa fa-pencil-square-o"></i></a>--}}
-                   {{--</li>--}}
-                   {{--<li class="nav-item">--}}
-                     {{--<a class="nav-link" href="#">About</a>--}}
-                   {{--</li>--}}
-                 {{--</ul>--}}
-               {{--</nav>--}}
-        {{--</div>--}}
-    {{--</footer>--}}
-
-
-    <script>
-
-
-        var app = angular.module('App', ['ngAnimate']);
-
-        app.controller('profileEdit', function($scope, $http) {
-            $http.get("/ajax/userData")
-            .success(function(response) {
-                $scope.userData = response;
-            });
-
-            $scope.mthlyIncome  =   $scope.userData.mth_income;
-            $scope.mthlyBill    =   $scope.userData.mth_bill;
-            $scope.mthlySaving  =   $scope.userData.mth_saving;
-
-            $scope.mthlySpendable = $scope.mthlyIncome - ($scope.mthlyBill - $scope.mthlySaving) ;
-        });
-
-        app.controller('profileController', function($scope, $http) {
-
-            $http.get("/ajax/userData")
-            .success(function(response) {
-                $scope.userData = response;
-            });
-
-            $http.get("/ajax/currency")
-            .success(function(response) {
-                $scope.currencies = response;
-            });
-
-            $scope.templates =
-              [ { name: 'Spendable' , url: '/app/html/card_spendable.html'},
-                { name: 'Account'   , url: '/app/html/card_account.html'},
-                { name: 'Goals'     , url: '/app/html/card_goals.html'},
-                { name: 'Edit'      , url: '/app/html/card_userEdit.html'}
-              ];
-            $scope.template = $scope.templates[0];
-
-            $scope.showEdit = function(page) {
-                console.log('edit '+page);
-
-            };
-
-        });
-
-
-
-
-    </script>
-
-    <style>
-    .footer {
-      position: absolute;
-      bottom: 0;
-      /*width: 100%;*/
-      /* Set the fixed height of the footer here */
-      height: 60px;
-      background-color: #f5f5f5;
-    }
-
-    </style>
 @stop

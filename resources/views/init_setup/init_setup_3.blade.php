@@ -147,7 +147,7 @@
 
         <ul class="pager" ng-controller="thisController">
             <li><a href="/init_setup_2">Previous</a></li>
-            <li><a href="#" ng-click="addData()">Next</a></li>
+            <li><a href="#" ng-click="cardAddData()">Next</a></li>
         </ul>
 
         <div style="max-width: 200px">
@@ -164,115 +164,4 @@
 
     </div> <!-- /container -->
 
-    <script>
-
-    $('#creditCard_true').click(function() {
-        $('#addCreditCard').show('slow');
-    });
-
-    $('#creditCard_false').click(function() {
-        $('#addCreditCard').hide('slow');
-    });
-
-    $('#addCreditCard').hide();
-
-
-    var cardData = [];
-    var mthly_income ='';
-
-    var app = angular.module('App', []);
-
-        app.controller('thisController', function($scope,$http) {
-
-            $scope.addData = function() {
-
-                if(cardData.length > 0)
-                {
-                    cardData = JSON.parse(cardData);
-                }
-
-                $.ajax({
-                    method: "POST",
-                    url:    "/ajax/userFinance",
-                    data:   {
-                                mthlyInc:   $('#mthlyIncome').val(),
-                                currency:   $('#currencySelect').val(),
-                                cards:      cardData
-                            }
-                    })
-                    .done(function( msg ) {
-                        window.location.href = '/init_setup_4';
-                    });
-            };
-
-        });
-
-        app.controller('AddCardController', function($scope,$http) {
-
-            var cardList = this;
-            $scope.cardItem = [];
-
-            $http.get("/ajax/currency")
-            .success(function(response) {
-                $scope.currencies = response;
-            });
-
-            $http.get("/ajax/ccIssuer")
-            .success(function(response) {
-                $scope.ccIssuer = response;
-            });
-
-            $http.get("/ajax/ccTypes")
-            .success(function(response) {
-                $scope.ccTypes = response;
-            });
-            $scope.addCard = function() {
-                $scope.cardItem.push({
-                                        type:$scope.ng_ccTypes,
-                                        issuer:$scope.ng_ccIssuer,
-                                        cclimit:$scope.ng_cardLimit,
-                                        ccnote: $scope.ng_cardNote
-                                      });
-
-                cardData = JSON.stringify($scope.cardItem);
-
-            };
-
-        });
-
-
-
-      app.controller('AddBillController', function($scope, $http) {
-        var billList = this;
-
-        billList.billItem = [];
-        billList.totalBill = 0;
-
-
-        $http.get("/ajax/billCate")
-        .success(function(response) {
-            billList.categories = response;
-        });
-
-        billList.addBill = function() {
-
-          billList.billItem.push({text:billList.billText + billList.billCate});
-          billList.bilText= '';
-
-          var billData = billList.billText + billList.billCate;
-          localStorage["billData"] = JSON.stringify(billData);
-
-          var storedNames = JSON.parse(localStorage["billData"]);
-          console.log(storedNames);
-
-          billList.totalBill = billList.totalBill + billList.billText;
-
-          console.log(billList.totalBill)
-        };
-
-      });
-      listLocalStorage();
-
-
-    </script>
 @stop

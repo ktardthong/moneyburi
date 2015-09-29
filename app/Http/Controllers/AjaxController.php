@@ -10,6 +10,10 @@ use App\UserJobs;
 use App\CateCore;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
+
+
 
 class AjaxController extends Controller
 {
@@ -113,6 +117,8 @@ class AjaxController extends Controller
         }
     }
 
+
+    // FROM init_set up 2
     public function userStatus(Request $request)
     {
         if(Auth::user()) {
@@ -126,6 +132,7 @@ class AjaxController extends Controller
         }
     }
 
+    //initi_setup4
     public function userplan(Request $request)
     {
         if(Auth::user()){
@@ -142,6 +149,38 @@ class AjaxController extends Controller
                 ]);
         }
 
+    }
+
+
+    //Goal setting for Travel
+    public function setGoalTravel(Request $request)
+    {
+        if(Auth::user()){
+
+            $data =[
+                        'uid'       => Auth::user()->id,
+                        'where_to'  => $request->travelLocation,
+                        'budget'    => $request->travelAmount,
+                        'pax'       => $request->travelPax,
+                        'nights'    => $request->travelNights,
+                        'periods'   => $request->periods,
+                        'mth_saving'=> round($request->travelSavingMth,2),
+                        'month'     => $request->monthSelect,
+                        'year'      => $request->yearSelect
+                    ];
+            print_r($data);
+            DB::table('goal_travel')->insert($data);
+
+        }
+    }
+
+    //Get user goal Travel goal from their ID
+    public function getUserTravelGoal()
+    {
+        if(Auth::user())
+        {
+            return \App\CardApp::getUserTravelGoal();
+        }
     }
 
 }
