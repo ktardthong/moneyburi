@@ -81,7 +81,7 @@
 
         <ul class="pager">
             <li><a href="/init_setup_1">Previous</a></li>
-            <li><a href="#" ng-click="addData()">Next</a></li>
+            <li><a href="#" ng-click="statusAddData()">Next</a></li>
         </ul>
 
         <div style="max-width: 200px">
@@ -95,53 +95,5 @@
 
         </div>
     </div> <!-- /container -->
-
-    <script>
-
-        var gender_flg='';
-        var user_status='';
-
-        $('#gender_female').click(function() {
-            gender_flg = 'female';
-        });
-
-        $('#gender_male').click(function() {
-            gender_flg = 'male';
-        });
-
-        $('#status_single').click(function() {
-            user_status = 0;
-        });
-
-        $('#status_married').click(function() {
-            user_status = 1;
-        });
-
-        var app = angular.module('App',[]);
-
-        app.controller('thisController', function($scope, $http) {
-            $scope.days     = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10,	11,	12,	13,	14,	15,	16,	17,	18,	19,	20,	21,	22,	23,	24,	25,	26,	27,	28,	29,	30,	31];
-            $scope.months   = [{id: 1, month: "Jan"}, {id: 2,month: 'Feb'},{id: 3,month: 'Mar'},{id: 4,month: 'Apr'},{id: 5,month: 'May'}, {id: 6,month: 'Jun'},{id: 7,month: 'Jul'},{id: 8,month: 'Aug'},
-                               {id: 9,month: 'Sept'},{id: 10,month: 'Oct'},{id: 11,month: 'Nov'},{id: 12,month: 'Dec'}];
-
-            $scope.addData = function() {
-
-                var bdate = $('#birthYear').val()+"-"+$('#birthMonth').val()+"-"+$('#birthDay').val();
-
-                $.ajax({
-                        method: "POST",
-                        url: "/ajax/userStatus",
-                        data:  {    bdate:  bdate,
-                                    gender: gender_flg,
-                                    status: user_status
-                               }
-                        })
-                        .done(function( msg ) {
-                            window.location.href = '/init_setup_3';
-                        });
-            };
-        });
-
-    </script>
 
 @stop

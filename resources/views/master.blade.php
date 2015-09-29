@@ -54,14 +54,20 @@
 
     {{-- in house code --}}
     <script src="/js/global.js"></script>
-    <script src="/js/app.js"></script>
+
     <script src="/js/chart.min.js"></script>
-    <link rel="stylesheet" href="/css/angular_animation.css" >
+    <script src="/app/js/ng_app.js"></script>
+    {{--<script src="/app/directive/ng_directives.js"></script>--}}
+
+
     <link rel="stylesheet" href="/css/global.css" >
 
     <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="/css/component.css" />
     <script src="/js/modernizr.min.js"></script>
+
+
+
     <script>
         $.ajaxSetup({
             headers: {
@@ -70,6 +76,7 @@
         });
 
     </script>
+
   </head>
 
 <body ng-app="App">
@@ -113,5 +120,5 @@
 </body>
 
     <script src="/js/global.interact.js"></script>
-
+    <link rel="stylesheet" href="/css/angular_animation.css">
 </html>

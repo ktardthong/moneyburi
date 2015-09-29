@@ -1,14 +1,16 @@
-<div class="card card-block">
+<div class="card card-block" ng-controller="goalController" ng-app="App">
+
     <h4 class="card-title strong">Goal</h4>
-    <ul class="list-group container lead">
-        <select >
-            <option selected>Select your goal</option>
-            <option>Get out of debt</option>
-            <option>Travel</option>
-            <option>Buy something</option>
-        </select>
-        <p>
-            <label>How much?</label><input type="number">
-        </p>
-    </ul>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <select ng-model="goal_template" ng-options="t.name for t in goal_templates">
+                <option value="">Goal</option>
+            </select>
+        </div>
+
+        <div class="col-xs-12 col-sm-12">
+            <div class="slide-animate" ng-include="goal_template.url"></div>
+        </div>
+    </div>
 </div>
