@@ -25,23 +25,7 @@ class TransactionController extends Controller
 
     protected function createTransaction(array $data)
     {
-        return Transaction::create($data
-//            [
-////            'email'     => $data['email'],
-////            'password'  => md5($data['password']),
-//            'uid' => 234,
-//            'flg' => 1,
-//            'cate_id' => 3,
-//            'trans_type' => 2,
-//            'trans_repeat' => 2,
-//            'pmt_type' => 3,
-//            'amount' => 2500,
-//            'location' => 234325235,
-//            'note' => 'note note note',
-//            'trans_date' => '2015-09-25 21:14:31',
-//            'created_at' => '2015-09-25 23:14:31'
-//        ]
-        );
+        return Transaction::create($data);
     }
 
     public function add_transaction(Request $request)

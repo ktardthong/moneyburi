@@ -27,3 +27,14 @@ app.controller('mainController', function($scope) {
        console.log("okay")
     }
 });
+
+
+
+
+
+=============
+
+
+    include everything in one angular file
+
+    =============

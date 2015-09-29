@@ -107,4 +107,9 @@
         animateRotate : true
 
     });
+
+    $("#addTransaction").click(function(){
+        $("#spendableOverview").hide();
+        $("#spendableContainer").load("/showTransaction");
+    });
 </script>

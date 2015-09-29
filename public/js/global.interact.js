@@ -2,7 +2,7 @@
 
 $("#addTransaction").click(function(){
     $("#spendableOverview").hide();
-    $("#spendableContainer").load("/showTransaction");
+    $("#spendableContainer").load("/ajax/showTransaction");
 });
 
 
