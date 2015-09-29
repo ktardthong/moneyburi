@@ -9,17 +9,17 @@ app.config(function($routeProvider) {
         })
         .when('/showTransaction', {
             templateUrl: 'showTransaction',
-            controller: 'TransactionController'
+            controller: TransactionController
         })
 
 });
 
 
-// CONTROLLERS ============================================
-// showTransaction page controller
-app.controller('TransactionController', function($scope) {
-    $scope.pageClass = 'show-transaction';
-});
+//// CONTROLLERS ============================================
+//// showTransaction page controller
+//app.controller('TransactionController', function($scope) {
+//    $scope.pageClass = 'show-transaction';
+//});
 
 
 app.controller('mainController', function($scope) {
@@ -28,13 +28,16 @@ app.controller('mainController', function($scope) {
     }
 });
 
+app.controller('transactionController', function($scope, $http) {
+    //$scope.pageClass = 'show-transaction';
 
+    $http.get("/ajax/billCate")
+        .success(function(response) {
+            $scope.cateCore = response;
+        });
 
-
-
-=============
-
-
-    include everything in one angular file
-
-    =============
+    $http.get("/ajax/transRepeat")
+        .success(function(response) {
+            $scope.transRepeat = response;
+        });
+});

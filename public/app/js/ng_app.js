@@ -169,6 +169,14 @@ app.controller('profileController', function($scope, $http) {
 
     };
 
+    $scope.addTransaction = function() {
+        $scope.showAddTransaction = true;
+    };
+
+    $scope.backAddTransaction = function() {
+        $scope.showAddTransaction = false;
+    };
+
 });
 
 
@@ -339,6 +347,41 @@ app.controller('thisController', function($scope, $http) {
         })
             .done(function( msg ) {
                 window.location.href = '/init_complete';
+            });
+    };
+});
+
+app.controller('transactionController', function($scope, $http) {
+    //$scope.pageClass = 'show-transaction';
+
+    $http.get("/ajax/billCate")
+        .success(function(response) {
+            $scope.cateCore = response;
+        });
+
+    $http.get("/ajax/transRepeat")
+        .success(function(response) {
+            $scope.transRepeat = response;
+        });
+
+    $scope.doAdd = function() {
+        $.ajax({
+            method: "POST",
+            url: "/add_transaction",
+            data:  {
+                cate_id:        $('#cate_id').val(),
+                trans_type:     $('#trans_type').val(),
+                trans_repeat:   $('#trans_repeat').val(),
+                pmt_type:       $('#pmt_type').val(),
+                amount:         $('#amount').val(),
+                location:       $('#location').val(),
+                note:           $('#note').val(),
+                trans_date:     $('#trans_date').val()
+            }
+        })
+            .done(function( msg ) {
+                alert('save!');
+                window.location.href = '/profile';
             });
     };
 });

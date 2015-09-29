@@ -15,15 +15,17 @@
 
                 <canvas id="budgetChart" onclick="spendableDough()"></canvas>
             </div>
-            <a href="#" class="lead" id="addTransaction"> + Add transaction</a>
+            <a href="#" class="lead" ng-click="addTransaction()"> + Add transaction</a>
 
         </div>
 
         <div class="col-xs-12 col-sm-5">
 
-            <div id="spendableContainer"></div>
+            <div id="spendableContainer" ng-show="showAddTransaction">
+                <div ng-include="'/app/html/card_addTransaction.html'"></div>
+            </div>
 
-            <div id="spendableOverview">
+            <div id="spendableOverview" ng-hide="showAddTransaction">
 
                 <ul class="list-group container lead">
                     <div>
@@ -110,6 +112,7 @@
 
     $("#addTransaction").click(function(){
         $("#spendableOverview").hide();
-        $("#spendableContainer").load("/showTransaction");
+        $("#spendableContainer").load('/app/html/card_addTransaction.html');
     });
+
 </script>

@@ -1,12 +1,12 @@
 
 
-$("#addTransaction").click(function(){
-    $("#spendableOverview").hide();
-    $("#spendableContainer").load("/ajax/showTransaction");
-});
+//$("#addTransaction").click(function(){
+//    $("#spendableOverview").hide();
+//    $("#spendableContainer").load("/showTransaction");
+//});
 
 
-$("#backAddTransaction").click(function(){
-    $("#spendableOverview").show();
-    $("#spendableContainer").html();
-});
+//$("#backAddTransaction").click(function(){
+//    $("#spendableOverview").show();
+//    $("#spendableContainer").html();
+//});

@@ -1,0 +1,57 @@
+<div class="container" ng-controller="transactionController">
+    <form class="transaction">
+        <!--{!! csrf_field() !!}-->
+        <div class="btn-group btn-block" data-toggle="buttons" id="pmt_type">
+            <label class="btn btn-info active">
+                <input type="radio" ng-model="pmt_type" value="1" autocomplete="off" checked> Cash
+            </label>
+            <label class="btn btn-info">
+                <input type="radio" ng-model="pmt_type" value="2" autocomplete="off"> Credit Card
+            </label>
+        </div>
+
+        <div class="btn-group btn-block" data-toggle="buttons" id="trans_type">
+            <label class="btn btn-info active">
+                <input type="radio" ng-model="trans_type" value="1" id="expense" autocomplete="off" checked> Expense
+            </label>
+            <label class="btn btn-info">
+                <input type="radio" ng-model="trans_type" value="2" id="income" autocomplete="off"> Income
+            </label>
+        </div>
+
+        <p>
+            <input type="date" ng-model="trans_date" id="trans_date" class="input input-md form-control" value>
+        </p>
+
+        <p>
+            <select id="cate_id" class="btn btn-secondary btn-block dropdown-toggle" style="line-height: 38px; height: 38px;"
+                    ng-model="cate_id" ng-options="cate.name for cate in cateCore">
+                <option value="">Select Category</option>
+            </select>
+        </p>
+
+        <p>
+
+            <select id="trans_repeat" class="btn btn-secondary btn-block dropdown-toggle" style="line-height: 38px; height: 38px;"
+                    ng-model="trans_repeat" ng-options="repeat.name for repeat in transRepeat">
+                <option value="">How Frequent</option>
+            </select>
+        </p>
+
+        <p>
+            <input id="amount" type="number" ng-model="amount" placeholder="Amount" class="input input-md form-control">
+        </p>
+
+        <p>
+            <input id="location" type="text" ng-model="location" placeholder="Location" class="input input-md form-control">
+        </p>
+
+        <p>
+            <input id="note" type="text" ng-model="note" placeholder="Note" class="input input-md form-control">
+        </p>
+
+        <button type="button" class="btn btn-default btn-sm pull-left" ng-click="backAddTransaction()"><i class="fa fa-arrow-left fa"></i> back</button>
+        <button ng-click="doAdd()" class="btn btn-info btn-sm pull-right">+ Add</button>
+
+    </form>
+</div>

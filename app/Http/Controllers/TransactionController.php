@@ -20,7 +20,7 @@ class TransactionController extends Controller
         $page_title     =   "moneyburi!";
         $page_descs     =   "";
 
-        return view('transaction.transaction',compact('page_title','page_descs', 'cates'));
+        return view('transaction.transaction',compact('page_title','page_descs'));
     }
 
     protected function createTransaction(array $data)
@@ -46,7 +46,7 @@ class TransactionController extends Controller
 
         $this->createTransaction($data);
 
-        return redirect('/profile');
+        //return redirect('/profile');
     }
 
 }
