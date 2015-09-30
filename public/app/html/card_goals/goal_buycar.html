@@ -1,0 +1,61 @@
+<div class="card card-block" ng-controller="goalAutoController" style="margin: auto">
+
+    <h4 class="card-title strong">Buy a car</h4>
+
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12">
+
+            <p>
+                <span>Goal name</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="homeCal.Name" id="homePrice">
+            </p>
+
+            <p>
+                <span>How much?</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="autoPrice">
+            </p>
+
+            <p>
+                <span>Brand</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="autoBrand">
+            </p>
+
+            <p>
+                <span>Model</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="autoModel">
+            </p>
+
+            <p>
+                <span>Down payment</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="autoDPmt">
+            </p>
+
+
+            <p>
+                <span>Number of payments (mths)</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="autoNumPmt">
+            </p>
+
+            <p>
+                <span>Interest %</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="autoInterest">
+            </p>
+
+
+            <p>
+                <span>Monthly payment</span>
+                <p>
+                {{
+                    ((autoPrice - autoDPmt) / autoNumPmt) * (1+ (autoInterest/100) ) | number:0
+                }}
+                </p>
+            </p>
+
+        </div>
+    </div>
+
+
+    <button class="btn btn-block" ng-click="setGoalTravel()">Set Goal!</button>
+
+</div>

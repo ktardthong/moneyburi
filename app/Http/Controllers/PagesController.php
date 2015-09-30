@@ -118,8 +118,8 @@ class PagesController extends Controller
 
     public function post_login(Request $request)
     {
-        echo $frm_email  =   $request->email;
-        echo $frm_pass   =   md5($request->password);
+        $frm_email  =   $request->email;
+        $frm_pass   =   md5($request->password);
 
         if(!empty($frm_email) || !empty($frm_pass))
         {
