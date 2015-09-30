@@ -1,1 +1,46 @@
-BUYING
+<div class="card card-block" ng-controller="goalTargetController" style="margin: auto">
+
+    <h4 class="card-title strong">Set a goal</h4>
+
+    <div class="col-xs-12 col-sm-6">
+
+        <div class="col-xs-12">
+
+            <p>
+                <span>How much?</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="targetPrice">
+            </p>
+
+            <p>
+                <span>Number of payments (mths)</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="targetNumPmt">
+            </p>
+
+            <p>
+                <span>Interest %</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="targetInterest">
+            </p>
+
+
+            <p>
+                <span>Monthly payment</span>
+            <p>
+                {{
+                (targetPrice / targetNumPmt) * (1+ (targetInterest/100) ) | number:0
+                }}
+
+                Per day:
+                {{
+                    (targetPrice / targetNumPmt) * (1+ (targetInterest/100) ) /30 | number:0
+                }}
+                - {{ userData.d_spendable }}
+            </p>
+            </p>
+
+        </div>
+    </div>
+
+
+    <button class="btn btn-block" ng-click="setGoalTravel()">Set Goal!</button>
+
+</div>

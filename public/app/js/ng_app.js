@@ -77,9 +77,11 @@ app.controller('goalController', function($scope, $http) {
                       ];
     $scope.goal_templates =
         [
-            { name: 'Debts'     ,   url: '/app/html/card_goals/goal_debts.html'},
-            { name: 'Travel'   ,    url: '/app/html/card_goals/goal_travel.html'},
-            { name: 'Buy Stuff',    url: '/app/html/card_goals/goal_buying.html'}
+            { name: 'General Goal',     url: '/app/html/card_goals/goal_buying.html'},
+            //{ name: 'Debts'     ,       url: '/app/html/card_goals/goal_debts.html'},
+            { name: 'Travel'   ,        url: '/app/html/card_goals/goal_travel.html'},
+            { name: 'Buy Home/Condo',   url: '/app/html/card_goals/goal_buyhome.html'},
+            { name: 'Buy Car',          url: '/app/html/card_goals/goal_buycar.html'}
         ];
     $scope.goal_template = $scope.goal_templates[0];
 
@@ -144,6 +146,36 @@ app.controller('goalController', function($scope, $http) {
 });
 
 
+app.controller('goalTargetController', function($scope, $http) {
+        $scope.targetCal = {    targetPrice: 0,
+                                targetNumPmt: 0,
+                                targetInterest: 0
+                           };
+
+});
+
+
+app.controller('goalHomeController', function($scope, $http) {
+    $scope.homeCal = {  homePrice: 0,
+                        homeDPmt: 0,
+                        homeLoan: homePrice - homeDPmt,
+                        homeInterest: 0,
+                        homePmtDuration:0,
+                        homeMthPmt: 0
+                    };
+});
+
+
+app.controller('goalAutoController', function($scope, $http) {
+    $scope.autoCal = {  autoPrice: 0,
+                        autoDPmt: 0,
+                        autoNumPmt: 0,
+                        autoInterest: 0,
+                        autoPmt: 0
+                    };
+});
+
+
 app.controller('profileController', function($scope, $http) {
 
     $http.get("/ajax/userData")
@@ -157,7 +189,8 @@ app.controller('profileController', function($scope, $http) {
         });
 
     $scope.templates =
-        [ { name: 'Spendable' , url: '/app/html/card_spendable.html'},
+        [
+            { name: 'Spendable' , url: '/app/html/card_spendable.html'},
             { name: 'Account'   , url: '/app/html/card_account.html'},
             { name: 'Goals'     , url: '/app/html/card_goals.html'},
             { name: 'Edit'      , url: '/app/html/card_userEdit.html'}
