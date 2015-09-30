@@ -364,19 +364,35 @@ app.controller('transactionController', function($scope, $http) {
             $scope.transRepeat = response;
         });
 
+    $scope.pmtTypes={};
+    $http.get("/ajax/pmtTypes")
+        .success(function(response) {
+            $scope.pmtTypes = response;
+        });
+
+    $scope.transTypes={};
+    $http.get("/ajax/transTypes")
+        .success(function(response) {
+            $scope.transTypes = response;
+        });
+
+    //$scope.trans_repeat = $scope.transRepeat[0];
+    $scope.selectedTransType = $scope.transTypes[0];
+    $scope.selectedPmtType = $scope.pmtTypes[0];
+
     $scope.doAdd = function() {
         $.ajax({
             method: "POST",
             url: "/add_transaction",
             data:  {
-                cate_id:        $('#cate_id').val(),
+                cate_id:        $scope.cate_id.id,    //$('#cate_id').val(),
                 trans_type:     $('#trans_type').val(),
-                trans_repeat:   $('#trans_repeat').val(),
+                trans_repeat:   $scope.trans_repeat.id,    //$('#trans_repeat').val(),
                 pmt_type:       $('#pmt_type').val(),
-                amount:         $('#amount').val(),
-                location:       $('#location').val(),
-                note:           $('#note').val(),
-                trans_date:     $('#trans_date').val()
+                amount:         $scope.amount,
+                location:       $scope.location,
+                note:           $scope.note,
+                trans_date:     $scope.trans_date
             }
         })
             .done(function( msg ) {

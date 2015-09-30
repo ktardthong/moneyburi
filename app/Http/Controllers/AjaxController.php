@@ -32,6 +32,16 @@ class AjaxController extends Controller
         return \App\TransRepeat::get();
     }
 
+    public function pmtTypes()
+    {
+        return \App\PaymentTypes::get();
+    }
+
+    public function transTypes()
+    {
+        return \App\TransType::get();
+    }
+
     public function ccIssuer()
     {
         return \App\CardApp::cc_issuer();
