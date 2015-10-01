@@ -409,9 +409,19 @@ app.controller('transactionController', function($scope, $http) {
             $scope.transTypes = response;
         });
 
-    //$scope.trans_repeat = $scope.transRepeat[0];
-    $scope.selectedTransType = $scope.transTypes[0];
-    $scope.selectedPmtType = $scope.pmtTypes[0];
+    $scope.defaultPmtType = 1;
+    $scope.defaultTransType = 1;
+
+    $scope.selectedPmtType = $scope.defaultPmtType;
+    $scope.selectedTransType = $scope.defaultTransType;
+
+    $scope.pmtSelected = function(id){
+        $scope.selectedPmtType = id;
+    };
+
+    $scope.transSelected = function(id){
+        $scope.selectedTransType = id;
+    };
 
     $scope.doAdd = function() {
         $.ajax({
@@ -419,9 +429,9 @@ app.controller('transactionController', function($scope, $http) {
             url: "/add_transaction",
             data:  {
                 cate_id:        $scope.cate_id.id,    //$('#cate_id').val(),
-                trans_type:     $('#trans_type').val(),
+                trans_type:     $scope.selectedTransType, //$('#trans_type').val(),
                 trans_repeat:   $scope.trans_repeat.id,    //$('#trans_repeat').val(),
-                pmt_type:       $('#pmt_type').val(),
+                pmt_type:       $scope.selectedPmtType, //$('#pmt_type').val(),
                 amount:         $scope.amount,
                 location:       $scope.location,
                 note:           $scope.note,

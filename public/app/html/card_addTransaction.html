@@ -1,20 +1,21 @@
 <div class="container" ng-controller="transactionController">
     <form class="transaction">
 
-        <div class="btn-group btn-block" data-toggle="buttons"  name="pmt_type">
-            <label class="btn btn-info active" ng-repeat="p in pmtTypes track by p.id" id="pmt_type" >
-                <input type="radio" ng-value="p" name="pmt_type" ng-model="$parent.selectedPmtType">
+        <div class="btn-group btn-block" data-toggle="buttons" >
+            <label class="btn btn-info" ng-repeat="p in pmtTypes"
+                   ng-class="{'active':p.id == $parent.defaultPmtType}" ng-click="pmtSelected(p.id)">
+                <input type="radio" ng-model="$parent.selectedPmtType" ng-value="p.id">
                 {{p.name}}
             </label>
         </div>
 
-        <div class="btn-group btn-block" data-toggle="buttons"  name="trans_type">
-            <label class="btn btn-info active" ng-repeat="t in transTypes track by t.id" id="trans_type">
-                <input type="radio" ng-value="t" name="trans_type" ng-model="$parent.selectedTransType">
+        <div class="btn-group btn-block" data-toggle="buttons">
+            <label class="btn btn-info" ng-repeat="t in transTypes track by t.id" id="trans_type"
+                   ng-class="{'active':t.id == $parent.defaultTransType}" ng-click="transSelected(t.id)">
+                <input type="radio"ng-model="selectedTransType" ng-value="t.id">
                 {{t.name}}
             </label>
         </div>
-
 
         <p>
             <input type="date" ng-model="trans_date" id="trans_date" class="input input-md form-control" value>
