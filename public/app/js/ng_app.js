@@ -1,4 +1,4 @@
-var app = angular.module('App',[]);
+var app = angular.module('App',['ngAnimate']);
 
 
 app.directive('yearDrop',function() {
@@ -175,6 +175,47 @@ app.controller('goalAutoController', function($scope, $http) {
                     };
 });
 
+app.controller('profileEdit', function($scope, $http) {
+
+    $http.get("/ajax/userData")
+        .success(function(response) {
+            $scope.userData = response;
+        });
+    $http.get("/ajax/getUserJobs")
+        .success(function(response) {
+            $scope.items = response;
+        });
+
+    console.log($scope.userData.mth_income);
+
+    $scope.ng_mthlyIncome  =   $scope.userData.mth_income;
+    $scope.ng_mthlyBill    =   $scope.userData.mth_bill;
+    $scope.ng_mthlySaving  =   $scope.userData.mth_saving;
+    $scope.currency     =   $scope.userData.currency;
+    //$scope.mthlySpendable = $scope.mthlyIncome - ($scope.mthlyBill - $scope.mthlySaving) ;
+
+
+    $scope.saveInfo = function (){
+        console.log($('#editMonthlyIncome').val());
+        $.ajax({
+            method: "POST",
+            url: "/ajax/updateUserInfo",
+            data:  {
+                    editMonthlyIncome:      $('#editMonthlyIncome').val() ,
+                    editMonthlyBill:        $('#editMonthlyBill').val(),
+                    editMonthlySaving:      $('#editMonthlySaving').val(),
+                    editMonthlySpendable:   $('#editMonthlySpendable').html(),
+                    editDaySaving:          $('#editDaySaving').html(),
+                    editDaySpendable:       $('#editDaySpendable').html()
+                    //job:   $('#jobtype').val()
+                    }
+        })
+            .done(function( msg ) {
+                console.log(msg);
+            });
+    }
+});
+
 
 app.controller('profileController', function($scope, $http) {
 
@@ -188,15 +229,28 @@ app.controller('profileController', function($scope, $http) {
             $scope.currencies = response;
         });
 
+    $http.get("/ajax/getUserTravelGoal")
+        .success(function(response) {
+            $scope.userTravelGoals = response;
+        });
+
+    $scope.nav = function(path) {
+        $scope.template.url = path;
+    };
+
     $scope.templates =
         [
+            { name: 'Home' , url: '/app/html/card_home.html'},
             { name: 'Spendable' , url: '/app/html/card_spendable.html'},
             { name: 'Transactions' , url: '/app/html/card_transactionList.html'},
             { name: 'Account'   , url: '/app/html/card_account.html'},
             { name: 'Goals'     , url: '/app/html/card_goals.html'},
+            { name: 'Transaction'     , url: '/app/html/card_goals.html'},
             { name: 'Edit'      , url: '/app/html/card_userEdit.html'}
         ];
+
     $scope.template = $scope.templates[0];
+    console.log($scope.template);
 
     $scope.showEdit = function(page) {
         console.log('edit '+page);
@@ -214,18 +268,7 @@ app.controller('profileController', function($scope, $http) {
 });
 
 
-app.controller('profileEdit', function($scope, $http) {
-    $http.get("/ajax/userData")
-        .success(function(response) {
-            $scope.userData = response;
-        });
 
-    $scope.mthlyIncome  =   $scope.userData.mth_income;
-    $scope.mthlyBill    =   $scope.userData.mth_bill;
-    $scope.mthlySaving  =   $scope.userData.mth_saving;
-
-    $scope.mthlySpendable = $scope.mthlyIncome - ($scope.mthlyBill - $scope.mthlySaving) ;
-});
 
 
 app.controller('AddCardController', function($scope,$http) {
@@ -303,7 +346,7 @@ app.controller('thisController', function($scope, $http) {
             $scope.userData = response;
         });
 
-    $http.get("/ajax/geUserJobs")
+    $http.get("/ajax/getUserJobs")
         .success(function(response) {
             $scope.items = response;
         });

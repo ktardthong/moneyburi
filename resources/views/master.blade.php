@@ -39,6 +39,7 @@
     <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
 
 
     {{-- fonts and icons --}}
@@ -67,6 +68,8 @@
 
     <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="/css/component.css" />
+    <link rel="stylesheet" href="/css/angular_animation.css">
+
     <script src="/js/modernizr.min.js"></script>
 
 
@@ -123,5 +126,5 @@
 </body>
 
     <script src="/js/global.interact.js"></script>
-    <link rel="stylesheet" href="/css/angular_animation.css">
+
 </html>

@@ -28,7 +28,7 @@ Route::get('login/fb/callback', 'PagesController@loginFBCallback');
 
 
 //Ajax
-Route::get('ajax/geUserJobs',   'AjaxController@getUserJob');
+Route::get('ajax/getUserJobs',   'AjaxController@getUserJob');
 Route::get('ajax/billCate',     'AjaxController@billCate');
 Route::get('ajax/transRepeat',  'AjaxController@transRepeat');
 Route::get('ajax/ccIssuer',     'AjaxController@ccIssuer');
@@ -44,6 +44,7 @@ Route::post('ajax/userFinance',     'AjaxController@userFinanceData');
 Route::post('ajax/userName',        'AjaxController@userInfoUpdate');
 Route::post('ajax/userStatus',      'AjaxController@userStatus');
 Route::post('ajax/setGoalTravel',   'AjaxController@setGoalTravel');
+Route::post('ajax/updateUserInfo',  'AjaxController@updateUserInfo');
 
 
 
