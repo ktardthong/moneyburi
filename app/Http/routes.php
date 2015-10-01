@@ -17,6 +17,7 @@ Route::post('/profile/update','ProfileController@update');
 //Transaction
 Route::get('/showTransaction','TransactionController@show');
 Route::post('/add_transaction', 'TransactionController@add_transaction');
+Route::get('/getAllTransactions','TransactionController@getAllTransactionsForCurrentUser');
 
 
 

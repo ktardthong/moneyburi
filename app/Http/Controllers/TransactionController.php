@@ -28,6 +28,12 @@ class TransactionController extends Controller
         return Transaction::create($data);
     }
 
+    public function getAllTransactionsForCurrentUser()
+    {
+        $uid = Auth::user()->id;
+        return Transaction::getAllTransactionByUId($uid);
+    }
+
     public function add_transaction(Request $request)
     {
         $data = array(
