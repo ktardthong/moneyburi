@@ -193,4 +193,34 @@ class AjaxController extends Controller
         }
     }
 
+
+    public function updateUserInfo(Request $request)
+    {
+
+        /*
+            editMonthlyIncome:      $('#editMonthlyIncome').val() ,
+            editMonthlyBill:        $('#editMonthlyBill').val(),
+            editMonthlySaving:      $('#editMonthlySaving').val(),
+            editMonthlySpendable:   $('#editMonthlySpendable').html(),
+            editDaySaving:          $('#editDaySaving').html(),
+            editDaySpendable:       $('#editDaySpendable').html()
+         * */
+
+        if(Auth::user())
+        {
+            $data = [
+                        'mth_income'    =>  $request->editMonthlyIncome,
+                        'mth_bill'      =>  $request->editMonthlyBill,
+                        'mth_saving'    =>  $request->editMonthlySaving,
+                        'mth_spendable' =>  $request->editMonthlySpendable,
+                        'd_saving'      =>  $request->editDaySaving,
+                        'd_spendable'   =>  $request->editDaySpendable
+                    ];
+            DB::table('users')
+                ->where('id', Auth::user()->id)
+                ->update($data);
+            print_r($data);
+        }
+    }
+
 }

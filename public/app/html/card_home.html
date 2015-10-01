@@ -1,0 +1,62 @@
+<div class="col-xs-12 col-sm-4 grid-item">
+    <div class="card card-block">
+        <h4 class="card-title">
+            <a ng-click="nav('/app/html/card_spendable.html')">Spendable</a></h4>
+    </div>
+</div>
+<div class="col-xs-12 col-sm-4 grid-item">
+    <div class="card card-block">
+        <h4 class="card-title">Account</h4>
+        <div ng-include="''"></div>
+    </div>
+</div>
+<div class="col-xs-12 col-sm-4 grid-item">
+    <div class="card card-block">
+        <h4 class="card-title" >
+            <a ng-click="nav('/app/html/card_goals/goal_travel.html')">Goals</a></h4>
+        <div ng-if="userTravelGoals" >
+            <h5>Travel</h5>
+            <div class="" ng-repeat="goal in userTravelGoals">
+                <!-- Large modal -->
+                <button class="btn btn-link" data-toggle="modal" data-target=".bd-example-modal-md">
+                    @{{ goal.where_to }} | @{{ goal.mth_saving }}
+                </button>
+
+                <div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            test
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-4 grid-item">
+
+    <div class="card card-block grid-item">
+        <h4 class="card-title"></h4>
+        <div class="slide-animate" ng-include="'/app/html/card_spendingCate.html'"></div>
+    </div>
+
+</div>
+
+<div class="col-xs-12 col-sm-4 grid-item">
+    <div class="card card-block">
+        <h4 class="card-title">Transaction</h4>
+        <div class="hidden-sm-down">test</div>
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-4">
+    <div class="card card-block grid-item">
+        <h4 class="card-title">Edit</h4>
+        <div class="hidden-sm-down">test</div>
+    </div>
+</div>

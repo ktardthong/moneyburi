@@ -13,54 +13,40 @@
     {{-- Main container--}}
     <div class="row" ng-controller="profileController">
 
-            <div class="col-sm-12">
+            <div class="col-sm-12 row">
 
-                {{--<h1 class="page-header">welcome</h1>--}}
+                <div class="col-xs-12 col-sm-3">
+                    <div class="card card-block">
+                        <ul class="nav nav-sidebar">
+                            <li class="active" align="center">
+                                <a href="#">
+                                    <img src="/img/user_avatar.gif" class="img-circle">
+                                     <br>
+                                     @{{userData.firstname }} @{{ userData.lastname }}
+                                </a>
+                            </li>
 
-                <div class="row">
+                            <div class="form-control">
 
-                    <div class="col-xs-12 col-sm-3">
-                        <div class="card card-block">
-                            <ul class="nav nav-sidebar">
-                                <li class="active" align="center">
-                                    <a href="#">
-                                        <img src="/img/user_avatar.gif" class="img-circle">
-                                         <br>
-                                         @{{userData.firstname }} @{{ userData.lastname }}
-                                    </a>
-                                </li>
+                                 <select ng-model="template" ng-options="t.name for t in templates">
 
-                                <div>
+                                     <option value="">(blank)</option>
 
-                                     <select ng-model="template" ng-options="t.name for t in templates">
-                                         <option value="">(blank)</option>
-                                     </select>
+                                 </select>
 
-
-                                    {{--<li class="active">
-                                        <a href="#" title="Overview" data-toggle="tooltip" data-placement="top">
-                                        <i class="fa fa-home"></i> <span class="sr-only">(current)</span> Home </a></li>
-                                    <li><a href="#" title="Overview" data-toggle="tooltip" data-placement="top">
-                                        <i class="fa fa-line-chart"></i> Transaction</a></li>
-                                    <li><a href="#" title="Add Transaction" data-toggle="tooltip" data-placement="top">
-                                        <i class="fa fa-pencil-square-o"></i>Add Transaction</a></li>
-                                    <li><a href="#">Spending Categories</a></li>
-                                    <li><a href="#">Goal</a></li>
-                                    <li><a href="#" ng-click="showEdit()">Edit</a></li>--}}
-
-
-                                </div>
-                            </ul>
-                        </div>
+                            </div>
+                        </ul>
                     </div>
-
-                    {{-- Main cards, default card_spendable--}}
-                    <div class="col-xs-12 col-sm-9">
-                        <div class="slide-animate" ng-include="template.url"></div>
-                    </div>
-
                 </div>
 
+                <div class="col-xs-12 col-sm-9" ng-model="template">
+                    <div class="slide-animate" ng-include="template.url"></div>
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-12">
 
                 <div class="row">
 
@@ -85,7 +71,7 @@
 
                     {{-- Account--}}
                     <div class="col-xs-12 col-sm-3">
-                        <div class="slide-animate" ng-include="'/app/html/card_account.html'"></div>
+
                     </div>
 
                     {{-- Spending Categories --}}
