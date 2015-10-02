@@ -240,6 +240,29 @@ app.controller('profileEdit', function($scope, $http) {
 
 app.controller('profileController', function($scope, $http) {
 
+
+    $scope.float_buttons = [{
+        label: 'Spendable',
+        icon: 'ion-paper-airplane',
+        url: '/app/html/card_spendable.html'
+    },{
+        label: 'Account',
+        icon: 'ion-plus',
+        url: '/app/html/card_account.html'
+    },{
+        label: 'Goals',
+        icon: 'ion-paperclip',
+        url: '/app/html/card_spendable.html'
+    },{
+        label: 'Transaction',
+        icon: 'ion-paperclip',
+        url: '/app/html/card_transaction.html'
+    },{
+        label: 'Edit',
+        icon: 'ion-paperclip',
+        url: '/app/html/card_userEdit.html'
+    }];
+
     $http.get("/ajax/userData")
         .success(function(response) {
             $scope.userData = response;
@@ -257,6 +280,7 @@ app.controller('profileController', function($scope, $http) {
 
     $scope.nav = function(path) {
         $scope.template.url = path;
+        console.log(path);
     };
 
     $scope.templates =
