@@ -71,9 +71,12 @@
     <link rel="stylesheet" type="text/css" href="/css/component.css" />
     <link rel="stylesheet" href="/css/angular_animation.css">
 
+    <link rel="stylesheet" href="/css/jumbotron-narrow.css">
+
     <script src="/js/modernizr.min.js"></script>
 
-
+    <link rel="stylesheet" href="/vendors/mfb/mfb.css">
+    <script src="/vendors/mfb/mfb-directive.js"></script>
 
     <script>
         $.ajaxSetup({
