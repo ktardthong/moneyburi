@@ -53,6 +53,14 @@
                 <div class="page page-home container-fluid" ng-include="templates[4].url"></div>
                 <div class="page page-home container-fluid" ng-include="templates[5].url"></div>
             </div>
+            <nav mfb-menu position="br" effect="zoomin" label="hover here"
+                 active-icon="fa fa-times"
+                 resting-icon="fa fa-plus"
+                 toggling-method="click">
+              <button mfb-button icon="paper-airplane" label="Spendable"></button>
+              <button mfb-button icon="paper-airplane" label="Account"></button>
+              <button mfb-button icon="paper-airplane" label="Goals"></button>
+            </nav>
 
         </div>
 
