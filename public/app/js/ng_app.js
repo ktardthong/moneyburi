@@ -289,7 +289,7 @@ app.controller('profileController', function($scope, $http) {
             { name: 'Spendable'         , url: '/app/html/card_spendable.html'},
             { name: 'Account'           , url: '/app/html/card_account.html'},
             { name: 'Goals'             , url: '/app/html/card_goals.html'},
-            { name: 'Transaction'       , url: '/app/html/card_transaction.html'},
+            { name: 'Transactions'       , url: '/app/html/card_transactionList.html'},
             { name: 'Edit'              , url: '/app/html/card_userEdit.html'}
         ];
 
@@ -532,124 +532,62 @@ app.controller('transactionController', function($scope, $http) {
     };
 });
 
-app.controller('transactionListController', function($scope, $http) {
+app.controller('transactionListController', function($scope, $http, $filter) {
+
+    $http.get("/ajax/billCate")
+        .success(function(response) {
+            $scope.cateCore = response;
+        });
+
+    $http.get("/ajax/transRepeat")
+        .success(function(response) {
+            $scope.transRepeat = response;
+        });
+
+    $http.get("/ajax/pmtTypes")
+        .success(function(response) {
+            $scope.pmtTypes = response;
+        });
+
+    $http.get("/ajax/transTypes")
+        .success(function(response) {
+            $scope.transTypes = response;
+        });
+
+    $http.get("/ajax/userData")
+        .success(function(response) {
+            $scope.userData = response;
+        });
+
+    $http.get("/ajax/currency")
+        .success(function(response) {
+            $scope.currencies = response;
+        });
+
+    $scope.listData = [];
 
     $http.get("/getAllTransactions")
         .success(function(response) {
-            $scope.allTransactions = response;
-        });
-
-    var sortingOrder = 'name'; //default sort
-
-    function initApp($scope, $filter) {
-
-        // init
-        $scope.sortingOrder = sortingOrder;
-        $scope.pageSizes = [5,10,25,50];
-        $scope.reverse = false;
-        $scope.filteredItems = [];
-        $scope.groupedItems = [];
-        $scope.itemsPerPage = 10;
-        $scope.pagedItems = [];
-        $scope.currentPage = 0;
-        $scope.items = $scope.allTransactions;
-
-        var searchMatch = function (haystack, needle) {
-            if (!needle) {
-                return true;
-            }
-            return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
-        };
-
-        // init the filtered items
-        $scope.search = function () {
-            $scope.filteredItems = $filter('filter')($scope.items, function (item) {
-                for(var attr in item) {
-                    if (searchMatch(item[attr], $scope.query))
-                        return true;
-                }
-                return false;
+            angular.forEach(response, function(value){
+                $scope.count++;
+                var obj = {
+                    cate_id:          value.cate_id,
+                    cate_obj:        $filter('filter')($scope.cateCore, {id: value.cate_id}, true),
+                    trans_type:       value.trans_type,
+                    trans_type_obj:  $filter('filter')($scope.transTypes, {id: value.trans_type}, true),
+                    trans_repeat:     value.trans_repeat,
+                    trans_repeat_obj:    $filter('filter')($scope.transRepeat, {id: value.trans_repeat}, true),
+                    pmt_type:         value.pmt_type,
+                    pmt_type_obj:    $filter('filter')($scope.pmtTypes, {id: value.pmt_type}, true),
+                    amount:           value.amount,
+                    location:         value.location,
+                    note:             value.note,
+                    trans_date:       value.trans_date,
+                    created_at:       value.created_at,
+                    currency:        $filter('filter')($scope.currencies, {id: $scope.userData.currency}, true)
+                };
+                $scope.listData.push(obj);
             });
-            // take care of the sorting order
-            if ($scope.sortingOrder !== '') {
-                $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
-            }
-            $scope.currentPage = 0;
-            // now group by pages
-            $scope.groupToPages();
-        };
-
-        // show items per page
-        $scope.perPage = function () {
-            $scope.groupToPages();
-        };
-
-        // calculate page in place
-        $scope.groupToPages = function () {
-            $scope.pagedItems = [];
-
-            for (var i = 0; i < $scope.filteredItems.length; i++) {
-                if (i % $scope.itemsPerPage === 0) {
-                    $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
-                } else {
-                    $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
-                }
-            }
-        };
-
-        $scope.deleteItem = function (idx) {
-            var itemToDelete = $scope.pagedItems[$scope.currentPage][idx];
-            var idxInItems = $scope.items.indexOf(itemToDelete);
-            $scope.items.splice(idxInItems,1);
-            $scope.search();
-
-            return false;
-        };
-
-        $scope.range = function (start, end) {
-            var ret = [];
-            if (!end) {
-                end = start;
-                start = 0;
-            }
-            for (var i = start; i < end; i++) {
-                ret.push(i);
-            }
-            return ret;
-        };
-
-        $scope.prevPage = function () {
-            if ($scope.currentPage > 0) {
-                $scope.currentPage--;
-            }
-        };
-
-        $scope.nextPage = function () {
-            if ($scope.currentPage < $scope.pagedItems.length - 1) {
-                $scope.currentPage++;
-            }
-        };
-
-        $scope.setPage = function () {
-            $scope.currentPage = this.n;
-        };
-
-        // functions have been describe process the data for display
-        $scope.search();
-
-
-        // change sorting order
-        $scope.sort_by = function(newSortingOrder) {
-            if ($scope.sortingOrder == newSortingOrder)
-                $scope.reverse = !$scope.reverse;
-
-            $scope.sortingOrder = newSortingOrder;
-        };
-
-    };
-
-    initApp.$inject = ['$scope', '$filter'];
-
-//$(document).ready(function() {});
+        });
 
 });
