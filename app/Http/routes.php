@@ -38,6 +38,7 @@ Route::get('ajax/userData',     'AjaxController@userData');
 Route::get('ajax/getUserTravelGoal',     'AjaxController@getUserTravelGoal');
 Route::get('ajax/pmtTypes',     'AjaxController@pmtTypes');
 Route::get('ajax/transTypes',     'AjaxController@transTypes');
+
 //AJAX POST
 Route::post('ajax/userPlan',        'AjaxController@userplan');
 Route::post('ajax/userFinance',     'AjaxController@userFinanceData');
@@ -45,6 +46,7 @@ Route::post('ajax/userName',        'AjaxController@userInfoUpdate');
 Route::post('ajax/userStatus',      'AjaxController@userStatus');
 Route::post('ajax/setGoalTravel',   'AjaxController@setGoalTravel');
 Route::post('ajax/updateUserInfo',  'AjaxController@updateUserInfo');
+Route::post('ajax/setGoalTarget',   'AjaxController@setGoalTarget');
 
 
 

@@ -162,6 +162,21 @@ class AjaxController extends Controller
     }
 
 
+    //Goal Setting for general
+    public function setGoalTarget(Request $request)
+    {
+        if(Auth::user()){
+            $data =[
+                    'uid'       =>Auth::user()->id,
+                    'price'     =>$request->targetPrice,
+                    'duration'  =>$request->targetNumPmt,
+                    'interest'  =>$request->targetInterest,
+                    'where'     =>$request->where
+            ];
+            DB::table('goal_general')->insert($data);
+        }
+    }
+
     //Goal setting for Travel
     public function setGoalTravel(Request $request)
     {

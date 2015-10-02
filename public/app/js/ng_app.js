@@ -1,4 +1,4 @@
-var app = angular.module('App',['ngAnimate']);
+var app = angular.module('App',['ngAnimate','ngRoute']);
 
 
 app.directive('yearDrop',function() {
@@ -14,7 +14,6 @@ app.directive('yearDrop',function() {
         template: '<select ng-model="s" ng-options="y for y in years"  id="yearSelect"></select>'
     }
 });
-
 app.directive('monthSelectList', function(){
     return {
         restrict: 'E',
@@ -52,6 +51,9 @@ app.directive('zMonthSelect', function () {
 });
 
 
+app.controller('goalSummary', function($scope, $http) {
+
+});
 
 app.controller('goalController', function($scope, $http) {
 
@@ -77,6 +79,7 @@ app.controller('goalController', function($scope, $http) {
                       ];
     $scope.goal_templates =
         [
+            { name: 'Goal Summary',     url: '/app/html/card_goals/goal_summary.html'},
             { name: 'General Goal',     url: '/app/html/card_goals/goal_buying.html'},
             //{ name: 'Debts'     ,       url: '/app/html/card_goals/goal_debts.html'},
             { name: 'Travel'   ,        url: '/app/html/card_goals/goal_travel.html'},
@@ -147,11 +150,28 @@ app.controller('goalController', function($scope, $http) {
 
 
 app.controller('goalTargetController', function($scope, $http) {
-        $scope.targetCal = {    targetPrice: 0,
-                                targetNumPmt: 0,
-                                targetInterest: 0
-                           };
+    $scope.targetCal = {    targetPrice: 0,
+                            targetNumPmt: 0,
+                            targetInterest: 0,
+                            targetWhere: ' '
+                       };
 
+    $scope.setGoalTarget = function ()
+    {
+        $.ajax({
+            method: "POST",
+            url: "/ajax/setGoalTarget",
+            data:  {
+                    targetPrice:        $('#targetPrice').val() ,
+                    targetNumPmt:       $('#targetNumPmt').val(),
+                    targetInterest:     $('#targetInterest').val(),
+                    where:              $('#targetWhere').val()
+                  }
+        })
+            .done(function( msg ) {
+                console.log(msg);
+            });
+    }
 });
 
 
@@ -174,6 +194,7 @@ app.controller('goalAutoController', function($scope, $http) {
                         autoPmt: 0
                     };
 });
+
 
 app.controller('profileEdit', function($scope, $http) {
 
@@ -240,14 +261,15 @@ app.controller('profileController', function($scope, $http) {
 
     $scope.templates =
         [
-            { name: 'Home' , url: '/app/html/card_home.html'},
-            { name: 'Spendable' , url: '/app/html/card_spendable.html'},
-            { name: 'Transactions' , url: '/app/html/card_transactionList.html'},
-            { name: 'Account'   , url: '/app/html/card_account.html'},
-            { name: 'Goals'     , url: '/app/html/card_goals.html'},
-            { name: 'Transaction'     , url: '/app/html/card_goals.html'},
-            { name: 'Edit'      , url: '/app/html/card_userEdit.html'}
+            //{ name: 'Home'              , url: '/app/html/card_home.html'},
+            { name: 'Spendable'         , url: '/app/html/card_spendable.html'},
+            { name: 'Account'           , url: '/app/html/card_account.html'},
+            { name: 'Goals'             , url: '/app/html/card_goals.html'},
+            { name: 'Transaction'       , url: '/app/html/card_transaction.html'},
+            { name: 'Edit'              , url: '/app/html/card_userEdit.html'}
         ];
+
+
 
     $scope.template = $scope.templates[0];
     console.log($scope.template);
@@ -266,9 +288,6 @@ app.controller('profileController', function($scope, $http) {
     };
 
 });
-
-
-
 
 
 app.controller('AddCardController', function($scope,$http) {
