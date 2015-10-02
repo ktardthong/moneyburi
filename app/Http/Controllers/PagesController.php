@@ -10,6 +10,7 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use Socialite;
 use Illuminate\Routing\Controller;
+use Stevebauman\Location\Facades\Location;
 
 class PagesController extends Controller
 {
@@ -45,7 +46,6 @@ class PagesController extends Controller
     public function loginFbCallback(Request $request)
     {
         $socialize_user =  Socialite::driver('facebook')->user();
-        dd($socialize_user);
         echo $facebook_user_id = $socialize_user->getId(); // unique facebook user id
         $user = User::where('email', $socialize_user->email)->first();
 
@@ -59,30 +59,21 @@ class PagesController extends Controller
             $user->fb_id        = $facebook_user_id;
             $user->firstname    = $socialize_user->user['first_name'];
             $user->lastname     = $socialize_user->user['last_name'];
-            $user->username     = $socialize_user->name;
             $user->email        = $socialize_user->email;
             $user->avatar       = $socialize_user->avatar;
             $user->gender       = $socialize_user->user['gender'];
-            $user->provider     = "facebook";
-            $user->provider_id  = "1";
-            $user->access_token = $socialize_user->token;
+//            $user->access_token = $socialize_user->token;
             $user->city         = $city;
             $user->country      = $country;
-            //$user->save();
+            $user->save();
 
-            $page_title = "Beerhit!";
-            $page_descs = "what hit you?";
-            $data = array('page_title' => $page_title,
-                'page_descs' => $page_descs,
-                'user'       => $user
-            );
-            return view('edit.register_user',$data);
+            return redirect('/init_setup');
         }
 
         // login
         Auth::loginUsingId($user->id);
 
-        return redirect("/profile/$user->username");
+        return redirect("/profile");
     }
 
 
