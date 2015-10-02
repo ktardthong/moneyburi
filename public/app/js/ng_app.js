@@ -254,9 +254,9 @@ app.controller('profileController', function($scope, $http) {
         icon: 'ion-paperclip',
         url: '/app/html/card_spendable.html'
     },{
-        label: 'Transaction',
+        label: 'Transactions',
         icon: 'ion-paperclip',
-        url: '/app/html/card_transaction.html'
+        url: '/app/html/card_transactionList.html'
     },{
         label: 'Edit',
         icon: 'ion-paperclip',

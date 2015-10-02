@@ -13,28 +13,31 @@
     {{-- Main container--}}
     <div ng-controller="profileController">
 
-        <div class="col-xs-12 col-sm-3">
+        <div class="col-xs-12 col-sm-12">
 
             <div class="page page-contact" ngview>
-                <div class="card card-block">
+                <div class="card card-block clearfix">
                     <ul class="nav nav-sidebar">
-                        <li class="active" align="center">
+                        <li class="pull-left">
                             <a href="#">
                                 <img src="/img/user_avatar.gif" class="img-circle">
                                  <br>
-                                 @{{userData.firstname }} @{{ userData.lastname }}
+
                             </a>
                         </li>
+                        <li>
+                            @{{userData.firstname }} @{{ userData.lastname }}   
+                        </li>
 
-                        <div class="form-control">
+                        {{--<div class="form-control">--}}
 
-                             <select ng-model="template" ng-options="t.name for t in templates">
+                             {{--<select ng-model="template" ng-options="t.name for t in templates">--}}
 
-                                 <option value="">(blank)</option>
+                                 {{--<option value="">(blank)</option>--}}
 
-                             </select>
+                             {{--</select>--}}
 
-                        </div>
+                        {{--</div>--}}
                     </ul>
                 </div>
             </div>
@@ -42,13 +45,16 @@
         </div>
 
 
-        <div class="col-xs-12 col-sm-9">
+        <div class="col-xs-12">
 
             <div class="row">
                 <div class="page page-home container-fluid" ng-include="template.url" ngview ></div>
             </div>
 
-            <nav mfb-menu position="br" effect="zoomin" label="hover here"
+
+            <nav mfb-menu position="br"
+                 effect="slidein"
+                 label="Home"
                  active-icon="fa fa-times"
                  resting-icon="fa fa-plus"
                  toggling-method="click">
@@ -73,7 +79,7 @@
                             <h4 class="card-title">Notification / Coaching</h4>
                             <ul class="list-group container">
                                 <div class="bottom_border">
-                                    You have spent over 2000 in groceries, open membership at BigD for 15% off next purchase
+                                    You have spent over 2000 in groceries, open mgiembership at BigD for 15% off next purchase
                                 </div>
                                 <div class="bottom_border">
                                     How was your lunch? Note your expense here

@@ -2,20 +2,46 @@
 
     <h4 class="card-title strong">Transactions</h4>
 
-    <ul class="list-group" ng-repeat="t in listData">
-        <li class="list-group-item">{{t.trans_date}}&emsp;&emsp;|&emsp;&emsp;You spent {{t.currency[0].currency_sym}}{{t.amount}} on {{t.cate_obj[0].name}} at {{t.location}}</li>
-    </ul>
+    <!--<ul class="list-group" ng-repeat="t in listData">-->
+        <!--<li class="list-group-item">{{t.trans_date}}&emsp;&emsp;|&emsp;&emsp;You spent {{t.currency[0].currency_sym}}{{t.amount}} on {{t.cate_obj[0].name}} at {{t.location}}</li>-->
+    <!--</ul>-->
 
 
-    <ul class="nav nav-stacked" id="accordion1" ng-repeat="t in listData">
-        <li class="panel"> <a data-toggle="collapse" >
-            {{t.trans_date}}&emsp;&emsp;|&emsp;&emsp;You spent {{t.currency[0].currency_sym}}{{t.amount}} on {{t.cate_obj[0].name}} at {{t.location}}
-        </a>
+    <!--<ul class="nav nav-stacked" id="accordion1" ng-repeat="t in listData">-->
+        <!--<li class="panel"> <a data-toggle="collapse" >-->
+            <!--{{t.trans_date}}&emsp;&emsp;|&emsp;&emsp;You spent {{t.currency[0].currency_sym}}{{t.amount}} on {{t.cate_obj[0].name}} at {{t.location}}-->
+        <!--</a>-->
 
-            <ul class="collapse">
-                <li>{{t}}</li>
-            </ul>
+            <!--<ul class="collapse">-->
+                <!--<li>{{t}}</li>-->
+            <!--</ul>-->
 
-        </li>
-    </ul>
+        <!--</li>-->
+    <!--</ul>-->
+        <div class="accordion" id="accordion2">
+            <div class="accordion-group" ng-repeat="t in listData">
+                <ul class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" data-target="#collapse{{$index}}"
+                       aria-expanded="true" aria-controls="#collapse{{$index}}">
+                        {{t.trans_date}}&emsp;&emsp;|&emsp;&emsp;You spent {{t.currency[0].currency_sym}}{{t.amount}} on {{t.cate_obj[0].name}} at {{t.location}}
+                    </a>
+
+                <li id="collapse{{$index}}" class="accordion-inner collapse in">
+                    <!--<div class="accordion-inner">-->
+                        <small>{{t}}</small>
+                    <!--</div>-->
+                </li>
+
+                </ul>
+            </div>
+        </div>
 </div>
+
+
+<script>
+    $(document).ready(function(){
+        $(".accordion-inner").collapse('toggle');
+
+//        $('.accordion-body.in').collapse('toggle');
+    });
+</script>
