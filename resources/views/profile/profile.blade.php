@@ -46,20 +46,17 @@
 
             <div class="row">
                 <div class="page page-home container-fluid" ng-include="template.url" ngview ></div>
-
-                <div class="page page-home container-fluid" ng-include="templates[1].url"ng-if="template.url != templates[1].url"></div>
-                <div class="page page-home container-fluid" ng-include="templates[2].url"></div>
-                <div class="page page-home container-fluid" ng-include="templates[3].url"></div>
-                <div class="page page-home container-fluid" ng-include="templates[4].url"></div>
-                <div class="page page-home container-fluid" ng-include="templates[5].url"></div>
             </div>
+
             <nav mfb-menu position="br" effect="zoomin" label="hover here"
                  active-icon="fa fa-times"
                  resting-icon="fa fa-plus"
                  toggling-method="click">
-              <button mfb-button icon="paper-airplane" label="Spendable"></button>
-              <button mfb-button icon="paper-airplane" label="Account"></button>
-              <button mfb-button icon="paper-airplane" label="Goals"></button>
+
+              <button   mfb-button
+                        ng-repeat="mfb in float_buttons"
+                        ng-click="nav(mfb.url)"
+                        icon="@{{mfb.icon}}" label="@{{ mfb.label }}"></button>
             </nav>
 
         </div>
