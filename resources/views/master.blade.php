@@ -73,7 +73,8 @@
 
     <script src="/js/modernizr.min.js"></script>
 
-
+    <link rel="stylesheet" href="/vendors/mfb/mfb.css">
+    <script src="/vendors/mfb/mfb-directive.js"></script>
 
     <script>
         $.ajaxSetup({

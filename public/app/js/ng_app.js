@@ -1,4 +1,4 @@
-var app = angular.module('App',['ngAnimate','ngRoute']);
+var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb']);
 
 
 app.directive('yearDrop',function() {
