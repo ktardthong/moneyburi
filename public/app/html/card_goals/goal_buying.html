@@ -8,19 +8,23 @@
 
             <p>
                 <span>How much?</span>
-                <input placeholder="" class="input input-lg borderless" ng-model="targetPrice">
+                <input placeholder="" class="input input-lg borderless" ng-model="targetPrice" id="targetPrice">
             </p>
 
             <p>
                 <span>Number of payments (mths)</span>
-                <input placeholder="" class="input input-lg borderless" ng-model="targetNumPmt">
+                <input placeholder="" class="input input-lg borderless" ng-model="targetNumPmt" id="targetNumPmt">
             </p>
 
             <p>
                 <span>Interest %</span>
-                <input placeholder="" class="input input-lg borderless" ng-model="targetInterest">
+                <input placeholder="" class="input input-lg borderless" ng-model="targetInterest" id="targetInterest">
             </p>
 
+            <p>
+                <span>Where</span>
+                <input placeholder="" class="input input-lg borderless" ng-model="targetWhere" id="targetWhere">
+            </p>
 
             <p>
                 <span>Monthly payment</span>
@@ -41,6 +45,6 @@
     </div>
 
 
-    <button class="btn btn-block" ng-click="setGoalTravel()">Set Goal!</button>
+    <button class="btn btn-block" ng-click="setGoalTarget()">Set Goal!</button>
 
 </div>
