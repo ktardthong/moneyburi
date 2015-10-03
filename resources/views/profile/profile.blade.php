@@ -13,43 +13,50 @@
     {{-- Main container--}}
     <div ng-controller="profileController">
 
-        <div class="col-xs-12 col-sm-12">
+        <div class="col-xs-12 col-sm-10">
 
-            <div class="page page-contact" ngview>
-                <div class="card card-block clearfix">
+            <div class="row" ngview>
+                <div class="card card-block clearfix row">
                     <ul class="nav nav-sidebar">
                         <li class="pull-left">
+
                             <a href="#">
-                                <img src="/img/user_avatar.gif" class="img-circle">
+
+                                <img src="@{{ userData.avatar? userData.avatar : '/img/user_avatar.gif' }}"
+                                     class="img-circle">
                                  <br>
 
                             </a>
                         </li>
                         <li>
-                            @{{userData.firstname }} @{{ userData.lastname }}   
+                            <h4>
+                            @{{userData.firstname }} @{{ userData.lastname }}
+                            </h4>
+                            <p>
+                            Transaction 0
+                            Goals @{{ userGoals. }}
+                            </p>
                         </li>
-
-                        {{--<div class="form-control">--}}
-
-                             {{--<select ng-model="template" ng-options="t.name for t in templates">--}}
-
-                                 {{--<option value="">(blank)</option>--}}
-
-                             {{--</select>--}}
-
-                        {{--</div>--}}
                     </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row">
+                    <div class="page page-home" ng-include="template.url" ngview ></div>
                 </div>
             </div>
 
         </div>
 
+        <div class="col-xs-12 col-sm-2 hidden-xs-down">
+            Ads here
+        </div>
+
 
         <div class="col-xs-12">
 
-            <div class="row">
-                <div class="page page-home container-fluid" ng-include="template.url" ngview ></div>
-            </div>
+
 
 
             <nav mfb-menu position="br"

@@ -37,14 +37,42 @@ class CardApp  extends  Eloquent{
     }
 
 
-    public static function getUserTravelGoal()
+
+
+
+    public static function getAllGoals()
     {
-        if(Auth::user())
-        {
-            $data = DB::table('goal_travel')
-                    ->where('uid',Auth::user()->id)
-                ->get();
-            return json_encode($data);
+        if(Auth::user()) {
+
+            $uid = Auth::user()->id;
+
+            $q = "SELECT  (
+                    SELECT COUNT(*)
+                    FROM   goal_car
+                    WHERE		uid=$uid
+                    ) AS car,
+
+                    (
+                    SELECT COUNT(*)
+                    FROM   goal_general
+                            WHERE		uid=$uid
+                    ) AS general,
+
+                    (
+                    SELECT COUNT(*)
+                    FROM   goal_home
+                            WHERE		uid=$uid
+                    ) AS home,
+
+                    (
+                    SELECT COUNT(*)
+                    FROM   goal_travel
+                            WHERE		uid=$uid
+                    ) AS travel
+                    FROM    dual";
+            $data = DB::select($q, array());
+
+            return json_encode($data[0]);
         }
     }
 }

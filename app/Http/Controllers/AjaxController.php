@@ -8,6 +8,7 @@ use Validator;
 use App\User;
 use App\UserJobs;
 use App\CateCore;
+use App\GoalTravel;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -204,7 +205,15 @@ class AjaxController extends Controller
     {
         if(Auth::user())
         {
-            return \App\CardApp::getUserTravelGoal();
+            return \App\GoalTravel::getUserTravelGoal();
+        }
+    }
+
+    public function getUserTargetGoal()
+    {
+        if(Auth::user())
+        {
+            return \App\GoalGeneral::getUserTargetGoal();
         }
     }
 

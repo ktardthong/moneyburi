@@ -1,6 +1,8 @@
 var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb']);
 
 
+
+
 app.directive('yearDrop',function() {
     var currentYear = new Date().getFullYear();
     return {
@@ -53,9 +55,25 @@ app.directive('zMonthSelect', function () {
 
 app.controller('goalSummary', function($scope, $http) {
 
+    $http.get("/ajax/userGoals")
+        .success(function(response) {
+            $scope.userGoals = response;
+            $scope.GoalCounted = $scope.userGoals.length;
+        });
+
+    $http.get("/ajax/getUserTargetGoal")
+        .success(function(response) {
+            $scope.userTargets = response;
+        });
+
 });
 
 app.controller('goalController', function($scope, $http) {
+
+    $http.get("/ajax/userGoals")
+        .success(function(response) {
+            $scope.userGoals = response;
+        });
 
     $http.get("/ajax/userData")
         .success(function(response) {
@@ -125,6 +143,10 @@ app.controller('goalController', function($scope, $http) {
 
 
     $scope.setGoalTravel = function() {
+
+        $scope.travelGoalForm = false;
+        $scope.addTravelGoal = true;
+
         var future  = $('#yearSelect option:selected').text()+'-'+$('#monthSelect').val();
 
         $.ajax({
@@ -141,8 +163,10 @@ app.controller('goalController', function($scope, $http) {
                   }
         })
         .done(function( msg ) {
-            alert('save!');
-            //window.location.href = '/init_setup_2';
+            //alert('save!');
+
+
+            console.log($scope.travelGoalForm)
         });
     };
 
@@ -241,6 +265,14 @@ app.controller('profileEdit', function($scope, $http) {
 app.controller('profileController', function($scope, $http) {
 
 
+    $http.get("/ajax/userGoals")
+        .success(function(response) {
+            $scope.userGoals = response;
+            $scope.GoalCounted = $scope.userGoals.length;
+            console.log($scope.GoalCounted);
+            console.log($scope.userGoals);
+        });
+
     $scope.float_buttons = [{
         label: 'Spendable',
         icon: 'ion-paper-airplane',
@@ -252,7 +284,7 @@ app.controller('profileController', function($scope, $http) {
     },{
         label: 'Goals',
         icon: 'ion-paperclip',
-        url: '/app/html/card_spendable.html'
+        url: '/app/html/card_goals.html'
     },{
         label: 'Transactions',
         icon: 'ion-paperclip',

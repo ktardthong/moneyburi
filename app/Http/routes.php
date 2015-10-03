@@ -35,7 +35,6 @@ Route::get('ajax/ccIssuer',     'AjaxController@ccIssuer');
 Route::get('ajax/ccTypes',      'AjaxController@ccTypes');
 Route::get('ajax/currency',     'AjaxController@user_currencies');
 Route::get('ajax/userData',     'AjaxController@userData');
-Route::get('ajax/getUserTravelGoal',     'AjaxController@getUserTravelGoal');
 Route::get('ajax/pmtTypes',     'AjaxController@pmtTypes');
 Route::get('ajax/transTypes',     'AjaxController@transTypes');
 
@@ -44,10 +43,17 @@ Route::post('ajax/userPlan',        'AjaxController@userplan');
 Route::post('ajax/userFinance',     'AjaxController@userFinanceData');
 Route::post('ajax/userName',        'AjaxController@userInfoUpdate');
 Route::post('ajax/userStatus',      'AjaxController@userStatus');
+
+
+
+
+//GOALS
+Route::get('ajax/userGoals',   'GoalsController@getUserGoals');
 Route::post('ajax/setGoalTravel',   'AjaxController@setGoalTravel');
 Route::post('ajax/updateUserInfo',  'AjaxController@updateUserInfo');
 Route::post('ajax/setGoalTarget',   'AjaxController@setGoalTarget');
-
+Route::get('ajax/getUserTravelGoal',     'AjaxController@getUserTravelGoal');
+Route::get('ajax/getUserTargetGoal',     'AjaxController@getUserTargetGoal');
 
 
 
