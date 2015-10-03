@@ -51,6 +51,7 @@
                 <div class="page page-home container-fluid" ng-include="template.url" ngview ></div>
             </div>
 
+
             <nav mfb-menu position="br"
                  effect="slidein"
                  label="Home"
@@ -78,7 +79,7 @@
                             <h4 class="card-title">Notification / Coaching</h4>
                             <ul class="list-group container">
                                 <div class="bottom_border">
-                                    You have spent over 2000 in groceries, open membership at BigD for 15% off next purchase
+                                    You have spent over 2000 in groceries, open mgiembership at BigD for 15% off next purchase
                                 </div>
                                 <div class="bottom_border">
                                     How was your lunch? Note your expense here
