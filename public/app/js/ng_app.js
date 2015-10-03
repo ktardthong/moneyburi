@@ -268,7 +268,7 @@ app.controller('profileController', function($scope, $http) {
     $http.get("/ajax/userGoals")
         .success(function(response) {
             $scope.userGoals = response;
-            $scope.GoalCounted = $scope.userGoals.length;
+            //$scope.GoalCounted = $scope.userGoals.length;
             console.log($scope.GoalCounted);
             console.log($scope.userGoals);
         });

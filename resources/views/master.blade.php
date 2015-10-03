@@ -36,21 +36,24 @@
 
     <!-- JS -->
     <!-- angular, ngRoute, ngAnimate -->
-    <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-animate.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+
+    {{-- Material Ui--}}
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
 
 
     {{-- fonts and icons --}}
     <link href="//fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
+    {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">--}}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 
     {{--boot strap4 --}}
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
     <!-- Include Bootstrap-select CSS, JS -->
@@ -59,14 +62,11 @@
 
     {{-- in house code --}}
     <script src="/js/global.js"></script>
-
     <script src="/js/chart.min.js"></script>
     <script src="/app/js/ng_app.js"></script>
-    {{--<script src="/app/directive/ng_directives.js"></script>--}}
 
 
     <link rel="stylesheet" href="/css/global.css" >
-
     <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="/css/component.css" />
     <link rel="stylesheet" href="/css/angular_animation.css">
@@ -75,6 +75,7 @@
 
     <script src="/js/modernizr.min.js"></script>
 
+    {{-- Vendors --}}
     <link rel="stylesheet" href="/vendors/mfb/mfb.css">
     <script src="/vendors/mfb/mfb-directive.js"></script>
 

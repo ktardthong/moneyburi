@@ -34,7 +34,8 @@
                             </h4>
                             <p>
                             Transaction 0
-                            Goals @{{ userGoals. }}
+                            Goals
+                            {{--@{{ userGoals }}--}}
                             </p>
                         </li>
                     </ul>
