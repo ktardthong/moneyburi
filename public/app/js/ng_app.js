@@ -1,4 +1,4 @@
-var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb']);
+var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial']);
 
 
 

@@ -17,6 +17,7 @@
 
             <div class="row" ngview>
                 <div class="card card-block clearfix row">
+
                     <ul class="nav nav-sidebar">
                         <li class="pull-left">
 
@@ -39,6 +40,7 @@
                             </p>
                         </li>
                     </ul>
+
                 </div>
             </div>
 

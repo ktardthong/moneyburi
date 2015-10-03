@@ -34,11 +34,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 
-    <!-- JS -->
-    <!-- angular, ngRoute, ngAnimate -->
+    <!-- Angular stuff -->
     <script src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.4.7/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.4.7/angular-animate.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.7/angular-aria.min.js"></script>
 
 
     {{-- Material Ui--}}
