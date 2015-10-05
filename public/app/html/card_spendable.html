@@ -1,4 +1,5 @@
 <div class="card card-block">
+
     <h4 class="card-title">Spendable
         <div class="pull-right">
             <a a href="#"><i class="fa fa-plus"></i></a></div>
@@ -6,7 +7,7 @@
 
 
 
-    <div class="container-fluid" align="center">
+    <div class="container-fluid borderBtm" align="center">
 
         <div class="col-xs-12 col-sm-7">
 
@@ -50,17 +51,17 @@
                 </ul>
 
                 <p>
-                <ul class="list-group container lead">
+                <ul class="list-group container">
                     <div>
-                        <span class="pull-right">400</span>
+                        <span class="pull-right text-success">400</span>
                         this week
                     </div>
                     <div>
-                        <span class="pull-right">2,000</span>
+                        <span class="pull-right text-success">2,000</span>
                         this month
                     </div>
                     <div>
-                        <span class="pull-right">18,000</span>
+                        <span class="pull-right text-success">18,000</span>
                         this year
                     </div>
                 </ul>
@@ -68,6 +69,101 @@
             </div>
         </div>
     </div>
+
+
+    <div class="row borderBtm">
+        <div class="col-xs-12 col-sm-4">
+            <span>Trends</span>
+            <div class="pull-right">
+                <small>
+                    <a a href="#">
+                        <i class="fa fa-cog"></i></a>
+                </small>
+            </div>
+
+            <div class="center-block clearfix">
+                <div class="pull-left text-center">
+                    <div class="text-success">
+                        <small>
+                            <strong>1000</strong>
+                        </small>
+                    </div>
+                </div>
+                <div class="center-block pull-right">
+                    <div class="text-muted">
+                        <small>
+                            <strong> -1000</strong>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <progress class="progress progress-success" value="25" max="100"></progress>
+
+            <span>Spending Categories</span>
+            <progress class="progress progress-success" value="25" max="100"></progress>
+
+            <span>Spending Categories</span>
+            <progress class="progress progress-success" value="25" max="100"></progress>
+
+            <span>Spending Categories</span>
+            <progress class="progress progress-success" value="25" max="100"></progress>
+
+
+        </div>
+        <div class="col-xs-12 col-sm-8">
+            <canvas id="transaction_canvas" width="auto" height="250" class="img-responsive"></canvas>
+        </div>
+    </div>
+
+    <!--Progress bar-->
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-6 lead">
+            <div class="clearfix">
+
+                <span>Upcoming bill <small> next10 days</small></span>
+
+                <div class="pull-right">
+                    <small>
+                        <a a href="#">
+                            <i class="fa fa-cog"></i></a>
+                    </small>
+                </div>
+
+                <div class="center-block">
+                    <div class="pull-left text-center">
+
+                        <div>
+                            <span class="text-muted">NOV</span>
+                        </div>
+                        <div>
+                            23
+                        </div>
+                    </div>
+                    <div class="center-block pull-right">
+                        2,000
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 lead">
+
+            <span>Credit cards</span>
+
+            <div>
+                <span>SCB</span>
+                <progress class="progress progress-success" value="25" max="100"></progress>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
 </div>
 
 <script>
@@ -120,4 +216,37 @@
         $("#spendableContainer").load('/app/html/card_addTransaction.html');
     });
 
+
+    var data = {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [200, 200, 200, 200, 200, 200, 200]
+            },
+            {
+                label: "My Second dataset",
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [28, 48, 40, 19, 280, 80, 90]
+            }
+        ]
+    };
+    var ctx = document.getElementById("transaction_canvas").getContext("2d");
+    new Chart(ctx).Line(data, {
+        bezierCurve: false,
+        responsive: true,
+        maintainAspectRatio:false
+
+    });
 </script>

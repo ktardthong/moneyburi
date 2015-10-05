@@ -141,6 +141,9 @@ app.controller('goalController', function($scope, $http) {
         $('#travelSavingMth').val(pmt);
     });
 
+    $scope.getGoalDropDown = function() {
+        console.log($scope.goal_template);
+    };
 
     $scope.setGoalTravel = function() {
 
@@ -261,6 +264,17 @@ app.controller('profileEdit', function($scope, $http) {
     }
 });
 
+/*app.controller('menuController',function($scope,$http){
+    $scope.templates =
+        [
+            { name: 'Home'              , url: '/app/html/card_home.html'},
+            { name: 'Spendable'         , url: '/app/html/card_spendable.html'},
+            { name: 'Account'           , url: '/app/html/card_account.html'},
+            { name: 'Goals'             , url: '/app/html/card_goals.html'},
+            { name: 'Transactions'       , url: '/app/html/card_transactionList.html'},
+            { name: 'Edit'              , url: '/app/html/card_userEdit.html'}
+        ];
+})*/
 
 app.controller('profileController', function($scope, $http) {
 

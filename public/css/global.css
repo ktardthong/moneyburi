@@ -1,8 +1,8 @@
 body{
     font-family: 'Lato', sans-serif;
     font-weight: 600;
-    color: #777777;
-	padding-top: 60px;
+    color: #333;
+	padding-top: 65px;
     background-color: #F1F1F1;
 }
 
@@ -24,7 +24,7 @@ a {
     overflow: hidden;
     background: #FFF;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    color: #272727;
+    /*color: #272727;*/
     border-radius: 2px;
 }
 
@@ -57,6 +57,12 @@ a {
     /*width: 20px;*/
 }
 
+.borderBtm{
+    border-bottom: 1px solid #ccc;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+}
 
 .btn-circle:hover
 {

@@ -99,10 +99,28 @@
             </button>
 
            <div class="collapse navbar-toggleable-xs" id="navbar-header">
+              <ul class="nav navbar-nav pull-left">
+                <li class="nav-item">
+
+
+                </li>
+              </ul>
               <ul class="nav navbar-nav pull-right">
                 @if(Auth::user())
                     <li class="nav-item">
-                      <a class="nav-link" href="/profile">profile</a>
+                        <a class="nav-link" href="/profile">
+                                <span><img src="@{{ userData.avatar? userData.avatar : '/img/user_avatar.gif' }}"
+                                 class="img-circle img-responsive pull-left" width="30px">
+                            Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/profile">
+                        <label>
+
+                                 Profile
+                         </label>
+                        </a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="/logout">log out</a>

@@ -16,16 +16,17 @@
         <div class="col-xs-12 col-sm-10">
 
             <div class="row" ngview>
-                <div class="card card-block clearfix row">
+                {{--<div class="card card-block clearfix row">
 
                     <ul class="nav nav-sidebar">
                         <li class="pull-left">
 
-                            <a href="#">
+                            <a href="#" align="center">
 
                                 <img src="@{{ userData.avatar? userData.avatar : '/img/user_avatar.gif' }}"
                                      class="img-circle">
                                  <br>
+                                 <a href="">Edit</a>
 
                             </a>
                         </li>
@@ -33,15 +34,11 @@
                             <h4>
                             @{{userData.firstname }} @{{ userData.lastname }}
                             </h4>
-                            <p>
-                            Transaction 0
-                            Goals
-                            {{--@{{ userGoals }}--}}
-                            </p>
                         </li>
+
                     </ul>
 
-                </div>
+                </div>--}}
             </div>
 
             <div class="row">

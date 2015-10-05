@@ -1,39 +1,168 @@
-<div class="col-xs-12 col-sm-4 grid-item">
-    <div class="card card-block">
-        <h4 class="card-title">
-            <a ng-click="nav('/app/html/card_spendable.html')">Spendable</a></h4>
-    </div>
-</div>
-<div class="col-xs-12 col-sm-4 grid-item">
-    <div class="card card-block">
-        <h4 class="card-title">Account</h4>
-        <div ng-include="''"></div>
-    </div>
-</div>
-<div class="col-xs-12 col-sm-4 grid-item">
-    <div class="card card-block">
-        <h4 class="card-title" >
-            <a ng-click="nav('/app/html/card_goals/goal_travel.html')">Goals</a></h4>
-        <div ng-if="userTravelGoals" >
-            <h5>Travel</h5>
-            <div class="" ng-repeat="goal in userTravelGoals">
-                <!-- Large modal -->
-                <button class="btn btn-link" data-toggle="modal" data-target=".bd-example-modal-md">
-                    @{{ goal.where_to }} | @{{ goal.mth_saving }}
-                </button>
+<div class="row"  ng-controller="menuController">
 
-                <div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            test
-                        </div>
+
+    <div ng-cloak class="card">
+        <div class="container-fluid">
+            <img src="/img/user_avatar.gif"
+                 class="img-circle">
+            <br>
+            {{userData.firstname }} {{ userData.lastname }}
+            <a href="">Edit</a>
+        </div>
+        <md-content class="md-padding">
+            <md-tabs md-dynamic-height md-border-bottom md->
+                <md-tab label="Summary">
+                    <md-content class="md-padding">
+                        <div class="slide-animate" ng-include="templates[1].url"></div>
+
+                        >>> {{ currency }}
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="Spendable">
+                    <md-content class="md-padding">
+                        <div class="slide-animate" ng-include="goal_templates[1].url"></div>
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="Account">
+                    <md-content class="md-padding">
+                        <div class="slide-animate" ng-include="goal_templates[2].url"></div>
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="Goals">
+                    <md-content class="md-padding">
+                        <div class="slide-animate" ng-include="goal_templates[2].url"></div>
+                        <p>test</p>
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="About">
+                    <md-content class="md-padding">
+                        <div class="slide-animate" ng-include="goal_templates[4].url"></div>
+                        <p>test</p>
+                    </md-content>
+                </md-tab>
+
+            </md-tabs>
+        </md-content>
+    </div>
+
+    <div class="container-fluid">
+        <h5 class="card-title">Spendable</h5>
+        <div class="col-xs-4">
+            <div class="card">
+                <div class="card-block">
+                    <h5 class="card-title">Today</h5>
+                    <h6 class="card-subtitle text-muted">Remaining budget</h6>
+                </div>
+                <div class="card-block">
+                    <h5>100</h5>
+                    <small>
+                        <a href="#" class="card-link">Details</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="card">
+                <div class="card-block">
+                    <h5 class="card-title">This week</h5>
+                    <h6 class="card-subtitle text-muted">Remaining budget</h6>
+                </div>
+                <div class="card-block">
+                    <h5 class="card-title">100</h5>
+                    <small>
+                        <a href="#" class="card-link">Details</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="card">
+                <div class="card-block">
+                    <h5 class="card-title">This month</h5>
+                    <h6 class="card-subtitle text-muted">Remaining budget</h6>
+                </div>
+                <div class="card-block">
+                    <h5>100</h5>
+                    <small>
+                        <a href="#" class="card-link">Details</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            Bills
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+
+        <h5 class="card-title">Accounts</h5>
+
+
+            <div class="col-xs-4">
+                <div class="card">
+                    <div class="card-block">
+                        <h5 class="card-title">Cash</h5>
+                        <h6 class="card-subtitle text-muted">Remaining budget</h6>
+                    </div>
+                    <div class="card-block">
+                        <h5 class="card-title">Credit card</h5>
+                        <h6 class="card-subtitle text-muted">Remaining budget</h6>
+                        <p class="card-text">10000</p>
                     </div>
                 </div>
+            </div>
 
-
+            <div class="col-xs-4">
+            <div class="card">
+                <div class="card-block">
+                    <h5 class="card-title"><i class="fa fa-credit-card"></i> Platinum cards</h5>
+                    <h6 class="card-subtitle text-muted">Remaining budget</h6>
+                </div>
+                <div class="card-block">
+                    <h5 class="card-title">Credit card</h5>
+                    <h6 class="card-subtitle text-muted">Remaining budget</h6>
+                    <p class="card-text">10000</p>
+                </div>
             </div>
         </div>
     </div>
+
+
+    <div class="">
+        <div class="col-xs-12 col-sm-12">
+            <div style="width: 100%; height: 40px; position: absolute;
+                                                    top: 50%; left: 0; margin-top: -20px;
+                                                    line-height:19px; text-align: center;
+                                                    z-index: 999999999999999">
+                <p class="display-1">100</p>
+            </div>
+            <canvas id="budgetChart" onclick="spendableDough()"></canvas>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            Goals
+        </div>
+        <div class="col-xs-12 col-sm-4">
+
+        </div>
+        <div class="col-xs-12 col-sm-4">
+
+        </div>
+    </div>
+
 </div>
 
 
@@ -60,3 +189,5 @@
         <div class="hidden-sm-down">test</div>
     </div>
 </div>
+
+

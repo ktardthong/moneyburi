@@ -1,5 +1,8 @@
 <div class="" ng-controller="goalController" style="margin: auto">
 
+
+
+
     <div ng-model="addTravelGoal" ng-init="addTravelGoal=false" ng-show="addTravelGoal">
 
         <div class="col-xs-12" align="center">
@@ -17,26 +20,27 @@
         <div class="col-xs-12 col-sm-6">
             <div class="col-xs-12">
 
-                <p>
-                    <span>Where to?</span>
+
+                <md-input-container>
+                    <label>Where to?</label>
                     <input placeholder="" class="input input-lg borderless" ng-model="travelLocation" id="travelLocation">
-                </p>
+                </md-input-container>
 
-                <p>
-                    <span>Travel Budget</span>
+                <md-input-container>
+                    <label>Travel Budget</label>
                     <input placeholder="" class="input input-lg borderless" ng-model="travelAmount" id="travelAmount">
-                </p>
+                </md-input-container>
 
-
-                <p>
-                    <span>Number of travelers</span>
+                <md-input-container>
+                    <label>Number of travelers</label>
                     <input placeholder="" class="input input-lg borderless" ng-model="travelPax" id="travelPax">
-                </p>
+                </md-input-container>
 
-                <p>
-                    <span>Nights</span>
+                <md-input-container>
+                    <label>Nights</label>
                     <input placeholder="" class="input input-lg borderless" ng-model="travelNights" id="travelNights">
-                </p>
+                </md-input-container>
+
 
             </div>
         </div>
@@ -53,7 +57,11 @@
                 <div year-drop offset="0" range="10"></div>
             </p>
             <span>Saving per month</span>
-            <input placeholder="" class="input input-lg borderless" id="travelSavingMth">
+
+            <md-input-container>
+                <input placeholder="" class="input input-lg borderless" id="travelSavingMth">
+            </md-input-container>
+
             <span id="mthPmt"></span>
 
         </div>
