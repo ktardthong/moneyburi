@@ -47,9 +47,9 @@ Route::post('ajax/userName',        'AjaxController@userInfoUpdate');
 Route::post('ajax/userStatus',      'AjaxController@userStatus');
 
 //BILLS
-Route::get('bill/getBills',       'billController@getBill');
-Route::get('bill/sumBillAmount',  'billController@sumBill');
-Route::get('bill/upComing',       'billController@comingBill');
+Route::get('bill/getBills',       'BillController@getBill');
+Route::get('bill/sumBillAmount',  'BillController@sumBill');
+Route::get('bill/upComing',       'BillController@comingBill');
 Route::post('ajax/addBills',      'AjaxController@addBills');
 Route::post('ajax/togglePaid',    'AjaxController@togglePaid');
 Route::post('ajax/removeBills',   'AjaxController@removeBills');

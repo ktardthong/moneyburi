@@ -29,6 +29,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('inspire')
                  ->hourly();
         $schedule->command('DailySpendableTracker')
-                 ->everyMinute();
+                 ->dailyAt('00:00');
     }
 }
