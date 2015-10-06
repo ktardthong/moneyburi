@@ -107,20 +107,13 @@
                 </li>
               </ul>
               <ul class="nav navbar-nav pull-right">
+
                 @if(Auth::user())
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile">
+                    <li class="nav-item" ng-controller="profileController">
+                        <a class="nav-link" href="#profile">
                                 <span><img src="@{{ userData.avatar? userData.avatar : '/img/user_avatar.gif' }}"
                                  class="img-circle img-responsive pull-left" width="30px">
                             Profile</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/profile">
-                        <label>
-
-                                 Profile
-                         </label>
                         </a>
                     </li>
                     <li class="nav-item">

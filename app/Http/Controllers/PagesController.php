@@ -22,9 +22,16 @@ class PagesController extends Controller
 
     public function home()
     {
+        if(Auth::user())
+        {
+            return redirect("/profile");
+        }
+        else
+        {
         $page_title     =   "moneyburi!";
         $page_descs     =   "";
         return view('welcome',compact('page_title','page_descs'));
+        }
     }
 
     public function login()
