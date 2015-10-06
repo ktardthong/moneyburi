@@ -122,30 +122,36 @@
         <div class="col-xs-12 col-sm-6 lead">
             <div class="clearfix">
 
-                <span>Upcoming bill <small> next10 days</small></span>
+                <span>Upcoming bill</span>
 
                 <div class="pull-right">
                     <small>
-                        <a a href="#">
-                            <i class="fa fa-cog"></i></a>
+                        <a href="#" ng-click="nav(templates[4].url)">
+                            <i class="fa fa-info-circle"></i></a>
                     </small>
                 </div>
 
-                <div class="center-block">
+                <div class="clearfix" ng-repeat="bill in upComing">
+
                     <div class="pull-left text-center">
 
                         <div>
-                            <span class="text-muted">NOV</span>
+                            <span class="text-muted"> {{ date | date:'MMM'}}</span>
                         </div>
                         <div>
-                            23
+                            {{ bill.due_date }}
                         </div>
                     </div>
-                    <div class="center-block pull-right">
-                        2,000
-                    </div>
-                </div>
 
+                    <div class="center-block pull-right">
+
+                        <span>
+                            {{ bill.name }}
+                        </span>
+                        {{ bill.amount }}
+                    </div>
+
+                </div>
             </div>
         </div>
 

@@ -36,5 +36,13 @@ function listLocalStorage()
     }
 }
 
+function dayDiff(future)
+{
+    var start = new Date(future),
+        end   = new Date(),
+        diff = new Date(start -end);
+    day  = diff/1000/60/60/24;
+    return Math.round(day);
+}
 
 

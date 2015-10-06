@@ -7,7 +7,7 @@ Route::post('/login','PagesController@post_login');
 Route::get('/logout','PagesController@logout');
 Route::get('/register','PagesController@register');
 Route::post('/register','PagesController@post_register');
-
+Route::get('/bill','PagesController@bill');
 
 //PROFILE
 Route::get('/profile','ProfileController@index');
@@ -18,6 +18,8 @@ Route::post('/profile/update','ProfileController@update');
 Route::get('/showTransaction','TransactionController@show');
 Route::post('/add_transaction', 'TransactionController@add_transaction');
 Route::get('/getAllTransactions','TransactionController@getAllTransactionsForCurrentUser');
+
+
 
 
 
@@ -43,6 +45,18 @@ Route::post('ajax/userPlan',        'AjaxController@userplan');
 Route::post('ajax/userFinance',     'AjaxController@userFinanceData');
 Route::post('ajax/userName',        'AjaxController@userInfoUpdate');
 Route::post('ajax/userStatus',      'AjaxController@userStatus');
+
+//BILLS
+Route::get('bill/getBills',       'billController@getBill');
+Route::get('bill/sumBillAmount',  'billController@sumBill');
+Route::get('bill/upComing',       'billController@comingBill');
+Route::post('ajax/addBills',      'AjaxController@addBills');
+Route::post('ajax/togglePaid',    'AjaxController@togglePaid');
+Route::post('ajax/removeBills',   'AjaxController@removeBills');
+
+
+
+
 
 
 

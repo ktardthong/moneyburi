@@ -200,6 +200,55 @@ class AjaxController extends Controller
         }
     }
 
+
+    //Add user bill
+    public function addBills(Request $request)
+    {
+        if(Auth::user()){
+
+            $data =[
+                'uid'           => Auth::user()->id,
+//                'name'          => $request->travelLocation,
+                'cate_id'       => $request->cateId,
+                'amount'        => $request->amount,
+                'due_date'      => $request->due_date,
+            ];
+            print_r($data);
+            DB::table('user_bills')->insert($data);
+            //Update to users table
+            \App\userBills::updateBillAmount();
+
+            return \App\userBills::get();
+        }
+    }
+
+    //Toggle is_paid status from user_bills base on the given ID
+    public function togglePaid(Request $request)
+    {
+        if(Auth::user())
+        {
+            \App\userBills::togglePaid($request->billId);
+
+            return \App\userBills::get();
+        }
+    }
+
+
+    public static function removeBills(Request $request)
+    {
+        if(Auth::user())
+        {
+            //Remove bill
+            \App\userBills::removeBills($request->billId);
+
+            //Update to users table
+            \App\userBills::updateBillAmount();
+
+            return \App\userBills::get();
+        }
+    }
+
+
     //Get user goal Travel goal from their ID
     public function getUserTravelGoal()
     {

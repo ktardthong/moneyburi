@@ -117,7 +117,7 @@
 
 
         {{-- Expense --}}
-        <div class="card card-block" style="max-width: 400px" ng-controller="AddBillController as BillList">
+        <div class="card card-block" style="max-width: 400px" ng-controller="BillController as BillList">
 
             <h4 class="card-title strong">Bill</h4>
 

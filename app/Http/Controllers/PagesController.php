@@ -261,4 +261,10 @@ class PagesController extends Controller
     {
         //
     }
+
+
+    public function bill()
+    {
+        return view('pages.billView');
+    }
 }

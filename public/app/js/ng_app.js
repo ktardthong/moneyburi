@@ -278,7 +278,7 @@ app.controller('profileEdit', function($scope, $http) {
 
 app.controller('profileController', function($scope, $http) {
 
-
+    $scope.date = new Date();
     $http.get("/ajax/userGoals")
         .success(function(response) {
             $scope.userGoals = response;
@@ -329,13 +329,28 @@ app.controller('profileController', function($scope, $http) {
         console.log(path);
     };
 
+    /*$http.get("bill/sumBillAmount")
+        .success(function(response) {
+            $scope.sumBills = response;
+        });*/
+
+    $http.get("/bill/getBills")
+        .success(function(response) {
+            $scope.userBills = response;
+        });
+
+    $http.get("/bill/upComing")
+        .success(function(response) {
+            $scope.upComing = response;
+        });
     $scope.templates =
         [
             //{ name: 'Home'              , url: '/app/html/card_home.html'},
             { name: 'Spendable'         , url: '/app/html/card_spendable.html'},
             { name: 'Account'           , url: '/app/html/card_account.html'},
             { name: 'Goals'             , url: '/app/html/card_goals.html'},
-            { name: 'Transactions'       , url: '/app/html/card_transactionList.html'},
+            { name: 'Transactions'      , url: '/app/html/card_transactionList.html'},
+            { name: 'Bills'             , url: '/bill'},
             { name: 'Edit'              , url: '/app/html/card_userEdit.html'}
         ];
 
@@ -389,37 +404,6 @@ app.controller('AddCardController', function($scope,$http) {
 
         cardData = JSON.stringify($scope.cardItem);
 
-    };
-
-});
-
-
-app.controller('AddBillController', function($scope, $http) {
-    var billList = this;
-
-    billList.billItem = [];
-    billList.totalBill = 0;
-
-
-    $http.get("/ajax/billCate")
-        .success(function(response) {
-            billList.categories = response;
-        });
-
-    billList.addBill = function() {
-
-        billList.billItem.push({text:billList.billText + billList.billCate});
-        billList.bilText= '';
-
-        var billData = billList.billText + billList.billCate;
-        //localStorage["billData"] = JSON.stringify(billData);
-
-        var storedNames = JSON.parse(localStorage["billData"]);
-        console.log(storedNames);
-
-        billList.totalBill = billList.totalBill + billList.billText;
-
-        console.log(billList.totalBill)
     };
 
 });
