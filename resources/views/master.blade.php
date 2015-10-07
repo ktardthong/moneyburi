@@ -65,6 +65,7 @@
     <script src="/js/chart.min.js"></script>
     <script src="/app/js/ng_app.js"></script>
     <script src="/app/bills/BillController.js"></script>
+    <script src="/app/creditcards/CreditCardController.js"></script>
 
 
     <link rel="stylesheet" href="/css/global.css" >

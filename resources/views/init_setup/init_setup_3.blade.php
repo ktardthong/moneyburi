@@ -10,7 +10,7 @@
 
 
 @section('content')
-    <div class="container" align="center"  ng-controller="AddCardController">
+    <div class="container" align="center"  ng-controller="CardController">
 
         {{-- Income --}}
         <div class="card card-block" style="max-width: 400px">

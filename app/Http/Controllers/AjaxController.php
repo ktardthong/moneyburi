@@ -72,22 +72,13 @@ class AjaxController extends Controller
 
             //Add Cards
             $cardsData = $request->cards;
+
+            //don't forget 'billDue' in card
             if(!empty($cardsData))
             {
                 foreach($request->cards as $card)
                 {
-
-                    DB::table('cc_users')->insert(
-                        [
-                            'flg'       => 1,
-                            'uid'       => Auth::user()->id,
-                            'cc_issuer' => $card['issuer'],
-                            'cc_types'  => $card['type'],
-                            'cc_limit'  => $card['cclimit'],
-                            'card_notes'=> $card['ccnote']
-                        ]
-                    );
-
+                    \App\CreditCard::addCard($card);
                 }//End foreach
             }
             else
