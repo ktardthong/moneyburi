@@ -269,9 +269,16 @@ class PagesController extends Controller
         //
     }
 
-
+    //View Bill
     public function bill()
     {
         return view('pages.billView');
+    }
+
+
+    //View Creditcards
+    public function creditcards()
+    {
+        return view ('pages.creditcardView');
     }
 }

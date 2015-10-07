@@ -264,17 +264,6 @@ app.controller('profileEdit', function($scope, $http) {
     }
 });
 
-/*app.controller('menuController',function($scope,$http){
-    $scope.templates =
-        [
-            { name: 'Home'              , url: '/app/html/card_home.html'},
-            { name: 'Spendable'         , url: '/app/html/card_spendable.html'},
-            { name: 'Account'           , url: '/app/html/card_account.html'},
-            { name: 'Goals'             , url: '/app/html/card_goals.html'},
-            { name: 'Transactions'       , url: '/app/html/card_transactionList.html'},
-            { name: 'Edit'              , url: '/app/html/card_userEdit.html'}
-        ];
-})*/
 
 app.controller('profileController', function($scope, $http) {
 
@@ -329,10 +318,10 @@ app.controller('profileController', function($scope, $http) {
         console.log(path);
     };
 
-    /*$http.get("bill/sumBillAmount")
+    $http.get("/card/getCards")
         .success(function(response) {
-            $scope.sumBills = response;
-        });*/
+            $scope.userCards = response;
+        });
 
     $http.get("/bill/getBills")
         .success(function(response) {
@@ -351,6 +340,7 @@ app.controller('profileController', function($scope, $http) {
             { name: 'Goals'             , url: '/app/html/card_goals.html'},
             { name: 'Transactions'      , url: '/app/html/card_transactionList.html'},
             { name: 'Bills'             , url: '/bill'},
+            { name: 'Credit cards'      , url: '/credit_cards'},
             { name: 'Edit'              , url: '/app/html/card_userEdit.html'}
         ];
 
@@ -373,41 +363,6 @@ app.controller('profileController', function($scope, $http) {
     };
 
 });
-
-
-app.controller('AddCardController', function($scope,$http) {
-
-    var cardList = this;
-    $scope.cardItem = [];
-
-    $http.get("/ajax/currency")
-        .success(function(response) {
-            $scope.currencies = response;
-        });
-
-    $http.get("/ajax/ccIssuer")
-        .success(function(response) {
-            $scope.ccIssuer = response;
-        });
-
-    $http.get("/ajax/ccTypes")
-        .success(function(response) {
-            $scope.ccTypes = response;
-        });
-    $scope.addCard = function() {
-        $scope.cardItem.push({
-            type:$scope.ng_ccTypes,
-            issuer:$scope.ng_ccIssuer,
-            cclimit:$scope.ng_cardLimit,
-            ccnote: $scope.ng_cardNote
-        });
-
-        cardData = JSON.stringify($scope.cardItem);
-
-    };
-
-});
-
 
 app.controller('thisController', function($scope, $http) {
     $scope.days     = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10,	11,	12,	13,	14,	15,	16,	17,	18,	19,	20,	21,	22,	23,	24,	25,	26,	27,	28,	29,	30,	31];

@@ -117,12 +117,12 @@
     </div>
 
     <!--Progress bar-->
-    <div class="row">
+    <div class="row borderBtm">
 
-        <div class="col-xs-12 col-sm-6 lead">
+        <div class="col-xs-12 col-sm-6">
             <div class="clearfix">
 
-                <span>Upcoming bill</span>
+                <span class="lead">Upcoming bill</span>
 
                 <div class="pull-right">
                     <small>
@@ -155,13 +155,17 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-6 lead">
+        <div class="col-xs-12 col-sm-6">
 
-            <span>Credit cards</span>
-
-            <div>
-                <span>SCB</span>
-                <progress class="progress progress-success" value="25" max="100"></progress>
+            <span class="lead">Credit cards</span>
+            <div class="pull-right">
+                <small>
+                    <a href="#" ng-click="nav(templates[5].url)">
+                        <i class="fa fa-info-circle"></i></a>
+                </small>
+            </div>
+            <div ng-controller="CardController">
+                <card-list></card-list>
             </div>
         </div>
 
@@ -169,6 +173,15 @@
 
     </div>
 
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 lead">
+            <div class="clearfix">
+
+                <span>Goals</span>
+
+            </div>
+        </div>
+    </div>
 
 </div>
 
