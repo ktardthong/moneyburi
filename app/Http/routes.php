@@ -64,6 +64,9 @@ Route::post('card/addCard',       'CreditCardController@addCard');
 Route::post('card/removeCard',    'CreditCardController@removeCard');
 
 
+//Spendable Tracker
+Route::get('spendableTracker/get',       'SpendableController@get');
+Route::get('spendableTracker/getMonth',  'SpendableController@getMonth');
 
 
 

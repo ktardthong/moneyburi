@@ -1,4 +1,4 @@
-var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial']);
+var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js']);
 
 
 
@@ -297,6 +297,8 @@ app.controller('profileController', function($scope, $http) {
         icon: 'ion-paperclip',
         url: '/app/html/card_userEdit.html'
     }];
+
+
 
     $http.get("/ajax/userData")
         .success(function(response) {

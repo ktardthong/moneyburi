@@ -41,6 +41,7 @@
     <script src="https://code.angularjs.org/1.4.7/angular-aria.min.js"></script>
 
 
+
     {{-- Material Ui--}}
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
@@ -66,6 +67,10 @@
     <script src="/app/js/ng_app.js"></script>
     <script src="/app/bills/BillController.js"></script>
     <script src="/app/creditcards/CreditCardController.js"></script>
+    <script src="/app/spendableChart/SpendableChartController.js"></script>
+
+    <script src="/vendors/angular-chart/angular-chart.min.js"></script>
+    <link rel="stylesheet" href="/vendors/angular-chart/angular-chart.min.css">
 
 
     <link rel="stylesheet" href="/css/global.css" >
