@@ -28,8 +28,9 @@ class ProfileController extends Controller
         {
             return redirect('/init_setup');
         }
+        $location = Location::get();
 
-        return view('profile.profile',compact('page_title','page_descs'));
+        return view('profile.profile',compact('page_title','page_descs','location'));
     }
 
     /*

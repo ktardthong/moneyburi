@@ -53,10 +53,14 @@ class PagesController extends Controller
     public function loginFbCallback(Request $request)
     {
         $socialize_user =  Socialite::driver('facebook')->user();
-        echo $facebook_user_id = $socialize_user->getId(); // unique facebook user id
+
+//        dd($socialize_user);
+
+        $facebook_user_id = $socialize_user->getId(); // unique facebook user id
         $user = User::where('email', $socialize_user->email)->first();
 
         $location = Location::get();
+
         $city       =   $location->cityName;
         $country    =   $location->countryName;
 

@@ -25,6 +25,13 @@ class CreateTransactionTable extends Migration
             $table->string('note')->nullable();         //transaction note
             $table->date('trans_date');                 //transaction date
 
+            //GEO DATA
+            $table->decimal('lat', 18, 10)->nullable();
+            $table->decimal('lng', 18, 10)->nullable();
+            $table->string('cityName')->nullable();
+            $table->string('postalCode')->nullable();
+            $table->string('countryCode')->nullable();
+
             $table->timestamps();
         });
     }

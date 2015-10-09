@@ -19,6 +19,12 @@ class Transaction extends Model
         'location',
         'note',
         'trans_date',
+        'created_at',
+        'lat',
+        'lng',
+        'cityName',
+        'postalCode',
+        'countryCode',
         'created_at'];
 
     public static function getAllTransactionByUId($uid)
