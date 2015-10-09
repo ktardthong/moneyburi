@@ -23,11 +23,13 @@ class CreditCardController extends Controller
     {
         if(Auth::user()) {
             $data = [
-                'type' => $request->type,
-                'issuer' => $request->issuer,
-                'cclimit' => $request->cclimit,
-                'ccnote' => $request->ccnote,
-                'due_date'=> $request->billDue
+                'type'      => $request->type,
+                'issuer'    => $request->issuer,
+                'cclimit'   => $request->cclimit,
+                'ccnote'    => $request->ccnote,
+                'due_date'  => $request->billDue,
+                'exp_mth'   => $request->expMth,
+                'exp_year'  => $request->expYear
             ];
 
 

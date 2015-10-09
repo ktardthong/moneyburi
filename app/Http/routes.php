@@ -10,6 +10,10 @@ Route::post('/register','PagesController@post_register');
 Route::get('/bill'       ,'PagesController@bill');
 Route::get('/credit_cards','PagesController@creditcards');
 
+
+//USER
+Route::get('/user','ProfileController@user');
+
 //PROFILE
 Route::get('/profile','ProfileController@index');
 Route::get('/profile/update_info','ProfileController@edit');

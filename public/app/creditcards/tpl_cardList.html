@@ -18,9 +18,18 @@
             <i class="fa fa-trash"></i>
         </a>
 
-        <div class="pull-right">{{ card.type_name }} </div>
+        <div class="pull-right">
+            {{ card.type_name }}
+        </div>
 
-        <span>{{ card.issuer_name }}</span>
+        <span class="pull-left">
+            {{ card.issuer_name }}
+            <span>
+                <br>
+                {{ card.exp_mth }}
+                {{ card.exp_year }}
+            </span>
+        </span>
 
         <div class="clearfix">
             <span class="pull-right">200/{{ card.cc_limit }}</span>

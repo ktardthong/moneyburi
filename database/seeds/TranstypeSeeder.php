@@ -12,8 +12,11 @@ class TranstypeSeeder extends Seeder
     public function run()
     {
         DB::table('trans_type')->delete();
-        $data = [['id' => 1, 'name'  => 'Expense'],
-                 ['id' => 2, 'name'  => 'Income']];
+        $data = [
+                 ['id' => 1, 'name'  => 'Expense'],
+                 ['id' => 2, 'name'  => 'Income'],
+                 ['id' => 3, 'name'  => 'Bill']
+                ];
         DB::table('trans_type')->insert($data);
     }
 }

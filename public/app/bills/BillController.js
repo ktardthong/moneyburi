@@ -25,6 +25,12 @@ app.controller('BillController', function($scope, $http,$mdDialog) {
         });
 
 
+    $http.get("/card/getCards")
+        .success(function(response) {
+            $scope.userCards = response;
+        });
+
+
     billList.paidStatus = function(container_id){
 
         $.ajax({
@@ -42,6 +48,12 @@ app.controller('BillController', function($scope, $http,$mdDialog) {
                 });
         });
     };
+
+    $scope.selectCard=function(index){
+        $scope.showAddTransaction[index] = true;
+        console.log("test"+index)
+    }
+
 
     billList.addBill = function() {
 
@@ -119,6 +131,11 @@ app.controller('BillController', function($scope, $http,$mdDialog) {
         restrict: 'E',
         templateUrl: '/app/bills/tpl_billList.html'
     };
+})
+.directive('cardSelect',function(){
+    return {
+        restrict: 'E',
+        templateUrl: '/app/bills/tpl_cardSelect.html'
+    };
 });
-
 

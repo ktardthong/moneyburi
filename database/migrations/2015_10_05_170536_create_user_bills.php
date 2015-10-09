@@ -19,9 +19,10 @@ class CreateUserBills extends Migration
             $table->tinyInteger('is_paid')->default(0); //if the bill has been paid
             $table->integer('uid');                     //user_id
             $table->string('name');                     //name of this bill
-            $table->integer('cate_id');                 //transaction categories
+            $table->integer('cate_id');                 //Dtransaction categories
+            $table->integer('prefer_pmt');               //prefer payment cash or credit card
             $table->decimal('amount', 18, 2);           //amount
-            $table->integer('due_date');                //the date number of everymonth
+            $table->integer('due_date');                //the date number of every month
 
             $table->timestamps();
         });

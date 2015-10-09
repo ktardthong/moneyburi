@@ -51,11 +51,13 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
             method: "POST",
             url: "/card/addCard",
             data:  {
-                type:  $scope.ng_ccTypes,
-                issuer:$scope.ng_ccIssuer,
-                cclimit:$scope.ng_cardLimit,
-                ccnote: $scope.ng_cardNote,
-                billDue: $('#billDue').val()
+                type:       $scope.ng_ccTypes,
+                issuer:     $scope.ng_ccIssuer,
+                cclimit:    $scope.ng_cardLimit,
+                ccnote:     $scope.ng_cardNote,
+                billDue:    $('#billDue').val(),
+                expMth:     $scope.expMonth,
+                expYear:    $scope.expYear
             }
         })
 

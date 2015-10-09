@@ -24,6 +24,8 @@ class CreditCard extends  Eloquent{
                                              'cc_users.card_notes',
                                              'cc_users.cc_limit',
                                              'cc_users.due_date',
+                                             'cc_users.exp_mth',
+                                             'cc_users.exp_year',
                                              'cc_users.id'
                                             )
                                     ->get();
@@ -44,7 +46,9 @@ class CreditCard extends  Eloquent{
                     'cc_types'      => $data['type'],
                     'cc_limit'      => $data['cclimit'],
                     'card_notes'    => $data['ccnote'],
-                    'due_date'      => $data['due_date']
+                    'due_date'      => $data['due_date'],
+                    'exp_mth'       => $data['exp_mth'],
+                    'exp_year'      => $data['exp_year']
                 ]
             );
         }

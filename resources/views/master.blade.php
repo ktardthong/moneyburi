@@ -116,7 +116,7 @@
 
                 @if(Auth::user())
                     <li class="nav-item" ng-controller="profileController">
-                        <a class="nav-link" href="#profile">
+                        <a class="nav-link" href="/user">
                                 <span><img src="@{{ userData.avatar? userData.avatar : '/img/user_avatar.gif' }}"
                                  class="img-circle img-responsive pull-left" width="30px">
                             Profile</span>

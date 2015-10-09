@@ -37,7 +37,12 @@
             <div align="center">
             or
             <br>
-            <a href="/login/fb">facebook</a>
+            <a href="/login/fb">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-facebook-official fa-stack-1x"></i>
+                </span>
+                Register with facebook
+            </a>
             </div>
 
             <div class="checkbox">

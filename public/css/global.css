@@ -28,6 +28,18 @@ a {
     border-radius: 2px;
 }
 
+.circle_btn {
+    padding: 5px 10px;
+    display: inline-block;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    -moz-box-shadow: 0px 0px 2px #888;
+    -webkit-box-shadow: 0px 0px 2px #888;
+    box-shadow: 0px 0px 2px #888;
+    /* width and height can be anything, as long as they're equal */
+}
+
 .white_bg{
     background: #ffffff;
 }

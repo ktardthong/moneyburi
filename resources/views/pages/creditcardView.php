@@ -30,6 +30,14 @@
                     </select>
                     <label> of the month</label>
 
+                    <div class="row">
+                        <label>Expiration</label>
+                        Day
+                        <input ng-model="expMonth" id="expMth">
+                        Year
+                        <input ng-model="expYear" id="expYear">
+                    </div>
+
                     <p>
                         <input class="btn btn-primary btn-block" type="submit" value="Add card" ng-click="addCard()" >
                     </p>

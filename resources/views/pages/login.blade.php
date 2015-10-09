@@ -29,7 +29,16 @@
                 <input type="checkbox" value="remember-me"> Remember me
               </label>
             </div>
-            <a href="/login/fb">facebook</a>
+
+            <div align="center">
+                <a href="/login/fb">
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-facebook-official fa-stack-1x"></i>
+                    </span>
+                    login with facebook
+                </a>
+            </div>
+
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
           </form>
 

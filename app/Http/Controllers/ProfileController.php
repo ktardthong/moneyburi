@@ -31,4 +31,22 @@ class ProfileController extends Controller
 
         return view('profile.profile',compact('page_title','page_descs'));
     }
+
+    /*
+     * User page
+     * */
+    public function user()
+    {
+        if(empty(Auth::user()->id))
+        {
+            return redirect('/login');
+        }
+
+        $page_title     =   "Profile - Moneyburi";
+        $page_descs     =   "";
+
+//        $user_data      =   User::find(Auth::user()->id);
+
+        return view('user.user',compact('page_title','page_descs'));
+    }
 }

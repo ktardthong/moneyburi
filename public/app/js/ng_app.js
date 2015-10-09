@@ -130,7 +130,6 @@ app.controller('goalController', function($scope, $http) {
         $('#mthPmt').html(monthDiff(future));
          $('#travelSavingMth').val(pmt);
 
-        console.log(pmt);
     });
 
     $( "#yearSelect" ).change(function() {
@@ -167,8 +166,6 @@ app.controller('goalController', function($scope, $http) {
         })
         .done(function( msg ) {
             //alert('save!');
-
-
             console.log($scope.travelGoalForm)
         });
     };
@@ -196,7 +193,6 @@ app.controller('goalTargetController', function($scope, $http) {
                   }
         })
             .done(function( msg ) {
-                console.log(msg);
             });
     }
 });
@@ -244,7 +240,6 @@ app.controller('profileEdit', function($scope, $http) {
 
 
     $scope.saveInfo = function (){
-        console.log($('#editMonthlyIncome').val());
         $.ajax({
             method: "POST",
             url: "/ajax/updateUserInfo",
@@ -353,6 +348,10 @@ app.controller('profileController', function($scope, $http) {
 
     $scope.showEdit = function(page) {
         console.log('edit '+page);
+
+    };
+
+    $scope.addTransaction = function() {
 
     };
 
