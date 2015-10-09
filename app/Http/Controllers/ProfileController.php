@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 
+use App\CardApp;
 use Illuminate\Http\Request;
 use Validator;
 use App\User;
 use Auth;
 use Stevebauman\Location\Facades\Location;
 use Illuminate\Support\Facades\DB;
+use Carbon;
 
 class ProfileController extends Controller
 {
@@ -28,8 +30,8 @@ class ProfileController extends Controller
         {
             return redirect('/init_setup');
         }
-        $location = Location::get();
 
+        $location = Location::get();
         return view('profile.profile',compact('page_title','page_descs','location'));
     }
 

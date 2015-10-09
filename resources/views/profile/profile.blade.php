@@ -25,9 +25,6 @@
 
         <div class="col-xs-12">
 
-
-
-
             <nav mfb-menu position="br"
                  effect="slidein"
                  label="Home"
