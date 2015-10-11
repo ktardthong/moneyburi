@@ -34,15 +34,17 @@
             <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
             <input name="confirmpassword" type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
 
-            <div align="center">
-            or
-            <br>
-            <a href="/login/fb">
+            <div align="center" class="text-muted">
+                Or
+                <br>
+
                 <span class="fa-stack fa-lg">
-                  <i class="fa fa-facebook-official fa-stack-1x"></i>
+                  <a href="/login/fb">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                  </a>
                 </span>
-                Register with facebook
-            </a>
+
             </div>
 
             <div class="checkbox">

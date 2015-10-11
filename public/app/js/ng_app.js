@@ -219,46 +219,6 @@ app.controller('goalAutoController', function($scope, $http) {
 });
 
 
-app.controller('profileEdit', function($scope, $http) {
-
-    $http.get("/ajax/userData")
-        .success(function(response) {
-            $scope.userData = response;
-        });
-    $http.get("/ajax/getUserJobs")
-        .success(function(response) {
-            $scope.items = response;
-        });
-
-    console.log($scope.userData.mth_income);
-
-    $scope.ng_mthlyIncome  =   $scope.userData.mth_income;
-    $scope.ng_mthlyBill    =   $scope.userData.mth_bill;
-    $scope.ng_mthlySaving  =   $scope.userData.mth_saving;
-    $scope.currency     =   $scope.userData.currency;
-    //$scope.mthlySpendable = $scope.mthlyIncome - ($scope.mthlyBill - $scope.mthlySaving) ;
-
-
-    $scope.saveInfo = function (){
-        $.ajax({
-            method: "POST",
-            url: "/ajax/updateUserInfo",
-            data:  {
-                    editMonthlyIncome:      $('#editMonthlyIncome').val() ,
-                    editMonthlyBill:        $('#editMonthlyBill').val(),
-                    editMonthlySaving:      $('#editMonthlySaving').val(),
-                    editMonthlySpendable:   $('#editMonthlySpendable').html(),
-                    editDaySaving:          $('#editDaySaving').html(),
-                    editDaySpendable:       $('#editDaySpendable').html()
-                    //job:   $('#jobtype').val()
-                    }
-        })
-            .done(function( msg ) {
-                console.log(msg);
-            });
-    }
-});
-
 
 app.controller('profileController', function($scope, $http) {
 

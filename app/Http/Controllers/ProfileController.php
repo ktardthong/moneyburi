@@ -11,6 +11,9 @@ use Auth;
 use Stevebauman\Location\Facades\Location;
 use Illuminate\Support\Facades\DB;
 use Carbon;
+use Illuminate\Support\Facades\Input;
+use Image;
+
 
 class ProfileController extends Controller
 {
@@ -51,5 +54,37 @@ class ProfileController extends Controller
 //        $user_data      =   User::find(Auth::user()->id);
 
         return view('user.user',compact('page_title','page_descs'));
+    }
+
+
+    public function imageUpload()
+    {
+        if(Input::file())
+        {
+            $image = Input::file('image');
+            $filename  = time() . '.' . $image->getClientOriginalExtension();
+
+            $path = public_path('profile/' . $filename);
+
+            Image::make($image->getRealPath())->resize(200, 200)->save($path);
+            $user = \App\User::find(Auth::user()->id);
+            $user->avatar = $filename;
+            $user->save();
+            return redirect('/user');
+        }
+        else{
+            echo "no file";
+        }
+    }
+
+
+    public function edit()
+    {
+        $page_title     =   "Profile - Moneyburi";
+        $page_descs     =   "";
+
+//        $user_data      =   User::find(Auth::user()->id);
+
+        return view('user.edit',compact('page_title','page_descs'));
     }
 }

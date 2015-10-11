@@ -22,6 +22,9 @@ class CreateSpendableTracker extends Migration
             $table->decimal('spendable', 18, 2);            //user spendable per day this is from user table
             $table->decimal('adjusted', 18, 2)->default(0);             //if user adjust their spendable from user table
 
+            $table->decimal('t_transaction', 18, 2)->default(0);        //Transaction at one time
+            $table->decimal('ttl_transaction', 18, 2)->default(0);    //Total transaction per day
+
             $table->decimal('remaining_day', 18, 2)->default(0);       //if user adjust their spendable from user table
             $table->decimal('remaining_week', 18, 2)->default(0);      //if user adjust their spendable from user table
             $table->decimal('remaining_month', 18, 2)->default(0);      //if user adjust their spendable from user table

@@ -68,10 +68,13 @@
     <script src="/app/bills/BillController.js"></script>
     <script src="/app/creditcards/CreditCardController.js"></script>
     <script src="/app/spendableChart/SpendableChartController.js"></script>
+    <script src="/app/account/userController.js"></script>
 
     <script src="/vendors/angular-chart/angular-chart.min.js"></script>
     <link rel="stylesheet" href="/vendors/angular-chart/angular-chart.min.css">
 
+    <script src="/vendors/angular-autocomplete/ngAutocomplete.js"></script>
+    <link rel="stylesheet" href="/vendors/angular-autocomplete/angucomplete.css">
 
     <link rel="stylesheet" href="/css/global.css" >
     <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
@@ -117,7 +120,7 @@
                 @if(Auth::user())
                     <li class="nav-item" ng-controller="profileController">
                         <a class="nav-link" href="/user">
-                                <span><img src="@{{ userData.avatar? userData.avatar : '/img/user_avatar.gif' }}"
+                                <span><img src="@{{ userData.avatar? '/profile/'+userData.avatar : '/img/user_avatar.gif' }}"
                                  class="img-circle img-responsive pull-left" width="30px">
                             Profile</span>
                         </a>
@@ -148,6 +151,20 @@
 
 </body>
 
-    <script src="/js/global.interact.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+<script src="/js/global.interact.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68665611-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </html>
+
+
