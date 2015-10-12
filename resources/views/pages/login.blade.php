@@ -30,13 +30,15 @@
               </label>
             </div>
 
-            <div align="center">
-                <a href="/login/fb">
-                    <span class="fa-stack fa-lg">
-                      <i class="fa fa-facebook-official fa-stack-1x"></i>
-                    </span>
-                    login with facebook
-                </a>
+            <div align="center" class="text-muted">
+                Or
+                <br>
+                <span class="fa-stack fa-md">
+                    <a href="/login/fb">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                    </a>
+                </span>
             </div>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>

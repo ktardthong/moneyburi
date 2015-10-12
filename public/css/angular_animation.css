@@ -172,7 +172,6 @@
 
 .slide-animate.ng-enter, .slide-animate.ng-leave {
     transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-
     position:absolute;
     top:0;
     left:0;
@@ -183,7 +182,7 @@
 }
 
 .slide-animate.ng-enter {
-    top:-50px;
+    /*top:-50px;*/
 }
 .slide-animate.ng-enter.ng-enter-active {
     top:0;
@@ -193,5 +192,5 @@
     top:0;
 }
 .slide-animate.ng-leave.ng-leave-active {
-    top:50px;
+    /*top:50px;*/
 }

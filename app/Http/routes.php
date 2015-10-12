@@ -25,8 +25,8 @@ Route::post('/add_transaction', 'TransactionController@add_transaction');
 Route::get('/getAllTransactions','TransactionController@getAllTransactionsForCurrentUser');
 
 
-
-
+//Upload image
+Route::post('/profileImage/upload', 'ProfileController@imageUpload');
 
 //Facebook login
 Route::get('login/fb', 'PagesController@loginFB');

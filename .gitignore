@@ -6,3 +6,5 @@ Homestead.json
 .idea/
 /enabled
 /public/.htaccess
+/public/profile
+/public/userimg

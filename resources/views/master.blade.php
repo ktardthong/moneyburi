@@ -49,9 +49,17 @@
 
     {{-- fonts and icons --}}
     <link href="//fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
-    {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">--}}
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" rel="stylesheet">
+    {{-- http://materializecss.com/navbar.html --}}
+    {{--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">--}}
+    <!-- Compiled and minified CSS -->
+    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">--}}
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
 
     {{--boot strap4 --}}
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
@@ -68,10 +76,13 @@
     <script src="/app/bills/BillController.js"></script>
     <script src="/app/creditcards/CreditCardController.js"></script>
     <script src="/app/spendableChart/SpendableChartController.js"></script>
+    <script src="/app/account/userController.js"></script>
 
     <script src="/vendors/angular-chart/angular-chart.min.js"></script>
     <link rel="stylesheet" href="/vendors/angular-chart/angular-chart.min.css">
 
+    <script src="/vendors/angular-autocomplete/ngAutocomplete.js"></script>
+    <link rel="stylesheet" href="/vendors/angular-autocomplete/angucomplete.css">
 
     <link rel="stylesheet" href="/css/global.css" >
     <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
@@ -85,6 +96,8 @@
     {{-- Vendors --}}
     <link rel="stylesheet" href="/vendors/mfb/mfb.css">
     <script src="/vendors/mfb/mfb-directive.js"></script>
+
+
 
     <script>
         $.ajaxSetup({
@@ -115,16 +128,27 @@
               <ul class="nav navbar-nav pull-right">
 
                 @if(Auth::user())
+
                     <li class="nav-item" ng-controller="profileController">
-                        <a class="nav-link" href="/user">
-                                <span><img src="@{{ userData.avatar? userData.avatar : '/img/user_avatar.gif' }}"
-                                 class="img-circle img-responsive pull-left" width="30px">
-                            Profile</span>
-                        </a>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-link">
+                            <a href="/profile">
+                                <img src="@{{ userData.avatar? '/userimg/'+userData.avatar : '/img/user_avatar.gif' }}"
+                                     class="img-responsive pull-left" width="20px">&nbsp;@{{ userData.firstname }}
+                            </a>
+                           </button>
+                          <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/profile">Profile</a>
+                            <a class="dropdown-item" href="/user">Setting</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/logout">Log out</a>
+                          </div>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/logout">log out</a>
-                    </li>
+
                 @else
                     <li class="nav-item">
                       <a class="nav-link" href="/register">Register</a>
@@ -148,6 +172,20 @@
 
 </body>
 
-    <script src="/js/global.interact.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+<script src="/js/global.interact.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68665611-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </html>
+
+

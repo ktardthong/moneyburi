@@ -1,0 +1,58 @@
+<div class="row white_bg" ng-controller="userController" style="padding-top: 15px;margin-bottom: 10px">
+
+    <div class="col-xs-12 col-sm-6">
+        <canvas id="pie" class="chart chart-pie"
+                chart-data="data" chart-labels="labels" chart-legend="true">
+        </canvas>
+
+        <!-- Daily saving and spendable -->
+        <div class="row text-muted">
+            <div class="col-xs-12 col-sm-6">
+                <label>You can spend</label>
+                <span id="editDaySpendable">{{ (ng_mthlyIncome - ng_mthlyBill - ng_mthlySaving )/30 | currency: ''}}</span>
+                and
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <label>You will save</label>
+                <span id="editDaySaving">{{ ng_mthlySaving/30 | currency: '' }}</span>
+                per day
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12">
+            <small><label>Monthly Income</label></small>
+            <input class="form-control borderless"
+                   ng-keyup="calPie()"
+                   ng-model="ng_mthlyIncome"  ng-class="{currency: ''}" id="editMonthlyIncome">
+        </div>
+
+        <div class="col-xs-12">
+            <small><label> <b> - </b> Monthly Bill</label></small>
+            <input class="form-control borderless" ng-keyup="calPie()" ng-model="ng_mthlyBill" id="editMonthlyBill">
+        </div>
+
+        <div class="col-xs-12">
+            <small><label> <b> - </b> Monthly Saving</label></small>
+            <input class="form-control borderless" ng-keyup="calPie()" ng-model="ng_mthlySaving" id="editMonthlySaving">
+        </div>
+
+        <div class="container-fluid">
+            <small><label> <b> = </b> Monthly Spendable</label></small>
+            <h3>
+                <span ng-model="ng_spendable" id="editMonthlySpendable">{{ (ng_mthlyIncome - ng_mthlyBill - ng_mthlySaving) }}</span>
+            </h3>
+            <hr>
+        </div>
+    </div>
+
+
+
+
+
+<div>
+
+<button class="btn btn-primary btn-block" ng-click="saveInfo()">Save</button>
+
+</div>

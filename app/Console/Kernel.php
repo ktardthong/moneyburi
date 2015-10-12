@@ -16,7 +16,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\Inspire::class,
         \App\Console\Commands\DailySpendableTracker::class,
-        \App\Console\Commands\WeeklyUpdateMail::class
+        \App\Console\Commands\WeeklyUpdateMail::class,
+        \App\Console\Commands\WeeklySpendableTracker::class
     ];
 
     /**
@@ -29,10 +30,13 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('inspire')
                  ->hourly();
+
         $schedule->command('DailySpendableTracker')
                  ->dailyAt('00:00');
         $schedule->command('WeeklyUpdateMail')
                  ->weeklyOn(2, '20:00');
+        $schedule->command('WeeklySpendableTracker')
+            ->everyMinute();
 
     }
 }

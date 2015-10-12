@@ -38,8 +38,8 @@ return [
     | ahead and set this to a sensible default for you out of the box.
     |
     */
-
-    'timezone' => 'UTC',
+    //'timezone' =>'UTC',
+    'timezone' =>'Asia/Bangkok',
 
     /*
     |--------------------------------------------------------------------------
@@ -148,6 +148,8 @@ return [
         //Manual added provider
         Laravel\Socialite\SocialiteServiceProvider::class,
         'Stevebauman\Location\LocationServiceProvider',
+        'Collective\Html\HtmlServiceProvider',
+        'Intervention\Image\ImageServiceProvider'
 
     ],
 
@@ -200,6 +202,9 @@ return [
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Location' => 'Stevebauman\Location\Facades\Location',
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
+        'Image' => 'Intervention\Image\Facades\Image'
     ],
 
 ];

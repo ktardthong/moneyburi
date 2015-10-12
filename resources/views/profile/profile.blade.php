@@ -17,22 +17,17 @@
 
             <div class="row">
                 <div class="row">
-                    <div class="page page-home" ng-include="template.url" ngview ></div>
+                    <div class="page page-right" ng-include="template.url" ngview ></div>
                 </div>
             </div>
 
-        </div>
-
         <div class="col-xs-12">
-
-
-
 
             <nav mfb-menu position="br"
                  effect="slidein"
                  label="Home"
-                 active-icon="fa fa-times"
-                 resting-icon="fa fa-plus"
+                 active-icon="ion-close-round"
+                 resting-icon="ion-navicon"
                  toggling-method="click">
 
               <button   mfb-button
@@ -41,11 +36,13 @@
                         icon="@{{mfb.icon}}" label="@{{ mfb.label }}"></button>
             </nav>
 
+
         </div>
 
 
         <div align="center" class="text-muted">
             {{ $location->cityName }}, {{ $location->countryCode  }} - From your Internet address
         </div>
+
     </div>
 @stop
