@@ -33,8 +33,10 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('DailySpendableTracker')
                  ->dailyAt('00:00');
+
         $schedule->command('WeeklyUpdateMail')
                  ->weeklyOn(2, '20:00');
+
         $schedule->command('WeeklySpendableTracker')
             ->everyMinute();
 

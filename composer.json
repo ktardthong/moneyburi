@@ -10,12 +10,9 @@
         "laravel/socialite": "^2.0",
         "stevebauman/location": "1.2.*",
         "nesbot/carbon": "^1.20",
-<<<<<<< HEAD
-        "guzzlehttp/guzzle": "~5.3|~6.0"
-=======
+        "guzzlehttp/guzzle": "~5.3|~6.0",
         "intervention/image": "^2.3",
         "laravelcollective/html": "~5.0"
->>>>>>> 139dbb6f2651f486c3541f89ec646e21be77f997
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

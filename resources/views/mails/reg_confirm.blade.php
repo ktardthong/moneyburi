@@ -12,12 +12,12 @@
             <div class="row">
             <div class="card card-block">
 
-                <img class="card-img-top img-responsive" src="/img/home_screen.gif" style="margin: 10px 0px 20px 0px;" alt="Card image cap">
+                <img class="card-img-top img-responsive" src="https://www.moneyburi.com/img/home_screen.gif" style="margin: 10px 0px 20px 0px;" alt="Card image cap">
 
-                <h3 class="card-title strong"><b>Congratulations!</b></h3>
+                <h3 class="card-title strong"><b>Congratulations, {{$user->firstname}}!</b></h3>
 
-                <h5 class="card-text">You're officially part of our family! <br><br>
-                    You'd be delighted to know that you're on your way to achieve your financial goals!</h5>
+                <h5 class="card-text">Your finances are now officially in good care! <br><br>
+                    You'd be delighted to know that we're helping you to achieve your financial goals!</h5>
                 {{--<div class="card-block">--}}
 
                <br>

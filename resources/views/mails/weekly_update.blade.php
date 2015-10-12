@@ -11,7 +11,14 @@
         </div>
         <div class="row">
             <div class="card card-block">
-
+                <div class="card-text">
+                    <h5>Dear {{$user->firstname}},<br><br>
+                        Here's your weekly update!
+                    </h5>
+                    <br>
+                    <h5 class="card-text">— Team Moneyburi</h5>
+                    <hr>
+                </div>
                 <div class="container-fluid borderBtm" align="center">
 
                     <div class="row">
@@ -24,7 +31,7 @@
                                 <p class="display-1">100</p>
                             </div>
 
-                            <canvas id="budgetChart" onclick="spendableDough()"></canvas>
+                            <canvas id="budgetChart"></canvas>
                         </div>
                     </div>
 
@@ -33,7 +40,7 @@
 
                             <ul class="list-group container lead">
                                 <div>
-                                    <span class="pull-right">@{{ userData.d_spendable | number: 0 }}</span>
+                                    <span class="pull-right">150</span>
                                     started today
                                 </div>
                                 <div>
@@ -108,7 +115,7 @@
 
 
                 <div class="row borderBtm">
-                    <div class="col-xs-12 col-sm-4">
+                    <div class="col-sm-6">
                         <span>This month</span>
 
                         <div class="center-block clearfix">
@@ -141,7 +148,7 @@
 
 
                     </div>
-                    <div class="col-xs-12 col-sm-8" ng-controller="spendableChartController">
+                    <div class=" col-sm-6" ng-controller="spendableChartController">
                         <spendable-chart></spendable-chart>
                     </div>
                 </div>
@@ -149,7 +156,7 @@
                 <!--Progress bar-->
                 <div class="row borderBtm">
 
-                    <div class="col-xs-12 col-sm-6">
+                    <div class="col-sm-6">
                         <div class="clearfix">
 
                             <span class="lead">Upcoming bill</span>
@@ -180,12 +187,12 @@
                         </span>
                                     @{{ bill.amount }}
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-xs-12 col-sm-6">
+                </div>
+                    <div class="row borderBtm">
+                    <div class="col-sm-6">
 
                         <span class="lead">Credit cards</span>
                         <div class="pull-right">
@@ -198,13 +205,7 @@
                             <card-list></card-list>
                         </div>
                     </div>
-
-
-
                 </div>
-
-
-
             </div>
 
         </div>
@@ -221,11 +222,6 @@
 
 
         <script>
-            function spendableDough()
-            {
-                alert("test");
-            }
-
             var data = [
                 {
                     value: 50,
@@ -264,13 +260,5 @@
                 animateRotate : true
 
             });
-
-            $("#addTransaction").click(function(){
-                $("#spendableOverview").hide();
-                $("#spendableContainer").load('/app/html/card_addTransaction.html');
-            });
-
-
-
         </script>
 @stop

@@ -130,6 +130,9 @@ class PagesController extends Controller
             if (!empty($user))
             {
                 Auth::loginUsingId($user->id);
+                Mail::send('mails.weekly_update', ['user' =>  $user], function ($m) use ($user) {
+                    $m->to($user->email, $user->firstname.(' ').$user->lastname)->subject('Weekly Update from Moneyburi');
+                });
                 return redirect("/profile/");
             }
             else
@@ -192,12 +195,12 @@ class PagesController extends Controller
 
 
                 Mail::send('mails.reg_confirm', ['user' =>  $user], function ($m) use ($user) {
-                    $m->to($user->email)->subject('Welcome to Moneyburi!');
+                    $m->to($user->email, $user->firstname.(' ').$user->lastname)->subject('Welcome to Moneyburi!');
                 });
 
-                Mail::send('mails.weekly_update', ['user' =>  $user], function ($m) use ($user) {
-                    $m->to($user->email)->subject('Weekly Update from Moneyburi');
-                });
+//                Mail::send('mails.weekly_update', ['user' =>  $user], function ($m) use ($user) {
+//                    $m->to($user->email, $user->firstname.(' ').$user->lastname)->subject('Weekly Update from Moneyburi');
+//                });
 
                 Auth::loginUsingId($user->id);
                 return redirect('/profile');

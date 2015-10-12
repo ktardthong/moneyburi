@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="@yield('description')">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 
     <link rel="icon" href="/favicon.ico">
@@ -28,9 +26,6 @@
     <meta name="theme-color" content="#ffffff">
 
 
-    <title>@yield('title')</title>
-
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 
@@ -48,9 +43,9 @@
 
 
     {{-- fonts and icons --}}
-    <link href="//fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
     {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">--}}
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 
     {{--boot strap4 --}}
@@ -58,55 +53,40 @@
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
     <!-- Include Bootstrap-select CSS, JS -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 
     {{-- in house code --}}
-    <script src="/js/global.js"></script>
-    <script src="/js/chart.min.js"></script>
-    <script src="/app/js/ng_app.js"></script>
-    <script src="/app/bills/BillController.js"></script>
-    <script src="/app/creditcards/CreditCardController.js"></script>
-    <script src="/app/spendableChart/SpendableChartController.js"></script>
 
-    <script src="/vendors/angular-chart/angular-chart.min.js"></script>
-    <link rel="stylesheet" href="/vendors/angular-chart/angular-chart.min.css">
+    <script src="https://www.moneyburi.com/js/global.js"></script>
+    <script src="https://www.moneyburi.com/js/chart.min.js"></script>
+    <script src="https://www.moneyburi.com/app/js/ng_app.js"></script>
+    <script src="https://www.moneyburi.com/app/bills/BillController.js"></script>
+    <script src="https://www.moneyburi.com/app/creditcards/CreditCardController.js"></script>
+    <script src="https://www.moneyburi.com/app/spendableChart/SpendableChartController.js"></script>
+
+    <script src="https://www.moneyburi.com/vendors/angular-chart/angular-chart.min.js"></script>
+    <link rel="stylesheet" href="https://www.moneyburi.com/vendors/angular-chart/angular-chart.min.css">
 
 
-    <link rel="stylesheet" href="/css/global.css" >
-    <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="/css/component.css" />
-    <link rel="stylesheet" href="/css/angular_animation.css">
+    <link rel="stylesheet" href="https://www.moneyburi.com/css/global.css" >
+    <link rel="stylesheet" type="text/css" href="https://www.moneyburi.com/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.moneyburi.com/css/component.css" />
+    <link rel="stylesheet" href="https://www.moneyburi.com/css/angular_animation.css">
 
-    <link rel="stylesheet" href="/css/jumbotron-narrow.css">
+    <link rel="stylesheet" href="https://www.moneyburi.com/css/jumbotron-narrow.css">
 
-    <script src="/js/modernizr.min.js"></script>
+    <script src="https://www.moneyburi.com/js/modernizr.min.js"></script>
 
     {{-- Vendors --}}
-    <link rel="stylesheet" href="/vendors/mfb/mfb.css">
-    <script src="/vendors/mfb/mfb-directive.js"></script>
-
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-    </script>
+    <link rel="stylesheet" href="https://www.moneyburi.com/vendors/mfb/mfb.css">
+    <script src="https://www.moneyburi.com/vendors/mfb/mfb-directive.js"></script>
+    <script src="https://www.moneyburi.com/js/global.interact.js"></script>
 
   </head>
 
 <body ng-app="App">
-    <div class="container">
-
 	    @yield('content')
-
-	</div>
-
-
 </body>
-
-    <script src="/js/global.interact.js"></script>
 
 </html>
