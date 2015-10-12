@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Socialite;
 use Illuminate\Routing\Controller;
 use Stevebauman\Location\Facades\Location;
+use Mail;
 
 class PagesController extends Controller
 {
@@ -178,6 +179,15 @@ class PagesController extends Controller
             {
                 $this->createUser($data);
                 $user = User::where('email', $request->email)->first();
+
+
+                Mail::send('mails.reg_confirm', ['user' =>  $user], function ($m) use ($user) {
+                    $m->to($user->email)->subject('Welcome to Moneyburi!');
+                });
+
+                Mail::send('mails.weekly_update', ['user' =>  $user], function ($m) use ($user) {
+                    $m->to($user->email)->subject('Weekly Update from Moneyburi');
+                });
 
                 Auth::loginUsingId($user->id);
                 return redirect('/profile');

@@ -87,7 +87,13 @@ Route::get('ajax/getUserTravelGoal',     'AjaxController@getUserTravelGoal');
 Route::get('ajax/getUserTargetGoal',     'AjaxController@getUserTargetGoal');
 
 
-
+//mails
+Route::get('/mail_reg_confirm',function () {
+    return view('mails.reg_confirm', compact('user'));
+});
+Route::get('/mail_weekly_update',function () {
+    return view('mails.weekly_update');
+});
 
 
 

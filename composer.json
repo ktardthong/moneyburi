@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "laravel/socialite": "^2.0",
         "stevebauman/location": "1.2.*",
-        "nesbot/carbon": "^1.20"
+        "nesbot/carbon": "^1.20",
+        "guzzlehttp/guzzle": "~5.3|~6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

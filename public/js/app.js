@@ -7,10 +7,10 @@ app.config(function($routeProvider) {
             templateUrl: 'profile',
             controller: 'mainController'
         })
-        .when('/showTransaction', {
-            templateUrl: 'showTransaction',
-            controller: TransactionController
-        })
+        //.when('/showTransaction', {
+        //    templateUrl: 'showTransaction',
+        //    controller: TransactionController
+        //})
 
 });
 
@@ -28,16 +28,16 @@ app.controller('mainController', function($scope) {
     }
 });
 
-app.controller('transactionController', function($scope, $http) {
-    //$scope.pageClass = 'show-transaction';
-
-    $http.get("/ajax/billCate")
-        .success(function(response) {
-            $scope.cateCore = response;
-        });
-
-    $http.get("/ajax/transRepeat")
-        .success(function(response) {
-            $scope.transRepeat = response;
-        });
-});
+//app.controller('transactionController', function($scope, $http) {
+//    //$scope.pageClass = 'show-transaction';
+//
+//    $http.get("/ajax/billCate")
+//        .success(function(response) {
+//            $scope.cateCore = response;
+//        });
+//
+//    $http.get("/ajax/transRepeat")
+//        .success(function(response) {
+//            $scope.transRepeat = response;
+//        });
+//});
