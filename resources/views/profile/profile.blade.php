@@ -21,15 +21,13 @@
                 </div>
             </div>
 
-        </div>
-
         <div class="col-xs-12">
 
             <nav mfb-menu position="br"
                  effect="slidein"
                  label="Home"
-                 active-icon="fa fa-times"
-                 resting-icon="fa fa-plus"
+                 active-icon="ion-close-round"
+                 resting-icon="ion-navicon"
                  toggling-method="click">
 
               <button   mfb-button
@@ -37,6 +35,7 @@
                         ng-click="nav(mfb.url)"
                         icon="@{{mfb.icon}}" label="@{{ mfb.label }}"></button>
             </nav>
+
 
         </div>
 

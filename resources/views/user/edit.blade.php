@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <div class="col-xs-12 col-sm-6">
             <label>First Name</label>
-            <input ng-model="ng_userfname" class="form-control borderless" id="editFirstname" placeholder="First Name" required>
+            <input ng-model="ng_userfname" class="form-control input-lg" id="editFirstname" placeholder="First Name" required>
         </div>
 
         <div class="col-xs-12 col-sm-6">

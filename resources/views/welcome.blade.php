@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="container" align="center">
-        <img src="/img/home_screen.gif" style="max-width: 400px;">
+        <img src="/img/home_screen.gif" style="max-width: 300px;" class="img-responsive">
     </div>
     <div class="row featurette">
         <div class="col-md-7">

@@ -50,6 +50,8 @@
     {{-- fonts and icons --}}
     <link href="//fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
 
+
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" rel="stylesheet">
     {{-- http://materializecss.com/navbar.html --}}
     {{--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">--}}
     <!-- Compiled and minified CSS -->
@@ -126,16 +128,27 @@
               <ul class="nav navbar-nav pull-right">
 
                 @if(Auth::user())
+
                     <li class="nav-item" ng-controller="profileController">
-                        <a class="nav-link" href="/user">
-                                <span><img src="@{{ userData.avatar? '/userimg/'+userData.avatar : '/img/user_avatar.gif' }}"
-                                 class="img-circle img-responsive pull-left" width="30px">
-                            Profile</span>
-                        </a>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-link">
+                            <a href="/profile">
+                                <img src="@{{ userData.avatar? '/userimg/'+userData.avatar : '/img/user_avatar.gif' }}"
+                                     class="img-responsive pull-left" width="20px">&nbsp;@{{ userData.firstname }}
+                            </a>
+                           </button>
+                          <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/profile">Profile</a>
+                            <a class="dropdown-item" href="/user">Setting</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/logout">Log out</a>
+                          </div>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/logout">log out</a>
-                    </li>
+
                 @else
                     <li class="nav-item">
                       <a class="nav-link" href="/register">Register</a>
