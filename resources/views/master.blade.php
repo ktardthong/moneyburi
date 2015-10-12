@@ -49,9 +49,15 @@
 
     {{-- fonts and icons --}}
     <link href="//fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
-    {{--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">--}}
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+    {{-- http://materializecss.com/navbar.html --}}
+    {{--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">--}}
+    <!-- Compiled and minified CSS -->
+    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">--}}
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
 
     {{--boot strap4 --}}
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
@@ -89,6 +95,8 @@
     <link rel="stylesheet" href="/vendors/mfb/mfb.css">
     <script src="/vendors/mfb/mfb-directive.js"></script>
 
+
+
     <script>
         $.ajaxSetup({
             headers: {
@@ -120,7 +128,7 @@
                 @if(Auth::user())
                     <li class="nav-item" ng-controller="profileController">
                         <a class="nav-link" href="/user">
-                                <span><img src="@{{ userData.avatar? '/profile/'+userData.avatar : '/img/user_avatar.gif' }}"
+                                <span><img src="@{{ userData.avatar? '/userimg/'+userData.avatar : '/img/user_avatar.gif' }}"
                                  class="img-circle img-responsive pull-left" width="30px">
                             Profile</span>
                         </a>

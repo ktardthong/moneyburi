@@ -17,7 +17,7 @@
 
             <div class="row">
                 <div class="row">
-                    <div class="page page-home" ng-include="template.url" ngview ></div>
+                    <div class="page page-right" ng-include="template.url" ngview ></div>
                 </div>
             </div>
 
@@ -44,5 +44,6 @@
         <div align="center" class="text-muted">
             {{ $location->cityName }}, {{ $location->countryCode  }} - From your Internet address
         </div>
+
     </div>
 @stop

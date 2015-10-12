@@ -21,18 +21,33 @@
 
             {!! csrf_field() !!}
 
-            <h2 class="form-signin-heading" align="center">Welcome!</h2>
+            <h2 class="form-signin-heading" align="center">
+            Welcome!
+            </h2>
 
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            {!! Form::text('first_name','',['class'=>'form-control input input-lg','placeholder'=>'First name','autofocus','required']) !!}
+            {!! Form::text('last_name','',['class'=>'form-control input input-lg','placeholder'=>'Last name','required']) !!}
+
+            <br>
+            {!! Form::text('email','',['class'=>'form-control input input-lg','placeholder'=>'Email','required']) !!}
+
+            <br>
+            {!! Form::password('password',['class'=>'form-control input input-lg','placeholder'=>'Password','required']) !!}
+            {!! Form::password('confirmpassword',['class'=>'form-control input input-lg','placeholder'=>'Confirm Password','required']) !!}
+
+
+            {!! Form::label('birthday', 'Birthday',['class'=> 'lead']) !!}
+            <div>
+                {!! Form::selectMonth('month'); !!}
+                {!! Form::selectRange('day', 1, 31); !!}
+                {!! Form::selectYear('year', date("Y"), date("Y")-90) !!}
+            </div>
 
             <br>
 
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            {!! Form::radio('sex', 'male',['class' => 'field', 'required']) !!}male
+            {!! Form::radio('sex', 'female') !!} female
 
-            <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
-            <input name="confirmpassword" type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
 
             <div align="center" class="text-muted">
                 Or
@@ -53,7 +68,13 @@
               </label>
             </div>
 
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">
+
+            <div class="text-muted">
+                <small>
+                By clicking Sign Up, you agree to our Terms and that you have read our Data Policy, including our Cookie Use.
+                </small>
+            </div>
+            {!! Form::submit('Sign up!',['class'=>'btn btn-lg btn-primary btn-block']); !!}
         </form>
 
      </div> <!-- /container -->

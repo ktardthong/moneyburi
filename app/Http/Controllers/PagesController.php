@@ -146,15 +146,25 @@ class PagesController extends Controller
 
     public function post_register(Request $request)
     {
+
         $page_title     =   "money_bkk!";
         $page_descs     =   "what hit you?";
+        $location = Location::get();
 
+        $city       =   $location->cityName;
+        $country    =   $location->countryName;
 
-        $data = array(  'email'     =>$request->email,
-                        'password'  =>$request->password,
-                        'cpassword' =>$request->confirmpassword
+        $birthdate = $request->year.'-'.$request->month.'-'.$request->day;
+        $data = array(  'email'     =>  $request->email,
+                        'password'  =>  $request->password,
+                        'cpassword' =>  $request->confirmpassword,
+                        'birthdate' =>  $birthdate,
+                        'gender'    =>  $request->sex,
+                        'city'      =>  $city,
+                        'country'   =>  $country,
+                        'firstname' =>  $request->first_name,
+                        'lastname'  =>  $request->last_name
         );
-
 
         //Verification
         if($data['password']!= $data['cpassword'])
@@ -200,8 +210,14 @@ class PagesController extends Controller
     protected function createUser(array $data)
     {
         return User::create([
-            'email'     => $data['email'],
-            'password'  => md5($data['password']),
+            'email'     =>  $data['email'],
+            'password'  =>  md5($data['password']),
+            'birthdate' =>  $data['birthdate'],
+            'gender'    =>  $data['gender'],
+            'city'      =>  $data['city'],
+            'country'   =>  $data['country'],
+            'firstname' =>  $data['firstname'],
+            'lastname'  =>  $data['lastname']
         ]);
     }
 

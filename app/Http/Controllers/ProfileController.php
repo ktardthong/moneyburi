@@ -64,7 +64,7 @@ class ProfileController extends Controller
             $image = Input::file('image');
             $filename  = time() . '.' . $image->getClientOriginalExtension();
 
-            $path = public_path('profile/' . $filename);
+            $path = public_path('userimg/' . $filename);
 
             Image::make($image->getRealPath())->resize(200, 200)->save($path);
             $user = \App\User::find(Auth::user()->id);
