@@ -53,7 +53,7 @@
 
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" rel="stylesheet">
     {{-- http://materializecss.com/navbar.html --}}
-    {{--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">--}}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Compiled and minified CSS -->
     {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">--}}
 
@@ -111,7 +111,7 @@
   </head>
 
 <body ng-app="App">
-     <nav class="navbar navbar-fixed-top white_bg">
+     <nav class="navbar navbar-fixed-top header-mb">
       <div class="container">
             <a class="navbar-brand" href="/">Moneyburi</a>
             <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header">

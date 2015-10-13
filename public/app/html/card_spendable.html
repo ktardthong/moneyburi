@@ -149,12 +149,12 @@
                         </div>
                     </div>
 
-                    <div class="center-block pull-right">
-
-                        <span>
-                            {{ bill.name }}
+                    <div class="center-block pull-right text-muted">
+                        <span>{{ bill.amount | number: 2}}</span>
+                        <br>
+                        <span class="list-title" style="">
+                            <a href="#">{{ bill.name }}</a>
                         </span>
-                        {{ bill.amount }}
                     </div>
 
                 </div>

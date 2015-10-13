@@ -4,12 +4,18 @@
         <div class="lead" >
             <ul class="nav nav-pills nav-stacked">
                 <li class="nav-item clearfix">
+                    <md-input-container style="margin-right: 10px;" flex>
+                        <label>Size</label>
+                        <md-select ng-model="ng_ccIssuer">
+                            <md-option ng-repeat="ccIssuer in ccIssuer" value="{{ ccIssuer.id }}">{{ ccIssuer.name }}</md-option>
+                        </md-select>
+                    </md-input-container>
 
-                    Issuer
+                    <!--Issuer
                     <select ng-model="ng_ccIssuer">
                         <option ng-selected="ccIssuer.selected== BBL"
                                 ng-repeat="ccIssuer in ccIssuer" value="{{ ccIssuer.id }}">{{ ccIssuer.name }}</option>
-                    </select>
+                    </select>-->
                     <p>
                         Type
                         <select ng-model="ng_ccTypes">
@@ -31,11 +37,16 @@
                     <label> of the month</label>
 
                     <div class="row">
+                        Last four digit
+                        <input ng-model="" class="borderless">
+                    </div>
+
+                    <div class="row">
                         <label>Expiration</label>
                         Day
-                        <input ng-model="expMonth" id="expMth">
+                        <input ng-model="expMonth" placeholder="Month" id="expMth">
                         Year
-                        <input ng-model="expYear" id="expYear">
+                        <input ng-model="expYear" placeholder="Year" id="expYear">
                     </div>
 
                     <p>
@@ -64,4 +75,3 @@
     </div>
 
 </div>
-

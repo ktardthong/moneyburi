@@ -292,8 +292,8 @@ app.controller('profileController', function($scope, $http) {
             { name: 'Account'           , url: '/app/html/card_account.html'},
             { name: 'Goals'             , url: '/app/html/card_goals.html'},
             { name: 'Transactions'      , url: '/app/html/card_transactionList.html'},
-            { name: 'Bills'             , url: '/bill'},
-            { name: 'Credit cards'      , url: '/credit_cards'},
+            { name: 'Bills'             , url: '/app/bills/BillView.html'},
+            { name: 'Credit cards'      , url: '/app/creditcards/CreditCardView.html'},
             { name: 'Edit'              , url: '/app/html/card_userEdit.html'}
         ];
 

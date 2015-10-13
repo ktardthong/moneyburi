@@ -39,7 +39,12 @@ class PagesController extends Controller
     {
         $page_title     =   "money_bkk!";
         $page_descs     =   "what hit you?";
-        return view('pages.login',compact('page_title','page_descs'));
+        if(Auth::user()){
+            return redirect("/profile");
+        }
+        else {
+            return view('pages.login', compact('page_title', 'page_descs'));
+        }
     }
 
 
@@ -100,7 +105,13 @@ class PagesController extends Controller
     {
         $page_title     =   "Welcome - Moneyburi";
         $page_descs     =   "";
-        return view('pages.register',compact('page_title','page_descs'));
+
+        if(Auth::user()){
+            return redirect("/profile");
+        }
+        else {
+            return view('pages.register', compact('page_title', 'page_descs'));
+        }
     }
 
 
@@ -279,28 +290,6 @@ class PagesController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
     //View Bill
     public function bill()
@@ -312,6 +301,6 @@ class PagesController extends Controller
     //View Creditcards
     public function creditcards()
     {
-        return view ('pages.creditcardView');
+        return view('pages.creditcardView');
     }
 }

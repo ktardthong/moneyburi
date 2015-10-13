@@ -21,26 +21,31 @@
                 </div>
             </div>
 
-        <div class="col-xs-12">
+            <div class="col-xs-12">
 
-            <nav mfb-menu position="br"
-                 effect="slidein"
-                 label="Home"
-                 active-icon="ion-close-round"
-                 resting-icon="ion-navicon"
-                 toggling-method="click">
+                <nav mfb-menu position="br"
+                     effect="slidein"
+                     label="Home"
+                     active-icon="ion-close-round"
+                     resting-icon="ion-navicon"
+                     toggling-method="click">
 
-              <button   mfb-button
-                        ng-repeat="mfb in float_buttons"
-                        ng-click="nav(mfb.url)"
-                        icon="@{{mfb.icon}}" label="@{{ mfb.label }}"></button>
-            </nav>
+                  <button   mfb-button
+                            ng-repeat="mfb in float_buttons"
+                            ng-click="nav(mfb.url)"
+                            icon="@{{mfb.icon}}" label="@{{ mfb.label }}"></button>
+                </nav>
 
 
-        </div>
+            </div>
+
+
 
 
         <div align="center" class="text-muted">
+
+            <h5>money quote</h5>
+
             {{ $location->cityName }}, {{ $location->countryCode  }} - From your Internet address
         </div>
 
