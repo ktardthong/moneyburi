@@ -194,3 +194,11 @@
 .slide-animate.ng-leave.ng-leave-active {
     /*top:50px;*/
 }
+
+.slide-animate.ng-show-add {
+    animation:0.5s lightSpeedIn ease;
+}
+
+.slide-animate.ng-show-remove {
+    animation:0.5s lightSpeedOut ease;
+}

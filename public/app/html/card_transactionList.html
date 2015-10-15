@@ -1,8 +1,9 @@
-<div class="card card-block" ng-controller="transactionController">
+<div ng-controller="transactionController">
+<div class="card card-block">
     <h4 class="card-title">Add Transaction</h4>
     <form class="transaction">
 
-        <div class="btn-group btn-block" data-toggle="buttons" >
+        <div class="btn-group btn-group-justified" data-toggle="buttons" >
             <label class="btn btn-info" ng-repeat="p in pmtTypes"
                    ng-class="{'active':p.id == $parent.defaultPmtType}" ng-click="pmtSelected(p.id)">
                 <input type="radio" ng-model="$parent.selectedPmtType" ng-value="p.id">
@@ -19,9 +20,11 @@
         </div>
 
         <p>
-            <md-select ng-show="selectedPmtType==2" ng-model="selectedCC"  placeholder="Select Credit Card">
-                <md-option ng-value="cc.id" ng-repeat="cc in creditCards">{{cc.issuer_name}} {{cc.type_name}} {{cc.card_notes}}</md-option>
-            </md-select>
+            <!--<div class="slide-animate" ng-animate="slide">-->
+                <md-select ng-show="selectedPmtType==2" ng-model="selectedCC"  placeholder="Select Credit Card">
+                    <md-option ng-value="cc.id" ng-repeat="cc in creditCards">{{cc.issuer_name}} {{cc.type_name}} {{cc.card_notes}}</md-option>
+                </md-select>
+            <!--</div>-->
         </p>
 
         <p>
@@ -65,42 +68,46 @@
         </p>
 
         <!--<button type="button" class="btn btn-default btn-sm pull-left" ng-click="backAddTransaction()"><i class="fa fa-arrow-left fa"></i> back</button>-->
-        <button ng-click="doAdd()" class="btn btn-info btn-sm pull-right">+ Add</button>
+        <input type="submit" value="Add Transaction" ng-click="doAdd()" class="btn btn-info btn-sm pull-right"></input>
 
     </form>
 </div>
-<div class="card card-block" ng-controller="transactionListController">
-    <div class="accordion" id="accordion2">
-        <div class="list-group" ng-repeat="t in listData">
-            <hr>
-            <ul class="accordion-heading">
-                <!--<div id="circle"> &nbsp;</div>-->
+<!--<div class="card card-block" ng-controller="transactionController">-->
+    <!--<h4 class="card-title">Your Recent Transactions</h4>-->
+    <!--<div class="accordion" id="accordion2">-->
+        <!--<div class="list-group" ng-repeat="t in listData">-->
+            <!--<hr>-->
+            <!--<ul class="accordion-heading">-->
+                <!--&lt;!&ndash;<div id="circle"> &nbsp;</div>&ndash;&gt;-->
 
-                                <span class="fa-stack fa-pull-left" style="margin-top: -5px;">
-                                    <!--<i class="fa fa-circle-o fa-stack-2x"></i>-->
-                                    <i class="{{getCateIcon(t.cate_id)}} fa-stack-1x"></i>
-                                </span>
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" data-target="#collapse{{$index}}"
-                   aria-expanded="true" aria-controls="#collapse{{$index}}">
-                    &emsp;&emsp;You spent {{t.currency[0].currency_sym}}{{t.amount}} on {{t.cate_obj[0].name}} at {{t.location}}
-                </a>
-                <small><i class="{{propertyIcons('datetime')}}"></i>&emsp;|&emsp;{{t.trans_date}}</small>
+                                <!--<span class="fa-stack fa-pull-left" style="margin-top: -5px;">-->
+                                    <!--&lt;!&ndash;<i class="fa fa-circle-o fa-stack-2x"></i>&ndash;&gt;-->
+                                    <!--<i class="{{getCateIcon(t.cate_id)}} fa-stack-1x"></i>-->
+                                <!--</span>-->
+                <!--<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" data-target="#collapse{{$index}}"-->
+                   <!--aria-expanded="true" aria-controls="#collapse{{$index}}">-->
+                    <!--&emsp;&emsp;You spent {{t.currency[0].currency_sym}}{{t.amount}} on {{t.cate_obj[0].name}} at {{t.location}}-->
+                <!--</a>-->
+                <!--<small><i class="{{propertyIcons('datetime')}}"></i>&emsp;|&emsp;{{t.trans_date}}</small>-->
 
 
-                <li id="collapse{{$index}}" class="accordion-inner collapse in">
-                    <!--<div class="accordion-inner">-->
-                    <small> <i class="{{getTransTypeIcon(t.trans_type)}}"></i> {{t.trans_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;
-                        <i class="{{getPmtIcon(t.pmt_type)}}"></i> {{t.pmt_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;
-                        Recurring: {{t.trans_repeat_obj[0].name}}&emsp;&emsp;|&emsp;&emsp;
-                        Added on: {{t.created_at}} </small>
-                    <!--</div>-->
-                </li>
-            </ul>
-        </div>
-    </div>
+                <!--<li id="collapse{{$index}}" class="accordion-inner collapse in">-->
+                    <!--&lt;!&ndash;<div class="accordion-inner">&ndash;&gt;-->
+                    <!--<small> <i class="{{getTransTypeIcon(t.trans_type)}}"></i> {{t.trans_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;-->
+                        <!--<i class="{{getPmtIcon(t.pmt_type)}}"></i> {{t.pmt_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;-->
+                        <!--Recurring: {{t.trans_repeat_obj[0].name}}&emsp;&emsp;|&emsp;&emsp;-->
+                        <!--Added on: {{t.created_at}} </small>-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="card card-block" >
+    <trans-list></trans-list>
 </div>
 
-<div class="card card-block" ng-controller="transactionListController">
+<div class="card card-block">
     <h4 class="card-title">Your Transactions Summary</h4>
     <div align="center" class="boderBtm">
         <div class="btn-group" data-toggle="buttons" align="">
@@ -187,6 +194,7 @@
         <!--</div>-->
 </div>
 
+</div>
 
 <script>
     $(document).ready(function(){

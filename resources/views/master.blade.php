@@ -80,6 +80,7 @@
     <script src="/app/creditcards/CreditCardController.js"></script>
     <script src="/app/spendableChart/SpendableChartController.js"></script>
     <script src="/app/account/userController.js"></script>
+    <script src="/app/transactions/TransactionsController.js"></script>
 
     <script src="/vendors/angular-chart/angular-chart.min.js"></script>
     <link rel="stylesheet" href="/vendors/angular-chart/angular-chart.min.css">

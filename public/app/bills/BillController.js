@@ -62,7 +62,7 @@ app.controller('BillController', function($scope, $http,$mdDialog) {
 
         var billData = billList.billText + billList.billCate;
 
-        var storedNames = JSON.parse(localStorage["billData"]);
+        //var storedNames = JSON.parse(localStorage["billData"]);
 
         billList.totalBill = billList.totalBill + billList.billText;
 
