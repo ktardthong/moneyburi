@@ -39,7 +39,7 @@
     <script src="https://code.angularjs.org/1.4.7/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.4.7/angular-animate.min.js"></script>
     <script src="https://code.angularjs.org/1.4.7/angular-aria.min.js"></script>
-
+    <script src="/angular/angular-sanitize.min.js"></script>
 
 
     {{-- Material Ui--}}
@@ -101,6 +101,9 @@
     <link rel="stylesheet" href="/vendors/mfb/mfb.css">
     <script src="/vendors/mfb/mfb-directive.js"></script>
 
+
+    <script src="/vendors/bootstrapSelect/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="/vendors/bootstrapSelect/bootstrap-select.min.css">
 
 
     <script>
@@ -189,6 +192,7 @@
   ga('send', 'pageview');
 
 </script>
+
 
 </html>
 

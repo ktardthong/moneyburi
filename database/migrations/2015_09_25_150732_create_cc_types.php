@@ -13,8 +13,9 @@ class CreateCcTypes extends Migration
     public function up()
     {
         Schema::create('cc_types', function (Blueprint $table) {
-            $table->integer('id');
-            $table->string('name');          //visa,master.amex etc
+            $table->increments('id');       //ID
+            $table->string('name');        //visa,master.amex etc
+            $table->string('cc_icon');          //Icons
             $table->timestamps();
         });
     }

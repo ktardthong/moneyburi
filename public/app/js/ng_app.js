@@ -1,4 +1,4 @@
-var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js']);
+var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js','ngSanitize']);
 
 app.config(function($mdDateLocaleProvider) {
     $mdDateLocaleProvider.formatDate = function(date) {
@@ -236,8 +236,8 @@ app.controller('profileController', function($scope, $http) {
         });
 
     $scope.float_buttons = [{
-        label: 'Spendable',
-        icon: 'ion-paper-airplane',
+        label: 'Home',
+        icon: 'ion-home',
         url: '/app/html/card_spendable.html'
     },{
         label: 'Account',
@@ -249,7 +249,7 @@ app.controller('profileController', function($scope, $http) {
         url: '/app/html/card_goals.html'
     },{
         label: 'Transactions',
-        icon: 'ion-paperclip',
+        icon: 'ion-arrow-graph-up-right',
         url: '/app/html/card_transactionList.html'
     }];
 
@@ -272,7 +272,6 @@ app.controller('profileController', function($scope, $http) {
 
     $scope.nav = function(path) {
         $scope.template.url = path;
-        console.log(path);
     };
 
     $http.get("/card/getCards")
@@ -304,10 +303,8 @@ app.controller('profileController', function($scope, $http) {
 
 
     $scope.template = $scope.templates[0];
-    console.log($scope.template);
 
     $scope.showEdit = function(page) {
-        console.log('edit '+page);
 
     };
 

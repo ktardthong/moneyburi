@@ -62,21 +62,12 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
         })
 
         .done(function( msg ) {
-            $http.get("/card/getCards")
-                .success(function(response) {
-                    $scope.userCards = response;
-                });
+            $scope.cardListShow = true;
         });
-
-        /*$scope.cardItem.push({
-            type:  $scope.ng_ccTypes,
-            issuer:$scope.ng_ccIssuer,
-            cclimit:$scope.ng_cardLimit,
-            ccnote: $scope.ng_cardNote
-        });
-
-        cardData = JSON.stringify($scope.cardItem);*/
-
+        $http.get("/card/getCards")
+            .success(function(response) {
+                $scope.userCards = response;
+            });
     };
 
     $scope.showAdvanced = function(ev,card) {

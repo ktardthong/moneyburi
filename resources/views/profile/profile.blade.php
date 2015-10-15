@@ -43,10 +43,9 @@
 
 
         <div align="center" class="text-muted">
-
-            <h5>money quote</h5>
-
+            <small>
             {{ $location->cityName }}, {{ $location->countryCode  }} - From your Internet address
+            </small>
         </div>
 
     </div>

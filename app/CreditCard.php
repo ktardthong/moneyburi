@@ -16,7 +16,7 @@ class CreditCard extends  Eloquent{
     {
         if (Auth::user()->id) {
             $data = \App\CreditCard::where('cc_users.flg',1)
-                                    ->where('uid',Auth::user()->id)
+                                    ->where('cc_users.uid',Auth::user()->id)
                                     ->join('cc_issuer', 'cc_users.cc_issuer', '=', 'cc_issuer.id')
                                     ->join('cc_types', 'cc_users.cc_types', '=', 'cc_types.id')
                                     ->select('cc_issuer.name as issuer_name',
@@ -26,10 +26,16 @@ class CreditCard extends  Eloquent{
                                              'cc_users.due_date',
                                              'cc_users.exp_mth',
                                              'cc_users.exp_year',
+                                             'cc_users.last_four',
+                                             'cc_types.cc_icon',
                                              'cc_users.id'
                                             )
                                     ->get();
             return json_encode($data);
+        }
+        else
+        {
+            echo "unauthorize";
         }
     }
 

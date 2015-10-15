@@ -19,10 +19,10 @@ class CreateCcUsers extends Migration
             $table->integer('cc_issuer');               // cc issuer
             $table->integer('cc_types');                // cc types
             $table->integer('cc_limit');                // cc limit
-            $table->integer('last_four');                // last four digits
+            $table->integer('last_four');               // last four digits
             $table->integer('due_date');                // due date of the month
-            $table->integer('exp_mth');                 // expire month
-            $table->integer('exp_year');                // expire year
+            $table->integer('exp_mth')->nullable();     // expire month
+            $table->integer('exp_year')->nullable();    // expire year
             $table->string('card_notes')->nullable();   // user note
             $table->timestamps();
         });

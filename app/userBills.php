@@ -93,7 +93,7 @@ class userBills extends  Eloquent{
     public static function upcomingBill()
     {
         $data = \App\userBills::where('user_bills.flg',1)
-                                ->where('user_bills.due_date','>',date("d"))
+//                                ->where('user_bills.due_date','>',date("d"))
                                 ->where('uid',Auth::user()->id)
                                 ->where('user_bills.is_paid',0)
                                 ->join('category_core', 'user_bills.cate_id', '=', 'category_core.id')

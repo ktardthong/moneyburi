@@ -14,8 +14,8 @@ body{
 }
 
 .list-mb{
-border-bottom: 1px solid #e2e2e2;
-height: 60px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e2e2e2;
 }
 
 .list-number {
@@ -28,7 +28,7 @@ height: 60px;
     color: #333;
     display: inline-block;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: bolder;
     line-height: 1.3em;
 }
 
