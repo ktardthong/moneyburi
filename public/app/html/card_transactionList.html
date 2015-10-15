@@ -1,5 +1,107 @@
-<div class="card card-block" ng-controller="transactionListController" ng-app="App">
+<div class="card card-block" ng-controller="transactionController">
+    <h4 class="card-title">Add Transaction</h4>
+    <form class="transaction">
 
+        <div class="btn-group btn-block" data-toggle="buttons" >
+            <label class="btn btn-info" ng-repeat="p in pmtTypes"
+                   ng-class="{'active':p.id == $parent.defaultPmtType}" ng-click="pmtSelected(p.id)">
+                <input type="radio" ng-model="$parent.selectedPmtType" ng-value="p.id">
+                {{p.name}}
+            </label>
+        </div>
+
+        <div class="btn-group btn-block" data-toggle="buttons">
+            <label class="btn btn-info" ng-repeat="t in transTypes track by t.id" id="trans_type"
+                   ng-class="{'active':t.id == $parent.defaultTransType}" ng-click="transSelected(t.id)">
+                <input type="radio"ng-model="selectedTransType" ng-value="t.id">
+                {{t.name}}
+            </label>
+        </div>
+
+        <p>
+            <md-select ng-show="selectedPmtType==2" ng-model="selectedCC"  placeholder="Select Credit Card">
+                <md-option ng-value="cc.id" ng-repeat="cc in creditCards">{{cc.issuer_name}} {{cc.type_name}} {{cc.card_notes}}</md-option>
+            </md-select>
+        </p>
+
+        <p>
+            <!--<input type="date" ng-model="trans_date" id="trans_date" class="input input-md form-control" value>-->
+            <md-datepicker ng-required="true" ng-model="trans_date"></md-datepicker>
+        </p>
+
+        <p>
+            <md-select ng-required="true" ng-model="cate_id" placeholder="Select Category" >
+                <md-option ng-value="cate.id" ng-repeat="cate in cateCore">{{cate.name}}</md-option>
+            </md-select>
+        </p>
+
+        <!--<p>-->
+
+        <!--<select id="trans_repeat" name=trans_repeat" class="btn btn-secondary btn-block dropdown-toggle" style="line-height: 38px; height: 38px;"-->
+        <!--ng-model="trans_repeat"  ng-options="repeat.name for repeat in transRepeat track by repeat.id">-->
+        <!--<option value="">How Frequent</option>-->
+        <!--</select>-->
+        <!--</p>-->
+
+        <p>
+            <!--<input id="amount" type="number" step="any" pattern="^((\d+)|(\d{1,3})(\,\d{3}|)*)(\.\d{2}|)$" ng-model="amount" placeholder="Amount" class="input input-md form-control">-->
+            <md-input-container md-no-float>
+                <input ng-required="true" ng-model="amount" type="number" step="0.01" placeholder="Amount">
+            </md-input-container>
+        </p>
+
+        <p>
+            <!--<input id="location" type="text" ng-model="location" placeholder="Location" class="input input-md form-control">-->
+            <md-input-container md-no-float>
+                <input ng-required="true" ng-model="location" type="number" placeholder="Location">
+            </md-input-container>
+        </p>
+
+        <p>
+            <!--<input id="note" type="text" ng-model="note" placeholder="Note" class="input input-md form-control">-->
+            <md-input-container md-no-float>
+                <input ng-model="note" type="text" placeholder="Note">
+            </md-input-container>
+        </p>
+
+        <!--<button type="button" class="btn btn-default btn-sm pull-left" ng-click="backAddTransaction()"><i class="fa fa-arrow-left fa"></i> back</button>-->
+        <button ng-click="doAdd()" class="btn btn-info btn-sm pull-right">+ Add</button>
+
+    </form>
+</div>
+<div class="card card-block" ng-controller="transactionListController">
+    <div class="accordion" id="accordion2">
+        <div class="list-group" ng-repeat="t in listData">
+            <hr>
+            <ul class="accordion-heading">
+                <!--<div id="circle"> &nbsp;</div>-->
+
+                                <span class="fa-stack fa-pull-left" style="margin-top: -5px;">
+                                    <!--<i class="fa fa-circle-o fa-stack-2x"></i>-->
+                                    <i class="{{getCateIcon(t.cate_id)}} fa-stack-1x"></i>
+                                </span>
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" data-target="#collapse{{$index}}"
+                   aria-expanded="true" aria-controls="#collapse{{$index}}">
+                    &emsp;&emsp;You spent {{t.currency[0].currency_sym}}{{t.amount}} on {{t.cate_obj[0].name}} at {{t.location}}
+                </a>
+                <small><i class="{{propertyIcons('datetime')}}"></i>&emsp;|&emsp;{{t.trans_date}}</small>
+
+
+                <li id="collapse{{$index}}" class="accordion-inner collapse in">
+                    <!--<div class="accordion-inner">-->
+                    <small> <i class="{{getTransTypeIcon(t.trans_type)}}"></i> {{t.trans_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;
+                        <i class="{{getPmtIcon(t.pmt_type)}}"></i> {{t.pmt_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;
+                        Recurring: {{t.trans_repeat_obj[0].name}}&emsp;&emsp;|&emsp;&emsp;
+                        Added on: {{t.created_at}} </small>
+                    <!--</div>-->
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="card card-block" ng-controller="transactionListController">
+    <h4 class="card-title">Your Transactions Summary</h4>
     <div align="center" class="boderBtm">
         <div class="btn-group" data-toggle="buttons" align="">
 
@@ -55,34 +157,34 @@
 
         <!--</li>-->
     <!--</ul>-->
-        <div class="accordion" id="accordion2">
-            <div class="list-group" ng-repeat="t in listData">
-                <hr>
-                <ul class="accordion-heading">
-                            <!--<div id="circle"> &nbsp;</div>-->
+        <!--<div class="accordion" id="accordion2">-->
+            <!--<div class="list-group" ng-repeat="t in listData">-->
+                <!--<hr>-->
+                <!--<ul class="accordion-heading">-->
+                            <!--&lt;!&ndash;<div id="circle"> &nbsp;</div>&ndash;&gt;-->
 
-                            <span class="fa-stack fa-pull-left" style="margin-top: -5px;">
-                                <!--<i class="fa fa-circle-o fa-stack-2x"></i>-->
-                                <i class="{{getCateIcon(t.cate_id)}} fa-stack-1x"></i>
-                            </span>
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" data-target="#collapse{{$index}}"
-                               aria-expanded="true" aria-controls="#collapse{{$index}}">
-                                &emsp;&emsp;You spent {{t.currency[0].currency_sym}}{{t.amount}} on {{t.cate_obj[0].name}} at {{t.location}}
-                            </a>
-                            <small><i class="{{propertyIcons('datetime')}}"></i>&emsp;|&emsp;{{t.trans_date}}</small>
+                            <!--<span class="fa-stack fa-pull-left" style="margin-top: -5px;">-->
+                                <!--&lt;!&ndash;<i class="fa fa-circle-o fa-stack-2x"></i>&ndash;&gt;-->
+                                <!--<i class="{{getCateIcon(t.cate_id)}} fa-stack-1x"></i>-->
+                            <!--</span>-->
+                            <!--<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" data-target="#collapse{{$index}}"-->
+                               <!--aria-expanded="true" aria-controls="#collapse{{$index}}">-->
+                                <!--&emsp;&emsp;You spent {{t.currency[0].currency_sym}}{{t.amount}} on {{t.cate_obj[0].name}} at {{t.location}}-->
+                            <!--</a>-->
+                            <!--<small><i class="{{propertyIcons('datetime')}}"></i>&emsp;|&emsp;{{t.trans_date}}</small>-->
 
 
-                        <li id="collapse{{$index}}" class="accordion-inner collapse in">
-                            <!--<div class="accordion-inner">-->
-                                <small> <i class="{{getTransTypeIcon(t.trans_type)}}"></i> {{t.trans_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;
-                                    <i class="{{getPmtIcon(t.pmt_type)}}"></i> {{t.pmt_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;
-                                    Recurring: {{t.trans_repeat_obj[0].name}}&emsp;&emsp;|&emsp;&emsp;
-                                    Added on: {{t.created_at}} </small>
-                            <!--</div>-->
-                        </li>
-                </ul>
-            </div>
-        </div>
+                        <!--<li id="collapse{{$index}}" class="accordion-inner collapse in">-->
+                            <!--&lt;!&ndash;<div class="accordion-inner">&ndash;&gt;-->
+                                <!--<small> <i class="{{getTransTypeIcon(t.trans_type)}}"></i> {{t.trans_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;-->
+                                    <!--<i class="{{getPmtIcon(t.pmt_type)}}"></i> {{t.pmt_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;-->
+                                    <!--Recurring: {{t.trans_repeat_obj[0].name}}&emsp;&emsp;|&emsp;&emsp;-->
+                                    <!--Added on: {{t.created_at}} </small>-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
 </div>
 
 

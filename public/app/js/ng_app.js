@@ -1,6 +1,10 @@
 var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js']);
 
-
+app.config(function($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.formatDate = function(date) {
+        return moment(date).format('DD MMMM YYYY');
+    }
+});
 
 
 app.directive('yearDrop',function() {
@@ -413,7 +417,7 @@ app.controller('thisController', function($scope, $http) {
     };
 });
 
-app.controller('transactionController', function($scope, $http) {
+app.controller('transactionController', function($scope, $http, $filter) {
     //$scope.pageClass = 'show-transaction';
 
     $http.get("/ajax/billCate")
@@ -438,6 +442,11 @@ app.controller('transactionController', function($scope, $http) {
             $scope.transTypes = response;
         });
 
+    $http.get("/card/getCards")
+        .success(function(response) {
+            $scope.creditCards = response;
+        });
+
     $scope.defaultPmtType = 1;
     $scope.defaultTransType = 1;
 
@@ -452,24 +461,29 @@ app.controller('transactionController', function($scope, $http) {
         $scope.selectedTransType = id;
     };
 
+    $scope.trans_date = new Date();
+    console.log($scope.trans_date);
+    $scope.selectedCC = 0;
+
     $scope.doAdd = function() {
         $.ajax({
             method: "POST",
             url: "/add_transaction",
             data:  {
-                cate_id:        $scope.cate_id.id,    //$('#cate_id').val(),
+                cate_id:        $scope.cate_id,    //$('#cate_id').val(),
                 trans_type:     $scope.selectedTransType, //$('#trans_type').val(),
-                trans_repeat:   $scope.trans_repeat.id,    //$('#trans_repeat').val(),
+                //trans_repeat:   $scope.trans_repeat.id,    //$('#trans_repeat').val(),
                 pmt_type:       $scope.selectedPmtType, //$('#pmt_type').val(),
+                cc_id:          $scope.selectedCC,
                 amount:         $scope.amount,
                 location:       $scope.location,
                 note:           $scope.note,
-                trans_date:     $scope.trans_date
+                trans_date:     $filter('date')($scope.trans_date, 'yyyy-MM-dd')
             }
         })
             .done(function( msg ) {
                 alert('save!');
-                window.location.href = '/profile';
+                //window.location.href = '/profile';
             });
     };
 });

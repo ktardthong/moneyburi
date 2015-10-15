@@ -43,8 +43,8 @@
 
 
     {{-- Material Ui--}}
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.1/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.1/angular-material.min.js"></script>
 
 
     {{-- fonts and icons --}}
@@ -68,6 +68,9 @@
     <!-- Include Bootstrap-select CSS, JS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+
+    {{-- Moment.js --}}
+    <script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
 
     {{-- in house code --}}
     <script src="/js/global.js"></script>

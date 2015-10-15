@@ -221,7 +221,7 @@
 
 
 
-        <script>
+        <script type="text/javascript">
             var data = [
                 {
                     value: 50,
