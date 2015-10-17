@@ -1,33 +1,38 @@
-<div class="row" ng-controller="goalSummary" style="margin: auto">
+<div class="row" ng-controller="goalSummary" style="margin: auto" class="wrapper">
 
 
+    <div class="scrolls">
+    <div ng-repeat="t in userTravelGoals" class="scroll-container">
 
-    <div ng-repeat="t in travelGoals">
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-plane fa-stack-1x fa-inverse"></i>
+                        </span>
+                </a>
+            </div>
+            <div class="media-body">
 
-
-        <div class="col-xs-12 col-sm-4">
-            <div class="card card-block">
-                <h4 class="card-title"><i class="fa fa-plane fa-x"></i> {{ t.where_to }}</h4>
-                <p class="card-text">Going there {{ t.month }} {{ t.year }}</p>
-                <a href="#" class="card-link"><i class="fa fa-trash fa-2x"></i> Delete</a>
-                <a href="#" class="card-link">Another link</a>
+                <h4 class="lead">{{ t.where_to }}</h4>
+                <progress class="progress" value="10" max="100">0%</progress>
+                <img src="http://maps.googleapis.com/maps/api/staticmap?center=t.lat,t.lng&zoom=5&scale=false&size=600x300&maptype=roadmap&format=png&visual_refresh=true"
+                     class="img-responsive">
             </div>
         </div>
 
-
     </div>
 
-    <div ng-repeat="t in userTargets">
+    <div ng-repeat="t in userTargets" class="scroll-container">
 
-        <div class="col-xs-12 col-sm-4">
             <div class="card card-block">
                 <h4 class="card-title"><i class="fa fa-gift fa-x"></i> {{ t.name }}</h4>
                 <p class="card-text">Price {{ t.price }} Duration {{ t.duration }}</p>
                 <a href="#" class="card-link"><i class="fa fa-trash fa-2x"></i> Delete</a>
                 <a href="#" class="card-link">Another link</a>
             </div>
-        </div>
 
     </div>
-
+    </div>
 </div>

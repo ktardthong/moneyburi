@@ -1,10 +1,11 @@
-var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js','ngSanitize']);
+var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js','ngSanitize','gm','ngMap']);
 
 app.config(function($mdDateLocaleProvider) {
     $mdDateLocaleProvider.formatDate = function(date) {
         return moment(date).format('DD MMMM YYYY');
     }
-});
+})
+
 
 
 app.directive('yearDrop',function() {
@@ -15,46 +16,21 @@ app.directive('yearDrop',function() {
             for (var i = +attrs.offset; i < +attrs.range + 1; i++) {
                 scope.years.push(currentYear + i);
             }
-            scope.s = currentYear;
+            scope.yearSelect = currentYear;
         },
-        template: '<select ng-model="s" ng-options="y for y in years"  id="yearSelect"></select>'
+        templateUrl: '/app/goal/travel/tpl_year.html'
     }
 });
-app.directive('monthSelectList', function(){
-    return {
-        restrict: 'E',
-        priority: 1,
-        scope: {},
-        template: '<z-month-select month="1"></z-month-select>',
-        controller: function($scope) {
-        }
-    };
-});
+
+
+
 app.directive('zMonthSelect', function () {
     return {
         restrict: 'E',
-        priority: 1000,
-        scope: {
-            month: '=month'
-        },
-        template: '<select ng-model="monthSelect" id="monthSelect">' +
-        '<option value="1">Jan</option>' +
-        '<option value="2">Feb</option>' +
-        '<option value="3">Mar</option>' +
-        '<option value="4">Apr</option>' +
-        '<option value="5">May</option>' +
-        '<option value="6">Jun</option>' +
-        '<option value="7">Jul</option>' +
-        '<option value="8">Aug</option>' +
-        '<option value="9">Sep</option>' +
-        '<option value="10">Oct</option>' +
-        '<option value="11">Nov</option>' +
-        '<option value="12">Dec</option>' +
-        '</select>',
-        controller: function($scope) {
-        }
+        templateUrl: '/app/goal/travel/tpl_month.html'
     };
 });
+
 
 
 app.controller('goalSummary', function($scope, $http) {
@@ -74,6 +50,10 @@ app.controller('goalSummary', function($scope, $http) {
 
 app.controller('goalController', function($scope, $http) {
 
+
+
+
+
     $http.get("/ajax/userGoals")
         .success(function(response) {
             $scope.userGoals = response;
@@ -89,16 +69,13 @@ app.controller('goalController', function($scope, $http) {
             $scope.currencies = response;
         });
 
-    $http.get("/ajax/getUserTravelGoal")
-        .success(function(response) {
-            $scope.travelGoals = response;
-        });
 
 
 
-    $scope.months   = [ {id: 1, month: "Jan"}, {id: 2,month: 'Feb'},{id: 3,month: 'Mar'},{id: 4,month: 'Apr'},{id: 5,month: 'May'}, {id: 6,month: 'Jun'},{id: 7,month: 'Jul'},{id: 8,month: 'Aug'},
+
+    /*$scope.months   = [ {id: 1, month: "Jan"}, {id: 2,month: 'Feb'},{id: 3,month: 'Mar'},{id: 4,month: 'Apr'},{id: 5,month: 'May'}, {id: 6,month: 'Jun'},{id: 7,month: 'Jul'},{id: 8,month: 'Aug'},
                         {id: 9,month: 'Sept'},{id: 10,month: 'Oct'},{id: 11,month: 'Nov'},{id: 12,month: 'Dec'}
-                      ];
+                      ];*/
     $scope.goal_templates =
         [
             { name: 'Goal Summary',     url: '/app/html/card_goals/goal_summary.html'},
@@ -110,70 +87,6 @@ app.controller('goalController', function($scope, $http) {
         ];
     $scope.goal_template = $scope.goal_templates[0];
 
-
-    function monthDiff(future)
-    {
-        var start = new Date(future),
-            end   = new Date(),
-            diff = new Date(start -end);
-            month  = diff/1000/60/60/24/31;
-        return Math.round(month);
-    }
-
-    $( "#travelAmount" ).keyup(function() {
-        var future  = $('#yearSelect option:selected').text()+'-'+$('#monthSelect').val();
-        var pmt     =   $('#travelAmount').val()/monthDiff(future);
-        $('#mthPmt').html(monthDiff(future));
-        $('#travelSavingMth').val(pmt);
-    });
-
-    $( "#monthSelect" ).change(function() {
-        var future  = $('#yearSelect option:selected').text()+'-'+$('#monthSelect').val();
-        var pmt     =   $('#travelAmount').val()/monthDiff(future);
-
-        $('#mthPmt').html(monthDiff(future));
-         $('#travelSavingMth').val(pmt);
-
-    });
-
-    $( "#yearSelect" ).change(function() {
-        var future  = $('#yearSelect option:selected').text()+'-'+$('#monthSelect').val();
-        var pmt     =   $('#travelAmount').val()/monthDiff(future);
-
-        $('#mthPmt').html(monthDiff(future));
-        $('#travelSavingMth').val(pmt);
-    });
-
-    $scope.getGoalDropDown = function() {
-        console.log($scope.goal_template);
-    };
-
-    $scope.setGoalTravel = function() {
-
-        $scope.travelGoalForm = false;
-        $scope.addTravelGoal = true;
-
-        var future  = $('#yearSelect option:selected').text()+'-'+$('#monthSelect').val();
-
-        $.ajax({
-            method: "POST",
-            url: "/ajax/setGoalTravel",
-            data:  {    travelLocation: $('#travelLocation').val() ,
-                        travelAmount:   $('#travelAmount').val(),
-                        travelPax:      $('#travelPax').val(),
-                        travelNights:   $('#travelNights').val(),
-                        travelSavingMth:$('#travelSavingMth').val(),
-                        periods:        monthDiff(future),
-                        monthSelect:    $('#monthSelect').val(),
-                        yearSelect:     $('#yearSelect option:selected').text()
-                  }
-        })
-        .done(function( msg ) {
-            //alert('save!');
-            console.log($scope.travelGoalForm)
-        });
-    };
-
 });
 
 
@@ -183,6 +96,15 @@ app.controller('goalTargetController', function($scope, $http) {
                             targetInterest: 0,
                             targetWhere: ' '
                        };
+    $scope.lat = undefined;
+    $scope.lng = undefined;
+
+    $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
+        var location = $scope.autocomplete.getPlace().geometry.location;
+        $scope.lat = location.lat();
+        $scope.lng = location.lng();
+        $scope.$apply();
+    });
 
     $scope.setGoalTarget = function ()
     {
@@ -203,12 +125,13 @@ app.controller('goalTargetController', function($scope, $http) {
 
 
 app.controller('goalHomeController', function($scope, $http) {
-    $scope.homeCal = {  homePrice: 0,
-                        homeDPmt: 0,
-                        homeLoan: homePrice - homeDPmt,
-                        homeInterest: 0,
-                        homePmtDuration:0,
-                        homeMthPmt: 0
+    $scope.homeCal = {
+                        //homePrice: 0,
+                        //homeDPmt: 0,
+                        //homeLoan: homePrice - homeDPmt,
+                        //homeInterest: 0,
+                        //homePmtDuration:0,
+                        //homeMthPmt: 0
                     };
 });
 
@@ -248,9 +171,10 @@ app.controller('profileController', function($scope, $http) {
         icon: 'ion-paperclip',
         url: '/app/html/card_goals.html'
     },{
-        label: 'Transactions',
-        icon: 'ion-arrow-graph-up-right',
+         label: 'Transactions',
+        icon: 'ion-calculator',
         url: '/app/html/card_transactionList.html'
+
     }];
 
 

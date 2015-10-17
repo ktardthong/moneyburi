@@ -17,6 +17,8 @@ class CreateGoalTravel extends Migration
             $table->tinyInteger('flg')->default(1);     //default is active
             $table->integer('uid');                     //user_id
             $table->string('where_to');                 //where travel to
+            $table->decimal('lat', 18, 10)->nullable();//lat
+            $table->decimal('lng', 18, 10)->nullable();//lng
             $table->decimal('budget', 18, 2);           //budget
             $table->integer('pax');                     //number of pax
             $table->integer('nights');                  //number of nights

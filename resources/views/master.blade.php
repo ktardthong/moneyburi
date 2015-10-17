@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="@yield('description')">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-
+    <meta name="_token" content="{!! csrf_token() !!}"/>
 
     <link rel="icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
@@ -81,6 +80,8 @@
     <script src="/app/spendableChart/SpendableChartController.js"></script>
     <script src="/app/account/userController.js"></script>
     <script src="/app/transactions/TransactionsController.js"></script>
+    <script src="/app/goal/travel/goalTravelController.js"></script>
+
 
     <script src="/vendors/angular-chart/angular-chart.min.js"></script>
     <link rel="stylesheet" href="/vendors/angular-chart/angular-chart.min.css">
@@ -104,6 +105,13 @@
 
     <script src="/vendors/bootstrapSelect/bootstrap-select.min.js"></script>
     <link rel="stylesheet" href="/vendors/bootstrapSelect/bootstrap-select.min.css">
+
+
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script src="http://jvandemo.github.io/angularjs-google-maps/dist/angularjs-google-maps.js"></script>
+
+    {{--<script src="//maps.google.com/maps/api/js"></script>--}}
+    <script src="/vendors/ng-map/ng-map.min.js"></script>
 
 
     <script>
@@ -179,8 +187,8 @@
 
 </body>
 
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 <script src="/js/global.interact.js"></script>
+<script src="/vendors/ng-autocomplete/ngAutocomplete.js"></script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

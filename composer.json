@@ -12,7 +12,8 @@
         "nesbot/carbon": "^1.20",
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "intervention/image": "^2.3",
-        "laravelcollective/html": "~5.0"
+        "laravelcollective/html": "~5.0",
+        "devfactory/minify": "1.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

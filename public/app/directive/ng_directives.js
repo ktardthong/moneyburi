@@ -19,7 +19,7 @@ App.directive('monthDrop',function() {
         {id: 9,month: 'Sept'},{id: 10,month: 'Oct'},{id: 11,month: 'Nov'},{id: 12,month: 'Dec'}];
 });
 
-App..directive('format', ['$filter', function ($filter) {
+App.directive('format', ['$filter', function ($filter) {
     return {
         require: '?ngModel',
         link: function (scope, elem, attrs, ctrl) {

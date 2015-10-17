@@ -149,8 +149,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         'Stevebauman\Location\LocationServiceProvider',
         'Collective\Html\HtmlServiceProvider',
-        'Intervention\Image\ImageServiceProvider'
-
+        'Intervention\Image\ImageServiceProvider',
+        'Devfactory\Minify\MinifyServiceProvider'
     ],
 
     /*
@@ -204,7 +204,8 @@ return [
         'Location' => 'Stevebauman\Location\Facades\Location',
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
-        'Image' => 'Intervention\Image\Facades\Image'
+        'Image' => 'Intervention\Image\Facades\Image',
+        'Minify'        => 'Devfactory\Minify\Facades\MinifyFacade',
     ],
 
 ];

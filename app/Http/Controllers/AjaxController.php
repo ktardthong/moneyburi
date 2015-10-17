@@ -11,6 +11,7 @@ use App\CateCore;
 use App\GoalTravel;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 
 
@@ -181,6 +182,8 @@ class AjaxController extends Controller
                         'pax'       => $request->travelPax,
                         'nights'    => $request->travelNights,
                         'periods'   => $request->periods,
+                        'lat'       => $request->lat,
+                        'lng'       => $request->lng,
                         'mth_saving'=> round($request->travelSavingMth,2),
                         'month'     => $request->monthSelect,
                         'year'      => $request->yearSelect
