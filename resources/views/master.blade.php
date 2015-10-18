@@ -146,7 +146,9 @@
                         <div class="btn-group">
                           <button type="button" class="btn btn-link">
                             <a href="/profile">
-                                <img src="@{{ userData.avatar? '/userimg/'+userData.avatar : '/img/user_avatar.gif' }}"
+
+                                <img
+                                     src="<?= !empty(Auth::user()->avatar)?'/userimg/'.Auth::user()->avatar:"/img/user_avatar.gif"?>"
                                      class="img-responsive pull-left" width="20px">&nbsp;@{{ userData.firstname }}
                             </a>
                            </button>
