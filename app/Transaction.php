@@ -26,7 +26,8 @@ class Transaction extends Model
         'cityName',
         'postalCode',
         'countryCode',
-        'created_at'];
+        'created_at',
+        'location_provider'];
 
     public static function getAllTransactionByUId($uid)
     {

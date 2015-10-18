@@ -1,9 +1,9 @@
-<div ng-controller="transactionController">
+<div ng-controller="transactionController" style="max-width: 400px;margin: auto" >
 <div class="card card-block">
     <h4 class="card-title">Add Transaction</h4>
     <form class="transaction">
 
-        <div class="btn-group btn-group-justified" data-toggle="buttons" >
+        <div class="btn-group btn-block" data-toggle="buttons" >
             <label class="btn btn-info" ng-repeat="p in pmtTypes"
                    ng-class="{'active':p.id == $parent.defaultPmtType}" ng-click="pmtSelected(p.id)">
                 <input type="radio" ng-model="$parent.selectedPmtType" ng-value="p.id">
@@ -29,7 +29,7 @@
 
         <p>
             <!--<input type="date" ng-model="trans_date" id="trans_date" class="input input-md form-control" value>-->
-            <md-datepicker ng-required="true" ng-model="trans_date"></md-datepicker>
+            <md-datepicker ng-required="true" ng-model="trans_date" style="min-width: 200px; max-width: 300px;"></md-datepicker>
         </p>
 
         <p>
@@ -55,8 +55,21 @@
 
         <p>
             <!--<input id="location" type="text" ng-model="location" placeholder="Location" class="input input-md form-control">-->
-            <md-input-container md-no-float>
-                <input ng-required="true" ng-model="location" type="number" placeholder="Location">
+            <!--<md-input-container md-no-float>-->
+                <!--<input ng-required="true" ng-model="location" type="number" placeholder="Location">-->
+            <!--</md-input-container>-->
+
+            <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
+
+                <input  ng-required="true"
+                        type="text"
+                        placeholder="Where to?"
+                        gm-places-autocomplete
+                        aria-label="How much?"
+                        class="input input-lg borderless"
+                        ng-model="location" id="location"
+                        required="required" aria-required="true" aria-invalid="true" style="">
+
             </md-input-container>
         </p>
 
@@ -68,7 +81,7 @@
         </p>
 
         <!--<button type="button" class="btn btn-default btn-sm pull-left" ng-click="backAddTransaction()"><i class="fa fa-arrow-left fa"></i> back</button>-->
-        <input type="submit" value="Add Transaction" ng-click="doAdd()" class="btn btn-info btn-sm pull-right"></input>
+        <input type="submit" value="Add Transaction" ng-click="doAdd()" class="btn btn-info btn-block">
 
     </form>
 </div>
@@ -136,7 +149,7 @@
     </div>
 
 
-    <canvas id="transactionList_canvas" height="250" style="max-width: 600px" class="img-responsive"></canvas>
+    <canvas id="transactionList_canvas" height="250" style="max-width: 350px; margin: auto;" class="img-responsive"></canvas>
 
     <div class="row">
         <div class="col-xs-12 col-sm-6" align="center">

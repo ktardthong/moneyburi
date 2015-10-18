@@ -7,7 +7,7 @@
 
 
 
-    <div class="container-fluid" align="center">
+    <div class="container-fluid" align="center" ng-controller="thisController">
 
         <div class="col-xs-12 col-sm-7">
 
@@ -26,26 +26,21 @@
         </div>
 
         <div class="col-xs-12 col-sm-5">
-
-            <div id="spendableContainer" ng-show="showAddTransaction">
-                <div ng-include="'/app/html/card_addTransaction.html'"></div>
-            </div>
-
-            <div id="spendableOverview" ng-hide="showAddTransaction">
+            <div id="spendableOverview">
 
                 <ul class="list-group container lead">
                     <div>
-                        <span class="pull-right">{{ userData.d_spendable | number: 0 }}</span>
-                        started today
+                        <span class="pull-right">{{ userData.d_spendable | number: 2 }}</span>
+                        <span class="pull-left">started today</span>
                     </div>
                     <div>
-                        <span class="pull-right"></span>
-                        spent today
+                        <span class="pull-right">{{spentToday | number: 2}}</span>
+                        <span class="pull-left">spent today</span>
                     </div>
                     <hr>
                     <div>
-                        <span class="pull-right">100</span>
-                        remaining today
+                        <span class="pull-right">{{remainingToday | number: 2}}</span>
+                        <span class="pull-left">remaining today</span>
                     </div>
                     <hr>
                 </ul>

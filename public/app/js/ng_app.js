@@ -1,11 +1,4 @@
-var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js','ngSanitize','gm','ngMap']);
-
-app.config(function($mdDateLocaleProvider) {
-    $mdDateLocaleProvider.formatDate = function(date) {
-        return moment(date).format('DD MMMM YYYY');
-    }
-})
-
+var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js','ngSanitize','gm','ngMap']);git
 
 
 app.directive('yearDrop',function() {
@@ -174,7 +167,6 @@ app.controller('profileController', function($scope, $http) {
          label: 'Transactions',
         icon: 'ion-calculator',
         url: '/app/html/card_transactionList.html'
-
     }];
 
 
@@ -218,7 +210,7 @@ app.controller('profileController', function($scope, $http) {
             { name: 'Spendable'         , url: '/app/html/card_spendable.html'},
             { name: 'Account'           , url: '/app/html/card_account.html'},
             { name: 'Goals'             , url: '/app/html/card_goals.html'},
-            { name: 'Transactions'      , url: '/app/html/card_transactionList.html'},
+            { name: 'Transactions'      , url: '/app/html/card_transactions.html'},
             { name: 'Bills'             , url: '/app/bills/BillView.html'},
             { name: 'Credit cards'      , url: '/app/creditcards/CreditCardView.html'},
             { name: 'Edit'              , url: '/app/html/card_userEdit.html'}
@@ -246,7 +238,7 @@ app.controller('profileController', function($scope, $http) {
 
 });
 
-app.controller('thisController', function($scope, $http) {
+app.controller('thisController', function($scope, $http, $filter) {
     $scope.days     = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10,	11,	12,	13,	14,	15,	16,	17,	18,	19,	20,	21,	22,	23,	24,	25,	26,	27,	28,	29,	30,	31];
     $scope.months   = [{id: 1, month: "Jan"}, {id: 2,month: 'Feb'},{id: 3,month: 'Mar'},{id: 4,month: 'Apr'},{id: 5,month: 'May'}, {id: 6,month: 'Jun'},{id: 7,month: 'Jul'},{id: 8,month: 'Aug'},
         {id: 9,month: 'Sept'},{id: 10,month: 'Oct'},{id: 11,month: 'Nov'},{id: 12,month: 'Dec'}];
@@ -336,4 +328,21 @@ app.controller('thisController', function($scope, $http) {
                 window.location.href = '/init_complete';
             });
     };
+
+
+    $http.get("/getAllTransactions")
+        .success(function(response) {
+            $scope.transactions = response;
+            $scope.todaysTrans =  $filter('filter')($scope.transactions, {trans_date: $filter('date')(new Date(), 'yyyy-MM-dd')}, true);
+
+            $scope.spentToday = 0;
+            angular.forEach($scope.todaysTrans, function(value) {
+                $scope.spentToday += value.amount;
+            });
+
+            $scope.remainingToday = $scope.userData.d_spendable - $scope.spentToday;
+
+        }
+    );
+
 });

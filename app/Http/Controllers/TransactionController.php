@@ -58,7 +58,8 @@ class TransactionController extends Controller
             'cityName'  =>$city,
             'postalCode'=>$location->postalCode,
             'countryCode'=>$country,
-            'created_at' => Carbon::now()
+            'created_at' => Carbon::now(),
+            'location_provider' => $request->location_provider
 
         );
         print_r($data);

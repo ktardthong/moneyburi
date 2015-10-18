@@ -57,11 +57,19 @@ app.controller('transactionController', function($scope, $http, $filter) {
                 pmt_type:         value.pmt_type,
                 pmt_type_obj:     $filter('filter')($scope.pmtTypes, {id: value.pmt_type}, true),
                 amount:           value.amount,
-                location:         value.location,
+                //location:         value.location,
                 note:             value.note,
                 trans_date:       value.trans_date,
                 created_at:       value.created_at,
-                currency:         $filter('filter')($scope.currencies, {id: $scope.userData.currency}, true)
+                currency:         $filter('filter')($scope.currencies, {id: $scope.userData.currency}, true),
+                location:         value.location,
+                cityName:         value.cityName,
+                countryCode:      value.countryCode,
+                postalCode:       value.postalCode,
+                lat:              value.lat,
+                lng:              value.lng,
+                location_provider:value.location_provider,
+                location_id:      value.location
             };
             $scope.listData.push(obj);
         });
@@ -92,10 +100,18 @@ app.controller('transactionController', function($scope, $http, $filter) {
             pmt_type:       $scope.selectedPmtType, //$('#pmt_type').val(),
             cc_id:          $scope.selectedCC,
             amount:         $scope.amount,
-            location:       $scope.location,
+            //location:       $scope.location,
             note:           $scope.note,
-            trans_date:     $filter('date')($scope.trans_date, 'yyyy-MM-dd')
-        };
+            trans_date:     $filter('date')($scope.trans_date, 'yyyy-MM-dd'),
+            cityName:       $scope.cityName,
+            postalCode:     $scope.postalCode,
+            countryCode:    $scope.countryCode,
+            lat:            $scope.lat,
+            lng:            $scope.lng,
+            location_provider: $scope.location_provider,
+            location:       $scope.location_id
+
+    };
         $.ajax({
             method: "POST",
             url: "/add_transaction",
@@ -186,6 +202,77 @@ app.controller('transactionController', function($scope, $http, $filter) {
         var selectedIcon = $filter('filter')(colors, {id: cateId}, true);
         return selectedIcon[0].color.code;
     };
+
+    //$scope.getTransRange = function(range) {
+    //    switch(range) {
+    //        case "all":
+    //            return $scope.listData;
+    //            break;
+    //        case "week":
+    //            //return $filter('range')($scope.listData, {trans_date: }, true);
+    //            break;
+    //
+    //        default:
+    //            return $scope.listData;
+    //    }
+    //};
+
+    $scope.lat = undefined;
+    $scope.lng = undefined;
+
+    $scope.location_provider = 'Google';
+
+    $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
+
+        $scope.location_id = $scope.location.getPlace().id;
+
+
+        var location = $scope.location.getPlace().geometry.location;
+        $scope.lat = location.lat();
+        $scope.lng = location.lng();
+        //$scope.cityName = location.city
+
+        console.log($scope.location.getPlace().address_components);
+        console.log($scope.location.getPlace());
+
+        var address = $scope.location.getPlace().address_components;
+        $scope.address_com = [];
+        angular.forEach(address, function(value){
+            $scope.address_com.push(
+                {
+                    type: value.types[0],
+                    short_name: value.short_name,
+                    long_name: value.long_name
+                }
+            );
+        });
+
+        var locality ='';
+        var administrative_area_level_1 = '';
+        var administrative_area_level_2 = '';
+
+        console.log($scope.address_com);
+        if($filter('filter')($scope.address_com, {type: 'locality'}, true).length > 0) {
+            locality = $filter('filter')($scope.address_com, {type: 'locality'}, true)[0].short_name;
+        }
+        if($filter('filter')($scope.address_com, {type: 'administrative_area_level_1'}, true).length > 0) {
+            administrative_area_level_1 = $filter('filter')($scope.address_com, {type: 'administrative_area_level_1'}, true)[0].short_name;
+        }
+        if($filter('filter')($scope.address_com, {type: 'administrative_area_level_2'}, true).length > 0) {
+            administrative_area_level_2 = $filter('filter')($scope.address_com, {type: 'administrative_area_level_2'}, true)[0].short_name;
+        }
+
+        $scope.cityName = locality+', '+administrative_area_level_1+', '+administrative_area_level_2;
+
+        if($filter('filter')($scope.address_com, {type: 'postal_code'}, true).length > 0) {
+            $scope.postalCode = $filter('filter')($scope.address_com, {type: 'postal_code'}, true)[0].short_name;
+        }
+        if($filter('filter')($scope.address_com, {type: 'country'}, true).length > 0) {
+            $scope.countryCode = $filter('filter')($scope.address_com, {type: 'country'}, true)[0].short_name;
+        }
+
+        $scope.$apply();
+    });
 })
 
 .directive('transList', function() {
