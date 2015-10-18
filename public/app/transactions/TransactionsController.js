@@ -32,6 +32,11 @@ app.controller('transactionController', function($scope, $http, $filter) {
             $scope.creditCards = response;
         });
 
+    $http.get("/bill/getBills")
+        .success(function(response) {
+            $scope.bills = response;
+        });
+
     $http.get("/ajax/userData")
         .success(function(response) {
             $scope.userData = response;
@@ -62,12 +67,12 @@ app.controller('transactionController', function($scope, $http, $filter) {
                 trans_date:       value.trans_date,
                 created_at:       value.created_at,
                 currency:         $filter('filter')($scope.currencies, {id: $scope.userData.currency}, true),
-                location:         value.location,
-                cityName:         value.cityName,
-                countryCode:      value.countryCode,
-                postalCode:       value.postalCode,
-                lat:              value.lat,
-                lng:              value.lng,
+                //location:         value.location,
+                //cityName:         value.cityName,
+                //countryCode:      value.countryCode,
+                //postalCode:       value.postalCode,
+                //lat:              value.lat,
+                //lng:              value.lng,
                 location_provider:value.location_provider,
                 location_id:      value.location
             };
@@ -91,6 +96,7 @@ app.controller('transactionController', function($scope, $http, $filter) {
 
     $scope.trans_date = new Date();
     $scope.selectedCC = 0;
+    $scope.selectedBill = 0;
 
     $scope.doAdd = function() {
         var obj = {
@@ -99,15 +105,16 @@ app.controller('transactionController', function($scope, $http, $filter) {
             //trans_repeat:   $scope.trans_repeat.id,    //$('#trans_repeat').val(),
             pmt_type:       $scope.selectedPmtType, //$('#pmt_type').val(),
             cc_id:          $scope.selectedCC,
+            bill_id:        $scope.selectedBill,
             amount:         $scope.amount,
             //location:       $scope.location,
             note:           $scope.note,
             trans_date:     $filter('date')($scope.trans_date, 'yyyy-MM-dd'),
-            cityName:       $scope.cityName,
-            postalCode:     $scope.postalCode,
-            countryCode:    $scope.countryCode,
-            lat:            $scope.lat,
-            lng:            $scope.lng,
+            //cityName:       $scope.cityName,
+            //postalCode:     $scope.postalCode,
+            //countryCode:    $scope.countryCode,
+            //lat:            $scope.lat,
+            //lng:            $scope.lng,
             location_provider: $scope.location_provider,
             location:       $scope.location_id
 
@@ -168,7 +175,8 @@ app.controller('transactionController', function($scope, $http, $filter) {
     $scope.getTransTypeIcon = function(transTypeId){
         var iconSet = [
             {id: 1,     name: "Expense",  fa: "fa fa-minus-square"},
-            {id: 2,     name: "Income",   fa: "fa fa-plus-square"}
+            {id: 2,     name: "Income",   fa: "fa fa-plus-square"},
+            {id: 3,     name: "Bill",     fa: "fa fa-minus-square"}
         ];
         var selectedIcon = $filter('filter')(iconSet, {id: transTypeId}, true);
         return selectedIcon[0].fa;
@@ -217,8 +225,8 @@ app.controller('transactionController', function($scope, $http, $filter) {
     //    }
     //};
 
-    $scope.lat = undefined;
-    $scope.lng = undefined;
+    //$scope.lat = undefined;
+    //$scope.lng = undefined;
 
     $scope.location_provider = 'Google';
 
@@ -226,50 +234,50 @@ app.controller('transactionController', function($scope, $http, $filter) {
 
         $scope.location_id = $scope.location.getPlace().id;
 
-
-        var location = $scope.location.getPlace().geometry.location;
-        $scope.lat = location.lat();
-        $scope.lng = location.lng();
-        //$scope.cityName = location.city
-
-        console.log($scope.location.getPlace().address_components);
-        console.log($scope.location.getPlace());
-
-        var address = $scope.location.getPlace().address_components;
-        $scope.address_com = [];
-        angular.forEach(address, function(value){
-            $scope.address_com.push(
-                {
-                    type: value.types[0],
-                    short_name: value.short_name,
-                    long_name: value.long_name
-                }
-            );
-        });
-
-        var locality ='';
-        var administrative_area_level_1 = '';
-        var administrative_area_level_2 = '';
-
-        console.log($scope.address_com);
-        if($filter('filter')($scope.address_com, {type: 'locality'}, true).length > 0) {
-            locality = $filter('filter')($scope.address_com, {type: 'locality'}, true)[0].short_name;
-        }
-        if($filter('filter')($scope.address_com, {type: 'administrative_area_level_1'}, true).length > 0) {
-            administrative_area_level_1 = $filter('filter')($scope.address_com, {type: 'administrative_area_level_1'}, true)[0].short_name;
-        }
-        if($filter('filter')($scope.address_com, {type: 'administrative_area_level_2'}, true).length > 0) {
-            administrative_area_level_2 = $filter('filter')($scope.address_com, {type: 'administrative_area_level_2'}, true)[0].short_name;
-        }
-
-        $scope.cityName = locality+', '+administrative_area_level_1+', '+administrative_area_level_2;
-
-        if($filter('filter')($scope.address_com, {type: 'postal_code'}, true).length > 0) {
-            $scope.postalCode = $filter('filter')($scope.address_com, {type: 'postal_code'}, true)[0].short_name;
-        }
-        if($filter('filter')($scope.address_com, {type: 'country'}, true).length > 0) {
-            $scope.countryCode = $filter('filter')($scope.address_com, {type: 'country'}, true)[0].short_name;
-        }
+        //
+        //var location = $scope.location.getPlace().geometry.location;
+        //$scope.lat = location.lat();
+        //$scope.lng = location.lng();
+        ////$scope.cityName = location.city
+        //
+        //console.log($scope.location.getPlace().address_components);
+        //console.log($scope.location.getPlace());
+        //
+        //var address = $scope.location.getPlace().address_components;
+        //$scope.address_com = [];
+        //angular.forEach(address, function(value){
+        //    $scope.address_com.push(
+        //        {
+        //            type: value.types[0],
+        //            short_name: value.short_name,
+        //            long_name: value.long_name
+        //        }
+        //    );
+        //});
+        //
+        //var locality ='';
+        //var administrative_area_level_1 = '';
+        //var administrative_area_level_2 = '';
+        //
+        //console.log($scope.address_com);
+        //if($filter('filter')($scope.address_com, {type: 'locality'}, true).length > 0) {
+        //    locality = $filter('filter')($scope.address_com, {type: 'locality'}, true)[0].short_name;
+        //}
+        //if($filter('filter')($scope.address_com, {type: 'administrative_area_level_1'}, true).length > 0) {
+        //    administrative_area_level_1 = $filter('filter')($scope.address_com, {type: 'administrative_area_level_1'}, true)[0].short_name;
+        //}
+        //if($filter('filter')($scope.address_com, {type: 'administrative_area_level_2'}, true).length > 0) {
+        //    administrative_area_level_2 = $filter('filter')($scope.address_com, {type: 'administrative_area_level_2'}, true)[0].short_name;
+        //}
+        //
+        //$scope.cityName = locality+', '+administrative_area_level_1+', '+administrative_area_level_2;
+        //
+        //if($filter('filter')($scope.address_com, {type: 'postal_code'}, true).length > 0) {
+        //    $scope.postalCode = $filter('filter')($scope.address_com, {type: 'postal_code'}, true)[0].short_name;
+        //}
+        //if($filter('filter')($scope.address_com, {type: 'country'}, true).length > 0) {
+        //    $scope.countryCode = $filter('filter')($scope.address_com, {type: 'country'}, true)[0].short_name;
+        //}
 
         $scope.$apply();
     });

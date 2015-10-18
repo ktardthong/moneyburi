@@ -73,7 +73,7 @@ app.controller('goalTravelController', function($scope, $http) {
                         lng:            $scope.lng,
                         periods:        $scope.mthDiff,
                         monthSelect:    $scope.monthSelect,
-                        yearSelect:     $scope.yearSelect,
+                        yearSelect:     $scope.yearSelect
             }
         })
         .done(function( msg ) {

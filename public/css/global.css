@@ -1,7 +1,7 @@
 body{
     font-family: 'Lato', sans-serif;
     font-weight: 600;
-    color: #333;
+    color: #60605A;
 	padding-top: 65px;
     background-color: #F1F1F1;
     height: auto;
@@ -144,7 +144,7 @@ a {
 .scrolls {
     overflow-x: scroll;
     overflow-y: hidden;
-    height: 200px;
+    height: auto;
     white-space:nowrap
 }
 .scroll-container{
@@ -160,4 +160,12 @@ a {
 .boxPadding{
     padding:8px;
     margin-bottom: 6px;
+}
+
+
+.color_f59{
+    color: #F5918E;
+}
+.color_606{
+    color: #60605A;
 }

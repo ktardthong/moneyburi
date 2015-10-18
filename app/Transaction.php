@@ -16,6 +16,7 @@ class Transaction extends Model
         'trans_repeat',
         'pmt_type',
         'cc_id',
+        'bill_id',
         'amount',
         'location',
         'note',

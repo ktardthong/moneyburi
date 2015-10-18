@@ -1,121 +1,109 @@
-<div class="card card-block">
+<div class="container-fluid">
+    <div style="position: absolute;z-index: 100;right: 0;" class="col-xs-4 hidden-sm-down"
+         ng-include="'/app/spendable/tpl_overview.html'"></div>
 
-    <h4 class="card-title">
-        <div class="pull-right">
-            <a a href="#"><i class="fa fa-plus"></i></a></div>
-    </h4>
-
+    <div style="margin-top: 20px">&nbsp;</div>
 
 
-    <div class="container-fluid" align="center" ng-controller="thisController">
+    <div class="row card card-block">
 
-        <div class="col-xs-12 col-sm-7">
+        <div class="col-xs-12 col-sm-8">
 
             <div style="position: relative;" class="row">
-                <div style="width: 100%; height: 40px; position: absolute;
-                                                    top: 50%; left: 0; margin-top: -20px;
+                <span class="lead">{{date | date:'dd MMM yyyy'}}</span>
+                <div style="width: 100%; height: 10px; position: absolute;
+                                                    top: 50%; left: 0; margin-top: -40px;
                                                     line-height:19px; text-align: center;
-                                                    z-index: 999999999999999">
-                    <p class="display-1">100</p>
-                </div>
+                                                    z-index: 99">
 
-                <canvas id="budgetChart" onclick="spendableDough()"></canvas>
-            </div>
-            <a href="#" class="lead" ng-click="nav(templates[3].url)"> + Add transaction</a>
-
-        </div>
-
-        <div class="col-xs-12 col-sm-5">
-            <div id="spendableOverview">
-
-                <ul class="list-group container lead">
-                    <div>
-                        <span class="pull-right">{{ userData.d_spendable | number: 2 }}</span>
-                        <span class="pull-left">started today</span>
-                    </div>
-                    <div>
-                        <span class="pull-right">{{spentToday | number: 2}}</span>
-                        <span class="pull-left">spent today</span>
-                    </div>
-                    <hr>
-                    <div>
-                        <span class="pull-right">{{remainingToday | number: 2}}</span>
-                        <span class="pull-left">remaining today</span>
-                    </div>
-                    <hr>
-                </ul>
-
-                <p>
-                <ul class="list-group container">
-                    <div>
-                        <span class="pull-right text-success">400</span>
-                        this week
-                    </div>
-                    <div>
-                        <span class="pull-right text-success">2,000</span>
-                        this month
-                    </div>
-                    <div>
-                        <span class="pull-right text-success">18,000</span>
-                        this year
-                    </div>
-                </ul>
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <!-- Goal -->
-    <div class="page page-home" ng-include="'/app/goal/tpl_goal.html'">i'm loading</div>
-
-    <hr class="featurette-divider">
-
-    <div class="row borderBtm">
-        <div class="col-xs-12 col-sm-4">
-            <span>{{ date | date:'MMMM yyyy' }}</span>
-            <div class="pull-right">
-                <small>
-                    <a a href="#">
-                        <i class="fa fa-cog"></i></a>
-                </small>
-            </div>
-
-            <div class="center-block clearfix">
-                <div class="pull-left text-center">
-                    <div class="text-success">
+                    <div class="text-center">
                         <small>
-                            <strong>1000</strong>
+                            <h6>Spendable</h6>
                         </small>
                     </div>
-                </div>
-                <div class="center-block pull-right">
-                    <div class="text-muted">
+
+                    <h4>
+                        <strong>
+                        {{ userData.d_spendable}}
+                        </strong>
+                    </h4>
+
+                    <div class="text-center">
                         <small>
-                            <strong> -1000</strong>
+
+                            from {{ userData.d_spendable}}
+
                         </small>
                     </div>
+
                 </div>
+
+                <canvas
+                        class="chart chart-doughnut"
+                        chart-data="spendableDough.data"
+                        chart-labels="spendableDough.labels"
+                        chart-colours="spendableDough.colours"
+                        chart-options="spendableDough.option"></canvas>
+            </div>
+            <div class="text-center ">
+                <a href="#" class="lead" ng-click="nav(templates[3].url)"> <i class="ion-plus-circled"></i> Add transaction</a>
             </div>
 
-            <progress class="progress progress-success" value="25" max="100"></progress>
-
-            <span>Spending Categories</span>
-            <progress class="progress progress-success" value="25" max="100"></progress>
-
-            <span>Spending Categories</span>
-            <progress class="progress progress-success" value="25" max="100"></progress>
-
-            <span>Spending Categories</span>
-            <progress class="progress progress-success" value="25" max="100"></progress>
-
-
         </div>
-        <div class="col-xs-12 col-sm-8" ng-controller="spendableChartController">
-            <spendable-chart></spendable-chart>
+
+        <div class="row col-xs-12 col-sm-4 hidden-md-up">
+            <div ng-include="'/app/spendable/tpl_overview.html'"></div>
         </div>
-    </div>
+
+
+        <!-- Goal -->
+        <div class="page page-home" ng-include="'/app/goal/tpl_goal.html'">i'm loading</div>
+
+
+        <div class="row borderBtm">
+            <div class="col-xs-12 col-sm-4">
+                <span>{{ date | date:'MMMM yyyy' }}</span>
+                <div class="pull-right">
+                    <small>
+                        <a a href="#">
+                            <i class="fa fa-cog"></i></a>
+                    </small>
+                </div>
+
+                <div class="center-block clearfix">
+                    <div class="pull-left text-center">
+                        <div class="text-success">
+                            <small>
+                                <strong>1000</strong>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="center-block pull-right">
+                        <div class="text-muted">
+                            <small>
+                                <strong> -1000</strong>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <progress class="progress progress-success" value="25" max="100"></progress>
+
+                <span>Spending Categories</span>
+                <progress class="progress progress-success" value="25" max="100"></progress>
+
+                <span>Spending Categories</span>
+                <progress class="progress progress-success" value="25" max="100"></progress>
+
+                <span>Spending Categories</span>
+                <progress class="progress progress-success" value="25" max="100"></progress>
+
+
+            </div>
+            <div class="col-xs-12 col-sm-8" ng-controller="spendableChartController">
+                <spendable-chart></spendable-chart>
+            </div>
+        </div>
 
     <!--Progress bar-->
     <div class="row list-mb">
@@ -179,55 +167,10 @@
 </div>
 
 <script>
-    function spendableDough()
-    {
-        alert("test");
-    }
-
-    var data = [
-        {
-            value: 50,
-            color: "#a0a0a0",
-            highlight: "#fefefe",
-            label: "Spent"
-        },
-        {
-            value: 100,
-            color: "#88d2db",
-            highlight: "#FFC870",
-            label: "Spendable"
-        }
-    ];
-    var ctx = document.getElementById("budgetChart").getContext("2d");
-    var myDoughnutChart = new Chart(ctx).Doughnut(data,{
-        responsive: true,
-        maintainAspectRatio: true,
-
-        //Boolean - Whether we should show a stroke on each segment
-        segmentShowStroke : true,
-
-        //String - The colour of each segment stroke
-        segmentStrokeColor : "#fff",
-
-        //Number - The width of each segment stroke
-        segmentStrokeWidth : 2,
-
-        //Number - The percentage of the chart that we cut out of the middle
-        percentageInnerCutout : 80, // This is 0 for Pie charts
-
-        //Number - Amount of animation steps
-        animationSteps : 100,
-
-        //Boolean - Whether we animate the rotation of the Doughnut
-        animateRotate : true
-
-    });
 
     $("#addTransaction").click(function(){
         $("#spendableOverview").hide();
         $("#spendableContainer").load('/app/html/card_addTransaction.html');
     });
-
-
 
 </script>

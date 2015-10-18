@@ -43,16 +43,11 @@
                   </a>
                 </span>
 
-                <span class="fa-stack fa-lg pull-right">
-                  <a href="#goalContainer" ng-click="goalTemplate.url = '/app/html/card_goals/goal_summary.html'">
-                      <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-check-square-o fa-stack-1x fa-inverse"></i>
-                  </a>
-
-                </span>
             </div>
-            <!--<div ng-include="/app/html/card_goals/goal_summary.html"></div>-->
-            <div class="page page-right" ng-include="goalTemplate.url" ngview ></div>
+
+            <div class="page page-right"
+                 ng-init="goalTemplate.url='/app/html/card_goals/goal_summary.html'"
+                 ng-include="goalTemplate.url" ngview ></div>
 
         </div>
     </div>

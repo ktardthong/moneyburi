@@ -1,4 +1,4 @@
-<div ng-controller="transactionController" style="max-width: 400px;margin: auto" >
+<div ng-controller="transactionController" style="max-width: 400px;margin: auto;" class="card">
 <div class="card card-block">
     <h4 class="card-title">Add Transaction</h4>
     <form class="transaction">
@@ -25,6 +25,10 @@
                     <md-option ng-value="cc.id" ng-repeat="cc in creditCards">{{cc.issuer_name}} {{cc.type_name}} {{cc.card_notes}}</md-option>
                 </md-select>
             <!--</div>-->
+
+            <md-select ng-show="selectedTransType==3" ng-model="selectedBill"  placeholder="Select Bill">
+                <md-option ng-value="b.id" ng-repeat="b in bills">{{b.name}}</md-option>
+            </md-select>
         </p>
 
         <p>
@@ -247,7 +251,7 @@
     var ctx = document.getElementById("transactionList_canvas").getContext("2d");
     new Chart(ctx).Line(tdata, {
         bezierCurve: false,
-        responsive: true,
+        responsive: false,
         maintainAspectRatio:false
 
     });

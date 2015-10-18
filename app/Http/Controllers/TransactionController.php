@@ -48,6 +48,7 @@ class TransactionController extends Controller
             'trans_type' => $request->trans_type,
 //            'trans_repeat' => $request->trans_repeat,
             'cc_id' => $request->cc_id,
+            'bill_id' => $request->bill_id,
             'pmt_type' => $request->pmt_type,
             'amount' => $request->amount,
             'location' => $request->location,
