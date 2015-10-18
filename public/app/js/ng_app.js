@@ -150,12 +150,12 @@ app.controller('goalAutoController', function($scope, $http) {
 app.controller('profileController', function($scope, $http) {
 
     $scope.date = new Date();
+    $scope.userData  = null;
+
+
     $http.get("/ajax/userGoals")
         .success(function(response) {
             $scope.userGoals = response;
-            //$scope.GoalCounted = $scope.userGoals.length;
-            console.log($scope.GoalCounted);
-            console.log($scope.userGoals);
         });
 
     $scope.float_buttons = [{
@@ -182,6 +182,39 @@ app.controller('profileController', function($scope, $http) {
     $http.get("/ajax/userData")
         .success(function(response) {
             $scope.userData = response;
+            //Chart
+            var json = {
+                //"series": ["SeriesA"],
+                "data": [100, 500],
+                "labels": ["Download Sales", "In-Store Sales"],
+                "colours": ["#8D8D8D","#87D2DA"],
+                "option": {
+                    responsive: true,
+                    maintainAspectRatio: true,
+
+                    //Boolean - Whether we should show a stroke on each segment
+                    segmentShowStroke : true,
+
+                    //String - The colour of each segment stroke
+                    segmentStrokeColor : "#fff",
+
+                    //Number - The width of each segment stroke
+                    segmentStrokeWidth : 2,
+
+                    //Number - The percentage of the chart that we cut out of the middle
+                    percentageInnerCutout : 80, // This is 0 for Pie charts
+
+                    //Number - Amount of animation steps
+                    animationSteps : 100,
+
+                    //Boolean - Whether we animate the rotation of the Doughnut
+                    animateRotate : true
+                }
+
+
+
+            };
+            $scope.spendableDough = json;
         });
 
     $http.get("/ajax/currency")
@@ -228,13 +261,9 @@ app.controller('profileController', function($scope, $http) {
 
     $scope.template = $scope.templates[0];
 
-    $scope.showEdit = function(page) {
 
-    };
 
-    $scope.addTransaction = function() {
 
-    };
 
     $scope.addTransaction = function() {
         $scope.showAddTransaction = true;

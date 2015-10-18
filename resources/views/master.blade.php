@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="@yield('description')">
-    <meta name="_token" content="{!! csrf_token() !!}"/>
 
     <link rel="icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
@@ -25,7 +24,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-
+    <meta name="csrf-token" content="{!! csrf_token() !!}">
 
     <title>@yield('title')</title>
 
@@ -113,15 +112,14 @@
     {{--<script src="//maps.google.com/maps/api/js"></script>--}}
     <script src="/vendors/ng-map/ng-map.min.js"></script>
 
-
     <script>
-        $.ajaxSetup({
+    $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-        });
-
+    });
     </script>
+
 
   </head>
 

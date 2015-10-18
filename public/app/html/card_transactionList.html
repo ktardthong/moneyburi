@@ -1,4 +1,4 @@
-<div ng-controller="transactionController">
+<div ng-controller="transactionController" style="max-width: 400px;margin: auto;" class="card">
 <div class="card card-block">
     <h4 class="card-title">Add Transaction</h4>
     <form class="transaction">
@@ -234,7 +234,7 @@
     var ctx = document.getElementById("transactionList_canvas").getContext("2d");
     new Chart(ctx).Line(tdata, {
         bezierCurve: false,
-        responsive: true,
+        responsive: false,
         maintainAspectRatio:false
 
     });
