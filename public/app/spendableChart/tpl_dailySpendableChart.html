@@ -1,0 +1,36 @@
+<div style="position: relative;" class="row">
+    <span class="lead">{{date | date:'dd MMM yyyy'}}</span>
+    <div style="width: 100%; height: 10px; position: absolute;
+                                                    top: 50%; left: 0; margin-top: -40px;
+                                                    line-height:19px; text-align: center;
+                                                    z-index: 99">
+
+        <div class="text-center">
+            <small>
+                <h6>Spendable</h6>
+            </small>
+        </div>
+
+        <h4>
+            <strong>
+                {{ d_spendable - todaySpending }}
+            </strong>
+        </h4>
+
+        <div class="text-center">
+            <small>
+
+                from {{ userData.d_spendable}}
+
+            </small>
+        </div>
+
+    </div>
+
+    <canvas
+            class="chart chart-doughnut"
+            chart-data="spendableDough.data"
+            chart-labels="spendableDough.labels"
+            chart-colours="spendableDough.colours"
+            chart-options="spendableDough.option"></canvas>
+</div>
