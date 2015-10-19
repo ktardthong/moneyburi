@@ -37,10 +37,10 @@ app.controller('transactionController', function($scope, $http, $filter) {
             $scope.bills = response;
         });
 
-    $http.get("/ajax/userData")
+    /*$http.get("/ajax/userData")
         .success(function(response) {
             $scope.userData = response;
-        });
+        });*/
 
     $http.get("/ajax/currency")
         .success(function(response) {

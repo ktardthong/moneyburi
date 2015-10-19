@@ -12,9 +12,8 @@
         </div>
 
         <h4>
-            <strong>
-                {{ d_spendable - todaySpending }}
-            </strong>
+            <strong ng-if="d_spendable - todaySpending !=0">{{ userData.d_spendable - todaySpending }}</strong>
+
         </h4>
 
         <div class="text-center">

@@ -1,31 +1,43 @@
-<div class="container-fluid">
-    <div style="position: absolute;z-index: 100;right: 0;top:20px" class="col-xs-4 hidden-sm-down"
+<div class="container-fluid" >
+    <div style="position: absolute;z-index: 100;right: 0;top:20px" class="col-xs-4 hidden-sm-down card"
          ng-include="'/app/spendable/tpl_overview.html'"></div>
 
     <div style="margin-top: 8px">&nbsp;</div>
 
 
-    <div class="row card card-block">
+    <div class="row">
 
-        <div class="col-xs-12 col-sm-8" ng-controlloer="spendableChartController">
+        <div class="card card-block">
 
-            <daily-spendable-chart></daily-spendable-chart>
-            <div class="text-center ">
-                <a href="#" class="lead" ng-click="nav(templates[3].url)"> <i class="ion-plus-circled"></i> Add transaction</a>
+            <div class="col-xs-12 col-sm-8" ng-controlloer="spendableChartController">
+
+                <daily-spendable-chart></daily-spendable-chart>
+                <div class="text-center ">
+                    <a href="#" class="lead" ng-click="nav(templates[3].url)"> <i class="ion-plus-circled"></i> Add transaction</a>
+                </div>
+
+            </div>
+
+            <div class="row col-xs-12 col-sm-4 hidden-md-up">
+                <div ng-include="'/app/spendable/tpl_overview.html'"></div>
             </div>
 
         </div>
 
-        <div class="row col-xs-12 col-sm-4 hidden-md-up">
-            <div ng-include="'/app/spendable/tpl_overview.html'"></div>
+
+        <div class="container" id="goalContainer">
+            <span class="lead">Set your Goals</span>
+        </div>
+        <div class="card card-block">
+            <div class="page page-home" ng-include="'/app/goal/tpl_goal.html'"></div>
         </div>
 
 
-        <!-- Goal -->
-        <div class="page page-home" ng-include="'/app/goal/tpl_goal.html'">i'm loading</div>
 
-
-        <div class="row borderBtm">
+        <div class="container">
+            <span class="lead">Overview</span>
+        </div>
+        <div class="card card-block">
             <div class="col-xs-12 col-sm-4">
                 <span>{{ date | date:'MMMM yyyy' }}</span>
                 <div class="pull-right">
@@ -71,7 +83,10 @@
         </div>
 
     <!--Progress bar-->
-    <div class="row list-mb">
+    <div class="container">
+        <span class="lead">Bills and Credit card</span>
+    </div>
+    <div class="card card-block">
 
         <div class="col-xs-12 col-sm-6">
             <div class="clearfix">
@@ -81,10 +96,11 @@
                 <div class="pull-right">
                     <small>
                         <a href="#" ng-click="nav(templates[4].url)">
-                            <i class="fa fa-info-circle"></i></a>
+                            <i class="ion-plus-circled"></i></a>
                     </small>
                 </div>
 
+                <div ng-if="!upComing">No bills here</div>
                 <div class="clearfix" ng-repeat="bill in upComing">
 
                     <div class="pull-left text-center">
@@ -115,7 +131,7 @@
             <div class="pull-right">
                 <small>
                     <a href="#" ng-click="nav(templates[5].url)">
-                        <i class="fa fa-info-circle"></i></a>
+                        <i class="ion-plus-circled"></i></a>
                 </small>
             </div>
             <div ng-controller="CardController">

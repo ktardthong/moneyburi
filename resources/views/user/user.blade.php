@@ -13,7 +13,7 @@
 
     {{--<div ng-include="/app/html/card_userEdit.html"></div>--}}
 
-    <div ng-controller="profileController">
+    <div>
 
         <div class="col-xs-12 col-sm-12">
 

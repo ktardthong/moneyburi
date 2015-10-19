@@ -1,6 +1,7 @@
 var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js','ngSanitize','gm','ngMap']);
 
 
+
 app.directive('yearDrop',function() {
     var currentYear = new Date().getFullYear();
     return {
@@ -26,44 +27,29 @@ app.directive('zMonthSelect', function () {
 
 
 
-app.controller('goalSummary', function($scope, $http) {
+app.controller('goalSummary', function($scope, $http,factory_userGoals) {
 
-    $http.get("/ajax/userGoals")
-        .success(function(response) {
-            $scope.userGoals = response;
-            $scope.GoalCounted = $scope.userGoals.length;
-        });
+    /*factory_userGoals.userGoalsFactory().success(function(data){
+        $scope.userGoals=data;
+        $scope.GoalCounted = $scope.userGoals.length;
+    });
 
-    $http.get("/ajax/getUserTargetGoal")
-        .success(function(response) {
-            $scope.userTargets = response;
-        });
+    factory_userGoals.userTargetGoals().success(function(data){
+        $scope.userTargets=data;
+    });*/
 
 });
 
-app.controller('goalController', function($scope, $http) {
+app.controller('goalController', function($scope) {
 
 
-
-
-
-    $http.get("/ajax/userGoals")
-        .success(function(response) {
-            $scope.userGoals = response;
-        });
-
-    $http.get("/ajax/userData")
-        .success(function(response) {
-            $scope.userData = response;
-        });
-
-    $http.get("/ajax/currency")
-        .success(function(response) {
-            $scope.currencies = response;
-        });
-
-
-
+    //factory_userGoals.userGoalsFactory().success(function(data){
+    //    $scope.userGoals=data;
+    //});
+    //
+    //factory_utils.getCurrency().success(function(data){
+    //    $scope.currencies=data;
+    //});
 
 
     /*$scope.months   = [ {id: 1, month: "Jan"}, {id: 2,month: 'Feb'},{id: 3,month: 'Mar'},{id: 4,month: 'Apr'},{id: 5,month: 'May'}, {id: 6,month: 'Jun'},{id: 7,month: 'Jul'},{id: 8,month: 'Aug'},
@@ -140,110 +126,48 @@ app.controller('goalAutoController', function($scope, $http) {
 
 
 
-app.controller('profileController', function($scope, $http) {
+app.controller('profileController', function($scope, $http,factory_userData,factory_userGoals,
+                                            factory_userBills,factory_utils,
+                                            factory_userCards,factory_mfb,factory_userSpending) {
 
     $scope.date = new Date();
-    $scope.userData  = null;
 
+    factory_userData.userDataFactory().success(function(data){
+        $scope.userData=data;
+    });
 
-    $http.get("/ajax/userGoals")
-        .success(function(response) {
-            $scope.userGoals = response;
-        });
+    factory_utils.getCurrency().success(function(data){
+        $scope.currencies=data;
+    });
 
-    $scope.float_buttons = [{
-        label: 'Home',
-        icon: 'ion-home',
-        url: '/app/html/card_spendable.html'
-    },{
-        label: 'Account',
-        icon: 'ion-plus',
-        url: '/app/html/card_account.html'
-    },{
-        label: 'Goals',
-        icon: 'ion-paperclip',
-        url: '/app/html/card_goals.html'
-    },{
-         label: 'Transactions',
-        icon: 'ion-calculator',
-        url: '/app/html/card_transactionList.html'
-    }];
+    factory_userGoals.userGoalsFactory().success(function(data){
+        $scope.userGoals=data;
+    });
 
-    $http.get("/ajax/userData")
-        .success(function(response) {
-            $scope.userData = response;
-        });
+    factory_userGoals.userTravelLocation().success(function(data){
+        $scope.userTravelGoals = data;
+    });
 
-    $http.get("/todaySpending")
-        .success(function(response) {
-            $scope.d_spendable     = response[0]["d_spendable"];
-            $scope.todaySpending   = response[0]["todaySpending"];
-            $scope.todaySpendable  = $scope.d_spendable - $scope.todaySpending;
+    factory_userBills.getBlls().success(function(data){
+        $scope.userBills = data;
+    });
 
-            if($scope.todaySpendable<0){ $scope.todaySpendable =0}
-            //Chart
-            var json = {
-                //"series": ["SeriesA"],
-                "data": [$scope.todaySpending, $scope.todaySpendable],
-                "labels":   ["Spent", "Spendable"],
-                "colours":  ["#8D8D8D","#87D2DA"],
-                "option": {
-                    responsive: true,
-                    maintainAspectRatio: true,
+    factory_userBills.upComing().success(function(data){
+        $scope.upComing = data;
+    });
 
-                    //Boolean - Whether we should show a stroke on each segment
-                    segmentShowStroke : true,
+    factory_userCards.getCards().success(function(data){
+        $scope.userCards = data;
+    });
 
-                    //String - The colour of each segment stroke
-                    segmentStrokeColor : "#fff",
+    $scope.float_buttons = factory_mfb.mfb();
 
-                    //Number - The width of each segment stroke
-                    segmentStrokeWidth : 2,
-
-                    //Number - The percentage of the chart that we cut out of the middle
-                    percentageInnerCutout : 80, // This is 0 for Pie charts
-
-                    //Number - Amount of animation steps
-                    animationSteps : 100,
-
-                    //Boolean - Whether we animate the rotation of the Doughnut
-                    animateRotate : true
-                }
-
-
-
-            };
-            $scope.spendableDough = json;
-        });
-
-    $http.get("/ajax/currency")
-        .success(function(response) {
-            $scope.currencies = response;
-        });
-
-    $http.get("/ajax/getUserTravelGoal")
-        .success(function(response) {
-            $scope.userTravelGoals = response;
-        });
+    factory_userSpending.dailySpending($scope);
 
     $scope.nav = function(path) {
         $scope.template.url = path;
     };
 
-    $http.get("/card/getCards")
-        .success(function(response) {
-            $scope.userCards = response;
-        });
-
-    $http.get("/bill/getBills")
-        .success(function(response) {
-            $scope.userBills = response;
-        });
-
-    $http.get("/bill/upComing")
-        .success(function(response) {
-            $scope.upComing = response;
-        });
     $scope.templates =
         [
             //{ name: 'Home'              , url: '/app/html/card_home.html'},
@@ -253,7 +177,6 @@ app.controller('profileController', function($scope, $http) {
             { name: 'Transactions'      , url: '/app/html/card_transactions.html'},
             { name: 'Bills'             , url: '/app/bills/BillView.html'},
             { name: 'Credit cards'      , url: '/app/creditcards/CreditCardView.html'},
-            { name: 'Edit'              , url: '/app/html/card_userEdit.html'}
         ];
 
 
@@ -274,20 +197,17 @@ app.controller('profileController', function($scope, $http) {
 
 });
 
-app.controller('thisController', function($scope, $http, $filter) {
+app.controller('thisController', function($scope, $http, $filter,factory_userData) {
     $scope.days     = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10,	11,	12,	13,	14,	15,	16,	17,	18,	19,	20,	21,	22,	23,	24,	25,	26,	27,	28,	29,	30,	31];
     $scope.months   = [{id: 1, month: "Jan"}, {id: 2,month: 'Feb'},{id: 3,month: 'Mar'},{id: 4,month: 'Apr'},{id: 5,month: 'May'}, {id: 6,month: 'Jun'},{id: 7,month: 'Jul'},{id: 8,month: 'Aug'},
         {id: 9,month: 'Sept'},{id: 10,month: 'Oct'},{id: 11,month: 'Nov'},{id: 12,month: 'Dec'}];
 
-    $http.get("/ajax/userData")
-        .success(function(response) {
-            $scope.userData = response;
-        });
 
-    $http.get("/ajax/getUserJobs")
-        .success(function(response) {
-            $scope.items = response;
-        });
+    factory_userData.userJobs().success(function(data){
+        $scope.items = data;
+    })
+
+
 
 
 

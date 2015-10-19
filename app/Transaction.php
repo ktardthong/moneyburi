@@ -47,10 +47,9 @@ class Transaction extends Model
         $data = DB::table('transaction')
                 ->where('uid', Auth::user()->id)
                 ->join('users','transaction.uid','=','users.id')
-                ->where('trans_date',Carbon::now()->subDay()->format('Y-m-d'))
+                ->where('trans_date',date('Y-m-d'))
                 ->select('users.d_spendable',DB::raw('sum(transaction.amount) as todaySpending'))
                 ->get() ;
-//                ->sum('amount');
         return json_encode($data);
     }
 }

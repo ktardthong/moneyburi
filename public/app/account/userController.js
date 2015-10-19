@@ -1,9 +1,5 @@
 app.controller('userController', function($scope, $http) {
 
-    $http.get("/ajax/userData")
-        .success(function(response) {
-            $scope.userData = response;
-        });
     $http.get("/ajax/getUserJobs")
         .success(function(response) {
             $scope.items = response;

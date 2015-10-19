@@ -74,6 +74,7 @@
     <script src="/js/global.js"></script>
     <script src="/js/chart.min.js"></script>
     <script src="/app/js/ng_app.js"></script>
+    <script src="/app/js/ng_factory.js"></script>
     <script src="/app/bills/BillController.js"></script>
     <script src="/app/creditcards/CreditCardController.js"></script>
     <script src="/app/spendableChart/SpendableChartController.js"></script>
@@ -142,14 +143,13 @@
 
                 @if(Auth::user())
 
-                    <li class="nav-item" ng-controller="profileController">
+                    <li class="nav-item">
                         <div class="btn-group">
                           <button type="button" class="btn btn-link">
                             <a href="/profile">
-
                                 <img
                                      src="<?= !empty(Auth::user()->avatar)?'/userimg/'.Auth::user()->avatar:"/img/user_avatar.gif"?>"
-                                     class="img-responsive pull-left" width="20px">&nbsp;@{{ userData.firstname }}
+                                     class="img-responsive pull-left" width="20px">&nbsp;<?=Auth::user()->firstname?>
                             </a>
                            </button>
                           <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -178,7 +178,7 @@
     </nav>
 
 
-    <div class="container">
+    <div class="container" ng-controller="profileController">
 
 	    @yield('content')
 
