@@ -69,4 +69,10 @@ class TransactionController extends Controller
         //return redirect('/profile');
     }
 
+    //Get user total day spending
+    public function todaySpending()
+    {
+        return \App\Transaction::todaySpending();
+    }
+
 }

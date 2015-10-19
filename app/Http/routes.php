@@ -20,9 +20,10 @@ Route::get('/profile/update_info','ProfileController@edit');
 Route::post('/profile/update','ProfileController@update');
 
 //Transaction
-Route::get('/showTransaction','TransactionController@show');
-Route::post('/add_transaction', 'TransactionController@add_transaction');
-Route::get('/getAllTransactions','TransactionController@getAllTransactionsForCurrentUser');
+Route::get('/showTransaction'   ,   'TransactionController@show');
+Route::post('/add_transaction'  ,   'TransactionController@add_transaction');
+Route::get('/getAllTransactions',   'TransactionController@getAllTransactionsForCurrentUser');
+Route::get('/todaySpending'     ,   'TransactionController@todaySpending');
 
 
 //Upload image

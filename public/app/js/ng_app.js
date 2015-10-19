@@ -169,17 +169,24 @@ app.controller('profileController', function($scope, $http) {
         url: '/app/html/card_transactionList.html'
     }];
 
-
-
     $http.get("/ajax/userData")
         .success(function(response) {
             $scope.userData = response;
+        });
+
+    $http.get("/todaySpending")
+        .success(function(response) {
+            $scope.d_spendable     = response[0]["d_spendable"];
+            $scope.todaySpending   = response[0]["todaySpending"];
+            $scope.todaySpendable  = $scope.d_spendable - $scope.todaySpending;
+
+            if($scope.todaySpendable<0){ $scope.todaySpendable =0}
             //Chart
             var json = {
                 //"series": ["SeriesA"],
-                "data": [100, 500],
-                "labels": ["Download Sales", "In-Store Sales"],
-                "colours": ["#8D8D8D","#87D2DA"],
+                "data": [$scope.todaySpending, $scope.todaySpendable],
+                "labels":   ["Spent", "Spendable"],
+                "colours":  ["#8D8D8D","#87D2DA"],
                 "option": {
                     responsive: true,
                     maintainAspectRatio: true,

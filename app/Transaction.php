@@ -2,8 +2,10 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Transaction extends Model
 {
@@ -36,6 +38,19 @@ class Transaction extends Model
             ->select('cate_id', 'trans_type', 'trans_repeat', 'pmt_type', 'cc_id', 'amount', 'location', 'note', 'trans_date', 'created_at')
             ->where('uid', $uid)
             ->get();
+        return json_encode($data);
+    }
+
+    //User spending today
+    public static function todaySpending()
+    {
+        $data = DB::table('transaction')
+                ->where('uid', Auth::user()->id)
+                ->join('users','transaction.uid','=','users.id')
+                ->where('trans_date',Carbon::now()->subDay()->format('Y-m-d'))
+                ->select('users.d_spendable',DB::raw('sum(transaction.amount) as todaySpending'))
+                ->get() ;
+//                ->sum('amount');
         return json_encode($data);
     }
 }
