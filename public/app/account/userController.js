@@ -55,9 +55,9 @@ app.controller('userController', function($scope, $mdToast) {
                 editMonthlyIncome:      $('#editMonthlyIncome').val() ,
                 editMonthlyBill:        $('#editMonthlyBill').val(),
                 editMonthlySaving:      $('#editMonthlySaving').val(),
-                editMonthlySpendable:   $('#editMonthlySpendable').html(),
+                editMonthlySpendable:   $scope.ng_spendable,
                 editDaySaving:          $('#editDaySaving').html(),
-                editDaySpendable:       $('#editDaySpendable').html()
+                editDaySpendable:       $scope.ng_spendable/30
                 //job:   $('#jobtype').val()
             }
         })

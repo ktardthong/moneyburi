@@ -73,11 +73,10 @@ app.controller('spendableChartController', function($scope, $http,$window) {
                 $scope.todaySpendable  = $scope.d_spendable - $scope.todaySpending;
 
                 if($scope.todaySpendable<0){ $scope.todaySpendable =0}
+
                 //Chart
                 var json = {
-                    //"series": ["SeriesA"],
-
-                    "data": [ numeral($scope.todaySpending).format('0,0'), numeral($scope.todaySpendable).format('0,0')],
+                    "data": [  $scope.todaySpending, $scope.todaySpendable],
                     "labels":   ["Spent", "Spendable"],
                     "colours":  ["#8D8D8D","#87D2DA"],
                     "option": {

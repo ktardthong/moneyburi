@@ -6,9 +6,6 @@ var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','cha
 
 
 
-
-
-
 app.controller('goalAutoController', function($scope, $http) {
     $scope.autoCal = {  autoPrice: 0,
                         autoDPmt: 0,

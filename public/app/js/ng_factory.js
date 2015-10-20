@@ -92,6 +92,7 @@ app.factory('factory_mfb',function($http){
 app.factory('factory_userSpending',function($http){
    return {
         dailySpending: function($scope){
+
             return  $http.get("/todaySpending")
                     .success(function(response) {
                     var windowTodaySpending = typeof response[0]["todaySpending"] != 'undefined' ? response[0]["todaySpending"] : 0;
