@@ -58,6 +58,16 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
         $scope.userCards = data;
     });
 
+    factory_userCards.ccIssuer().success(function(data){
+        $scope.ccIssuer = data;
+    });
+    factory_userCards.ccTypes().success(function(data){
+        $scope.ccTypes = data;
+    });
+
+
+
+
     $scope.float_buttons = factory_mfb.mfb();
 
     factory_userSpending.dailySpending($scope);

@@ -12,14 +12,14 @@
         </div>
 
         <h4>
-            <strong ng-if="d_spendable - todaySpending !=0">{{ userData.d_spendable - todaySpending }}</strong>
+            <strong ng-if="d_spendable - todaySpending !=0">{{ userData.d_spendable - todaySpending | currency: '' }}</strong>
 
         </h4>
 
         <div class="text-center">
             <small>
 
-                from {{ userData.d_spendable}}
+                from {{ userData.d_spendable | currency: '' }}
 
             </small>
         </div>

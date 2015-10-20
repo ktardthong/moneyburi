@@ -29,7 +29,8 @@ class CreditCardController extends Controller
                 'ccnote'    => $request->ccnote,
                 'due_date'  => $request->billDue,
                 'exp_mth'   => $request->expMth,
-                'exp_year'  => $request->expYear
+                'exp_year'  => $request->expYear,
+                'last_four' => $request->lastFour
             ];
 
 

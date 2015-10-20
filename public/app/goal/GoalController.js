@@ -58,17 +58,3 @@ app.controller('goalController', function($scope) {
 
 });
 
-
-app.controller('goalSummary', function($scope, $http,factory_userGoals) {
-
-    /*factory_userGoals.userGoalsFactory().success(function(data){
-     $scope.userGoals=data;
-     $scope.GoalCounted = $scope.userGoals.length;
-     });
-
-     factory_userGoals.userTargetGoals().success(function(data){
-     $scope.userTargets=data;
-     });*/
-
-});
-

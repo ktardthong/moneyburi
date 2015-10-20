@@ -69,6 +69,9 @@
 
     {{-- Moment.js --}}
     <script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
+    {{-- nummeral--}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
+
 
     {{-- in house code --}}
     <script src="/js/global.js"></script>
@@ -150,7 +153,7 @@
                             <a href="/profile">
                                 <img
                                      src="<?= !empty(Auth::user()->avatar)?'/userimg/'.Auth::user()->avatar:"/img/user_avatar.gif"?>"
-                                     class="img-responsive pull-left" width="20px">&nbsp;<?=Auth::user()->firstname?>
+                                     class="img-responsive pull-left" width="30px">&nbsp;<?=Auth::user()->firstname?>
                             </a>
                            </button>
                           <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

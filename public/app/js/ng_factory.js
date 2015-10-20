@@ -54,6 +54,12 @@ app.factory('factory_userCards', function($http) {
     return {
         getCards: function (){
             return $http.get("/card/getCards");
+        },
+        ccIssuer: function(){
+            return $http.get("/ajax/ccIssuer");
+        },
+        ccTypes: function(){
+            return $http.get("/ajax/ccTypes");
         }
     }
 });

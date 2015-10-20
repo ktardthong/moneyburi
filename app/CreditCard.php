@@ -54,7 +54,8 @@ class CreditCard extends  Eloquent{
                     'card_notes'    => $data['ccnote'],
                     'due_date'      => $data['due_date'],
                     'exp_mth'       => $data['exp_mth'],
-                    'exp_year'      => $data['exp_year']
+                    'exp_year'      => $data['exp_year'],
+                    'last_four'     => $data['last_four']
                 ]
             );
         }

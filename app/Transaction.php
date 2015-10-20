@@ -50,7 +50,8 @@ class Transaction extends Model
                 ->where('trans_date',date('Y-m-d'))
                 ->select('users.d_spendable',DB::raw('sum(transaction.amount) as todaySpending'))
                 ->get() ;
-        if(empty($data->todaySpending))
+
+        if(empty($data[0]->todaySpending))
         {
             $data = DB::table('users')->where('id',Auth::user()->id)->select('users.d_spendable')->get();
         }

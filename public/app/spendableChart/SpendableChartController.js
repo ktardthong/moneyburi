@@ -76,7 +76,8 @@ app.controller('spendableChartController', function($scope, $http,$window) {
                 //Chart
                 var json = {
                     //"series": ["SeriesA"],
-                    "data": [$scope.todaySpending, $scope.todaySpendable],
+
+                    "data": [ numeral($scope.todaySpending).format('0,0'), numeral($scope.todaySpendable).format('0,0')],
                     "labels":   ["Spent", "Spendable"],
                     "colours":  ["#8D8D8D","#87D2DA"],
                     "option": {

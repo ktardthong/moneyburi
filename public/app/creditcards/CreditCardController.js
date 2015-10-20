@@ -5,27 +5,6 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
     var cardList = this;
     $scope.cardItem = [];
 
-    $http.get("/ajax/currency")
-        .success(function(response) {
-            $scope.currencies = response;
-        });
-
-    $http.get("/ajax/ccIssuer")
-        .success(function(response) {
-            $scope.ccIssuer = response;
-        });
-
-    $http.get("/ajax/ccTypes")
-        .success(function(response) {
-            $scope.ccTypes = response;
-        });
-
-    $http.get("/card/getCards")
-        .success(function(response) {
-            $scope.userCards = response;
-        });
-
-
     $scope.removeCard = function(container_id){
 
         $.ajax({
@@ -57,7 +36,8 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
                 ccnote:     $scope.ng_cardNote,
                 billDue:    $('#billDue').val(),
                 expMth:     $scope.expMonth,
-                expYear:    $scope.expYear
+                expYear:    $scope.expYear,
+                lastFour:   $scope.lastFour
             }
         })
 
@@ -88,6 +68,8 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
             $scope.status = 'You cancelled the dialog.';
         })
     };
+
+
     function DialogController($scope, $mdDialog) {
         //$scope.card_edit = card;
 

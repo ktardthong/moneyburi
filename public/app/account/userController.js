@@ -38,7 +38,8 @@ app.controller('userController', function($scope, $mdToast) {
         .done(function( msg ) {
             $("#userdata_alert_message").show();
             window.setTimeout(function() {
-                $("#userdata_alert_message").fadeTo(500, 0).slideUp(500, function(){
+                $("#userdata_alert_message" +
+                "").fadeTo(500, 0).slideUp(500, function(){
                     $(this).remove();
                 });
             }, 3000);
