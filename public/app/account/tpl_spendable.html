@@ -1,8 +1,21 @@
 <div class="row white_bg" ng-controller="userController" style="padding-top: 15px;margin-bottom: 10px">
 
+    <div ng-if="ng_spendable < 0" class="alert-danger">Your Spendable is negative</div>
+
+    <div id="alert_message" class="alert alert-success alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+        <strong>Save!</strong>
+    </div>
+
     <div class="col-xs-12 col-sm-6">
-        <canvas id="pie" class="chart chart-pie"
-                chart-data="data" chart-labels="labels" chart-legend="true">
+        <canvas id="pie" class="chart chart-doughnut"
+                chart-data="data"
+                chart-labels="labels"
+                chart-legend="true"
+                chart-colours="colours">
         </canvas>
 
         <!-- Daily saving and spendable -->
@@ -46,13 +59,13 @@
             <hr>
         </div>
     </div>
-
-
-
-
-
 <div>
 
-<button class="btn btn-primary btn-block" ng-click="saveInfo()">Save</button>
+<button ng-if="ng_spendable > 0"
+        class="btn btn-primary btn-block" ng-click="saveInfo()">Save</button>
 
 </div>
+
+<script>
+    $('#alert_message').hide();
+</script>

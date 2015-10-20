@@ -75,14 +75,15 @@ Route::get('spendableTracker/getMonth',  'SpendableController@getMonth');
 
 
 
-
+//User Setting
+Route::post('ajax/updateUserInfo',  'AjaxController@updateUserInfo');
+Route::post('ajax/updateUserData',  'AjaxController@updateUserData');
 
 
 
 //GOALS
 Route::get('ajax/userGoals',   'GoalsController@getUserGoals');
 Route::post('ajax/setGoalTravel',   'AjaxController@setGoalTravel');
-Route::post('ajax/updateUserInfo',  'AjaxController@updateUserInfo');
 Route::post('ajax/setGoalTarget',   'AjaxController@setGoalTarget');
 Route::get('ajax/getUserTravelGoal',     'AjaxController@getUserTravelGoal');
 Route::get('ajax/getUserTargetGoal',     'AjaxController@getUserTargetGoal');

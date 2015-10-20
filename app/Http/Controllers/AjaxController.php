@@ -162,10 +162,18 @@ class AjaxController extends Controller
             $data =[
                     'uid'       =>Auth::user()->id,
                     'price'     =>$request->targetPrice,
-                    'duration'  =>$request->targetNumPmt,
-                    'interest'  =>$request->targetInterest,
-                    'where'     =>$request->where
-            ];
+                    'where'     =>$request->where,
+                    'lat'       =>$request->lat,
+                    'lng'       =>$request->lng,
+                    'pmt'       => $request->targetNumPmt,
+                    'periods'   => $request->periods,
+                    'lat'       => $request->lat,
+                    'lng'       => $request->lng,
+                    'mth_saving'=> round($request->savingMth,2),
+                    'month'     => $request->monthSelect,
+                    'year'      => $request->yearSelect,
+                    'created_at'=> date('Y-m_d')
+                  ];
             DB::table('goal_general')->insert($data);
         }
     }
@@ -261,18 +269,26 @@ class AjaxController extends Controller
     }
 
 
+    // Update user data
+    public function updateUserData(Request $request)
+    {
+        if(Auth::user())
+        {
+            $data = [
+                        'firstname'     =>  $request->firstname,
+                        'lastname'      =>  $request->lastname,
+                        'email'         =>  $request->email,
+                        'job'           =>  $request->job
+                    ];
+            DB::table('users')
+                ->where('id', Auth::user()->id)
+                ->update($data);
+        }
+    }
+
+    /*Update user info from Setting*/
     public function updateUserInfo(Request $request)
     {
-
-        /*
-            editMonthlyIncome:      $('#editMonthlyIncome').val() ,
-            editMonthlyBill:        $('#editMonthlyBill').val(),
-            editMonthlySaving:      $('#editMonthlySaving').val(),
-            editMonthlySpendable:   $('#editMonthlySpendable').html(),
-            editDaySaving:          $('#editDaySaving').html(),
-            editDaySpendable:       $('#editDaySpendable').html()
-         * */
-
         if(Auth::user())
         {
             $data = [
@@ -286,7 +302,6 @@ class AjaxController extends Controller
             DB::table('users')
                 ->where('id', Auth::user()->id)
                 ->update($data);
-            print_r($data);
         }
     }
 

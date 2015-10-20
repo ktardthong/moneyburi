@@ -28,6 +28,15 @@ $('#creditCard_false').click(function() {
 $('#addCreditCard').hide();
 
 
+function monthDiff(future)
+{
+    var start = new Date(future),
+        end   = new Date(),
+        diff = new Date(start -end);
+    month  = diff/1000/60/60/24/31;
+    return Math.round(month);
+}
+
 function listLocalStorage()
 {
     for (var i = 0; i < localStorage.length; i++){

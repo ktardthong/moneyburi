@@ -2,117 +2,11 @@ var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','cha
 
 
 
-app.directive('yearDrop',function() {
-    var currentYear = new Date().getFullYear();
-    return {
-        link: function (scope, element, attrs) {
-            scope.years = [];
-            for (var i = +attrs.offset; i < +attrs.range + 1; i++) {
-                scope.years.push(currentYear + i);
-            }
-            scope.yearSelect = currentYear;
-        },
-        templateUrl: '/app/goal/travel/tpl_year.html'
-    }
-});
 
 
 
-app.directive('zMonthSelect', function () {
-    return {
-        restrict: 'E',
-        templateUrl: '/app/goal/travel/tpl_month.html'
-    };
-});
 
 
-
-app.controller('goalSummary', function($scope, $http,factory_userGoals) {
-
-    /*factory_userGoals.userGoalsFactory().success(function(data){
-        $scope.userGoals=data;
-        $scope.GoalCounted = $scope.userGoals.length;
-    });
-
-    factory_userGoals.userTargetGoals().success(function(data){
-        $scope.userTargets=data;
-    });*/
-
-});
-
-app.controller('goalController', function($scope) {
-
-
-    //factory_userGoals.userGoalsFactory().success(function(data){
-    //    $scope.userGoals=data;
-    //});
-    //
-    //factory_utils.getCurrency().success(function(data){
-    //    $scope.currencies=data;
-    //});
-
-
-    /*$scope.months   = [ {id: 1, month: "Jan"}, {id: 2,month: 'Feb'},{id: 3,month: 'Mar'},{id: 4,month: 'Apr'},{id: 5,month: 'May'}, {id: 6,month: 'Jun'},{id: 7,month: 'Jul'},{id: 8,month: 'Aug'},
-                        {id: 9,month: 'Sept'},{id: 10,month: 'Oct'},{id: 11,month: 'Nov'},{id: 12,month: 'Dec'}
-                      ];*/
-    $scope.goal_templates =
-        [
-            { name: 'Goal Summary',     url: '/app/html/card_goals/goal_summary.html'},
-            { name: 'General Goal',     url: '/app/html/card_goals/goal_buying.html'},
-            //{ name: 'Debts'     ,       url: '/app/html/card_goals/goal_debts.html'},
-            { name: 'Travel'   ,        url: '/app/html/card_goals/goal_travel.html'},
-            { name: 'Buy Home/Condo',   url: '/app/html/card_goals/goal_buyhome.html'},
-            { name: 'Buy Car',          url: '/app/html/card_goals/goal_buycar.html'}
-        ];
-    $scope.goal_template = $scope.goal_templates[0];
-
-});
-
-
-app.controller('goalTargetController', function($scope, $http) {
-    $scope.targetCal = {    targetPrice: 0,
-                            targetNumPmt: 0,
-                            targetInterest: 0,
-                            targetWhere: ' '
-                       };
-    $scope.lat = undefined;
-    $scope.lng = undefined;
-
-    $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
-        var location = $scope.autocomplete.getPlace().geometry.location;
-        $scope.lat = location.lat();
-        $scope.lng = location.lng();
-        $scope.$apply();
-    });
-
-    $scope.setGoalTarget = function ()
-    {
-        $.ajax({
-            method: "POST",
-            url: "/ajax/setGoalTarget",
-            data:  {
-                    targetPrice:        $('#targetPrice').val() ,
-                    targetNumPmt:       $('#targetNumPmt').val(),
-                    targetInterest:     $('#targetInterest').val(),
-                    where:              $('#targetWhere').val()
-                  }
-        })
-            .done(function( msg ) {
-            });
-    }
-});
-
-
-app.controller('goalHomeController', function($scope, $http) {
-    $scope.homeCal = {
-                        //homePrice: 0,
-                        //homeDPmt: 0,
-                        //homeLoan: homePrice - homeDPmt,
-                        //homeInterest: 0,
-                        //homePmtDuration:0,
-                        //homeMthPmt: 0
-                    };
-});
 
 
 app.controller('goalAutoController', function($scope, $http) {
@@ -134,6 +28,10 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
 
     factory_userData.userDataFactory().success(function(data){
         $scope.userData=data;
+    });
+
+    factory_userData.userJobs().success(function(data){
+        $scope.userJobs=data;
     });
 
     factory_utils.getCurrency().success(function(data){

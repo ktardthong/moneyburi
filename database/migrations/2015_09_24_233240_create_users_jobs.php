@@ -13,10 +13,12 @@ class CreateUsersJobs extends Migration
     public function up()
     {
         Schema::create('users_jobs', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->tinyInteger('flg')->default(1);      //just in case
             $table->string('name');          //repeat name
             $table->timestamps();
+
+            $table->index(['id']);
         });
     }
 

@@ -25,6 +25,8 @@ class CreateUserBills extends Migration
             $table->integer('due_date');                //the date number of every month
 
             $table->timestamps();
+
+            $table->index(['id','uid']);
         });
     }
 

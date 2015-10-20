@@ -1,5 +1,5 @@
 /*
-AutoMobile
+
 */
 app.controller('goalAutoController', function($scope, $http) {
     $scope.autoCal = {  autoPrice: 0,
@@ -24,3 +24,51 @@ app.controller('goalAutoController', function($scope, $http) {
             });
     };
 });
+
+
+app.controller('goalHomeController', function($scope, $http) {
+    $scope.homeCal = {
+        //homePrice: 0,
+        //homeDPmt: 0,
+        //homeLoan: homePrice - homeDPmt,
+        //homeInterest: 0,
+        //homePmtDuration:0,
+        //homeMthPmt: 0
+    };
+});
+
+
+
+
+app.controller('goalController', function($scope) {
+
+    /*$scope.months   = [ {id: 1, month: "Jan"}, {id: 2,month: 'Feb'},{id: 3,month: 'Mar'},{id: 4,month: 'Apr'},{id: 5,month: 'May'}, {id: 6,month: 'Jun'},{id: 7,month: 'Jul'},{id: 8,month: 'Aug'},
+     {id: 9,month: 'Sept'},{id: 10,month: 'Oct'},{id: 11,month: 'Nov'},{id: 12,month: 'Dec'}
+     ];*/
+    $scope.goal_templates =
+        [
+            { name: 'Goal Summary',     url: '/app/html/card_goals/goal_summary.html'},
+            { name: 'General Goal',     url: '/app/html/card_goals/goal_buying.html'},
+            //{ name: 'Debts'     ,       url: '/app/html/card_goals/goal_debts.html'},
+            { name: 'Travel'   ,        url: '/app/html/card_goals/goal_travel.html'},
+            { name: 'Buy Home/Condo',   url: '/app/html/card_goals/goal_buyhome.html'},
+            { name: 'Buy Car',          url: '/app/html/card_goals/goal_buycar.html'}
+        ];
+    $scope.goal_template = $scope.goal_templates[0];
+
+});
+
+
+app.controller('goalSummary', function($scope, $http,factory_userGoals) {
+
+    /*factory_userGoals.userGoalsFactory().success(function(data){
+     $scope.userGoals=data;
+     $scope.GoalCounted = $scope.userGoals.length;
+     });
+
+     factory_userGoals.userTargetGoals().success(function(data){
+     $scope.userTargets=data;
+     });*/
+
+});
+

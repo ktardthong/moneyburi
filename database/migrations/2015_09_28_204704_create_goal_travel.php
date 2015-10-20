@@ -23,6 +23,7 @@ class CreateGoalTravel extends Migration
             $table->integer('pax');                     //number of pax
             $table->integer('nights');                  //number of nights
             $table->integer('periods');                 //number of saving until goal achieved
+            $table->integer('period_complete');         //number of period past
             $table->integer('mth_saving');              //how much need to be save per month
             $table->integer('month');
             $table->integer('year');

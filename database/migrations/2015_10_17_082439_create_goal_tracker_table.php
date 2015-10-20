@@ -24,6 +24,8 @@ class CreateGoalTrackerTable extends Migration
             $table->integer('is_completed');            //if this goal is completed
 
             $table->timestamps();
+
+            $table->index(['id','uid','goal_id','goal_type']);
         });
     }
 

@@ -24,6 +24,8 @@ class CreateMbErrorLog extends Migration
             $table->string('var_3');            //Addition variable that cause error
 
             $table->timestamps();
+
+            $table->index(['id']);
         });
     }
 

@@ -1,4 +1,17 @@
 <div class="row white_bg" ng-controller="userController" style="padding-top: 15px;margin-bottom: 10px">
+    <div class="container-fluid">
+        <div ng-if="!ng_userfname" class="alert-danger">Missing First Name</div>
+        <div ng-if="!ng_userlname" class="alert-danger">Missing Last Name</div>
+        <div ng-if="!ng_email" class="alert-danger">Missing Email</div>
+    </div>
+
+    <div id="userdata_alert_message" class="alert alert-success alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+        <strong>Save!</strong>
+    </div>
 
     <div class="container-fluid">
         <div class="col-xs-12 col-sm-6">
@@ -17,43 +30,83 @@
             {!! Form::file('image', null) !!}
             <button class="btn btn-block btn-primary" value="Upload image">Upload image</button>
             {!! Form::close() !!}
-        </div>
-    </div>
 
-    <div class="container-fluid">
-        <div class="col-xs-12 col-sm-6">
-            <label>First Name</label>
-            <input ng-model="ng_userfname" class="form-control input-lg" id="editFirstname" placeholder="First Name" required>
-        </div>
+            <div class="container-fluid" style="margin-top: 50px">
 
-        <div class="col-xs-12 col-sm-6">
-            <label>Last Name</label>
-            <input ng-model="ng_userlname" class="form-control borderless" placeholder="Last Name" id="editLastname" required>
-        </div>
+                <div class="row md-headline">Your Info</div>
 
+                <div class="row">
+                    <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
 
-        <div class="col-xs-12 col-sm-6">
-            <label>Email</label>
-            <input ng-model="ng_email" class="form-control borderless" placeholder="Email" id="editEmail" required>
+                        <input  ng-required="true"
+                                type="text"
+                                placeholder="First Name"
+                                class="ng-pristine md-input ng-invalid ng-invalid-required ng-touched" aria-label="First Name"
+                                ng-model="ng_userfname" id="editFirstname"
+                                required="required" aria-required="true" aria-invalid="true" style="">
 
-            <label>Phone number</label>
-            <input type="text" value="@{{ userData.email  }}" class="form-control borderless" placeholder="Email" id="editPhone">
-        </div>
-
-        <div class="col-xs-12 col-sm-6">
-
-            <div class="col-xs-12">
-                <div class="btn-group lead" data-toggle="buttons">
-
-                    <select id="jobtype">
-                        <option ng-repeat="x in items" value="@{{ x.id }}">@{{ x.name}}</option>
-                    </select>
-
+                    </md-input-container>
                 </div>
-            </div>
+
+                <div class="row">
+                    <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
+
+                        <input  ng-required="true"
+                                type="text"
+                                placeholder="Last Name"
+                                class="ng-pristine md-input ng-invalid ng-invalid-required ng-touched" aria-label="Last Name"
+                                ng-model="ng_userlname" id="editLastname"
+                                required="required" aria-required="true" aria-invalid="true" style="">
+
+                    </md-input-container>
+                </div>
+
+
+                <div class="row">
+                    <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
+
+                        <input  ng-required="true"
+                                type="text"
+                                placeholder="Email"
+                                class="ng-pristine md-input ng-invalid ng-invalid-required ng-touched" aria-label="Last Name"
+                                class="input input-lg borderless"
+                                ng-model="ng_email" id="editEmail"
+                                required="required" aria-required="true" aria-invalid="true" style="">
+
+                    </md-input-container>
+                </div>
+
+
+                    {{--<label></label>
+                    <input type="text" value="@{{ userData.email  }}" class="form-control borderless" placeholder="Email" id="editPhone">--}}
+
+                    <div class="row">
+
+                        <div class="btn-group lead" data-toggle="buttons">
+
+                            <md-select ng-model="userJobType" id="jobtype" aria-required="true" aria-invalid="true"
+                                        aria-label="Last Name">
+
+                                <md-option  ng-repeat="(index,item) in userJobs"
+                                            ng-selected="(@{{item.id}} == @{{ userData.job }}) ? true:false"
+                                            value="@{{item.id}}">@{{item.name}}</md-option>
+                            </md-select>
+
+                        </div>
+
+                    </div>
+                </div>
 
         </div>
+
+
     </div>
 
-    <button class="btn btn-primary btn-block" ng-click="saveInfo()">Save</button>
+    <button
+            ng-if="ng_userfname && ng_userlname && ng_email"
+            class="btn btn-primary btn-block" ng-click="saveUserData()">Save</button>
 </div>
+
+<script>
+    $('#userdata_alert_message').hide();
+</script>

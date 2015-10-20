@@ -13,9 +13,11 @@ class CreateTranstype extends Migration
     public function up()
     {
         Schema::create('trans_type', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->string('name');          //transaction name
             $table->timestamps();
+
+            $table->index(['id']);
         });
     }
 

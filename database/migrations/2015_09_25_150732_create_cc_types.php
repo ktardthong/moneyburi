@@ -17,6 +17,8 @@ class CreateCcTypes extends Migration
             $table->string('name');        //visa,master.amex etc
             $table->string('cc_icon');          //Icons
             $table->timestamps();
+
+            $table->index(['id']);
         });
     }
 

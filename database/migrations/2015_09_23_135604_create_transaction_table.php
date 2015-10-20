@@ -33,6 +33,8 @@ class CreateTransactionTable extends Migration
             $table->string('countryCode')->nullable();
 
             $table->timestamps();
+
+            $table->index(['id', 'uid','cate_id']);
         });
     }
 

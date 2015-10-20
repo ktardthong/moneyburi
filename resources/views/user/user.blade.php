@@ -37,8 +37,6 @@
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active" id="profile" ng-include="'/profile/update_info'">profile</div>
                   <div role="tabpanel" class="tab-pane" id="spendable" ng-include="'/app/account/tpl_spendable.html'">profile</div>
-                  <div role="tabpanel" class="tab-pane" id="messages">...</div>
-                  <div role="tabpanel" class="tab-pane" id="settings">...</div>
                 </div>
             </div>
         </div>

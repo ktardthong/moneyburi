@@ -19,6 +19,8 @@ class CreateCategoryCoreTable extends Migration
             $table->tinyInteger('flg');
             $table->string('icon');
             $table->timestamps();
+
+            $table->index(['id', 'name','th_name']);
         });
     }
 

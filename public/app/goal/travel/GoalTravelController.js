@@ -17,14 +17,7 @@ app.controller('goalTravelController', function($scope, $http) {
     });
 
     $scope.savingMonth = 0;
-    function monthDiff(future)
-    {
-        var start = new Date(future),
-            end   = new Date(),
-            diff = new Date(start -end);
-        month  = diff/1000/60/60/24/31;
-        return Math.round(month);
-    }
+
 
     $scope.travelSavingCal = function() {
 
@@ -81,3 +74,31 @@ app.controller('goalTravelController', function($scope, $http) {
         });
     };
 });
+
+
+app.directive('yearDrop',function() {
+    var currentYear = new Date().getFullYear();
+    return {
+        link: function (scope, element, attrs) {
+            scope.years = [];
+            for (var i = +attrs.offset; i < +attrs.range + 1; i++) {
+                scope.years.push(currentYear + i);
+            }
+            scope.yearSelect = currentYear;
+        },
+        templateUrl: '/app/goal/travel/tpl_year.html'
+    }
+});
+
+
+
+app.directive('zMonthSelect', function () {
+    return {
+        restrict: 'E',
+        templateUrl: '/app/goal/travel/tpl_month.html'
+    };
+});
+
+
+
+

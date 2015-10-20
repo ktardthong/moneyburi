@@ -31,6 +31,8 @@ class CreateSpendableTracker extends Migration
             $table->decimal('remaining_year', 18, 2)->default(0);       //if user adjust their spendable from user table
 
             $table->timestamps();
+
+            $table->index(['id','uid','ref_id']);
         });
     }
 

@@ -13,9 +13,11 @@ class CreatePaymentTypes extends Migration
     public function up()
     {
         Schema::create('payment_types', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->string('name');          //repeat name
             $table->timestamps();
+
+            $table->index(['id']);
         });
     }
 

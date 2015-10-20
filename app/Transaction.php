@@ -44,12 +44,16 @@ class Transaction extends Model
     //User spending today
     public static function todaySpending()
     {
-        $data = DB::table('transaction')
+        $data = DB::table('users')
                 ->where('uid', Auth::user()->id)
-                ->join('users','transaction.uid','=','users.id')
+                ->rightjoin('transaction','transaction.uid','=','users.id')
                 ->where('trans_date',date('Y-m-d'))
                 ->select('users.d_spendable',DB::raw('sum(transaction.amount) as todaySpending'))
                 ->get() ;
+        if(empty($data->todaySpending))
+        {
+            $data = DB::table('users')->where('id',Auth::user()->id)->select('users.d_spendable')->get();
+        }
         return json_encode($data);
     }
 }

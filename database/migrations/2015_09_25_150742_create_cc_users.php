@@ -25,6 +25,8 @@ class CreateCcUsers extends Migration
             $table->integer('exp_year')->nullable();    // expire year
             $table->string('card_notes')->nullable();   // user note
             $table->timestamps();
+
+            $table->index(['id','uid','cc_issuer','cc_types']);
         });
     }
 

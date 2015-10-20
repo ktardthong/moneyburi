@@ -80,7 +80,8 @@
     <script src="/app/spendableChart/SpendableChartController.js"></script>
     <script src="/app/account/userController.js"></script>
     <script src="/app/transactions/TransactionsController.js"></script>
-    <script src="/app/goal/travel/goalTravelController.js"></script>
+    <script src="/app/goal/travel/GoalTravelController.js"></script>
+    <script src="/app/goal/buying/GoalBuyingController.js"></script>
 
 
     <script src="/vendors/angular-chart/angular-chart.min.js"></script>
@@ -156,7 +157,7 @@
                             <span class="sr-only">Toggle Dropdown</span>
                           </button>
                           <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/profile">Profile</a>
+                            <a class="dropdown-item" href="/profile">Home</a>
                             <a class="dropdown-item" href="/user">Setting</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">Log out</a>

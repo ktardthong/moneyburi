@@ -1,3 +1,6 @@
+/*
+* Angular Factory -
+* */
 
 app.factory('factory_userData', function($http) {
     return {
@@ -85,8 +88,9 @@ app.factory('factory_userSpending',function($http){
         dailySpending: function($scope){
             return  $http.get("/todaySpending")
                     .success(function(response) {
+                    var windowTodaySpending = typeof response[0]["todaySpending"] != 'undefined' ? response[0]["todaySpending"] : 0;
                     $scope.d_spendable     = response[0]["d_spendable"];
-                    $scope.todaySpending   = response[0]["todaySpending"];
+                    $scope.todaySpending   = windowTodaySpending;
                     $scope.todaySpendable  = $scope.d_spendable - $scope.todaySpending;
 
                     if($scope.todaySpendable<0){ $scope.todaySpendable =0}

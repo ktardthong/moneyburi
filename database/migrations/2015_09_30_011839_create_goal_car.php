@@ -25,6 +25,8 @@ class CreateGoalCar extends Migration
             $table->integer('duration');                //payments duration in month
 
             $table->timestamps();
+
+            $table->index(['id','uid']);
         });
     }
 

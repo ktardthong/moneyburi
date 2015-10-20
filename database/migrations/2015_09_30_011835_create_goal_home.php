@@ -24,6 +24,8 @@ class CreateGoalHome extends Migration
 
 
             $table->timestamps();
+
+            $table->index(['id','uid']);
         });
     }
 

@@ -16,6 +16,8 @@ class CreateTransRepeat extends Migration
             $table->integer('id');
             $table->string('name');          //repeat name
             $table->timestamps();
+
+            $table->index(['id']);
         });
     }
 

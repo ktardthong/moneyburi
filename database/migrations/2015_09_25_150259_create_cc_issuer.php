@@ -13,9 +13,11 @@ class CreateCcIssuer extends Migration
     public function up()
     {
         Schema::create('cc_issuer', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->string('name');          //Issuer
             $table->timestamps();
+
+            $table->index(['id']);
         });
     }
 
