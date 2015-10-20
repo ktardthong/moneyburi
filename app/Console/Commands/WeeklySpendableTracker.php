@@ -28,7 +28,7 @@ class WeeklySpendableTracker extends Command
      */
     public function handle()
     {
-        $q="INSERT INTO spendable_tracker (uid, spendable, flg,created_at,remaining_week)
+        /*$q="INSERT INTO spendable_tracker (uid, spendable, flg,created_at,remaining_week)
                             SELECT id,mth_spendable,1,now(),
                                                             SUM(CASE WHEN YEARWEEK(created_at, 1)
                                                             THEN t_transaction
@@ -36,6 +36,6 @@ class WeeklySpendableTracker extends Command
                             FROM   users
 
                             ";
-        DB::insert($q);
+        DB::insert($q);*/
     }
 }

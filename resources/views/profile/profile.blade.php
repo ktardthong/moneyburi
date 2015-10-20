@@ -44,7 +44,7 @@
 
         <div align="center" class="text-muted">
             <small>
-            {{ $location->cityName }}, {{ $location->countryCode  }} - From your Internet address
+                {{ $location->cityName }}, {{ $location->countryCode  }} - From your Internet address
             </small>
         </div>
 

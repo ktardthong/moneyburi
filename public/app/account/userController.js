@@ -1,4 +1,5 @@
-app.controller('userController', function($scope, $mdToast) {
+app.controller('userController', function($scope,factory_userSpending) {
+
 
     $scope.ng_mthlyIncome  =   $scope.userData.mth_income;
     $scope.ng_mthlyBill    =   $scope.userData.mth_bill;
@@ -10,8 +11,6 @@ app.controller('userController', function($scope, $mdToast) {
     $scope.ng_userfname    =    $scope.userData.firstname;
     $scope.ng_userlname    =    $scope.userData.lastname;
     $scope.ng_email        =    $scope.userData.email;
-
-
 
 
     $scope.labels = ["Bill", "Saving", "Spendable"];
@@ -57,7 +56,8 @@ app.controller('userController', function($scope, $mdToast) {
                 editMonthlySaving:      $('#editMonthlySaving').val(),
                 editMonthlySpendable:   $scope.ng_spendable,
                 editDaySaving:          $('#editDaySaving').html(),
-                editDaySpendable:       $scope.ng_spendable/30
+                editDaySpendable:       $scope.ng_spendable/30,
+                currency:               $scope.ng_currency
                 //job:   $('#jobtype').val()
             }
         })

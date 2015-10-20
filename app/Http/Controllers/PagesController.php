@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Validator;
 use App\User;
 use Auth;
@@ -12,6 +14,8 @@ use Socialite;
 use Illuminate\Routing\Controller;
 use Stevebauman\Location\Facades\Location;
 use Mail;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 
 class PagesController extends Controller
 {

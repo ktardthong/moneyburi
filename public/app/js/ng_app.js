@@ -69,6 +69,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
 
     factory_userSpending.dailySpending($scope);
 
+
     $scope.nav = function(path) {
         $scope.template.url = path;
     };
@@ -76,7 +77,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
     $scope.templates =
         [
             //{ name: 'Home'              , url: '/app/html/card_home.html'},
-            { name: 'Spendable'         , url: '/app/html/card_spendable.html'},
+            { name: 'Spendable'         , url: '/app/html/card_spendable.html.php'},
             { name: 'Account'           , url: '/app/html/card_account.html'},
             { name: 'Goals'             , url: '/app/html/card_goals.html'},
             { name: 'Transactions'      , url: '/app/html/card_transactions.html'},

@@ -297,7 +297,8 @@ class AjaxController extends Controller
                         'mth_saving'    =>  $request->editMonthlySaving,
                         'mth_spendable' =>  $request->editMonthlySpendable,
                         'd_saving'      =>  $request->editDaySaving,
-                        'd_spendable'   =>  $request->editDaySpendable
+                        'd_spendable'   =>  $request->editDaySpendable,
+                        'currency'      =>  $request->currency
                     ];
             DB::table('users')
                 ->where('id', Auth::user()->id)

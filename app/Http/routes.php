@@ -1,5 +1,10 @@
 <?php
 
+
+
+Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
+
+
 //PAGES
 Route::get('/','PagesController@home');
 Route::get('/login','PagesController@login');

@@ -33,7 +33,9 @@
             <div class="page page-home" ng-include="'/app/goal/tpl_goal.html'"></div>
         </div>
 
-
+        >>>>
+        <?php echo "test";?>
+        <<<
 
         <div class="container">
             <span class="lead">Overview</span>

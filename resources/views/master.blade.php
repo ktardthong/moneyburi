@@ -144,7 +144,18 @@
                 </li>
               </ul>
               <ul class="nav navbar-nav pull-right">
-
+                <li class="nav-item">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-link">EN</button>
+                        <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/lang/en">English</a>
+                            <a class="dropdown-item" href="/lang/th">ภาษาไทย</a>
+                        </div>
+                    </div>
+                </li>
                 @if(Auth::user())
 
                     <li class="nav-item">
@@ -170,10 +181,10 @@
 
                 @else
                     <li class="nav-item">
-                      <a class="nav-link" href="/register">Register</a>
+                      <a class="nav-link" href="/register"><?php echo trans('messages.lbl_register');?></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/login">Login</a>
+                      <a class="nav-link" href="/login"><?php echo trans('messages.lbl_login');?></a>
                     </li>
                 @endif
               </ul>

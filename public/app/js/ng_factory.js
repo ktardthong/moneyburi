@@ -2,6 +2,8 @@
 * Angular Factory -
 * */
 
+
+
 app.factory('factory_userData', function($http) {
     return {
         userDataFactory: function(){
@@ -90,51 +92,54 @@ app.factory('factory_mfb',function($http){
 });
 
 app.factory('factory_userSpending',function($http){
-   return {
-        dailySpending: function($scope){
 
-            return  $http.get("/todaySpending")
-                    .success(function(response) {
-                    var windowTodaySpending = typeof response[0]["todaySpending"] != 'undefined' ? response[0]["todaySpending"] : 0;
-                    $scope.d_spendable     = response[0]["d_spendable"];
-                    $scope.todaySpending   = windowTodaySpending;
-                    $scope.todaySpendable  = $scope.d_spendable - $scope.todaySpending;
+    return   {
+                spendableFlg: false
+            },
+            {
+                dailySpending: function($scope){
+                return  $http.get("/todaySpending")
+                        .success(function(response) {
+                        var windowTodaySpending = typeof response[0]["todaySpending"] != 'undefined' ? response[0]["todaySpending"] : 0;
+                        $scope.d_spendable     = response[0]["d_spendable"];
+                        $scope.todaySpending   = windowTodaySpending;
+                        $scope.todaySpendable  = $scope.d_spendable - $scope.todaySpending;
 
-                    if($scope.todaySpendable<0){ $scope.todaySpendable =0}
-                    //Chart
-                    var json = {
-                        //"series": ["SeriesA"],
-                        "data": [$scope.todaySpending, $scope.todaySpendable],
-                        "labels":   ["Spent", "Spendable"],
-                        "colours":  ["#8D8D8D","#87D2DA"],
-                        "option": {
-                            responsive: true,
-                            maintainAspectRatio: true,
+                        if($scope.todaySpendable<0){ $scope.todaySpendable =0}
+                        //Chart
+                        var json = {
+                            //"series": ["SeriesA"],
+                            "data": [$scope.todaySpending, $scope.todaySpendable],
+                            "labels":   ["Spent", "Spendable"],
+                            "colours":  ["#8D8D8D","#87D2DA"],
+                            "option": {
+                                responsive: true,
+                                maintainAspectRatio: true,
 
-                            //Boolean - Whether we should show a stroke on each segment
-                            segmentShowStroke : true,
+                                //Boolean - Whether we should show a stroke on each segment
+                                segmentShowStroke : true,
 
-                            //String - The colour of each segment stroke
-                            segmentStrokeColor : "#fff",
+                                //String - The colour of each segment stroke
+                                segmentStrokeColor : "#fff",
 
-                            //Number - The width of each segment stroke
-                            segmentStrokeWidth : 2,
+                                //Number - The width of each segment stroke
+                                segmentStrokeWidth : 2,
 
-                            //Number - The percentage of the chart that we cut out of the middle
-                            percentageInnerCutout : 80, // This is 0 for Pie charts
+                                //Number - The percentage of the chart that we cut out of the middle
+                                percentageInnerCutout : 80, // This is 0 for Pie charts
 
-                            //Number - Amount of animation steps
-                            animationSteps : 100,
+                                //Number - Amount of animation steps
+                                animationSteps : 100,
 
-                            //Boolean - Whether we animate the rotation of the Doughnut
-                            animateRotate : true
-                        }
+                                //Boolean - Whether we animate the rotation of the Doughnut
+                                animateRotate : true
+                            }
 
 
 
-                    };
-                    $scope.spendableDough = json;
-                });
-        }
+                        };
+                        $scope.spendableDough = json;
+                    });
+            }
    }
 });
