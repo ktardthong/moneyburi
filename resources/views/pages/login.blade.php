@@ -16,17 +16,19 @@
 
             {!! csrf_field() !!}
 
-            <h2 class="form-signin-heading">Please sign in</h2>
+            <h2 class="form-signin-heading">{!! trans('messages.lbl_sign_in') !!}</h2>
 
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label  for="inputEmail" class="sr-only">{!! trans('messages.lbl_email') !!}</label>
+            <input  name="email" type="email" id="inputEmail" class="form-control"
+                    placeholder="{!! trans('messages.lbl_email') !!}" required autofocus>
 
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <label  for="inputPassword" class="sr-only">{!! trans('messages.lbl_password') !!}</label>
+            <input  name="password" type="password" id="inputPassword" class="form-control"
+                    placeholder="{!! trans('messages.lbl_password') !!}" required>
 
             <div class="checkbox">
               <label>
-                <input type="checkbox" value="remember-me"> Remember me
+                <input type="checkbox" value="remember-me"> {!! trans('messages.lbl_remember_me') !!}
               </label>
             </div>
 
@@ -41,7 +43,7 @@
                 </span>
             </div>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">{!! trans('messages.lbl_sign_in') !!}</button>
           </form>
 
      </div> <!-- /container -->

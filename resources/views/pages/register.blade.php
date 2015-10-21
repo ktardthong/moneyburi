@@ -22,21 +22,21 @@
             {!! csrf_field() !!}
 
             <h2 class="form-signin-heading" align="center">
-            Welcome!
+            {!!  trans('messages.lbl_welcome') !!}
             </h2>
 
-            {!! Form::text('first_name','',['class'=>'form-control input input-lg','placeholder'=>'First name','autofocus','required']) !!}
-            {!! Form::text('last_name','',['class'=>'form-control input input-lg','placeholder'=>'Last name','required']) !!}
+            {!! Form::text('first_name','',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_firstname'),'autofocus','required']) !!}
+            {!! Form::text('last_name','',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_lastname'),'required']) !!}
 
             <br>
-            {!! Form::text('email','',['class'=>'form-control input input-lg','placeholder'=>'Email','required']) !!}
+            {!! Form::text('email','',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_email'),'required']) !!}
 
             <br>
-            {!! Form::password('password',['class'=>'form-control input input-lg','placeholder'=>'Password','required']) !!}
-            {!! Form::password('confirmpassword',['class'=>'form-control input input-lg','placeholder'=>'Confirm Password','required']) !!}
+            {!! Form::password('password',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_password'),'required']) !!}
+            {!! Form::password('confirmpassword',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_confirmPass'),'required']) !!}
 
 
-            {!! Form::label('birthday', 'Birthday',['class'=> 'lead']) !!}
+            {!! Form::label('birthday', trans('messages.lbl_birthday'),['class'=> 'lead']) !!}
             <div>
                 {!! Form::selectMonth('month'); !!}
                 {!! Form::selectRange('day', 1, 31); !!}
@@ -45,8 +45,8 @@
 
             <br>
 
-            {!! Form::radio('sex', 'male',['class' => 'field', 'required']) !!}male
-            {!! Form::radio('sex', 'female') !!} female
+            {!! Form::radio('sex','Male',  ['class' => 'field', 'required'])!!}  {!! trans('messages.lbl_male')!!}
+            {!! Form::radio('sex','Female',['class' => 'field', 'required'])!!}  {!! trans('messages.lbl_female') !!}
 
 
             <div align="center" class="text-muted">
@@ -64,7 +64,7 @@
 
             <div class="checkbox">
               <label>
-                <input type="checkbox" value="remember-me"> Remember me
+                <input type="checkbox" value="remember-me"> {!! trans('messages.lbl_remember_me') !!}
               </label>
             </div>
 
@@ -74,7 +74,7 @@
                 By clicking Sign Up, you agree to our Terms and that you have read our Data Policy, including our Cookie Use.
                 </small>
             </div>
-            {!! Form::submit('Sign up!',['class'=>'btn btn-lg btn-primary btn-block']); !!}
+            {!! Form::submit(trans('messages.lbl_signup'),['class'=>'btn btn-lg btn-primary btn-block']); !!}
         </form>
 
      </div> <!-- /container -->
