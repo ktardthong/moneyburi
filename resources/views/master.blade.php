@@ -78,13 +78,14 @@
     <script src="/js/chart.min.js"></script>
     <script src="/app/js/ng_app.js"></script>
     <script src="/app/js/ng_factory.js"></script>
+
+    <script src="/js/SpendableChartController.js"></script>
     <script src="/app/bills/BillController.js"></script>
     <script src="/app/creditcards/CreditCardController.js"></script>
-    <script src="/app/spendableChart/SpendableChartController.js"></script>
     <script src="/app/account/userController.js"></script>
     <script src="/app/transactions/TransactionsController.js"></script>
-    <script src="/app/goal/travel/GoalTravelController.js"></script>
-    <script src="/app/goal/buying/GoalBuyingController.js"></script>
+    <script src="/js/GoalTravelController.js"></script>
+    <script src="/js/GoalBuyingController.js"></script>
 
 
     <script src="/vendors/angular-chart/angular-chart.min.js"></script>
@@ -131,7 +132,7 @@
 <body ng-app="App">
      <nav class="navbar navbar-fixed-top header-mb">
       <div class="container">
-            <a class="navbar-brand" href="/">Moneyburi</a>
+            <a class="navbar-brand" href="/"><Mana></Mana>Money</a>
             <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header">
               &#9776;
             </button>
@@ -146,9 +147,11 @@
               <ul class="nav navbar-nav pull-right">
                 <li class="nav-item">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-link">EN</button>
+                        <button type="button" class="btn btn-link">
+                            <a href="#">{!! !empty(session('applocale'))?session('applocale'):'en' !!}</a>
+                        </button>
                         <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropdown</span>
+                            <span class="sr-only">Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="/lang/en">English</a>
@@ -171,20 +174,20 @@
                             <span class="sr-only">Toggle Dropdown</span>
                           </button>
                           <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/profile">Home</a>
-                            <a class="dropdown-item" href="/user">Setting</a>
+                            <a class="dropdown-item" href="/profile">{!! trans('messages.lbl_home') !!}</a>
+                            <a class="dropdown-item" href="/user">{!! trans('messages.lbl_setting') !!}</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/logout">Log out</a>
+                            <a class="dropdown-item" href="/logout">{!! trans('messages.lbl_logout') !!}</a>
                           </div>
                         </div>
                     </li>
 
                 @else
                     <li class="nav-item">
-                      <a class="nav-link" href="/register"><?php echo trans('messages.lbl_register');?></a>
+                      <a class="nav-link" href="/register">{!! trans('messages.lbl_register') !!}</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/login"><?php echo trans('messages.lbl_login');?></a>
+                      <a class="nav-link" href="/login">{!! trans('messages.lbl_login') !!}</a>
                     </li>
                 @endif
               </ul>
@@ -193,7 +196,7 @@
     </nav>
 
 
-    <div class="container" ng-controller="profileController">
+    <div class="container">
 
 	    @yield('content')
 

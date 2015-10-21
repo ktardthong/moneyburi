@@ -1,6 +1,6 @@
 <div class="card card-block" ng-controller="BillController as BillList">
 
-    <div class="" align="center" style="padding-bottom: 20px">
+     <div class="" align="center" style="padding-bottom: 20px">
 
         <h4 class="card-title strong">Bill</h4>
 
@@ -8,9 +8,11 @@
 
         <form ng-submit="BillList.addBill()" class="lead">
 
-            <select ng-model="BillList.billCate" id="billCate">
-                <option ng-repeat="category in BillList.categories" value="{{category.id}}">{{category.name}}</option>
-            </select>
+            <md-input-container flex>
+            <md-select ng-model="BillList.billCate" id="billCate">
+                <md-option ng-repeat="category in BillList.categories" value="{{category.id}}">{{category.name}}</md-option>
+            </md-select>
+            </md-input-container>
 
 
             <input placeholder="Amount" class="input input-lg borderless text-center"

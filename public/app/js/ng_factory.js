@@ -73,19 +73,19 @@ app.factory('factory_mfb',function($http){
                 return [{
                     label: 'Home',
                     icon: 'ion-home',
-                    url: '/app/html/card_spendable.html'
+                    url: '/app/html/card_spendable.html.php'
                 }, {
                     label: 'Account',
                     icon: 'ion-plus',
                     url: '/app/html/card_account.html'
                 }, {
-                    label: 'Goals',
-                    icon: 'ion-paperclip',
+                    label: 'Bills',
+                    icon: 'ion-ios-list-outline',
                     url: '/app/html/card_goals.html'
                 }, {
                     label: 'Transactions',
                     icon: 'ion-calculator',
-                    url: '/app/html/card_transactionList.html'
+                    url: '/app/html/card_transactions.html'
                 }];
             }
         }

@@ -32,23 +32,8 @@
         <br>
         {{ bill.amount }}
 
-            <div>
-                <input type="text" placeholder="Actual cost?">
-                <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-primary-outline active">
-                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Cash
-                    </label>
-                    <label class="btn btn-primary-outline" ng-click="selectCard($index)">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> Credit
-                    </label>
-                </div>
-            </div>
 
-            <card-select ng-init="showCard=false" ng-hide="true" ng-model="showAddTransaction[$index]"></card-select>
 
-            <div id="spendableContainer" ng-show="!showAddTransaction[$index]">
-                <div ng-include="'/app/html/card_addTransaction.html'"></div>
-            </div>
         </div>
 
     </li>

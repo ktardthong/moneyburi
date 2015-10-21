@@ -10,21 +10,32 @@
 
 
 @section('content')
-     <div class="container">
+     <div class="container-fluid" style="margin-top:30px">
 
-          <form class="form-signin" method="post" action="/login">
+          <form class="form-signin card card_width container" method="post" action="/login">
 
             {!! csrf_field() !!}
 
-            <h2 class="form-signin-heading">{!! trans('messages.lbl_sign_in') !!}</h2>
+            <h2 class="form-signin-heading text-center">
+                {!! trans('messages.lbl_sign_in') !!}
+            </h2>
 
-            <label  for="inputEmail" class="sr-only">{!! trans('messages.lbl_email') !!}</label>
-            <input  name="email" type="email" id="inputEmail" class="form-control"
-                    placeholder="{!! trans('messages.lbl_email') !!}" required autofocus>
+            <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
 
-            <label  for="inputPassword" class="sr-only">{!! trans('messages.lbl_password') !!}</label>
-            <input  name="password" type="password" id="inputPassword" class="form-control"
-                    placeholder="{!! trans('messages.lbl_password') !!}" required>
+                <label  for="inputEmail" class="sr-only">{!! trans('messages.lbl_email') !!}</label>
+                <input  name="email" type="email" id="inputEmail" class="form-control white_bg"
+                        placeholder="{!! trans('messages.lbl_email') !!}" required autofocus>
+
+            </md-input-container>
+
+
+            <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
+
+                <label  for="inputPassword" class="sr-only">{!! trans('messages.lbl_password') !!}</label>
+                <input  name="password" type="password" id="inputPassword" class="form-control"
+                        placeholder="{!! trans('messages.lbl_password') !!}" required>
+
+            </md-input-container>
 
             <div class="checkbox">
               <label>
@@ -32,7 +43,7 @@
               </label>
             </div>
 
-            <div align="center" class="text-muted">
+            {{--<div align="center" class="text-muted">
                 Or
                 <br>
                 <span class="fa-stack fa-md">
@@ -41,10 +52,13 @@
                         <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                     </a>
                 </span>
-            </div>
+            </div>--}}
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">{!! trans('messages.lbl_sign_in') !!}</button>
+            <div class="row">
+                <button class="btn btn-sm btn-primary btn-block" type="submit">{!! trans('messages.lbl_sign_in') !!}</button>
+            </div>
           </form>
+
 
      </div> <!-- /container -->
 

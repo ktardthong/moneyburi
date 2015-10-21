@@ -5,6 +5,7 @@ body{
 	padding-top: 65px;
     background-color: #F1F1F1;
     height: auto;
+
 }
 
 .header-mb
@@ -168,4 +169,26 @@ a {
 }
 .color_606{
     color: #60605A;
+}
+
+.card_width{
+    max-width: 400px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #87D2DA;
+    border-color: #C7E8EA;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #1594A8;
+    border-color: #C7E8EA;
+}
+
+.btn-primary:focus {
+    color: #fff;
+    background-color: #1594A8;
+    border-color: #C7E8EA;
 }

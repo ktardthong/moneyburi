@@ -126,6 +126,13 @@ app.controller('BillController', function($scope, $http,$mdDialog) {
 
 
 })
+.directive('billView',function(){
+    return {
+        restrict: 'E',
+        templateUrl: '/app/bills/tpl_billView.html'
+    };
+})
+
 .directive('billList', function() {
     return {
         restrict: 'E',

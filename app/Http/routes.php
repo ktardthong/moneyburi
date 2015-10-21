@@ -3,6 +3,18 @@
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 
 
+//APP - Angular
+Route::get('/tpl_overview','AppController@tpl_overview');
+Route::get('/goalController', 'AppController@goalController');
+Route::get('/dailySpendableDough', 'AppController@dailyDough');
+Route::get('/spendableChart', 'AppController@spendableChart');
+
+Route::get('/spendableCard', 'AppController@spendableCard');    //the main card
+//Route::get('/spendableChart', 'AppController@spendableChart');
+
+
+
+
 //PAGES
 Route::get('/','PagesController@home');
 Route::get('/login','PagesController@login');

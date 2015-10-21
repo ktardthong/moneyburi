@@ -11,7 +11,7 @@
 
 @section('content')
     {{-- Main container--}}
-    <div >
+    <div ng-controller="profileController">
 
         <div class="col-xs-12 col-sm-12">
 
@@ -25,7 +25,7 @@
 
                 <nav mfb-menu position="br"
                      effect="slidein"
-                     label="Home"
+                     label=""
                      active-icon="ion-close-round"
                      resting-icon="ion-navicon"
                      toggling-method="click">
