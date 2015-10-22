@@ -29,58 +29,25 @@
     <title>@yield('title')</title>
 
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    {!! Minify::javascript(array('/js/jquery.min.js','/js/angular.min.js','/js/angular-route.min.js','/js/angular-animate.min.js','/js/angular-material.min.js','/js/angular-aria.min.js','/js/angular-sanitize.min.js')) !!}
+    {!! Minify::javascript(array('/js/ng_app.js','/js/ng_factory.js','/js/gmap.js','/js/global.js')) !!}
 
-
-    {!! Minify::javascript(array('/js/angular.min.js','/js/angular-route.min.js','/js/angular-animate.min.js','/js/angular-material.min.js','/js/angular-aria.min.js')) !!}
-    {!! Minify::javascript(array('/js/ng_app.js','/js/ng_factory.js','/js/global.js')) !!}
-
+    {{-- Angular Controllers --}}
     {!! Minify::javascriptDir('/js/controllers/') !!}
     {!! Minify::javascriptDir('/js/vendors/') !!}
 
-
-    <script src="/angular/angular-sanitize.min.js"></script>
-
-
-    {{-- Material Ui--}}
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.1/angular-material.min.css">
-
-    <link href="/css/ionicons.min.css" type="text/css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" type="text/css" rel="stylesheet" >
+    {{-- Vendors for JS and CSS--}}
+    {!! Minify::javascriptDir('/vendors/') !!}
+    {!! Minify::stylesheetDir('/vendors/') !!}
 
 
     {{--boot strap4 --}}
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
-    <!-- Include Bootstrap-select CSS, JS -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
-
     <script src="/app/bills/BillController.js"></script>
     <script src="/app/creditcards/CreditCardController.js"></script>
-
     <script src="/app/transactions/TransactionsController.js"></script>
-
-    <script src="/vendors/angular-chart/angular-chart.min.js"></script>
-    <link rel="stylesheet" href="/vendors/angular-chart/angular-chart.min.css">
-
-    <script src="/vendors/angular-autocomplete/ngAutocomplete.js"></script>
-    <link rel="stylesheet" href="/vendors/angular-autocomplete/angucomplete.css">
-
-    <link rel="stylesheet" href="/css/global.css" >
-    <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="/css/component.css" />
-    <link rel="stylesheet" href="/css/angular_animation.css">
-    <link rel="stylesheet" href="/css/jumbotron-narrow.css">
-
-
-    {{-- Vendors --}}
-    <link rel="stylesheet" href="/vendors/mfb/mfb.css">
-    <script src="/vendors/mfb/mfb-directive.js"></script>
-
-
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
-    <script src="/vendors/ng-map/ng-map.min.js"></script>
 
     <script>
     $.ajaxSetup({
@@ -169,8 +136,16 @@
 
 </body>
 
-{{--<script src="/js/global.interact.js"></script>--}}
-<script src="/vendors/ng-autocomplete/ngAutocomplete.js"></script>
+
+{!! Minify::stylesheet(array('/css/angular-material.min.css',
+                                 '/css/ionicons.min.css',
+                                 '/css/font-awesome.min.css',
+                                 '/css/normalize.css',
+                                 '/css/component.css',
+                                 '/css/angular_animation.css',
+                                 '/css/jumbotron-narrow.css',
+                                 '/css/global.css',
+                                 )) !!}
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
