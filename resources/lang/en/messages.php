@@ -38,8 +38,32 @@ return array(
     'lbl_billCreditCard'    => 'Bills and Credit card',
     'lbl_billUpcoming'      => 'Upcoming bill',
     'lbl_billNone'          => 'No bills here',
+    'lbl_billAdd'           => 'Add Bill',
 
     //Creditcard
     'lbl_creditCard'        => 'Credit card',
+
+    'lbl_account'           => 'Account',
+    'lbl_profile'           => 'Profile',
+    'lbl_spendableSetting'  => 'Spendable Setting',
+    'lbl_your_photo'        => 'Your photo',
+
+    'lbl_save'              => 'Save',
+    'lbl_yourInfo'          => 'Your info',
+    'lbl_selPhoto'          => 'Upload your photo',
+    'lbl_upload'            => 'Upload',
+    'lbl_close'             => 'Close',
+
+    'lbl_youCanSpend'      => 'You can spend',
+    'lbl_youWillSave'      => 'You will save',
+    'lbl_perday'           => 'Per day',
+    'lbl_currency'         => 'Currency',
+    'lbl_mth_income'       => 'Monthly Income',
+    'lbl_mth_saving'       => 'Monthly Saving',
+    'lbl_mth_spendable'    => 'Monthly Spendable',
+
+    //ERRORS
+    'err_spendableNegative'=>  'Your Spendable is negative',
+
 
 );

@@ -43,7 +43,9 @@ app.controller('goalAutoController', function($scope, $http) {
 
 app.controller('profileController', function($scope, $http,factory_userData,factory_userGoals,
                                             factory_userBills,factory_utils,
-                                            factory_userCards,factory_mfb,factory_userSpending) {
+                                            factory_userCards,
+                                            factory_mfb,
+                                            factory_userSpending) {
 
     $scope.date = new Date();
 

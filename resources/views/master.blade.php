@@ -32,32 +32,22 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 
-    <!-- Angular stuff -->
-    <script src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
-    <script src="https://code.angularjs.org/1.4.7/angular-route.min.js"></script>
-    <script src="https://code.angularjs.org/1.4.7/angular-animate.min.js"></script>
-    <script src="https://code.angularjs.org/1.4.7/angular-aria.min.js"></script>
+    {!! Minify::javascript(array('/js/angular.min.js','/js/angular-route.min.js','/js/angular-animate.min.js','/js/angular-material.min.js','/js/angular-aria.min.js')) !!}
+    {!! Minify::javascript(array('/js/ng_app.js','/js/ng_factory.js','/js/global.js')) !!}
+
+    {!! Minify::javascriptDir('/js/controllers/') !!}
+    {!! Minify::javascriptDir('/js/vendors/') !!}
+
+
     <script src="/angular/angular-sanitize.min.js"></script>
 
 
     {{-- Material Ui--}}
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.1/angular-material.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.1/angular-material.min.js"></script>
 
+    <link href="/css/ionicons.min.css" type="text/css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" type="text/css" rel="stylesheet" >
 
-    {{-- fonts and icons --}}
-    <link href="//fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
-
-
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" rel="stylesheet">
-    {{-- http://materializecss.com/navbar.html --}}
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Compiled and minified CSS -->
-    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">--}}
-
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
 
     {{--boot strap4 --}}
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
@@ -65,28 +55,11 @@
 
     <!-- Include Bootstrap-select CSS, JS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 
-    {{-- Moment.js --}}
-    <script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
-    {{-- nummeral--}}
-    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
-
-
-    {{-- in house code --}}
-    <script src="/js/global.js"></script>
-    <script src="/js/chart.min.js"></script>
-    <script src="/app/js/ng_app.js"></script>
-    <script src="/app/js/ng_factory.js"></script>
-
-    <script src="/js/SpendableChartController.js"></script>
     <script src="/app/bills/BillController.js"></script>
     <script src="/app/creditcards/CreditCardController.js"></script>
-    <script src="/app/account/userController.js"></script>
-    <script src="/app/transactions/TransactionsController.js"></script>
-    <script src="/js/GoalTravelController.js"></script>
-    <script src="/js/GoalBuyingController.js"></script>
 
+    <script src="/app/transactions/TransactionsController.js"></script>
 
     <script src="/vendors/angular-chart/angular-chart.min.js"></script>
     <link rel="stylesheet" href="/vendors/angular-chart/angular-chart.min.css">
@@ -98,24 +71,15 @@
     <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="/css/component.css" />
     <link rel="stylesheet" href="/css/angular_animation.css">
-
     <link rel="stylesheet" href="/css/jumbotron-narrow.css">
 
-    <script src="/js/modernizr.min.js"></script>
 
     {{-- Vendors --}}
     <link rel="stylesheet" href="/vendors/mfb/mfb.css">
     <script src="/vendors/mfb/mfb-directive.js"></script>
 
 
-    <script src="/vendors/bootstrapSelect/bootstrap-select.min.js"></script>
-    <link rel="stylesheet" href="/vendors/bootstrapSelect/bootstrap-select.min.css">
-
-
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
-    <script src="http://jvandemo.github.io/angularjs-google-maps/dist/angularjs-google-maps.js"></script>
-
-    {{--<script src="//maps.google.com/maps/api/js"></script>--}}
     <script src="/vendors/ng-map/ng-map.min.js"></script>
 
     <script>
@@ -132,7 +96,7 @@
 <body ng-app="App">
      <nav class="navbar navbar-fixed-top header-mb">
       <div class="container">
-            <a class="navbar-brand" href="/"><Mana></Mana>Money</a>
+            <a class="navbar-brand" href="/"> mana </a>
             <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header">
               &#9776;
             </button>
@@ -205,7 +169,7 @@
 
 </body>
 
-<script src="/js/global.interact.js"></script>
+{{--<script src="/js/global.interact.js"></script>--}}
 <script src="/vendors/ng-autocomplete/ngAutocomplete.js"></script>
 
 <script>

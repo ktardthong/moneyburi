@@ -10,30 +10,34 @@
             <span aria-hidden="true">&times;</span>
             <span class="sr-only">Close</span>
         </button>
-        <strong>Save!</strong>
+        <strong>{!! trans('messages.lbl_save') !!}</strong>
     </div>
 
     <div class="container-fluid">
         <div class="col-xs-12 col-sm-6">
-            <h4>Your photo</h4>
-            <img src="@{{ userData.avatar? '/userimg/'+userData.avatar : '/img/user_avatar.gif' }}"
-                                             class="img-circle img-responsive pull-left">
+            <h4>{!! trans('messages.lbl_your_photo') !!}</h4>
+            <img
+                 src="<?= !empty(Auth::user()->avatar)?'/userimg/'.Auth::user()->avatar:"/img/user_avatar.gif"?>"
+                 class="img-circle img-responsive pull-left">
         </div>
 
         <div class="col-xs-12 col-sm-6">
-            <label>Select a file to upload</label>
+            <label>{!! trans('messages.lbl_selPhoto') !!}</label>
             {!! Form::open(array('id' => 'search',
                                              'method' => 'POST',
                                              'url' => '/profileImage/upload',
                                              'files' => true)) !!}
             {!! csrf_field() !!}
+
             {!! Form::file('image', null) !!}
-            <button class="btn btn-block btn-primary" value="Upload image">Upload image</button>
+                <p style="margin-top: 10px">
+                    <button class="btn btn-sm btn-block btn-primary" value="Upload image">{!! trans('messages.lbl_upload') !!}</button>
+                </p>
             {!! Form::close() !!}
 
             <div class="container-fluid" style="margin-top: 50px">
 
-                <div class="row md-headline">Your Info</div>
+                <div class="row md-headline">{!! trans('messages.lbl_yourInfo') !!}</div>
 
                 <div class="row">
                     <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
@@ -104,7 +108,7 @@
 
     <button
             ng-if="ng_userfname && ng_userlname && ng_email"
-            class="btn btn-primary btn-block" ng-click="saveUserData()">Save</button>
+            class="btn btn-primary btn-block" ng-click="saveUserData()">{!! trans('messages.lbl_save') !!}</button>
 </div>
 
 <script>

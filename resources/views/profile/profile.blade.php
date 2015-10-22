@@ -25,7 +25,6 @@
 
                 <nav mfb-menu position="br"
                      effect="slidein"
-                     label=""
                      active-icon="ion-close-round"
                      resting-icon="ion-navicon"
                      toggling-method="click">

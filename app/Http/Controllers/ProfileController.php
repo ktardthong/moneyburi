@@ -87,4 +87,10 @@ class ProfileController extends Controller
 
         return view('user.edit',compact('page_title','page_descs'));
     }
+
+
+    public function spendable()
+    {
+        return view('app.html.tpl_spendable');
+    }
 }

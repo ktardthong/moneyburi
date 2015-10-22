@@ -11,32 +11,28 @@
 
 @section('content')
 
-    {{--<div ng-include="/app/html/card_userEdit.html"></div>--}}
 
     <div>
 
         <div class="col-xs-12 col-sm-12">
 
-            <div class="row">
-                <div class="row">
-                    {{--<div class="page page-home" ng-include="templates[6].url" ngview ></div>--}}
-                </div>
+            <div class="row" ng-controller="profileController">
 
-                <h4>Account</h4>
+                <h4>{!! trans('messages.lbl_account') !!}</h4>
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link" href="#profile" role="tab" data-toggle="tab">Profile</a>
+                    <a class="nav-link" href="#profile" role="tab" data-toggle="tab">{!! trans('messages.lbl_profile') !!}</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#spendable" role="tab" data-toggle="tab">Spendable</a>
+                    <a class="nav-link" href="#spendable" role="tab" data-toggle="tab">{!! trans('messages.lbl_spendableSetting') !!}</a>
                   </li>
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active" id="profile" ng-include="'/profile/update_info'">profile</div>
-                  <div role="tabpanel" class="tab-pane" id="spendable" ng-include="'/app/account/tpl_spendable.html'">profile</div>
+                  <div role="tabpanel" class="tab-pane" id="spendable" ng-include="'/profile/spendable'">profile</div>
                 </div>
             </div>
         </div>

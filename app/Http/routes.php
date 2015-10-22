@@ -29,10 +29,13 @@ Route::get('/credit_cards','PagesController@creditcards');
 //USER
 Route::get('/user','ProfileController@user');
 
+
 //PROFILE
 Route::get('/profile','ProfileController@index');
 Route::get('/profile/update_info','ProfileController@edit');
+Route::get('/profile/spendable','ProfileController@spendable');
 Route::post('/profile/update','ProfileController@update');
+
 
 //Transaction
 Route::get('/showTransaction'   ,   'TransactionController@show');

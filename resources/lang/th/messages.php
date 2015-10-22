@@ -20,7 +20,7 @@ return array(
     'lbl_signup'        => 'สมัคร',
 
     'lbl_sign_in'       => 'เช้าใช้',
-    'lbl_spendable'     => 'เหลือใช้',
+    'lbl_spendable'     => 'เหลือใช้ได้',
     'lbl_from'          => 'จาก',
     'lbl_todayTransction'   => 'การใช้จ่ายวันนี้',
     'lbl_yourSaving'        => 'เงินเก็บ',
@@ -42,4 +42,13 @@ return array(
     //Creditcard
     'lbl_creditCard'        => 'บัตรเครดิต',
 
+    'lbl_account'           => 'ข้อมูลส่วนตัว',
+    'lbl_profile'           => 'ข้อมูลส่วนตัว',
+    'lbl_spendableSetting'  => 'ตั้งค่ารายรับจ่าย',
+    'lbl_your_photo'        => 'รูปของคุณ',
+
+    'lbl_save'              => 'บันทึกเรียบร้อย',
+    'lbl_yourInfo'          => 'ข้อมูลของคุณ',
+    'lbl_selPhoto'          => 'อัพโหลดรูป',
+    'lbl_upload'            => 'อัพโหลด'
 );
