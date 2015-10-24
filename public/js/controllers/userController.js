@@ -1,10 +1,10 @@
-app.controller('userController', function($scope,factory_userSpending) {
+app.controller('userController', function($scope,factory_userSpending,$rootScope) {
 
 
-    $scope.ng_mthlyIncome  =   $scope.userData.mth_income;
-    $scope.ng_mthlyBill    =   $scope.userData.mth_bill;
-    $scope.ng_mthlySaving  =   $scope.userData.mth_saving;
-    $scope.ng_spendable    =   $scope.userData.mth_spendable;
+    $rootScope.rs_mthlyIncome  =   $scope.userData.mth_income;
+    $rootScope.rs_mthlySaving  =   $scope.userData.mth_saving;
+
+    $scope.ng_spendable = $rootScope.rs_mthlyIncome - $rootScope.rs_sumBills - $rootScope.rs_mthlySaving;
     $scope.currency        =   $scope.userData.currency;
 
 
@@ -15,12 +15,14 @@ app.controller('userController', function($scope,factory_userSpending) {
 
     $scope.labels = ["Bill", "Saving", "Spendable"];
     $scope.colours=  ["#8D8D8D","#87D2DA","#1594A8"],
-    $scope.data = [ $scope.ng_mthlyBill, $scope.ng_mthlySaving,$scope.ng_spendable];
+    $scope.data = [ $rootScope.rs_sumBills, $rootScope.rs_mthlySaving,$scope.ng_spendable];
 
-    $scope.calPie = function(){
-        $scope.ng_spendable = $scope.ng_mthlyIncome - $scope.ng_mthlyBill - $scope.ng_mthlySaving;
+    $rootScope.calPie = function(){
+
+        $scope.ng_spendable = $rootScope.rs_mthlyIncome - $rootScope.rs_sumBills - $rootScope.rs_mthlySaving;
+
         $scope.labels = ["Bill", "Saving", "Spendable"];
-        $scope.data = [ $scope.ng_mthlyBill, $scope.ng_mthlySaving,$scope.ng_spendable];
+        $scope.data = [ $rootScope.rs_sumBills, $rootScope.rs_mthlySaving,$scope.ng_spendable];
     };
 
     $scope.saveUserData = function(){
@@ -46,14 +48,14 @@ app.controller('userController', function($scope,factory_userSpending) {
     }
 
     $scope.saveInfo = function (){
-
+        $scope.ng_spendable = $scope.rs_mthlyIncome - $scope.rs_sumBills - $scope.rs_mthlySaving;
         $.ajax({
             method: "POST",
             url: "/ajax/updateUserInfo",
             data:  {
-                editMonthlyIncome:      $('#editMonthlyIncome').val() ,
-                editMonthlyBill:        $('#editMonthlyBill').val(),
-                editMonthlySaving:      $('#editMonthlySaving').val(),
+                editMonthlyIncome:      $scope.rs_mthlyIncome,
+                editMonthlyBill:        $scope.rs_sumBills,
+                editMonthlySaving:      $scope.rs_mthlySaving,
                 editMonthlySpendable:   $scope.ng_spendable,
                 editDaySaving:          $('#editDaySaving').html(),
                 editDaySpendable:       $scope.ng_spendable/30,

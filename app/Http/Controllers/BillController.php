@@ -41,4 +41,25 @@ class BillController extends Controller
             return \App\userBills::upcomingBill();
         }
     }
+
+
+    public function getViewBill()
+    {
+        return view('app.bills.tpl_billView');
+    }
+
+    public function billCompactList()
+    {
+        return view('app.bills.tpl_billCompactList');
+    }
+
+    public function billList()
+    {
+        return view('app.bills.tpl_billList');
+    }
+
+    public function userBill()
+    {
+        return view('app.bills.tpl_userBill');
+    }
 }

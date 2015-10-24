@@ -73,7 +73,11 @@ Route::post('ajax/userStatus',      'AjaxController@userStatus');
 
 
 //BILLS
+Route::get('bill/tpl_billList',   'BillController@billList'  );
+Route::get('bill/billCompactList','BillController@billCompactList');
+Route::get('bill/viewBills',      'BillController@getViewBill');
 Route::get('bill/getBills',       'BillController@getBill');
+Route::get('bill/userBill',       'BillController@userBill');
 Route::get('bill/sumBillAmount',  'BillController@sumBill');
 Route::get('bill/upComing',       'BillController@comingBill');
 Route::post('ajax/addBills',      'AjaxController@addBills');

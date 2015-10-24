@@ -31,12 +31,19 @@ app.factory('factory_userGoals', function($http) {
 });
 
 app.factory('factory_userBills', function($http) {
+
     return {
         getBlls: function () {
             return $http.get("/bill/getBills");
         },
         upComing: function (){
             return $http.get("/bill/upComing");
+        },
+        sumBills: function(){
+            return $http.get("/bill/sumBillAmount");
+        },
+        billCate: function(){
+          return $http.get("/ajax/billCate");
         }
     }
 });

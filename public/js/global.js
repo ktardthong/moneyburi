@@ -37,13 +37,6 @@ function monthDiff(future)
     return Math.round(month);
 }
 
-function listLocalStorage()
-{
-    for (var i = 0; i < localStorage.length; i++){
-        console.log(localStorage.getItem(localStorage.key(i)) + " | KEY:"+localStorage.key(i).length);
-
-    }
-}
 
 function dayDiff(future)
 {

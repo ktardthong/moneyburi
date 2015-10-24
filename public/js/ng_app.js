@@ -45,12 +45,14 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
                                             factory_userBills,factory_utils,
                                             factory_userCards,
                                             factory_mfb,
-                                            factory_userSpending) {
+                                            factory_userSpending,
+                                            $rootScope) {
 
     $scope.date = new Date();
 
     factory_userData.userDataFactory().success(function(data){
         $scope.userData=data;
+        $rootScope.rs_userData = data;
     });
 
     factory_userData.userJobs().success(function(data){
@@ -76,6 +78,16 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
     factory_userBills.upComing().success(function(data){
         $scope.upComing = data;
     });
+
+    factory_userBills.sumBills().success(function(data) {
+        $rootScope.rs_sumBills = data;
+    });
+
+    factory_userBills.billCate().success(function(response) {
+       $scope.billCate = response;
+    });
+
+
 
     factory_userCards.getCards().success(function(data){
         $scope.userCards = data;

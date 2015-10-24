@@ -210,15 +210,16 @@ class AjaxController extends Controller
 
             $data =[
                 'uid'           => Auth::user()->id,
-//                'name'          => $request->travelLocation,
                 'cate_id'       => $request->cateId,
                 'amount'        => $request->amount,
                 'due_date'      => $request->due_date,
             ];
-            print_r($data);
             DB::table('user_bills')->insert($data);
+
             //Update to users table
             \App\userBills::updateBillAmount();
+
+            \App\userBills::sumBillAmount();
 
             return \App\userBills::get();
         }

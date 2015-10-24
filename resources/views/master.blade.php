@@ -20,7 +20,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-
     <link rel="manifest" href="/favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
@@ -29,12 +28,27 @@
 
     <title>@yield('title')</title>
 
+    {!! Minify::javascript(array('/js/jquery.min.js')) !!}
 
-    {!! Minify::javascript(array('/js/jquery.min.js','/js/angular.min.js','/js/angular-route.min.js','/js/angular-animate.min.js','/js/angular-material.min.js','/js/angular-aria.min.js','/js/angular-sanitize.min.js')) !!}
-    {!! Minify::javascript(array('/js/ng_app.js','/js/ng_factory.js','/js/gmap.js','/js/global.js')) !!}
 
-    {{-- Angular Controllers --}}
-    {!! Minify::javascriptDir('/js/controllers/') !!}
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    {{-- Angular --}}
+    {!! Minify::javascript( array(  '/js/angular.min.js','/js/angular-route.min.js','/js/angular-animate.min.js',
+                                    '/js/angular-aria.min.js','/js/angular-sanitize.min.js',
+                                    '/js/ng_app.js',
+                                    '/js/ng_factory.js',
+                                    '/js/controllers/BillController.js',
+                                    '/js/controllers/CreditCardController.js',
+                                    '/js/controllers/GoalBuyingController.js',
+                                    '/js/controllers/GoalController.js',
+                                    '/js/controllers/GoalTravelController.js',
+                                    '/js/controllers/SpendableChartController.js',
+                                    '/js/controllers/userController.js',
+                                  )) !!}
+     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
+    {!! Minify::javascript(array('/js/gmap.js','/js/global.js')) !!}
     {!! Minify::javascriptDir('/js/vendors/') !!}
 
     {{-- Vendors for JS and CSS--}}
@@ -46,8 +60,6 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
-    <script src="/app/bills/BillController.js"></script>
-    <script src="/app/creditcards/CreditCardController.js"></script>
     <script src="/app/transactions/TransactionsController.js"></script>
 
     <script>

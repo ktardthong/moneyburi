@@ -1,35 +1,19 @@
-app.controller('BillController', function($scope, $http,$mdDialog) {
+app.controller('billController', function($scope, $http,$mdDialog,$rootScope,factory_userBills) {
 
     $scope.days     = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10,	11,	12,	13,	14,	15,	16,	17,	18,	19,	20,	21,	22,	23,	24,	25,	26,	27,	28,	29,	30,	31];
+    $scope.displayAddNewBill = false;
 
     var billList = this;
 
     billList.billItem = [];
-    billList.totalBill = 0;
+    //billList.totalBill = 0;
 
 
-    $http.get("/ajax/billCate")
-        .success(function(response) {
-            billList.categories = response;
-        });
-
-
-    $http.get("/bill/getBills")
-        .success(function(response) {
-            billList.userBills = response;
-        });
-
-    $http.get("bill/sumBillAmount")
-        .success(function(response) {
-            billList.sumBills = response;
-        });
-
-
-    $http.get("/card/getCards")
-        .success(function(response) {
-            $scope.userCards = response;
-        });
-
+    billList.ng_totalBill = $scope.sumBills;
+    $scope.$watch('ng_totalBill', function () {
+        //called when name or age changed
+        console.log($scope.ng_totalBill);
+    });
 
     billList.paidStatus = function(container_id){
 
@@ -49,46 +33,58 @@ app.controller('BillController', function($scope, $http,$mdDialog) {
         });
     };
 
-    $scope.selectCard=function(index){
-        $scope.showAddTransaction[index] = true;
-        console.log("test"+index)
+    //Check if the value user enter is not negative
+    $scope.checkVal = function()
+    {
+        if($scope.ng_billAmount > 0)
+        {
+            var amt = $rootScope.rs_mthlyIncome - $rootScope.rs_mthlySaving - $scope.ng_billAmount;
+            if(amt > 0)
+            {
+                $scope.displayAddNewBill = true;
+            }
+            else
+            {
+                $scope.displayAddNewBill = false;
+            }
+            console.log(amt + $scope.displayAddNewBill);
+        }
+        else
+        {
+            $scope.displayAddNewBill = false;
+        }
     }
 
-
+    //Add the bill
     billList.addBill = function() {
-
-        billList.billItem.push({text:billList.billText + billList.billCate});
-        billList.bilText= '';
-
-        var billData = billList.billText + billList.billCate;
-
-        //var storedNames = JSON.parse(localStorage["billData"]);
-
-        billList.totalBill = billList.totalBill + billList.billText;
-
 
         $.ajax({
             method: "POST",
             url: "/ajax/addBills",
             data:  {
 
-                amount:     $('#billAmount').val(),
-                cateId:     $('#billCate').val(),
-                due_date:   $('#billDue').val()
+                amount:     $scope.ng_billAmount,
+                cateId:     $scope.ng_billCate,
+                due_date:   $scope.ng_billDue
             }
         })
             .done(function( msg ) {
-                $http.get("bill/sumBillAmount")
-                    .success(function(response) {
-                        billList.sumBills = response;
-                    });
+
+
                 $http.get("/bill/getBills")
                     .success(function(response) {
-                        billList.userBills = response;
+                        $scope.userBills = response;
+                });
+
+                factory_userBills.sumBills().success(function(data) {
+                    $rootScope.rs_sumBills     =   data;
+                    $rootScope.calPie();
+                    $('#userBillUpdate').effect("highlight", {color:'#F6C13C'}, 3500);
                 });
             });
 
     };
+
 
 
     $scope.showConfirm = function(ev,container_id) {
@@ -119,7 +115,6 @@ app.controller('BillController', function($scope, $http,$mdDialog) {
                 });
         });
     }, function() {
-        //$scope.status = 'You decided to keep your debt.';
     });
 };
 
@@ -129,14 +124,27 @@ app.controller('BillController', function($scope, $http,$mdDialog) {
 .directive('billView',function(){
     return {
         restrict: 'E',
-        templateUrl: '/app/bills/tpl_billView.html'
+        templateUrl: '/bill/viewBills'
+    };
+})
+
+.directive('userBill', function() {
+    return {
+        restrict: 'E',
+        templateUrl: '/bill/userBill'
     };
 })
 
 .directive('billList', function() {
     return {
         restrict: 'E',
-        templateUrl: '/app/bills/tpl_billList.html'
+        templateUrl: '/bill/tpl_billList'
+    };
+})
+.directive('billCompactList',function(){
+    return {
+        restrict: 'E',
+        templateUrl: '/bill/billCompactList'
     };
 })
 .directive('cardSelect',function(){

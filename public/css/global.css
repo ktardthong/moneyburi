@@ -209,3 +209,8 @@ a {
     background-color: #1594A8;
     border-color: #C7E8EA;
 }
+
+.lg-form-input{
+    font-size: 1.75rem;
+    font-weight: 200;
+}

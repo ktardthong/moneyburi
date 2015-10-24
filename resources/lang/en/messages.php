@@ -39,6 +39,7 @@ return array(
     'lbl_billUpcoming'      => 'Upcoming bill',
     'lbl_billNone'          => 'No bills here',
     'lbl_billAdd'           => 'Add Bill',
+    'lbl_billShow'          => 'Show Bill',
 
     //Creditcard
     'lbl_creditCard'        => 'Credit card',
@@ -61,6 +62,7 @@ return array(
     'lbl_mth_income'       => 'Monthly Income',
     'lbl_mth_saving'       => 'Monthly Saving',
     'lbl_mth_spendable'    => 'Monthly Spendable',
+    'lbl_mth_bills'        => 'Monthly Bills',
 
     //ERRORS
     'err_spendableNegative'=>  'Your Spendable is negative',
