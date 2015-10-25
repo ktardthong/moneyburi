@@ -1,4 +1,4 @@
-app.controller('billController', function($scope, $http,$mdDialog,$rootScope,factory_userBills) {
+app.controller('billController', function($scope, $http,$rootScope,factory_userBills) {
 
     $scope.days     = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10,	11,	12,	13,	14,	15,	16,	17,	18,	19,	20,	21,	22,	23,	24,	25,	26,	27,	28,	29,	30,	31];
     $scope.displayAddNewBill = false;
@@ -20,34 +20,6 @@ app.controller('billController', function($scope, $http,$mdDialog,$rootScope,fac
     $scope.labels   = bill_name;
     $scope.data     = bill_amount;
 
-    var billList = this;
-
-    billList.billItem = [];
-
-
-    billList.ng_totalBill = $scope.sumBills;
-    $scope.$watch('ng_totalBill', function () {
-        //called when name or age changed
-        console.log($scope.ng_totalBill);
-    });
-
-    billList.paidStatus = function(container_id){
-
-        $.ajax({
-            method: "POST",
-            url: "/ajax/togglePaid",
-            data:  {
-                billId: container_id
-            }
-        })
-
-        .done(function( msg ) {
-            $http.get("/bill/getBills")
-                .success(function(response) {
-                    billList.userBills = response;
-                });
-        });
-    };
 
     //Check if the value user enter is not negative
     $scope.checkVal = function()
@@ -106,36 +78,6 @@ app.controller('billController', function($scope, $http,$mdDialog,$rootScope,fac
 
 
 
-    $scope.showConfirm = function(ev,container_id) {
-    // Appending dialog to document.body to cover sidenav in docs app
-    var confirm = $mdDialog.confirm()
-        .title('Remove this bill?')
-        //.content('')
-        //.ariaLabel('Lucky day')
-        .targetEvent(ev)
-        .ok('Yes')
-        .cancel('No');
-    $mdDialog.show(confirm).then(function() {
-        console.log(container_id);
-        $.ajax({
-            method: "POST",
-            url:    "/ajax/removeBills",
-            data:  {
-                    billId: container_id}
-        })
-        .done(function( msg ) {
-            $http.get("bill/sumBillAmount")
-                .success(function(response) {
-                    billList.sumBills = response;
-                });
-            $http.get("/bill/getBills")
-                .success(function(response) {
-                    billList.userBills = response;
-                });
-        });
-    }, function() {
-    });
-};
 })
 
 

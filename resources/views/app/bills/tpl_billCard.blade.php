@@ -1,13 +1,13 @@
-{!! csrf_token() !!}
-<div style="max-width: 400px;margin: auto;" ng-controller="billController">
+<div style="max-width: 400px;margin: auto;">
 
-     Card Blade
-
+     <div ng-controller="billController">
      <canvas id="doughnut" class="chart chart-doughnut"
-       chart-data="data" chart-labels="labels">
+            chart-data="data"
+            chart-labels="labels">
      </canvas>
+     </div>
 
-    {{--<user-bill></user-bill>--}}
-    {{--<bill-compact-list ng-init="showBilList=false" ng-show="showBilList"></bill-compact-list>--}}
+    <user-bill></user-bill>
+    <bill-compact-list ng-init="showBilList=false" ng-show="showBilList"></bill-compact-list>
     {{--<bill-list></bill-list>--}}
 </div>

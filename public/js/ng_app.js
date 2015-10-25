@@ -1,6 +1,6 @@
 var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js','ngSanitize','gm','ngMap']);
 
-app.config(['$routeProvider',
+/*app.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider
             .when('/bill/billCard', {
@@ -8,7 +8,7 @@ app.config(['$routeProvider',
                 templateUrl: '/bill/billCard',
                 controller: 'billController'
             });
-}]);
+}]);*/
 
 //Angular Theming
 app.config(function($mdThemingProvider) {

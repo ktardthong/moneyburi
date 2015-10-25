@@ -1,5 +1,5 @@
 {{-- Bill Compact List --}}
-<div class="" align="center" style="padding-bottom: 20px" ng-controller="billController as bill">
+<div class="" align="center" style="padding-bottom: 20px" ng-controller="billController">
 
     <div class="text-muted pull-right">
         <small>
