@@ -4,9 +4,8 @@ app.controller('userController', function($scope,factory_userSpending,$rootScope
     $rootScope.rs_mthlyIncome  =   $scope.userData.mth_income;
     $rootScope.rs_mthlySaving  =   $scope.userData.mth_saving;
 
-    $scope.ng_spendable = $rootScope.rs_mthlyIncome - $rootScope.rs_sumBills - $rootScope.rs_mthlySaving;
-    $scope.currency        =   $scope.userData.currency;
-
+    $scope.ng_spendable =   $rootScope.rs_mthlyIncome - $rootScope.rs_sumBills - $rootScope.rs_mthlySaving;
+    $scope.currency     =   $scope.userData.currency;
 
     $scope.ng_userfname    =    $scope.userData.firstname;
     $scope.ng_userlname    =    $scope.userData.lastname;

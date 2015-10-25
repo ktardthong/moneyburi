@@ -5,32 +5,32 @@
         <input type="checkbox"
                ng-model="is_paid"
                ng-click="BillList.paidStatus(bill.id)"
-               ng-checked="{{bill.is_paid==0? false:true}}">
+               ng-checked="@{{bill.is_paid==0? false:true}}">
 
         <div class="text-left">
 
             <span class="label label-default label-pill pull-right">
                 <span><i class="fa fa-trash" ng-click="showConfirm($event,bill.id)"></i> </span>
-                <span ng-show="false" ng-model="confirmDelete" id="{{$index}}">Del</span>
+                <span ng-show="false" ng-model="confirmDelete" id="@{{$index}}">Del</span>
             </span>
         </div>
 
         <div class="pull-left text-center lead">
 
             <div>
-                <span class="text-muted"> {{ date | date:'MMM'}}</span>
+                <span class="text-muted"> @{{ date | date:'MMM'}}</span>
             </div>
             <div>
-                {{ bill.due_date }}
+                @{{ bill.due_date }}
             </div>
         </div>
 
         <div class="text-center lead">
 
         <!-- Category name -->
-        {{ bill.name }}
+        @{{ bill.name }}
         <br>
-        {{ bill.amount }}
+        @{{ bill.amount }}
 
 
 

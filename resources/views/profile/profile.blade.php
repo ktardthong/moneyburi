@@ -17,7 +17,7 @@
 
             <div class="row">
                 <div class="row">
-                    <div class="page page-right" ng-include="template.url" ngview ></div>
+                    <div class="page page-right" ng-include="template.url" ></div>
                 </div>
             </div>
 

@@ -3,10 +3,28 @@ app.controller('billController', function($scope, $http,$mdDialog,$rootScope,fac
     $scope.days     = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10,	11,	12,	13,	14,	15,	16,	17,	18,	19,	20,	21,	22,	23,	24,	25,	26,	27,	28,	29,	30,	31];
     $scope.displayAddNewBill = false;
 
+    $rootScope.ng_billAmount =0;
+    $rootScope.ng_billCate =1;
+    $rootScope.ng_billDue =1;
+
+    var jsondata = $rootScope.rs_userBills;
+
+    var bill_name=[];
+    var bill_amount=[];
+
+    for (var i = 0, l = jsondata.length; i < l; i++) {
+        bill_name[i]   = jsondata[i].name;
+        bill_amount[i] = jsondata[i].amount;
+    }
+
+    console.log(bill_name);
+
+    $scope.labels   = bill_name;
+    $scope.data     = bill_amount;
+
     var billList = this;
 
     billList.billItem = [];
-    //billList.totalBill = 0;
 
 
     billList.ng_totalBill = $scope.sumBills;
@@ -38,6 +56,10 @@ app.controller('billController', function($scope, $http,$mdDialog,$rootScope,fac
     {
         if($scope.ng_billAmount > 0)
         {
+            console.log($rootScope.rs_mthlyIncome);
+            console.log($rootScope.rs_mthlySaving);
+            console.log($scope.ng_billAmount);
+
             var amt = $rootScope.rs_mthlyIncome - $rootScope.rs_mthlySaving - $scope.ng_billAmount;
             if(amt > 0)
             {
@@ -56,7 +78,7 @@ app.controller('billController', function($scope, $http,$mdDialog,$rootScope,fac
     }
 
     //Add the bill
-    billList.addBill = function() {
+    $scope.addBill = function() {
 
         $.ajax({
             method: "POST",
@@ -68,21 +90,20 @@ app.controller('billController', function($scope, $http,$mdDialog,$rootScope,fac
                 due_date:   $scope.ng_billDue
             }
         })
-            .done(function( msg ) {
+        .done(function( msg ) {
 
 
-                $http.get("/bill/getBills")
-                    .success(function(response) {
-                        $scope.userBills = response;
-                });
-
-                factory_userBills.sumBills().success(function(data) {
-                    $rootScope.rs_sumBills     =   data;
-                    $rootScope.calPie();
-                    $('#userBillUpdate').effect("highlight", {color:'#F6C13C'}, 3500);
-                });
+            $http.get("/bill/getBills")
+                .success(function(response) {
+                    $scope.userBills = response;
             });
 
+            factory_userBills.sumBills().success(function(data) {
+                $rootScope.rs_sumBills     =   data;
+                $rootScope.calPie();
+                $('#userBillUpdate').effect("highlight", {color:'#F6C13C'}, 3500);
+            });
+        });
     };
 
 
@@ -117,10 +138,9 @@ app.controller('billController', function($scope, $http,$mdDialog,$rootScope,fac
     }, function() {
     });
 };
-
-
-
 })
+
+
 .directive('billView',function(){
     return {
         restrict: 'E',

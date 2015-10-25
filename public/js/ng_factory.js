@@ -80,7 +80,7 @@ app.factory('factory_mfb',function($http){
                 return [{
                     label: 'Home',
                     icon: 'ion-home',
-                    url: '/app/html/card_spendable.html.php'
+                    url: '/spendableCard'
                 }, {
                     label: 'Account',
                     icon: 'ion-plus',
@@ -88,7 +88,7 @@ app.factory('factory_mfb',function($http){
                 }, {
                     label: 'Bills',
                     icon: 'ion-ios-list-outline',
-                    url: '/app/html/card_goals.html'
+                    url: '/bill/billCard'
                 }, {
                     label: 'Transactions',
                     icon: 'ion-calculator',

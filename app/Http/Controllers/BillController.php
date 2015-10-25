@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Transaction;
 use Illuminate\Http\Request;
-use Symfony\Component\VarDumper\Tests\Caster\CasterTest;
+use Illuminate\Support\Facades\View;
 use Validator;
-use App\User;
 use Auth;
-use Illuminate\Support\Facades\DB;
-use Log;
-use Carbon\Carbon;
+use Carbon;
+use Image;
 
 class BillController extends Controller
 {
@@ -61,5 +57,11 @@ class BillController extends Controller
     public function userBill()
     {
         return view('app.bills.tpl_userBill');
+    }
+
+    //Card display for bill
+    public function billCard()
+    {
+        return View::make('app.bills.tpl_billCard');
     }
 }

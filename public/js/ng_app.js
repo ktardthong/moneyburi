@@ -1,6 +1,14 @@
 var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js','ngSanitize','gm','ngMap']);
 
+app.config(['$routeProvider',
+    function($routeProvider) {
+        $routeProvider
+            .when('/bill/billCard', {
 
+                templateUrl: '/bill/billCard',
+                controller: 'billController'
+            });
+}]);
 
 //Angular Theming
 app.config(function($mdThemingProvider) {
@@ -48,11 +56,16 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
                                             factory_userSpending,
                                             $rootScope) {
 
+    $http.defaults.withCredentials = true;
     $scope.date = new Date();
 
     factory_userData.userDataFactory().success(function(data){
+
         $scope.userData=data;
-        $rootScope.rs_userData = data;
+
+        $rootScope.rs_userData      = data;
+        $rootScope.rs_mthlyIncome   =   $scope.userData.mth_income;
+        $rootScope.rs_mthlySaving   =   $scope.userData.mth_saving;
     });
 
     factory_userData.userJobs().success(function(data){
@@ -72,7 +85,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
     });
 
     factory_userBills.getBlls().success(function(data){
-        $scope.userBills = data;
+        $rootScope.rs_userBills = data;
     });
 
     factory_userBills.upComing().success(function(data){
@@ -109,6 +122,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
 
 
     $scope.nav = function(path) {
+
         $scope.template.url = path;
     };
 
@@ -119,7 +133,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
             { name: 'Account'           , url: '/app/html/card_account.html'},
             { name: 'Goals'             , url: '/app/html/card_goals.html'},
             { name: 'Transactions'      , url: '/app/html/card_transactions.html'},
-            { name: 'Bills'             , url: '/app/bills/BillView.html'},
+            { name: 'Bills'             , url: '/bill/billCard'},
             { name: 'Credit cards'      , url: '/app/creditcards/CreditCardView.html'},
         ];
 
