@@ -297,7 +297,8 @@ app.controller('transactionController', function($scope, $http, $filter) {
         axis: 'y',
         mouseWheel:{ enable: true },
         keyboard:{ enable: true },
-        contentTouchScroll: 25
+        contentTouchScroll: 25,
+        scrollButtons:{ enable: false }
     };
 })
 
