@@ -17,8 +17,6 @@ app.controller('billController', function($scope, $http,$mdDialog,$rootScope,fac
         bill_amount[i] = jsondata[i].amount;
     }
 
-    console.log(bill_name);
-
     $scope.labels   = bill_name;
     $scope.data     = bill_amount;
 

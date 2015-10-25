@@ -7,7 +7,7 @@
        chart-data="data" chart-labels="labels">
      </canvas>
 
-    <user-bill></user-bill>
-    <bill-compact-list ng-init="showBilList=false" ng-show="showBilList"></bill-compact-list>
-    <bill-list></bill-list>
+    {{--<user-bill></user-bill>--}}
+    {{--<bill-compact-list ng-init="showBilList=false" ng-show="showBilList"></bill-compact-list>--}}
+    {{--<bill-list></bill-list>--}}
 </div>
