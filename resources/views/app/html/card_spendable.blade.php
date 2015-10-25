@@ -20,11 +20,11 @@
                     </a>
                 </div>
 
-                {{--<div ng-controller="transactionController">--}}
-                    {{--<p>{!! trans('messages.lbl_recentTrans') !!}</p>--}}
-                    {{--<trans-recent></trans-recent>--}}
-                {{--</div>--}}
-                {{--<hr>--}}
+                <div ng-controller="transactionController">
+                    <p>{!! trans('messages.lbl_recentTrans') !!}</p>
+                    <trans-recent></trans-recent>
+                </div>
+                <hr>
 
             </div>
 
@@ -47,46 +47,24 @@
             <span class="lead">{!! trans('messages.lbl_overview') !!}</span>
         </div>
         <div class="card card-block">
-            <div class="col-xs-12 col-sm-4">
-                <span>{!! date('M Y') !!}</span>
-                <div class="pull-right">
-                    <small>
-                        <a a href="#">
-                            <i class="fa fa-cog"></i></a>
-                    </small>
+            <div align="center" style="margin: 0 0 10px 0;">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-primary-outline active" ng-click="showSpendableWeek()">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Week
+                    </label>
+                    <label class="btn btn-primary-outline" ng-click="showSpendableMonth()">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> Month
+                    </label>
                 </div>
-
-                <div class="center-block clearfix">
-                    <div class="pull-left text-center">
-                        <div class="text-success">
-                            <small>
-                                <strong>1000</strong>
-                            </small>
-                        </div>
-                    </div>
-                    <div class="center-block pull-right">
-                        <div class="text-muted">
-                            <small>
-                                <strong> -1000</strong>
-                            </small>
-                        </div>
-                    </div>
-                </div>
-
-                <progress class="progress progress-success" value="25" max="100"></progress>
-
-                <span>{!! trans('messages.lbl_spendingCate') !!}</span>
-                <progress class="progress progress-success" value="25" max="100"></progress>
-
-                <span>{!! trans('messages.lbl_spendingCate') !!}</span>
-                <progress class="progress progress-success" value="25" max="100"></progress>
-
-                <span>{!! trans('messages.lbl_spendingCate') !!}</span>
-                <progress class="progress progress-success" value="25" max="100"></progress>
-
-
             </div>
-            <div class="col-xs-12 col-sm-8" ng-controller="spendableChartController">
+
+            <div class="col-xs-12 col-sm-6" ng-controller="spendingCategoriesChartController">
+                <p>Spending Categories</p>
+                <spending-categories-chart></spending-categories-chart>
+            </div>
+
+            <div class="col-xs-12 col-sm-6" ng-controller="spendableChartController">
+                <p>Overall Spendable</p>
                 <spendable-chart></spendable-chart>
             </div>
         </div>

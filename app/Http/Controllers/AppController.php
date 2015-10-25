@@ -45,4 +45,22 @@ class AppController extends Controller
     {
         return view('app.spendableChart.tpl_spendableChart');
     }
+
+    //horizontal bar graph showing Spending Categories
+    function spendingCategoriesChart()
+    {
+        return view('app.spendingCategoriesChart.tpl_spendingCategoriesChart');
+    }
+
+    //all trans list
+    function transList()
+    {
+        return view('app.transactions.tpl_transList');
+    }
+
+    //recent trans
+    function transRecent()
+    {
+        return view('app.transactions.tpl_transRecent');
+    }
 }

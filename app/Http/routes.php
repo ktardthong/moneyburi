@@ -12,6 +12,9 @@ Route::get('/spendableChart', 'AppController@spendableChart');
 Route::get('/spendableCard', 'AppController@spendableCard');    //the main card
 //Route::get('/spendableChart', 'AppController@spendableChart');
 
+Route::get('/spendingCateChart', 'AppController@spendingCategoriesChart');
+Route::get('/transList', 'AppController@transList');
+Route::get('/transRecent', 'AppController@transRecent');
 
 
 
