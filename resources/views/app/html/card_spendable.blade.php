@@ -20,6 +20,12 @@
                     </a>
                 </div>
 
+                {{--<div ng-controller="transactionController">--}}
+                    {{--<p>{!! trans('messages.lbl_recentTrans') !!}</p>--}}
+                    {{--<trans-recent></trans-recent>--}}
+                {{--</div>--}}
+                {{--<hr>--}}
+
             </div>
 
             <div class="row col-xs-12 col-sm-4 hidden-md-up">

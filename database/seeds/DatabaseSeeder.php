@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PaymentTypeSeeder::class);
         $this->call(TransRepeatSeeder::class);
         $this->call(TranstypeSeeder::class);
+        $this->call(TransactionSeeder::class);
         $this->call(UserjobSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(CurrencySeeder::class);

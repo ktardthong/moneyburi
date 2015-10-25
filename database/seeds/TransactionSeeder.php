@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TransactionsSeeder extends Seeder
+class TransactionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,9 @@ class TransactionsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('transactions')->delete();
+        DB::table('transaction')->delete();
 
-        DB::table('transactions')->insert([
+        DB::table('transaction')->insert([
                 [
                     'id' => 1,
                     'uid' => 1,

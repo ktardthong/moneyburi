@@ -28,6 +28,7 @@ return array(
     'lbl_thisWeek'          => 'สัปดาห์นี้',
     'lbl_thisMonth'         => 'เดือนนี้',
     'lbl_thisYear'          => 'ปีนี้',
+    'lbl_recentTrans'          => 'การใช้จ่ายล่าสุด',
 
     'lbl_overview'          => 'ภาพรวม',
     'lbl_setGoal'           => 'ตั้งเป้าหมาย',
