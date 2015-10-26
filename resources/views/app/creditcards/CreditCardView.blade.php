@@ -5,17 +5,6 @@
         <h4 class="pull-left">Card list</h4>
     </div>
 
-
-    <div ng-if="!userCards.length" class="text-muted">You don't have card yet, why don't add one?
-        <button class="btn btn-link"  ng-click="addCardVisible=true"><i class="ion-plus"></i> Add </button>
-    </div>
-
-    <div ng-if="userCards.length" class="text-muted card container-fluid">
-        <card-list></card-list>
-    </div>
-
-
-
     <div class="card card-block lead" ng-show="addCardVisible" ng-show="false">
 
         <div class="row">
@@ -28,13 +17,13 @@
                     Issuer
                     <select ng-model="ng_ccIssuer">
                         <option ng-selected="ccIssuer.selected== BBL"
-                                ng-repeat="ccIssuer in ccIssuer" value="{{ ccIssuer.id }}">{{ ccIssuer.name }}</option>
+                                ng-repeat="ccIssuer in ccIssuer" value="@{{ ccIssuer.id }}">@{{ ccIssuer.name }}</option>
                     </select>
                     <p>
                         Type
                         <select ng-model="ng_ccTypes">
                             <option ng-selected="ccIssuer.selected== BBL" class="form-control"
-                                    ng-repeat="ccType in ccTypes" value="{{ ccType.id }}">{{ ccType.name }}</option>
+                                    ng-repeat="ccType in ccTypes" value="@{{ ccType.id }}">@{{ ccType.name }}</option>
                         </select>
                     </p>
 
@@ -43,12 +32,9 @@
                                placeholder="Credit limit"
                                ng-model="ng_cardLimit">
                     </p>
-
-
-
                     <label>Due on </label>
                     <select  ng-controller="thisController" ng-mode="billDue" id="billDue">
-                        <option ng-repeat="day in days" value="{{day}}">{{day}}</option>
+                        <option ng-repeat="day in days" value="@{{day}}">@{{day}}</option>
                     </select>
                     <label> of the month</label>
 
@@ -84,9 +70,13 @@
     </div>
 
 
+    <div ng-if="!userCards.length" class="text-muted">You don't have card yet, why don't add one?
+            <button class="btn btn-link"  ng-click="addCardVisible=true"><i class="ion-plus"></i> Add </button>
+        </div>
 
-
-
+        <div ng-if="userCards.length" class="text-muted card container-fluid">
+            <card-list></card-list>
+    </div>
 
 
 </div>

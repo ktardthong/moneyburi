@@ -10,6 +10,18 @@ use Illuminate\Routing\Controller;
 
 class CreditCardController extends Controller
 {
+    //The main card page
+    public  function index()
+    {
+        return view('app.creditcards.CreditCardView');
+    }
+
+    //List of user creditcards
+    public function tpl_cardList()
+    {
+        return view('app.creditcards.tpl_cardList');
+    }
+
 
     //Get the list of user credit cards
     public static function getCC()

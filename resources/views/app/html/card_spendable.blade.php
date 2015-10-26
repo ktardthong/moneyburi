@@ -113,6 +113,7 @@
             </div>
         </div>
 
+        {{-- Credit card stuff --}}
         <div class="col-xs-12 col-sm-6">
 
             <span class="lead">{!! trans('messages.lbl_creditCard') !!}</span>

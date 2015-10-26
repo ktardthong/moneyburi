@@ -7,6 +7,8 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
     $rootScope.ng_billCate =1;
     $rootScope.ng_billDue =1;
 
+    $scope.listBillStatus = $rootScope.rs_userBills;
+
     var jsondata = $rootScope.rs_userBills;
 
     var bill_name=[];
@@ -19,6 +21,31 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
 
     $scope.labels   = bill_name;
     $scope.data     = bill_amount;
+
+    $scope.billStatus = function($billlstatus)
+    {
+
+        if($billlstatus=='') {
+            $scope.listBillStatus = $rootScope.rs_userBills;
+        }
+        else {
+            $.ajax({
+                method: "POST",
+                url: "/bill/billStatus",
+                async: false,
+                cache: false,
+                data: {
+
+                    bill_status: $billlstatus
+                }
+            })
+                .done(function (msg) {
+                    console.log(JSON.parse(msg));
+                    $scope.listBillStatus = JSON.parse(msg);
+                });
+            console.log($scope.listBillStatus);
+        }
+    }
 
 
     //Check if the value user enter is not negative

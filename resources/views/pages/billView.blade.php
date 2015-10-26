@@ -34,13 +34,5 @@
     <h4>Total Bill {{ BillList.sumBills }}</h4>
     <bill-list></bill-list>
 
-<!--
-    <ul class="unstyled">
-        <li ng-repeat="bill in BillList.billItem">
-            <span class="">{{bill.text}}</span>
-        </li>
-    </ul>-->
-
-
 
 </div>

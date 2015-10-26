@@ -134,7 +134,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
             { name: 'Goals'             , url: '/app/html/card_goals.html'},
             { name: 'Transactions'      , url: '/app/html/card_transactions.html'},
             { name: 'Bills'             , url: '/bill/billCard'},
-            { name: 'Credit cards'      , url: '/app/creditcards/CreditCardView.html'},
+            { name: 'Credit cards'      , url: '/card/mainCard'},
         ];
 
 

@@ -38,6 +38,15 @@ class BillController extends Controller
         }
     }
 
+    //Toggle bill status
+    public function billStatus(Request $request)
+    {
+        if(Auth::user())
+        {
+            return \App\userBills::upcomingBill($request->bill_status);
+        }
+    }
+
 
     public function getViewBill()
     {

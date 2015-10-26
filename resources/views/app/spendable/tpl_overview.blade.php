@@ -28,9 +28,8 @@
         <div class="text-center">
             <span class="text-muted lead">{!! trans('messages.lbl_todayTransction') !!}</span>
         </div>
-        <div class="container">
-            <ul class="list-unstyled">
-            </ul>
+        <div ng-controller="transactionController" class="container-fluid">
+            <trans-recent></trans-recent>
         </div>
 
     </div>

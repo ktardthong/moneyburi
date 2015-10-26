@@ -87,9 +87,12 @@ Route::get('bill/upComing',         'BillController@comingBill');
 Route::post('ajax/addBills',        'AjaxController@addBills');
 Route::post('ajax/togglePaid',      'AjaxController@togglePaid');
 Route::post('ajax/removeBills',     'AjaxController@removeBills');
+Route::post('bill/billStatus',      'BillController@billStatus');    //get is paid or unpaid bill
 
 
 //CREDIT CARDS
+Route::get('card/mainCard',       'CreditCardController@index');
+Route::get('card/tpl_cardList',   'CreditCardController@tpl_cardList');
 Route::get('card/getCards',       'CreditCardController@getCC');
 Route::post('card/addCard',       'CreditCardController@addCard');
 Route::post('card/removeCard',    'CreditCardController@removeCard');

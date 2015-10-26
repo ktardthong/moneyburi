@@ -90,20 +90,26 @@ class userBills extends  Eloquent{
     }
 
     //Up coming bills
-    public static function upcomingBill()
+    public static function upcomingBill($paid_status=null)
     {
+
         $data = \App\userBills::where('user_bills.flg',1)
 //                                ->where('user_bills.due_date','>',date("d"))
-                                ->where('uid',Auth::user()->id)
-                                ->where('user_bills.is_paid',0)
-                                ->join('category_core', 'user_bills.cate_id', '=', 'category_core.id')
+                                ->where('uid',Auth::user()->id);
+//                                ->where('user_bills.is_paid',0)
+
+
+                if($paid_status != null){
+                    $data->where('user_bills.is_paid',$paid_status);
+                }
+
+                $data->join('category_core', 'user_bills.cate_id', '=', 'category_core.id')
                                 ->where('category_core.flg',1)
                                 ->select('user_bills.id as id',
                                     'user_bills.amount',
                                     'user_bills.is_paid',
                                     'user_bills.due_date','category_core.name')
-                                ->orderBy('user_bills.due_date', 'asc')
-                                ->get();
-        return json_encode($data);
+                                ->orderBy('user_bills.due_date', 'asc');
+         return json_encode($data->get());
     }
 } 

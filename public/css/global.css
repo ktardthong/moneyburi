@@ -104,7 +104,7 @@ a {
 
 .bottom_border{
     /*border-style: solid;*/
-    border-bottom: solid 1px #fefefe;
+    border-bottom: solid 1px #f4f4f4;
     padding-bottom: 8px;
 }
 
@@ -213,4 +213,33 @@ a {
 .lg-form-input{
     font-size: 1.75rem;
     font-weight: 200;
+}
+
+.btn-primary-outline:focus, .btn-primary-outline.focus, .btn-primary-outline:active, .btn-primary-outline.active, .open > .btn-primary-outline.dropdown-toggle {
+    color: #fff;
+    background-color: #88d2db;
+    border-color: #88d2db;
+}
+.btn-primary-outline
+{
+    color: #88d2db;
+    background-color: #fff;
+    border-color: #88d2db;
+}
+
+.btn-primary-outline:hover {
+    color: #fff;
+    background-color: #1594A8;
+    border-color: #88d2db;
+}
+
+.btn-link {
+    font-weight: normal;
+    color: #88d2db;
+    border-radius: 0;
+}
+.btn-link:hover {
+    font-weight: normal;
+    color: #1594A8;
+    border-radius: 0;
 }

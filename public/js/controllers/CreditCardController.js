@@ -2,7 +2,6 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
 
     $scope.days     = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10,	11,	12,	13,	14,	15,	16,	17,	18,	19,	20,	21,	22,	23,	24,	25,	26,	27,	28,	29,	30,	31];
 
-    var cardList = this;
     $scope.cardItem = [];
 
     $scope.removeCard = function(container_id){
@@ -30,6 +29,7 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
             method: "POST",
             url: "/card/addCard",
             data:  {
+
                 type:       $scope.ng_ccTypes,
                 issuer:     $scope.ng_ccIssuer,
                 cclimit:    $scope.ng_cardLimit,
@@ -88,6 +88,6 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
 .directive('cardList', function() {
     return {
         restrict: 'E',
-        templateUrl: '/app/creditcards/tpl_cardList.html'
+        templateUrl: '/card/tpl_cardList'
     };
 });
