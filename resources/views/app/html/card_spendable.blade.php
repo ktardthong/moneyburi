@@ -82,34 +82,32 @@
 
                 <div class="pull-right">
                     <small>
-                        <a href="#" ng-click="nav(templates[4].url)">
+                        <a href="#@{{  templates[4].url }}">
                             <i class="ion-plus-circled"></i></a>
                     </small>
                 </div>
 
                 <div ng-if="!upComing">{!! trans('messages.lbl_billNone') !!}</div>
-
-                <div class="clearfix" ng-repeat="bill in upComing">
-
-                    <div class="pull-left text-center">
-
-                        <div>
-                            <span class="text-muted"> {!! date('M') !!}</span>
-                        </div>
-                        <div>
-                            @{{ bill.due_date }}
-                        </div>
+                <div class="media bottom_border" ng-repeat="bill in upComing" style="border-style: #fefefe; border-left-color: #9F9F9F">
+                  <div class="media-left" ng-if="bill.is_paid ==0">
+                   pay
+                  </div>
+                  <div class="media-left">
+                    <a href="#">
+                        <span class="text-muted"> @{{ date | date:'MMM'}}</span>
+                        @{{ bill.due_date }}
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <i class="fa fa-cutlery"></i>
+                    @{{ bill.name }}
+                    <div class="pull-right">
+                        @{{ bill.amount }}
                     </div>
-
-                    <div class="center-block pull-right text-muted">
-                        <span>@{{ bill.amount | number: 2}}</span>
-                        <br>
-                        <span class="list-title" style="">
-                            <a href="#">@{{ bill.name }}</a>
-                        </span>
-                    </div>
-
+                  </div>
                 </div>
+
+
             </div>
         </div>
 
@@ -120,7 +118,7 @@
 
             <div class="pull-right">
                 <small>
-                    <a href="#" ng-click="nav(templates[5].url)">
+                    <a href="#@{{ templates[5].url }}">
                         <i class="ion-plus-circled"></i></a>
                 </small>
             </div>

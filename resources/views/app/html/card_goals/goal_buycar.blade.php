@@ -119,7 +119,7 @@
             <p>
                 <span>Monthly payment</span>
                 <p>
-                {{
+                @{{
                     ((autoPrice - autoDPmt) / autoNumPmt) * (1+ (autoInterest/100) ) | number:0
                 }}
                 </p>

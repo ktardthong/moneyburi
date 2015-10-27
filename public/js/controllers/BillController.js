@@ -1,4 +1,10 @@
-app.controller('billController', function($scope, $http,$rootScope,factory_userBills) {
+app.controller('billController', function($scope, $http,$rootScope,factory_userBills,$route, $routeParams, $location) {
+
+    /*$scope.$route = $route;
+    $scope.$location = $location;
+    $scope.$routeParams = $routeParams;*/
+
+    console.log($location.path());
 
     $scope.days     = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10,	11,	12,	13,	14,	15,	16,	17,	18,	19,	20,	21,	22,	23,	24,	25,	26,	27,	28,	29,	30,	31];
     $scope.displayAddNewBill = false;
@@ -21,6 +27,8 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
 
     $scope.labels   = bill_name;
     $scope.data     = bill_amount;
+    $scope.series = ['Series A'];
+
 
     $scope.billStatus = function($billlstatus)
     {
@@ -39,11 +47,9 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
                     bill_status: $billlstatus
                 }
             })
-                .done(function (msg) {
-                    console.log(JSON.parse(msg));
-                    $scope.listBillStatus = JSON.parse(msg);
-                });
-            console.log($scope.listBillStatus);
+            .done(function (msg) {
+                $scope.listBillStatus = JSON.parse(msg);
+            });
         }
     }
 

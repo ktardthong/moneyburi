@@ -26,7 +26,9 @@ class CreditCardController extends Controller
     //Get the list of user credit cards
     public static function getCC()
     {
-        return \App\CreditCard::get();
+        if(Auth::user()) {
+            return \App\CreditCard::get();
+        }
     }
 
 

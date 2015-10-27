@@ -10,14 +10,14 @@
                     <i class="fa fa-plane fa-stack-1x fa-inverse"></i>
             </span>
             <div class="card-title color_606">
-                {{ t.where_to }}
+                @{{ t.where_to }}
             </div>
             <p class="color_606">
                 <small>
                 <ul class="list-unstyled">
-                    <li>Budget{{t.budget | currency: '' }}</li>
-                    <li>Going there in {{ t.month | date: "MMM" }} {{ t.year }} </li>
-                    <li>Nights {{t.nights}}</li>
+                    <li>Budget@{{t.budget | currency: '' }}</li>
+                    <li>Going there in @{{ t.month | date: "MMM" }} @{{ t.year }} </li>
+                    <li>Nights @{{t.nights}}</li>
                 </ul>
                 </small>
             </p>
@@ -30,8 +30,8 @@
     <div ng-repeat="t in userTargets" class="scroll-container">
 
             <!--<div class="card card-block">
-                <h4 class="card-title"><i class="fa fa-gift fa-x"></i> {{ t.name }}</h4>
-                <p class="card-text">Price {{ t.price }} Duration {{ t.duration }}</p>
+                <h4 class="card-title"><i class="fa fa-gift fa-x"></i> @{{ t.name }}</h4>
+                <p class="card-text">Price @{{ t.price }} Duration @{{ t.duration }}</p>
                 <a href="#" class="card-link"><i class="fa fa-trash fa-2x"></i> Delete</a>
                 <a href="#" class="card-link">Another link</a>
             </div>-->

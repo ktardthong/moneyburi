@@ -84,8 +84,8 @@
 
         <div ng-if="(mthPmt > 0)&& ( userData.d_spendable -( mthPmt/30) > 0)" class="boxPadding">
 
-                To set goal for {{ targetName?targetName:'your destination' }}  in {{ buyingMonthSelect | date: 'MMM' }}, {{ buyingYearSelect }}
-                you will need to save {{ mthPmt | currency: ''  }} per month for {{ mthDiff }} month(s)
+                To set goal for @{{ targetName?targetName:'your destination' }}  in @{{ buyingMonthSelect | date: 'MMM' }}, @{{ buyingYearSelect }}
+                you will need to save @{{ mthPmt | currency: ''  }} per month for @{{ mthDiff }} month(s)
 
             <button class="btn btn-block btn-primary"
                     ng-click="setGoalTarget()">Set Goal!</button>

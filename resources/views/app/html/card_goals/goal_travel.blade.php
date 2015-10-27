@@ -94,8 +94,8 @@
 
             <div ng-if="(mthPmt > 0)&& ( userData.d_spendable -( mthPmt/30) > 0)" class="boxPadding">
                 <div class="alert-success">
-                    To go to {{ travelLocation?travelLocation:'your destination' }}  in {{ monthSelect | date: 'MMM' }}, {{ yearSelect }}
-                    you will need to save {{ mthPmt | currency: ''  }} per month for {{ mthDiff }} month(s)
+                    To go to @{{ travelLocation?travelLocation:'your destination' }}  in @{{ monthSelect | date: 'MMM' }}, @{{ yearSelect }}
+                    you will need to save @{{ mthPmt | currency: ''  }} per month for @{{ mthDiff }} month(s)
                 </div>
 
                 <div class="alert-info">
@@ -107,12 +107,12 @@
                       </a>
                     </span>
 
-                    After setting this goal, your daily spendable will be {{ userData.d_spendable -( mthPmt/30) | currency: '' }}
-                    from {{ userData.d_spendable | currency: '' }}.
+                    After setting this goal, your daily spendable will be @{{ userData.d_spendable -( mthPmt/30) | currency: '' }}
+                    from @{{ userData.d_spendable | currency: '' }}.
 
                 </div>
 
-                <span id="mthPmt">{{ mthPmt }}</span>{{ monthSelect | date: 'MMM' }}
+                <span id="mthPmt">@{{ mthPmt }}</span>@{{ monthSelect | date: 'MMM' }}
 
                 <button class="btn btn-block btn-primary" ng-click="setGoalTravel()">Set Goal!</button>
             </div>

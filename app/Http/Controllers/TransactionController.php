@@ -30,8 +30,12 @@ class TransactionController extends Controller
 
     public function getAllTransactionsForCurrentUser()
     {
-        $uid = Auth::user()->id;
-        return Transaction::getAllTransactionByUId($uid);
+
+        if(Auth::user())
+        {
+            $uid = Auth::user()->id;
+            return Transaction::getAllTransactionByUId(Auth::user()->id);
+        }
     }
 
     public function add_transaction(Request $request)
@@ -72,7 +76,9 @@ class TransactionController extends Controller
     //Get user total day spending
     public function todaySpending()
     {
-        return \App\Transaction::todaySpending();
+        if(Auth::user()) {
+            return \App\Transaction::todaySpending();
+        }
     }
 
 }

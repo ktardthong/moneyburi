@@ -1,14 +1,38 @@
-var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js','ngSanitize','gm','ngMap','ngChartjsDirective','ngScrollbars']);
+var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js','ngSanitize','gm',
+                                'ngMap','ngChartjsDirective','ngScrollbars']);
 
-/*app.config(['$routeProvider',
-    function($routeProvider) {
-        $routeProvider
-            .when('/bill/billCard', {
+app.config(function($routeProvider){
+    $routeProvider
+        .when('/',{
+            templateUrl: '/spendableCard'
+        })
+        .when('/Bills',{
+            templateUrl: '/bill/billCard'
+        })
+        .when('/profile',{
+            templateUrl: 'about.html'
+        })
+        .when('/CreditCard',{
+            templateUrl: 'card/mainCard'
+        })
+        .otherwise({
+            template: '<div> Nothing here </div>'
+        })
+})
 
-                templateUrl: '/bill/billCard',
-                controller: 'billController'
+/*app.run(['$route', '$rootScope', '$location', function ($route, $rootScope, $location) {
+    var original = $location.path;
+    $location.path = function (path, reload) {
+        if (reload === false) {
+            var lastRoute = $route.current;
+            var un = $rootScope.$on('$locationChangeSuccess', function () {
+                $route.current = lastRoute;
+                un();
             });
-}]);*/
+        }
+        return original.apply($location, [path]);
+    };
+}])*/
 
 //Angular Theming
 app.config(function($mdThemingProvider) {
@@ -54,7 +78,20 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
                                             factory_userCards,
                                             factory_mfb,
                                             factory_userSpending,
-                                            $rootScope) {
+                                            $rootScope,$route, $routeParams, $location) {
+
+
+
+    $scope.$route = $route;
+    $scope.$location = $location;
+    $scope.$routeParams = $routeParams;
+
+    $scope.loc = function(href) {
+        console.log(href);
+        $location.path(href)
+    }
+
+    console.log($location.path());
 
     $http.defaults.withCredentials = true;
     $scope.date = new Date();
@@ -131,10 +168,10 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
             //{ name: 'Home'              , url: '/app/html/card_home.html'},
             { name: 'Spendable'         , url: '/spendableCard'},
             { name: 'Account'           , url: '/app/html/card_account.html'},
-            { name: 'Goals'             , url: '/app/html/card_goals.html'},
+            { name: 'Goals'             , url: '/goal/card_goal'},
             { name: 'Transactions'      , url: '/app/html/card_transactions.html'},
-            { name: 'Bills'             , url: '/bill/billCard'},
-            { name: 'Credit cards'      , url: '/card/mainCard'},
+            { name: 'Bills'             , url: '/Bills'},
+            { name: 'Credit cards'      , url: '/CreditCard'},
         ];
 
 
@@ -154,6 +191,8 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
     };
 
 });
+
+
 
 app.controller('thisController', function($scope, $http, $filter,factory_userData) {
     $scope.days     = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10,	11,	12,	13,	14,	15,	16,	17,	18,	19,	20,	21,	22,	23,	24,	25,	26,	27,	28,	29,	30,	31];

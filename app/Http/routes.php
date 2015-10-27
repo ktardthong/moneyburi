@@ -110,8 +110,16 @@ Route::post('ajax/updateUserData',  'AjaxController@updateUserData');
 
 
 
+
 //GOALS
-Route::get('ajax/userGoals',   'GoalsController@getUserGoals');
+Route::get('goal/card_goal',        'GoalsController@card_goal');       //goal Container card
+Route::get('goal/goal_buying',      'GoalsController@goal_buying');      //goal buying
+Route::get('goal/goal_summary',     'GoalsController@goal_summary');     //goal summary card
+Route::get('goal/goal_travel',      'GoalsController@goal_travel');     //goal summary card
+Route::get('goal/goal_buycar',      'GoalsController@goal_buycar');     //goal summary card
+Route::get('goal/goal_buyhome',     'GoalsController@goal_buyhome');     //goal summary card
+
+Route::get('ajax/userGoals',        'GoalsController@getUserGoals');    //get the list of user goal
 Route::post('ajax/setGoalTravel',   'AjaxController@setGoalTravel');
 Route::post('ajax/setGoalTarget',   'AjaxController@setGoalTarget');
 Route::get('ajax/getUserTravelGoal',     'AjaxController@getUserTravelGoal');

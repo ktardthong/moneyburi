@@ -42,17 +42,14 @@ app.controller('goalHomeController', function($scope, $http) {
 
 app.controller('goalController', function($scope) {
 
-    /*$scope.months   = [ {id: 1, month: "Jan"}, {id: 2,month: 'Feb'},{id: 3,month: 'Mar'},{id: 4,month: 'Apr'},{id: 5,month: 'May'}, {id: 6,month: 'Jun'},{id: 7,month: 'Jul'},{id: 8,month: 'Aug'},
-     {id: 9,month: 'Sept'},{id: 10,month: 'Oct'},{id: 11,month: 'Nov'},{id: 12,month: 'Dec'}
-     ];*/
     $scope.goal_templates =
         [
-            { name: 'Goal Summary',     url: '/app/html/card_goals/goal_summary.html'},
-            { name: 'General Goal',     url: '/app/html/card_goals/goal_buying.html'},
+            { name: 'Goal Summary',     url: '/goal/goal_summary'},
+            { name: 'General Goal',     url: '/goal/goal_buying'},
             //{ name: 'Debts'     ,       url: '/app/html/card_goals/goal_debts.html'},
-            { name: 'Travel'   ,        url: '/app/html/card_goals/goal_travel.html'},
-            { name: 'Buy Home/Condo',   url: '/app/html/card_goals/goal_buyhome.html'},
-            { name: 'Buy Car',          url: '/app/html/card_goals/goal_buycar.html'}
+            { name: 'Travel'   ,        url: '/goal/goal_travel'},
+            { name: 'Buy Home/Condo',   url: '/goal/goal_buyhome'},
+            { name: 'Buy Car',          url: '/goal/goal_buycar'}
         ];
     $scope.goal_template = $scope.goal_templates[0];
 

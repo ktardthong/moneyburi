@@ -16,9 +16,7 @@
         <div class="col-xs-12 col-sm-12">
 
             <div class="row">
-                <div class="row">
-                    <div class="page page-right" ng-include="template.url" ></div>
-                </div>
+                <div class="page page-right" ng-view></div>
             </div>
 
             <div class="col-xs-12">
@@ -29,10 +27,10 @@
                      resting-icon="ion-navicon"
                      toggling-method="click">
 
-                  <button   mfb-button
+                  <a   mfb-button
                             ng-repeat="mfb in float_buttons"
-                            ng-click="nav(mfb.url)"
-                            icon="@{{mfb.icon}}" label="@{{ mfb.label }}"></button>
+                            ng-click="loc(mfb.url)"
+                            icon="@{{mfb.icon}}" label="@{{ mfb.label }}"></a>
                 </nav>
 
 

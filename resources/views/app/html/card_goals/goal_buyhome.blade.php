@@ -55,7 +55,7 @@
 
                 <p>
                     <span>Loan from bank</span>
-                    <p>{{homeCal.homePrice - homeCal.homeDPmt }}</p>
+                    <p>@{{homeCal.homePrice - homeCal.homeDPmt }}</p>
                 </p>
 
             <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
@@ -88,7 +88,7 @@
                     <span>Monthly payment</span>
                     <p>
 
-                    {{ (
+                    @{{ (
                         (homeCal.homePrice - homeCal.homeDPmt)*
                         (1+ ( (homeCal.homeInterest/100) * homeCal.homePmtDuration) )
                         )
@@ -99,8 +99,8 @@
                     </p>
                     <input placeholder="" class="input input-lg borderless" ng-model="homeCal.homeMthPmt" id="homeMthPmt">
                 </p>
-                {{homeCal.homePrice - homeCal.homeLoan }}
-                {{ homeCal.homePmtDuration }} + {{ homeCal.homePrice }} {{ homeCal.homeLoan}}
+                @{{homeCal.homePrice - homeCal.homeLoan }}
+                @{{ homeCal.homePmtDuration }} + @{{ homeCal.homePrice }} @{{ homeCal.homeLoan}}
 
                 <button class="btn btn-block btn-primary" ng-click="setGoalTravel()">Set Goal!</button>
 
