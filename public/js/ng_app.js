@@ -72,18 +72,13 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
                                             factory_userSpending,
                                             $rootScope,$route, $routeParams, $location) {
 
-
-
     $scope.$route = $route;
     $scope.$location = $location;
     $scope.$routeParams = $routeParams;
 
     $scope.loc = function(href) {
-        console.log(href);
         $location.path(href)
     }
-
-    console.log($location.path());
 
     $http.defaults.withCredentials = true;
     $scope.date = new Date();
@@ -195,9 +190,6 @@ app.controller('thisController', function($scope, $http, $filter,factory_userDat
     factory_userData.userJobs().success(function(data){
         $scope.items = data;
     })
-
-
-
 
 
     $scope.userAddData = function() {

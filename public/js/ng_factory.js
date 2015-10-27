@@ -82,13 +82,13 @@ app.factory('factory_mfb',function($http){
                     icon: 'ion-home',
                     url: '/'
                 }, {
-                    label: 'Account',
-                    icon: 'ion-plus',
-                    url: '/app/html/card_account.html'
+                    label: 'Credit Card',
+                    icon: 'ion-card',
+                    url: '/CreditCard'
                 }, {
                     label: 'Bills',
                     icon: 'ion-ios-list-outline',
-                    url: '/CreditCard'
+                    url: '/Bills'
                 }, {
                     label: 'Transactions',
                     icon: 'ion-calculator',
@@ -115,11 +115,11 @@ app.factory('factory_userSpending',function($http){
                         if($scope.todaySpendable<0){ $scope.todaySpendable =0}
                         //Chart
                         var json = {
-                            //"series": ["SeriesA"],
                             "data": [$scope.todaySpending, $scope.todaySpendable],
                             "labels":   ["Spent", "Spendable"],
                             "colours":  ["#8D8D8D","#87D2DA"],
                             "option": {
+                                animation:false,
                                 responsive: true,
                                 maintainAspectRatio: true,
 

@@ -27,7 +27,6 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
 
     $scope.labels   = bill_name;
     $scope.data     = bill_amount;
-    $scope.series = ['Series A'];
 
 
     $scope.billStatus = function($billlstatus)

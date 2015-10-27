@@ -55,6 +55,7 @@ return array(
     'lbl_selPhoto'          => 'Upload your photo',
     'lbl_upload'            => 'Upload',
     'lbl_close'             => 'Close',
+    'lbl_more'              => 'More',
 
     'lbl_youCanSpend'      => 'You can spend',
     'lbl_youWillSave'      => 'You will save',
@@ -69,4 +70,10 @@ return array(
     'err_spendableNegative'=>  'Your Spendable is negative',
 
 
+    'goal_setGoal'          => 'Set a goal',
+    'goal_name'             => 'Name your goal',
+    'goal_amount'           => 'How much?',
+    'goal_where'            => 'Where?',
+    'goal_created'          => 'Goal Created!',
+    'goal_allGoals'         => 'Show all goals'
 );

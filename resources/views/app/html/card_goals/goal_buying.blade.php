@@ -7,12 +7,11 @@
             <h4 class="card-title strong" align="center">
 
                 <span class="fa-stack fa-md">
-                  <a href="#goalContainer" ng-click="goalTemplate.url = '/app/html/card_goals/goal_buying.html'">
-                      <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-bullseye fa-stack-1x fa-inverse"></i>
-                  </a>
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-bullseye fa-stack-1x fa-inverse"></i>
                 </span>
-                Set a goal
+
+                {!! trans('messages.goal_setGoal') !!}
 
             </h4>
 
@@ -22,8 +21,9 @@
 
                     <input  ng-required="true"
                             type="text"
-                            placeholder="Name your goal"
-                            class="ng-pristine md-input ng-invalid ng-invalid-required ng-touched" aria-label="How much?"
+                            placeholder="{!! trans('messages.goal_name') !!}"
+                            class="ng-pristine md-input ng-invalid ng-invalid-required ng-touched"
+                            aria-label="{!! trans('messages.goal_name') !!}"
                             class="input input-lg borderless"
                             ng-model="targetName" id="targetName"
                             required="required" aria-required="true" aria-invalid="true" style="">
@@ -34,9 +34,10 @@
 
                     <input  ng-required="true"
                             type="number"
-                            placeholder="How much?"
+                            placeholder="{!! trans('messages.goal_amount') !!}"
                             ng-keyup="goalCal()"
-                            class="ng-pristine md-input ng-invalid ng-invalid-required ng-touched" aria-label="How much?"
+                            class="ng-pristine md-input ng-invalid ng-invalid-required ng-touched"
+                            aria-label="{!! trans('messages.goal_amount') !!}"
                             class="input input-lg borderless"
                             ng-model="targetPrice" id="targetPrice"
                             required="required" aria-required="true" aria-invalid="true" style="">
@@ -50,10 +51,10 @@
                     <div class="col-xs-12 col-sm-6">
                         <div buying-year-drop offset="0" range="10"></div>
                     </div>
-                    <button ng-click="optionContainer=true" class="btn btn-link pull-right" ng-init="true" ng-show="showMore">More</button>
+                    <button ng-click="optionContainer=true" class="btn btn-link pull-right"
+                            ng-init="true"
+                            ng-show="showMore">{!! trans('messages.lbl_more') !!}</button>
                 </div>
-
-
 
 
                 <div class="row">
@@ -66,9 +67,9 @@
 
                             <input  ng-required="true"
                                     type="text"
-                                    placeholder="Where?"
+                                    placeholder="{!! trans('messages.goal_where') !!}"
                                     gm-places-autocomplete
-                                    class="ng-pristine md-input ng-invalid ng-invalid-required ng-touched" aria-label="Where?"
+                                    class="ng-pristine md-input ng-invalid ng-invalid-required ng-touched" aria-label="{!! trans('messages.goal_where') !!}"
                                     class="input input-lg borderless"
                                     ng-model="targetWhere" id="targetWhere"
                                     required="required" aria-required="true" aria-invalid="true" style="">
@@ -94,10 +95,10 @@
     </div>
 
     <div ng-init="success=false" ng-show="success" style="background-image: url('/img/shine.png');background-size: cover">
-        <h3 class="md-headline text-center">Goal Created!</h3>
-        <a href="#"
+        <h3 class="md-headline text-center">{!! trans('messages.goal_created') !!}</h3>
+        <a style="cursor:pointer"
            class="card-link"
-           ng-click="goalTemplate.url = '/app/html/card_goals/goal_summary.html'">Show All Goals</a>
+           ng-click="goalTemplate.url = '/goal/goal_summary'">{!! trans('messages.goal_allGoals') !!}</a>
     </div>
 
 

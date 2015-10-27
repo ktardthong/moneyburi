@@ -31,9 +31,6 @@
     {!! Minify::javascript(array('/js/jquery.min.js')) !!}
 
 
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
     {{-- Angular --}}
     {!! Minify::javascript( array(  '/js/angular.min.js','/js/angular-route.min.js','/js/angular-animate.min.js',
                                     '/js/angular-aria.min.js','/js/angular-sanitize.min.js',
@@ -50,6 +47,7 @@
                                     '/js/controllers/TransactionsController.js'
                                   )) !!}
      <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
+
     {!! Minify::javascript(array('/js/gmap.js','/js/global.js')) !!}
     {!! Minify::javascriptDir('/js/vendors/') !!}
 
@@ -62,16 +60,6 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
-    <script>
-//    $.ajaxSetup({
-//            headers: {
-//                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//            }
-//    });
-    </script>
-
-
-
   </head>
 
 <body ng-app="App">
@@ -83,13 +71,9 @@
             </button>
 
            <div class="collapse navbar-toggleable-xs" id="navbar-header">
-              <ul class="nav navbar-nav pull-left">
-                <li class="nav-item">
 
-
-                </li>
-              </ul>
               <ul class="nav navbar-nav pull-right">
+
                 <li class="nav-item">
                     <div class="btn-group">
                         <button type="button" class="btn btn-link">
@@ -104,6 +88,7 @@
                         </div>
                     </div>
                 </li>
+
                 @if(Auth::user())
 
                     <li class="nav-item">
@@ -159,6 +144,7 @@
                                  '/css/angular_animation.css',
                                  '/css/jumbotron-narrow.css',
                                  '/css/global.css',
+                                 '/css/jquery-ui.css'
                                  )) !!}
 
 <script>
