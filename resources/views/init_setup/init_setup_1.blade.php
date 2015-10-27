@@ -12,7 +12,7 @@
 @section('content')
     <div class="container">
 
-        <div ng-include="'/app/account/tpl_spendable.html'"></div>
+        <div ng-include="'/profile/spendable'"></div>
 
 
         <ul class="pager">

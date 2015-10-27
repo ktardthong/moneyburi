@@ -21,7 +21,7 @@ class ProfileController extends Controller
     {
         if(empty(Auth::user()->id))
         {
-            return redirect('/login');
+            return redirect('/profile#/login');
         }
 
         $page_title     =   "Profile - Moneyburi";

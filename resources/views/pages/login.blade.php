@@ -1,15 +1,3 @@
-@extends('master')
-
-@section('title')
-    {{ $page_title }}
-@stop
-
-@section('description')
-    {{$page_descs}}
-@stop
-
-
-@section('content')
      <div class="container-fluid" style="margin-top:30px">
 
           <form class="form-signin card card_width container" method="post" action="/login">
@@ -103,4 +91,3 @@
        border-top-right-radius: 0;
      }
      </style>
-@stop

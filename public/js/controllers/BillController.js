@@ -32,7 +32,6 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
 
     $scope.billStatus = function($billlstatus)
     {
-
         if($billlstatus=='') {
             $scope.listBillStatus = $rootScope.rs_userBills;
         }

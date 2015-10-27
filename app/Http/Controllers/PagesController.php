@@ -21,34 +21,33 @@ class PagesController extends Controller
 {
     public function index()
     {
-
         return redirect('/');
     }
 
+    //The main container for the app - add your title and header here
     public function home()
     {
-        if(Auth::user())
-        {
-            return redirect("/profile");
-        }
-        else
-        {
         $page_title     =   "moneyburi!";
         $page_descs     =   "";
-        return view('welcome',compact('page_title','page_descs'));
-        }
+        $location = Location::get();
+
+        return view('app',compact('page_title','page_descs','location'));
     }
 
+    //This is where the page decide if user should be redirect to profile page or they should be at the home page
+    public function welcome()
+    {
+        if(Auth::user()){
+            return redirect("profile");
+        }
+        return view('welcome');
+    }
+
+
+    //Login template
     public function login()
     {
-        $page_title     =   "money_bkk!";
-        $page_descs     =   "what hit you?";
-        if(Auth::user()){
-            return redirect("/profile");
-        }
-        else {
-            return view('pages.login', compact('page_title', 'page_descs'));
-        }
+        return view('pages.login');
     }
 
 
@@ -94,7 +93,7 @@ class PagesController extends Controller
         // login
         Auth::loginUsingId($user->id);
 
-        return redirect("/profile");
+        return redirect("profile");
     }
 
 
@@ -107,15 +106,15 @@ class PagesController extends Controller
 
     public function register()
     {
-        $page_title     =   "Welcome - Moneyburi";
+        /*$page_title     =   "Welcome - Moneyburi";
         $page_descs     =   "";
 
         if(Auth::user()){
             return redirect("/profile");
         }
-        else {
+        else {*/
             return view('pages.register', compact('page_title', 'page_descs'));
-        }
+//        }
     }
 
 
@@ -127,7 +126,7 @@ class PagesController extends Controller
         $user_data->init_setup = 1;
         $user_data->save();
 
-        return redirect('/profile');
+        return redirect('profile');
 
 
     }
@@ -148,11 +147,11 @@ class PagesController extends Controller
                 Mail::send('mails.weekly_update', ['user' =>  $user], function ($m) use ($user) {
                     $m->to($user->email, $user->firstname.(' ').$user->lastname)->subject('Weekly Update from Moneyburi');
                 });
-                return redirect("/profile/");
+                return redirect("/");
             }
             else
             {
-                return redirect('/login')->withErrors(trans('messages.label_auth_fail'));
+                return redirect('login')->withErrors(trans('messages.label_auth_fail'));
             }
         }
         else
@@ -218,7 +217,7 @@ class PagesController extends Controller
 //                });
 
                 Auth::loginUsingId($user->id);
-                return redirect('/profile');
+                return redirect('profile');
             }
             else
             {

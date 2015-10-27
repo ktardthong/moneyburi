@@ -129,10 +129,10 @@
 
                 @else
                     <li class="nav-item">
-                      <a class="nav-link" href="/register">{!! trans('messages.lbl_register') !!}</a>
+                      <a class="nav-link" href="#register">{!! trans('messages.lbl_register') !!}</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/login">{!! trans('messages.lbl_login') !!}</a>
+                      <a class="nav-link" href="#login">{!! trans('messages.lbl_login') !!}</a>
                     </li>
                 @endif
               </ul>

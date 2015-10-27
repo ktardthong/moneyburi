@@ -20,6 +20,7 @@ Route::get('/transRecent', 'AppController@transRecent');
 
 //PAGES
 Route::get('/','PagesController@home');
+Route::get('/welcome', 'PagesController@welcome');
 Route::get('/login','PagesController@login');
 Route::post('/login','PagesController@post_login');
 Route::get('/logout','PagesController@logout');
@@ -34,7 +35,7 @@ Route::get('/user','ProfileController@user');
 
 
 //PROFILE
-Route::get('/profile','ProfileController@index');
+Route::get('/profile','AppController@spendableCard');
 Route::get('/profile/update_info','ProfileController@edit');
 Route::get('/profile/spendable','ProfileController@spendable');
 Route::post('/profile/update','ProfileController@update');

@@ -1,23 +1,12 @@
-@extends('master')
 
-@section('title')
-    {{ $page_title }}
-@stop
-
-@section('description')
-    {{$page_descs}}
-@stop
-
-
-@section('content')
-     <div class="container">
+     <div class="container-fluid">
         @if($errors->any())
             <h4>
                 <div class="alert alert-danger" role="alert">{{$errors->first()}}</div>
             </h4>
         @endif
 
-        <form class="form-signin" method="post" action="/register">
+        <form class="form-signin card card_width container" method="post" action="/register">
 
             {!! csrf_field() !!}
 
@@ -25,15 +14,27 @@
             {!!  trans('messages.lbl_welcome') !!}
             </h2>
 
-            {!! Form::text('first_name','',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_firstname'),'autofocus','required']) !!}
-            {!! Form::text('last_name','',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_lastname'),'required']) !!}
+            <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
+                {!! Form::text('first_name','',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_firstname'),'autofocus','required']) !!}
+            </md-input-container>
+
+            <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
+                {!! Form::text('last_name','',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_lastname'),'required']) !!}
+            </md-input-container>
 
             <br>
-            {!! Form::text('email','',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_email'),'required']) !!}
+            <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
+                {!! Form::text('email','',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_email'),'required']) !!}
+            </md-input-container>
 
             <br>
-            {!! Form::password('password',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_password'),'required']) !!}
-            {!! Form::password('confirmpassword',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_confirmPass'),'required']) !!}
+            <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
+                {!! Form::password('password',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_password'),'required']) !!}
+            </md-input-container>
+
+            <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
+                {!! Form::password('confirmpassword',['class'=>'form-control input input-lg','placeholder'=>trans('messages.lbl_confirmPass'),'required']) !!}
+            </md-input-container>
 
 
             {!! Form::label('birthday', trans('messages.lbl_birthday'),['class'=> 'lead']) !!}
@@ -48,25 +49,11 @@
             {!! Form::radio('sex','Male',  ['class' => 'field', 'required'])!!}  {!! trans('messages.lbl_male')!!}
             {!! Form::radio('sex','Female',['class' => 'field', 'required'])!!}  {!! trans('messages.lbl_female') !!}
 
-
-            <div align="center" class="text-muted">
-                Or
-                <br>
-
-                <span class="fa-stack fa-lg">
-                  <a href="/login/fb">
-                      <i class="fa fa-circle fa-stack-2x"></i>
-                      <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                  </a>
-                </span>
-
-            </div>
-
-            <div class="checkbox">
+{{--            <div class="checkbox">
               <label>
                 <input type="checkbox" value="remember-me"> {!! trans('messages.lbl_remember_me') !!}
               </label>
-            </div>
+            </div>--}}
 
 
             <div class="text-muted">
@@ -74,7 +61,7 @@
                 By clicking Sign Up, you agree to our Terms and that you have read our Data Policy, including our Cookie Use.
                 </small>
             </div>
-            {!! Form::submit(trans('messages.lbl_signup'),['class'=>'btn btn-lg btn-primary btn-block']); !!}
+            {!! Form::submit(trans('messages.lbl_signup'),['class'=>'btn btn-md btn-primary btn-block']); !!}
         </form>
 
      </div> <!-- /container -->
@@ -120,4 +107,3 @@
        border-top-right-radius: 0;
      }
      </style>
-@stop
