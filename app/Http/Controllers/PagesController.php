@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
 use Validator;
 use App\User;
 use Auth;
-use Illuminate\Support\Facades\DB;
 use Socialite;
 use Illuminate\Routing\Controller;
 use Stevebauman\Location\Facades\Location;
 use Mail;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Config;
+
 
 class PagesController extends Controller
 {
@@ -30,8 +25,9 @@ class PagesController extends Controller
         $page_title     =   "moneyburi!";
         $page_descs     =   "";
         $location = Location::get();
+        $quote = \App\MoneyQuote::orderByRaw("RAND()")->first();
 
-        return view('app',compact('page_title','page_descs','location'));
+        return view('app',compact('page_title','page_descs','location','quote'));
     }
 
     //This is where the page decide if user should be redirect to profile page or they should be at the home page

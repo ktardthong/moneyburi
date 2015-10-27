@@ -16,8 +16,19 @@
 
         <div class="col-xs-12 col-sm-12">
 
+            {{-- On page Load show Money Quote --}}
+            <div ng-show='isRouteLoading' class='loading-indicator'>
+                <div class='loading-indicator-body' align="center">
+                    <h3 class='loading-title'>Loading...</h3>
+                    {!! $quote['quote'] !!} - {!! $quote['author'] !!}
+                    <route-loading-indicator></route-loading-indicator>
+                </div>
+            </div>
+
             <div class="row">
-                <div class="page page-right" ng-view></div>
+                <div class="page page-right" ng-view>
+
+                </div>
             </div>
 
             <?php if(\Auth::user()): ?>

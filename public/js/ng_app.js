@@ -26,6 +26,7 @@ app.config(function($routeProvider){
         })
 })
 
+
 //Angular Theming
 app.config(function($mdThemingProvider) {
     $mdThemingProvider.definePalette('amazingPaletteName', {
@@ -80,6 +81,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
         $location.path(href)
     }
 
+    
     $http.defaults.withCredentials = true;
     $scope.date = new Date();
 
@@ -99,6 +101,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
     factory_utils.getCurrency().success(function(data){
         $scope.currencies=data;
     });
+
 
     factory_userGoals.userGoalsFactory().success(function(data){
         $scope.userGoals=data;
@@ -282,4 +285,23 @@ app.controller('thisController', function($scope, $http, $filter,factory_userDat
         }
     );
 
+});
+
+
+app.directive('routeLoadingIndicator', function($rootScope) {
+    return {
+        restrict: 'E',
+        template: $rootScope.moneyquote,
+        replace: true,
+        link: function(scope, elem, attrs) {
+            scope.isRouteLoading = false;
+
+            $rootScope.$on('$routeChangeStart', function() {
+                scope.isRouteLoading = true;
+            });
+            $rootScope.$on('$routeChangeSuccess', function() {
+                scope.isRouteLoading = false;
+            });
+        }
+    };
 });

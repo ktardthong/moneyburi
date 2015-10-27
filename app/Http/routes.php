@@ -1,6 +1,9 @@
 <?php
 
+//Language switcher
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
+
+
 
 
 //APP - Angular

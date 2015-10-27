@@ -119,7 +119,6 @@ app.factory('factory_userSpending',function($http){
                             "labels":   ["Spent", "Spendable"],
                             "colours":  ["#8D8D8D","#87D2DA"],
                             "option": {
-                                animation:false,
                                 responsive: true,
                                 maintainAspectRatio: true,
 
