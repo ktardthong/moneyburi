@@ -65,6 +65,14 @@ return array(
     'lbl_mth_saving'       => 'Monthly Saving',
     'lbl_mth_spendable'    => 'Monthly Spendable',
     'lbl_mth_bills'        => 'Monthly Bills',
+    'lbl_next'             => 'Next',
+    'lbl_previous'         => 'Previous',
+
+    'lbl_step'             => 'Step',
+    'lbl_welcome'          => 'Welcome',
+    'lbl_yourFinance'      => 'Your Finance',
+    'lbl_yourInfo'         => 'Your Info',
+
 
     //ERRORS
     'err_spendableNegative'=>  'Your Spendable is negative',

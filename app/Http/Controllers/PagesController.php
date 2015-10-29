@@ -10,7 +10,7 @@ use Socialite;
 use Illuminate\Routing\Controller;
 use Stevebauman\Location\Facades\Location;
 use Mail;
-
+use Illuminate\Support\Facades\Redirect as Redirect;
 
 class PagesController extends Controller
 {
@@ -18,6 +18,7 @@ class PagesController extends Controller
     {
         return redirect('/');
     }
+
 
     //The main container for the app - add your title and header here
     public function home()
@@ -27,8 +28,16 @@ class PagesController extends Controller
         $location = Location::get();
         $quote = \App\MoneyQuote::orderByRaw("RAND()")->first();
 
+        if(Auth::user())
+        {
+            if(Auth::user()->init_setup == 0 )
+            {
+                return redirect("init_setup");
+            }
+        }
         return view('app',compact('page_title','page_descs','location','quote'));
     }
+
 
     //This is where the page decide if user should be redirect to profile page or they should be at the home page
     public function welcome()
@@ -102,15 +111,7 @@ class PagesController extends Controller
 
     public function register()
     {
-        /*$page_title     =   "Welcome - Moneyburi";
-        $page_descs     =   "";
-
-        if(Auth::user()){
-            return redirect("/profile");
-        }
-        else {*/
-            return view('pages.register', compact('page_title', 'page_descs'));
-//        }
+        return view('pages.register', compact('page_title', 'page_descs'));
     }
 
 
@@ -147,7 +148,7 @@ class PagesController extends Controller
             }
             else
             {
-                return redirect('login')->withErrors(trans('messages.label_auth_fail'));
+                return redirect('/login')->withErrors(trans('messages.label_auth_fail'));
             }
         }
         else
@@ -213,18 +214,13 @@ class PagesController extends Controller
 //                });
 
                 Auth::loginUsingId($user->id);
-                return redirect('profile');
-            }
-            else
-            {
-                //return redirect('register')->withErrors();
+                return redirect('/');
             }
         }
         else
         {
             return redirect('register')->withErrors("user already exist");
         }
-
     }
 
 

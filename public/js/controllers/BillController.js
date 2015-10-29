@@ -13,6 +13,8 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
     $rootScope.ng_billCate =1;
     $rootScope.ng_billDue =1;
 
+    $rootScope.showBill = false;
+
     $scope.listBillStatus = $rootScope.rs_userBills;
 
     var jsondata = $rootScope.rs_userBills;
@@ -92,8 +94,6 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
             }
         })
         .done(function( msg ) {
-
-
             $http.get("/bill/getBills")
                 .success(function(response) {
                     $scope.userBills = response;
