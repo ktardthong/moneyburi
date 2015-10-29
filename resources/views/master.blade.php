@@ -60,6 +60,16 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
+    {!! Minify::stylesheet(array('/css/angular-material.min.css',
+                                     '/css/ionicons.min.css',
+                                     '/css/font-awesome.min.css',
+                                     '/css/normalize.css',
+                                     '/css/component.css',
+                                     '/css/angular_animation.css',
+                                     '/css/jumbotron-narrow.css',
+                                     '/css/global.css',
+                                     '/css/jquery-ui.css'
+                                     )) !!}
   </head>
 
 <body ng-app="App">
@@ -134,18 +144,6 @@
 
 
 </body>
-
-
-{!! Minify::stylesheet(array('/css/angular-material.min.css',
-                                 '/css/ionicons.min.css',
-                                 '/css/font-awesome.min.css',
-                                 '/css/normalize.css',
-                                 '/css/component.css',
-                                 '/css/angular_animation.css',
-                                 '/css/jumbotron-narrow.css',
-                                 '/css/global.css',
-                                 '/css/jquery-ui.css'
-                                 )) !!}
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

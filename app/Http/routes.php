@@ -155,5 +155,4 @@ Route::get('init_setup',function () {
     $quote = \App\MoneyQuote::orderByRaw("RAND()")->first();
     return view('init_setup.init_setup', compact('page_title', 'page_descs', 'user_data','quote'));
 });
-Route::get('/init_complete','PagesController@complete_setup');
 //END INIT SETUP

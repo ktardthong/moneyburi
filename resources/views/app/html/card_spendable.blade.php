@@ -1,6 +1,6 @@
 
 <div class="container-fluid" >
-    <div style="position: absolute;z-index: 5;right: 0;top:20px" class="col-xs-4 hidden-sm-down card"
+    <div style="position: absolute;z-index: 5;right: 10px;top:20px" class="col-xs-4 hidden-sm-down card"
          ng-include="'/tpl_overview'"></div>
 
     <div style="margin-top: 8px">&nbsp;</div>

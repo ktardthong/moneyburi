@@ -161,9 +161,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
 
     $scope.templates =
         [
-            //{ name: 'Home'              , url: '/app/html/card_home.html'},
             { name: 'Spendable'         , url: '/spendableCard'},
-            { name: 'Account'           , url: '/app/html/card_account.html'},
             { name: 'Goals'             , url: '/goal/card_goal'},
             { name: 'Transactions'      , url: '/app/html/card_transactions.html'},
             { name: 'Bills'             , url: '/Bills'},
