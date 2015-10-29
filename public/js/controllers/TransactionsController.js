@@ -285,20 +285,25 @@ app.controller('transactionController', function($scope, $http, $filter) {
         $scope.$apply();
     });
 
+    //$scope.scrollHeight = 200; //default
+
     $scope.scroll_config = {
         autoHideScrollbar: false,
         theme: 'rounded-dark',
         advanced:{
             updateOnContentResize: true
         },
-        setHeight: 100,
+        setHeight: 200,
+        setWidth: '100%',
+        //setLeft: '-20%',
         scrollInertia: 0,
-        alwaysShowScrollbar: 2,
+        alwaysShowScrollbar: 0,
         axis: 'y',
         mouseWheel:{ enable: true },
         keyboard:{ enable: true },
         contentTouchScroll: 25,
         scrollButtons:{ enable: false }
+
     };
 })
 
@@ -309,9 +314,17 @@ app.controller('transactionController', function($scope, $http, $filter) {
         };
 })
 
-    .directive('transRecent', function() {
+.directive('transRecent', function() {
+        //var fn = function(scope, element, attributes) {
+        //    scope.scroll_config.setHeight = scope.scrollHeight;
+        //};
+
         return {
             restrict: 'E',
             templateUrl: '/transRecent'
+            //link: fn,
+            //scope: {
+            //    scrollHeight: '=height'
+            //}
         };
 });

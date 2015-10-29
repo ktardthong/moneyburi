@@ -25,12 +25,13 @@
         </div>
 
 
-        <div class="text-center">
+        <div class="text-center" style="max-height: 120px;">
             <span class="text-muted lead">{!! trans('messages.lbl_todayTransction') !!}</span>
+            <div ng-controller="transactionController">
+                <trans-recent></trans-recent>
+            </div>
         </div>
-        <div ng-controller="transactionController" class="container-fluid">
-            <trans-recent></trans-recent>
-        </div>
+
 
     </div>
 

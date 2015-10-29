@@ -8,19 +8,19 @@
             <hr>
         </div>
 
-        <ul class="list-unstyled" ng-repeat="t in listData | orderBy:'-trans_date'">
+        <ul class="list-unstyled" ng-repeat="t in listData | orderBy:'-trans_date'"> <!--add filter for today's transcations only-->
 
                 <!--<div id="circle"> &nbsp;</div>-->
             <!--<small align="center">&mdash;@{{t.trans_date}}&mdash;</small>-->
 
                 <li>
-                    <span class="pull-left" >
-                        <i class="@{{getCateIcon(t.cate_id)}}"></i>
+                    {{--<span class="pull-left">--}}
+                        <i class="@{{getCateIcon(t.cate_id)}} pull-left"></i>
                         @{{t.cate_obj[0].name}}
-                    </span>
+                    {{--</span>--}}
 
                     <span class="pull-right">@{{t.amount | number:0}}</span>
-                    <br>
+                    {{--<br>--}}
 
                 </li>
                 <!--<small><i class="@{{propertyIcons('datetime')}}"></i><br>@{{t.trans_date}}</small>-->
