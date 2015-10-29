@@ -307,4 +307,19 @@ class AjaxController extends Controller
         }
     }
 
+    //Update the last step of init setup, any other information add them here
+    public function initUpdate(Request $request)
+    {
+        if(Auth::user())
+        {
+            $data = [
+                'init_setup'    => 1,
+                'job'           =>  $request->job
+            ];
+            DB::table('users')
+                ->where('id', Auth::user()->id)
+                ->update($data);
+        }
+    }
+
 }

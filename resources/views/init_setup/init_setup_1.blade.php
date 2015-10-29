@@ -1,37 +1,23 @@
-@extends('...master')
+<div class="container">
 
-@section('title')
-    {{ $page_title }}
-@stop
-
-@section('description')
-    {{$page_descs}}
-@stop
+    <div ng-include="'/profile/spendable'"></div>
 
 
-@section('content')
-    <div class="container">
+    <ul class="pager">
+        <li><a href="#init">Previous</a></li>
+        <li><a href="#" ng-click="userAddData()">Next</a></li>
+    </ul>
 
-        <div ng-include="'/profile/spendable'"></div>
 
+    <div style="max-width: 200px">
 
-        <ul class="pager">
-            <li><a href="/init_setup">Previous</a></li>
-            <li><a href="#" ng-click="userAddData()">Next</a></li>
+        <ul class="dotstyle dotstyle-scaleup" align="center">
+            <li class="current"><a href="/init_setup_1">User</a></li>
+            <li><a href="/init_setup_2">Status</a></li>
+            <li><a href="/init_setup_3">Finance</a></li>
+            <li><a href="/init_setup_4">Saving</a></li>
         </ul>
 
+    </div>
 
-        <div style="max-width: 200px">
-
-            <ul class="dotstyle dotstyle-scaleup" align="center">
-                <li class="current"><a href="/init_setup_1">User</a></li>
-                <li><a href="/init_setup_2">Status</a></li>
-                <li><a href="/init_setup_3">Finance</a></li>
-                <li><a href="/init_setup_4">Saving</a></li>
-            </ul>
-
-        </div>
-
-    </div> <!-- /container -->
-
-@stop
+</div> <!-- /container -->

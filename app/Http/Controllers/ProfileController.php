@@ -50,10 +50,9 @@ class ProfileController extends Controller
 
         $page_title     =   "Profile - Moneyburi";
         $page_descs     =   "";
+        $quote = \App\MoneyQuote::orderByRaw("RAND()")->first();
 
-//        $user_data      =   User::find(Auth::user()->id);
-
-        return view('user.user',compact('page_title','page_descs'));
+        return view('user.user',compact('page_title','page_descs','quote'));
     }
 
 

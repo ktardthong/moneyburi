@@ -1,11 +1,11 @@
 <div ng-controller="billController">
 
-    <a ng-click="showBill=false" href="#" class="pull-right">
+    <a ng-click="$root.showBill=false" class="pull-right" style="cursor: pointer">
         <i class="ion-close-round"></i>
     </a>
 
-    <h4 class="card-title strong">Bill</h4>
 
+    <h4 class="card-title strong">Bill</h4>
 
         <form ng-submit="addBill()" class="lead">
 
@@ -18,7 +18,8 @@
 
             <input placeholder="Amount" class="input input-lg borderless text-center"
                    ng-model="ng_billAmount"
-                   id="billAmount" autocomplete="off" ng-keyup="checkVal()">
+                   id="billAmount" autocomplete="off"
+                   ng-keyup="checkVal()">
 
             <label>Due on </label>
             <select  ng-model="ng_billDue" id="billDue">

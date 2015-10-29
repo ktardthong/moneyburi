@@ -21,6 +21,12 @@ app.config(function($routeProvider){
         .when('/CreditCard',{
             templateUrl: 'card/mainCard'
         })
+        .when('/setup',{
+            templateUrl: '/init_setup'
+        })
+        .when('/user_finance',{
+            templateUrl: '/init_setup_1'
+        })
         .otherwise({
             template: '<div> Nothing here </div>'
         })
@@ -81,7 +87,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
         $location.path(href)
     }
 
-    
+
     $http.defaults.withCredentials = true;
     $scope.date = new Date();
 
@@ -168,10 +174,6 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
 
     $scope.template = $scope.templates[0];
 
-
-
-
-
     $scope.addTransaction = function() {
         $scope.showAddTransaction = true;
     };
@@ -180,6 +182,20 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
         $scope.showAddTransaction = false;
     };
 
+    $scope.initUpdate = function()
+    {
+        $.ajax({
+            method: "POST",
+            url: "/ajax/InitUpdate",
+            data:  {
+                    job: $scope.userJobType,
+                    flg:   $('#jobtype').val()
+            }
+        })
+        .done(function( msg ) {
+            window.location.href = '/';
+        });
+    }
 });
 
 
@@ -295,12 +311,14 @@ app.directive('routeLoadingIndicator', function($rootScope) {
         replace: true,
         link: function(scope, elem, attrs) {
             scope.isRouteLoading = false;
+            scope.isLoaded = false;
 
             $rootScope.$on('$routeChangeStart', function() {
                 scope.isRouteLoading = true;
             });
             $rootScope.$on('$routeChangeSuccess', function() {
                 scope.isRouteLoading = false;
+                scope.isLoaded = true
             });
         }
     };

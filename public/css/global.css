@@ -243,3 +243,8 @@ a {
     color: #1594A8;
     border-radius: 0;
 }
+
+.mfb-component__wrap{
+    margin: -30px;
+    padding: 0px;
+}

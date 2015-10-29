@@ -1,7 +1,13 @@
 app.controller('userController', function($scope,factory_userSpending,$rootScope) {
 
 
-    $rootScope.rs_mthlyIncome  =   $scope.userData.mth_income;
+    if($scope.userData.mth_income != 0) {
+        $rootScope.rs_mthlyIncome = $scope.userData.mth_income;
+    }
+    else{
+        $rootScope.rs_mthlyIncome = $scope.rs_mthlyIncome;
+    }
+
     $rootScope.rs_mthlySaving  =   $scope.userData.mth_saving;
 
     $scope.ng_spendable =   $rootScope.rs_mthlyIncome - $rootScope.rs_sumBills - $rootScope.rs_mthlySaving;
@@ -16,12 +22,32 @@ app.controller('userController', function($scope,factory_userSpending,$rootScope
     $scope.colours=  ["#8D8D8D","#87D2DA","#1594A8"],
     $scope.data = [ $rootScope.rs_sumBills, $rootScope.rs_mthlySaving,$scope.ng_spendable];
 
-    $rootScope.calPie = function(){
 
-        $scope.ng_spendable = $rootScope.rs_mthlyIncome - $rootScope.rs_sumBills - $rootScope.rs_mthlySaving;
+    //Delay the highlight on keyup
+    var typewatch = function(){
+        var timer = 0;
+        return function(callback, ms){
+            clearTimeout (timer);
+            timer = setTimeout(callback, ms);
+        }
+    }();
+
+
+    $rootScope.calPie = function(){
+        $scope.ng_spendable = $scope.rs_mthlyIncome - $rootScope.rs_sumBills - $scope.rs_mthlySaving;
 
         $scope.labels = ["Bill", "Saving", "Spendable"];
-        $scope.data = [ $rootScope.rs_sumBills, $rootScope.rs_mthlySaving,$scope.ng_spendable];
+        $scope.data = [ $rootScope.rs_sumBills, $scope.rs_mthlySaving,$scope.ng_spendable];
+
+        console.log($scope.data);
+        $rootScope.rs_mthlyIncome = $scope.rs_mthlyIncome;
+
+        typewatch(function()
+        {
+        $('#editMonthlySpendable').effect("highlight", {color:'#F6C13C'}, 1500);
+        $('#editDaySpendable').effect("highlight", {color:'#F6C13C'}, 1500);
+        $('#editDaySaving').effect("highlight", {color:'#F6C13C'}, 1500);
+        }, 1200 );
     };
 
     $scope.saveUserData = function(){
@@ -36,7 +62,9 @@ app.controller('userController', function($scope,factory_userSpending,$rootScope
             }
         })
         .done(function( msg ) {
+
             $("#userdata_alert_message").show();
+
             window.setTimeout(function() {
                 $("#userdata_alert_message" +
                 "").fadeTo(500, 0).slideUp(500, function(){
@@ -56,14 +84,14 @@ app.controller('userController', function($scope,factory_userSpending,$rootScope
                 editMonthlyBill:        $scope.rs_sumBills,
                 editMonthlySaving:      $scope.rs_mthlySaving,
                 editMonthlySpendable:   $scope.ng_spendable,
-                editDaySaving:          $('#editDaySaving').html(),
+                editDaySaving:          $scope.rs_mthlySaving/30,
                 editDaySpendable:       $scope.ng_spendable/30,
                 currency:               $scope.ng_currency
-                //job:   $('#jobtype').val()
             }
         })
             .done(function( msg ) {
                 $("#alert_message").show();
+
                 window.setTimeout(function() {
                     $("#alert_message").fadeTo(500, 0).slideUp(500, function(){
                         $(this).remove();
