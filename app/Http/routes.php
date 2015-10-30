@@ -93,7 +93,7 @@ Route::post('ajax/addBills',        'AjaxController@addBills');
 Route::post('ajax/togglePaid',      'AjaxController@togglePaid');
 Route::post('ajax/removeBills',     'AjaxController@removeBills');
 Route::post('bill/billStatus',      'BillController@billStatus');    //get is paid or unpaid bill
-
+Route::post('ajax/undoRemoveBills', 'AjaxController@undoRemoveBills');
 
 //CREDIT CARDS
 Route::get('card/mainCard',       'CreditCardController@index');
@@ -101,6 +101,7 @@ Route::get('card/tpl_cardList',   'CreditCardController@tpl_cardList');
 Route::get('card/getCards',       'CreditCardController@getCC');
 Route::post('card/addCard',       'CreditCardController@addCard');
 Route::post('card/removeCard',    'CreditCardController@removeCard');
+Route::post('card/undoRemoveCard',    'CreditCardController@undoRemoveCard');
 
 
 //Spendable Tracker
@@ -155,5 +156,4 @@ Route::get('init_setup',function () {
     $quote = \App\MoneyQuote::orderByRaw("RAND()")->first();
     return view('init_setup.init_setup', compact('page_title', 'page_descs', 'user_data','quote'));
 });
-Route::get('/init_complete','PagesController@complete_setup');
 //END INIT SETUP

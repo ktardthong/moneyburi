@@ -60,4 +60,12 @@ class CreditCardController extends Controller
             \App\CreditCard::removeCard($request->cardId);
         }
     }
+
+    //Undo remove card
+    public static function undoRemoveCard(Request $request)
+    {
+        if(Auth::user()) {
+            \App\CreditCard::undoRemoveCard($request->cardId);
+        }
+    }
 }

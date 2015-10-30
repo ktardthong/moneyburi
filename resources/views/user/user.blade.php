@@ -14,7 +14,16 @@
 
     <div>
 
-        <div class="col-xs-12 col-sm-12">
+        {{-- On page Load show Money Quote --}}
+        <div ng-show='isRouteLoading' class='loading-indicator'>
+            <div class='loading-indicator-body' align="center">
+                <h3 class='loading-title'>Loading...</h3>
+                {!! $quote['quote'] !!} - {!! $quote['author'] !!}
+                <route-loading-indicator></route-loading-indicator>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12" ng-show="isLoaded">
 
             <div class="row" ng-controller="profileController">
 
@@ -25,6 +34,7 @@
                     <a class="nav-link" href="#profile" role="tab" data-toggle="tab">{!! trans('messages.lbl_profile') !!}</a>
                   </li>
                   <li class="nav-item">
+
                     <a class="nav-link" href="#spendable" role="tab" data-toggle="tab">{!! trans('messages.lbl_spendableSetting') !!}</a>
                   </li>
                 </ul>

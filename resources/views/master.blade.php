@@ -60,12 +60,22 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
+    {!! Minify::stylesheet(array('/css/angular-material.min.css',
+                                     '/css/ionicons.min.css',
+                                     '/css/font-awesome.min.css',
+                                     '/css/normalize.css',
+                                     '/css/component.css',
+                                     '/css/angular_animation.css',
+                                     '/css/jumbotron-narrow.css',
+                                     '/css/global.css',
+                                     '/css/jquery-ui.css'
+                                     )) !!}
   </head>
 
 <body ng-app="App">
      <nav class="navbar navbar-fixed-top header-mb">
       <div class="container">
-            <a class="navbar-brand" href="/"> mana </a>
+            <a class="navbar-brand" href="/"> moneymore </a>
             <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header">
               &#9776;
             </button>
@@ -134,18 +144,6 @@
 
 
 </body>
-
-
-{!! Minify::stylesheet(array('/css/angular-material.min.css',
-                                 '/css/ionicons.min.css',
-                                 '/css/font-awesome.min.css',
-                                 '/css/normalize.css',
-                                 '/css/component.css',
-                                 '/css/angular_animation.css',
-                                 '/css/jumbotron-narrow.css',
-                                 '/css/global.css',
-                                 '/css/jquery-ui.css'
-                                 )) !!}
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

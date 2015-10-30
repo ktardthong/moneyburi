@@ -89,6 +89,18 @@ class userBills extends  Eloquent{
         }
     }
 
+
+    //Undo remove bill
+    public static function undoRemoveBill($billId)
+    {
+        if(Auth::user()->id)
+        {
+            $user = userBills::find($billId);
+            $user->flg = 1;
+            $user->save();
+        }
+    }
+
     //Up coming bills
     public static function upcomingBill($paid_status=null)
     {

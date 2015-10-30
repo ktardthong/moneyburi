@@ -107,7 +107,39 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
         });
     };
 
+    //undoRemove bill
+    $scope.undoRemove = function(data){
 
+        $.ajax({
+            method: "POST",
+            url: "/ajax/undoRemoveBills",
+            data:  {
+                billId:     data
+            }
+        })
+        .done(function( msg ) {
+        });
+    }
+
+    //Remove bill
+    $scope.removeBill = function(data){
+
+        console.log("test>>> "+data);
+
+        $.ajax({
+            method: "POST",
+            url: "/ajax/removeBills",
+            data:  {
+                billId:     data
+            }
+        })
+        .done(function( msg ) {
+            factory_userBills.sumBills().success(function(data) {
+                $rootScope.rs_sumBills = data;
+                console.log(data);
+            });
+        });
+    }
 
 })
 

@@ -248,3 +248,11 @@ a {
     margin: -30px;
     padding: 0px;
 }
+
+.page a {
+     margin-top: 0px;
+}
+
+.cursor{
+    cursor: pointer;
+}

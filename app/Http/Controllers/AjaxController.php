@@ -237,12 +237,29 @@ class AjaxController extends Controller
     }
 
 
+    //Remove bills
     public static function removeBills(Request $request)
     {
         if(Auth::user())
         {
             //Remove bill
             \App\userBills::removeBills($request->billId);
+
+            //Update to users table
+            \App\userBills::updateBillAmount();
+
+            return \App\userBills::get();
+        }
+    }
+
+
+    //Undo remove bill
+    public static function undoRemoveBills(Request $request)
+    {
+        if(Auth::user())
+        {
+            //Remove bill
+            \App\userBills::undoRemoveBill($request->billId);
 
             //Update to users table
             \App\userBills::updateBillAmount();
@@ -260,6 +277,7 @@ class AjaxController extends Controller
             return \App\GoalTravel::getUserTravelGoal();
         }
     }
+
 
     public function getUserTargetGoal()
     {
