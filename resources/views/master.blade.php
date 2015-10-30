@@ -75,7 +75,7 @@
 <body ng-app="App">
      <nav class="navbar navbar-fixed-top header-mb">
       <div class="container">
-            <a class="navbar-brand" href="/"> mana </a>
+            <a class="navbar-brand" href="/"> moneymore </a>
             <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header">
               &#9776;
             </button>

@@ -75,10 +75,11 @@
     </div>
     <div class="card card-block">
 
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-6" ng-controller="billController">
             <div class="clearfix">
 
                 <span class="lead">{!! trans('messages.lbl_billUpcoming') !!}</span>
+                @{{ rs_sumBills }}
 
                 <div class="pull-right">
                     <small>
@@ -88,26 +89,101 @@
                 </div>
 
                 <div ng-if="!upComing">{!! trans('messages.lbl_billNone') !!}</div>
-                <div class="media bottom_border" ng-repeat="bill in upComing" style="border-style: #fefefe; border-left-color: #9F9F9F">
-                  <div class="media-left" ng-if="bill.is_paid ==0">
-                   pay
-                  </div>
-                  <div class="media-left">
-                    <a href="#">
-                        <span class="text-muted"> @{{ date | date:'MMM'}}</span>
-                        @{{ bill.due_date }}
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <i class="fa fa-cutlery"></i>
-                    @{{ bill.name }}
-                    <div class="pull-right">
-                        @{{ bill.amount }}
+
+
+                {{-- Bill List loop start here--}}
+                <div class="media" ng-repeat="bill in upComing" style="border-style: #fefefe; border-left-color: #9F9F9F">
+
+
+                    {{-- If bill remove then we show alert here--}}
+                    <div class="alert alert-warning"
+                         ng-init="removeBillConfirm$index = false"
+                         ng-show="removeBillConfirm$index">
+                         You have removed @{{ bill.name }}.
+                        <strong>
+                            <u><a ng-click="undoRemove(bill.id);
+                                            removeBillConfirm$index = false;
+                                            billContainer$index=true"
+                                  class="cursor">Undo</a></u>
+                        </strong> if it was a mistake.
                     </div>
-                  </div>
-                </div>
 
+                    {{-- Bill Main container --}}
+                    <div class="media list-mb" ng-init="billContainer$index = true" ng-show="billContainer$index">
 
+                        <div class="media-left">
+                            <a href="#">
+                                <span class="text-muted"> @{{ date | date:'MMM'}}</span>
+                                @{{ bill.due_date }}
+                            </a>
+                        </div>
+
+                        <div class="media-left">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </div>
+
+                        <div class="media-body">
+
+                            <span class="pull-right">
+
+                                <a  ng-click="billOptionContainer$index = true"
+                                    style="cursor: pointer;margin-left:20px">
+                                    <i class="ion-chevron-right"></i>
+                                </a>
+
+                            </span>
+
+                            <span class="pull-left">
+                                @{{ bill.name }}
+                            </span>
+
+                            <h4 class="media-heading ng-binding pull-right">
+                                    @{{ bill.amount }}
+                            </h4>
+
+                        </div> {{-- end media body--}}
+
+                        <div ng-show="billEdit$index" class="container-fluid pull-left">
+
+                            <button class="btn btn-primary btn-block"></button>
+
+                        </div>
+
+                        {{-- Bill Option --}}
+                        <div ng-show="billOptionContainer$index">
+                            <div class="container-fluid">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item" ng-if="bill.is_paid ==0">
+                                        <a  ng-click="editContainer$index=true"
+                                            class="nav-link cursor">
+                                            <i class="ion-compose"></i>
+                                            pay
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a  ng-click="billContainer$index=false;
+                                                      removeBillConfirm$index=true;
+                                                      removeBill(bill.id)"
+                                            class="nav-link cursor">
+                                            <i class="ion-trash-b"></i>
+                                            Remove
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a  ng-click="billOptionContainer$index = false;editContainer$index =false"
+                                            class="nav-link cursor">
+                                            <i class="ion-chevron-left"></i>
+                                            Back
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> {{-- media list --}}
+                </div> {{--  end media --}}
             </div>
         </div>
 
