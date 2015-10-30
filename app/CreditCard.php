@@ -62,12 +62,24 @@ class CreditCard extends  Eloquent{
     }
 
 
+    //Remove card
     public static function removeCard($cardId)
     {
         if(Auth::user()->id){
             DB::table('cc_users')->where('uid',Auth::user()->id)
                                  ->where('id',$cardId)
                                  ->update(['flg'=>0]);
+        }
+    }
+
+
+    //Undo remove card
+    public static function undoRemoveCard($cardId)
+    {
+        if(Auth::user()->id){
+            DB::table('cc_users')->where('uid',Auth::user()->id)
+                ->where('id',$cardId)
+                ->update(['flg'=>1]);
         }
     }
 } 

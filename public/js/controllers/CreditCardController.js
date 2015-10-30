@@ -4,6 +4,7 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
 
     $scope.cardItem = [];
 
+    //Remove card
     $scope.removeCard = function(container_id){
 
         $.ajax({
@@ -15,13 +16,24 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
         })
 
         .done(function( msg ) {
-            $http.get("/card/getCards")
-                .success(function(response) {
-                    $scope.userCards = response;
-                });
         });
     };
 
+    //Undo Remove card
+    $scope.undoRemoveCard = function(container_id){
+
+        $.ajax({
+            method: "POST",
+            url: "/card/undoRemoveCard",
+            data:  {
+                cardId: container_id
+            }
+        })
+
+        .done(function( msg ) {
+
+        });
+    };
 
     $scope.addCard = function() {
 

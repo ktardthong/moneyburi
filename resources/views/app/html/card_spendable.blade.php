@@ -79,11 +79,10 @@
             <div class="clearfix">
 
                 <span class="lead">{!! trans('messages.lbl_billUpcoming') !!}</span>
-                @{{ rs_sumBills }}
 
                 <div class="pull-right">
                     <small>
-                        <a href="#@{{  templates[4].url }}">
+                        <a href="#@{{  templates[3].url }}">
                             <i class="ion-plus-circled"></i></a>
                     </small>
                 </div>
@@ -99,12 +98,17 @@
                     <div class="alert alert-warning"
                          ng-init="removeBillConfirm$index = false"
                          ng-show="removeBillConfirm$index">
-                         You have removed @{{ bill.name }}.
+
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span></button>
+
+                         {!! trans('messages.lbl_youRemove') !!}
+                         @{{ bill.name }}.
                         <strong>
                             <u><a ng-click="undoRemove(bill.id);
                                             removeBillConfirm$index = false;
                                             billContainer$index=true"
-                                  class="cursor">Undo</a></u>
+                                  class="cursor">{!! trans('messages.lbl_undo') !!}</a></u>
                         </strong> if it was a mistake.
                     </div>
 
@@ -169,14 +173,14 @@
                                                       removeBill(bill.id)"
                                             class="nav-link cursor">
                                             <i class="ion-trash-b"></i>
-                                            Remove
+                                            {!! trans('messages.lbl_remove') !!}
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a  ng-click="billOptionContainer$index = false;editContainer$index =false"
                                             class="nav-link cursor">
                                             <i class="ion-chevron-left"></i>
-                                            Back
+                                            {!! trans('messages.lbl_back') !!}
                                         </a>
                                     </li>
                                 </ul>
@@ -187,6 +191,7 @@
             </div>
         </div>
 
+
         {{-- Credit card stuff --}}
         <div class="col-xs-12 col-sm-6">
 
@@ -194,7 +199,7 @@
 
             <div class="pull-right">
                 <small>
-                    <a href="#@{{ templates[5].url }}">
+                    <a href="@{{ templates[4].url }}">
                         <i class="ion-plus-circled"></i></a>
                 </small>
             </div>
@@ -203,9 +208,7 @@
                 <card-list></card-list>
             </div>
         </div>
-
-
-
+        {{-- end col-sm-6 --}}
     </div>
 
 

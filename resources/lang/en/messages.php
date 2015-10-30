@@ -56,6 +56,12 @@ return array(
     'lbl_upload'            => 'Upload',
     'lbl_close'             => 'Close',
     'lbl_more'              => 'More',
+    'lbl_edit'              => 'Edit',
+    'lbl_remove'            => 'Remove',
+    'lbl_back'              => 'Back',
+    'lbl_cc_endwith'        => 'ending with',
+    'lbl_youRemove'         => 'You have removed',
+
 
     'lbl_youCanSpend'      => 'You can spend',
     'lbl_youWillSave'      => 'You will save',
@@ -67,6 +73,7 @@ return array(
     'lbl_mth_bills'        => 'Monthly Bills',
     'lbl_next'             => 'Next',
     'lbl_previous'         => 'Previous',
+    'lbl_undo'             => 'Undo',
 
     'lbl_step'             => 'Step',
     'lbl_welcome'          => 'Welcome',
