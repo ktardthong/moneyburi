@@ -7,12 +7,15 @@ app.controller('goalTargetController', function($scope, $http) {
         targetInterest: 0,
         targetWhere: ' '
     };
+
     $scope.lat = undefined;
     $scope.lng = undefined;
 
-
+    /*
+     * Autocomplete location
+     * */
     $scope.$on('gmPlacesAutocomplete::placeChanged', function () {
-        var location = $scope.targetWhere.getPlace().geometry.location;
+        var location = $scope.targetWhereBuying.getPlace().geometry.location;
         $scope.lat = location.lat();
         $scope.lng = location.lng();
         $scope.$apply();
@@ -25,11 +28,12 @@ app.controller('goalTargetController', function($scope, $http) {
         $scope.savingMonth = pmt;
         $scope.mthPmt = pmt;
         $scope.mthDiff= monthDiff(future);
-        $scope.targetWhere = $('#targetWhere').val();
+        //$scope.targetWhere = $('#targetWhere').val();
         $scope.goalSubmit = true;
     }
 
 
+    //Submit goal
     $scope.setGoalTarget = function () {
 
         $scope.success = true;
@@ -39,22 +43,27 @@ app.controller('goalTargetController', function($scope, $http) {
             method: "POST",
             url: "/ajax/setGoalTarget",
             data: {
+                    targetName:     $scope.targetName,
                     targetPrice:    $scope.targetPrice,
                     targetNumPmt:   $scope.mthPmt,
                     savingMth:      $scope.savingMonth,
-                    where:          $('#targetWhere').val(),
+                    where:          $scope.targetWhere,
                     lat:            $scope.lat,
                     lng:            $scope.lng,
                     periods:        $scope.mthDiff,
                     monthSelect:    $scope.buyingMonthSelect,
-                    yearSelect:     $scope.buyingYearSelecte.lng
+                    yearSelect:     $scope.buyingYearSelect
                 }
         })
-        .done(function ($scopmsg) {
-
+        .done(function (msg) {
         });
     }
 });
+
+
+/*
+ * Directives for this control
+ */
 
 app.directive('buyingYearDrop',function() {
     var currentYear = new Date().getFullYear();
