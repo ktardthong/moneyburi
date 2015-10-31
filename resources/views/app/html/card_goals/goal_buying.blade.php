@@ -63,6 +63,7 @@
 
                         <button ng-click="optionContainer=false;showMore=true"  class="btn btn-link pull-right" ng-init="false" ng-show="showMore=true;">Hide</button>
 
+                        {{-- Location --}}
                         <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
 
                             <input  ng-required="true"
@@ -71,7 +72,7 @@
                                     gm-places-autocomplete
                                     class="ng-pristine md-input ng-invalid ng-invalid-required ng-touched" aria-label="{!! trans('messages.goal_where') !!}"
                                     class="input input-lg borderless"
-                                    ng-model="targetWhere" id="targetWhere"
+                                    ng-model="targetWhereBuying" id="targetWhereBuying"
                                     required="required" aria-required="true" aria-invalid="true" style="">
                         </md-input-container>
 

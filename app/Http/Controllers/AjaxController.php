@@ -8,14 +8,8 @@ use Validator;
 use App\User;
 use App\UserJobs;
 use App\CateCore;
-use App\GoalTravel;
 use Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
-use Carbon\Carbon;
-
-
-
 
 class AjaxController extends Controller
 {
@@ -158,18 +152,20 @@ class AjaxController extends Controller
     //Goal Setting for general
     public function setGoalTarget(Request $request)
     {
-        if(Auth::user()){
+        if(Auth::user())
+        {
             $data =[
-                    'uid'       =>Auth::user()->id,
-                    'price'     =>$request->targetPrice,
-                    'where'     =>$request->where,
-                    'lat'       =>$request->lat,
-                    'lng'       =>$request->lng,
+                    'uid'       => Auth::user()->id,
+                    'name'      => $request->targetName,
+                    'price'     => $request->targetPrice,
+                    'where'     => $request->where,
+                    'lat'       => $request->lat,
+                    'lng'       => $request->lng,
                     'pmt'       => $request->targetNumPmt,
                     'periods'   => $request->periods,
                     'lat'       => $request->lat,
                     'lng'       => $request->lng,
-                    'mth_saving'=> round($request->savingMth,2),
+                    'mth_saving'=> round($request->savingMth,2), //number of saving per month
                     'month'     => $request->monthSelect,
                     'year'      => $request->yearSelect,
                     'created_at'=> date('Y-m_d')
