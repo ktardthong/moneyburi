@@ -39,40 +39,38 @@ class CardApp  extends  Eloquent{
 
 
 
-
+    //Get all user goals
     public static function getAllGoals()
     {
+        $active_flg =1;
         if(Auth::user()) {
 
             $uid = Auth::user()->id;
 
-            $q = "SELECT  (
-                    SELECT COUNT(*)
-                    FROM   goal_car
-                    WHERE		uid=$uid
-                    ) AS car,
+            $goal_general = DB::table('goal_general')
+                            ->where('uid',Auth::user()->id)
+                            ->where('flg',$active_flg)
+                            ->select('uid','name','where','mth_saving',
+                                      DB::RAW('1 as goal_type'),'created_at');
 
-                    (
-                    SELECT COUNT(*)
-                    FROM   goal_general
-                            WHERE		uid=$uid
-                    ) AS general,
+            $goal_travel = DB::table('goal_travel')
+                            ->where('uid',Auth::user()->id)
+                            ->where('flg',$active_flg)
+                            ->select('uid','goal_travel.where_to','goal_travel.where_to', 'mth_saving',
+                                      DB::RAW('2 as goal_type'),'created_at')
+                            ;
 
-                    (
-                    SELECT COUNT(*)
-                    FROM   goal_home
-                            WHERE		uid=$uid
-                    ) AS home,
+            $goal = DB::table('goal_car')
+                        ->join('carbrandname', 'goal_car.brand', '=', 'carbrandname.id')
+                        ->where('uid',Auth::user()->id)
+                        ->where('goal_car.flg',$active_flg)
+                        ->select('uid','model as name','carbrandname.images as ext', 'mth_saving',
+                                  DB::RAW('3 as goal_type'),'goal_car.created_at')
+                        ->union($goal_travel)
+                        ->union($goal_general)
+                        ->get();
 
-                    (
-                    SELECT COUNT(*)
-                    FROM   goal_travel
-                            WHERE		uid=$uid
-                    ) AS travel
-                    FROM    dual";
-            $data = DB::select($q, array());
-
-            return json_encode($data[0]);
+            return json_encode($goal);
         }
     }
 }
