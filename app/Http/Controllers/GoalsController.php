@@ -47,6 +47,26 @@ class GoalsController extends Controller
     }
 
 
+    //Get the list of car brands
+    public function getCarBrands()
+    {
+        if(Auth::user()) {
+            return DB::table('carbrandname')->get();
+        }
+    }
+
+    //Add new goal into trackers
+    public function addGoalTracker(Request $request)
+    {
+        $data = [
+                 'goal_id'      =>  $request->goal_id,
+                 'uid'          =>  Auth::user()->id,
+                 'goal_type'    =>  $request->goal_type,
+                 'is_completed' =>  0,
+               ];
+    }
+
+
     //Get the list of user goal
     public static function getUserGoals()
     {

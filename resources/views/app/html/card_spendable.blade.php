@@ -133,9 +133,19 @@
 
                             <span class="pull-right">
 
-                                <a  ng-click="billOptionContainer$index = true"
+                                <a  ng-click="billOptionContainer$index = true;
+                                              showMore$index = false"
+                                    ng-show="showMore$index = true"
                                     style="cursor: pointer;margin-left:20px">
-                                    <i class="ion-chevron-right"></i>
+                                    <i class="ion-chevron-down"></i>
+                                </a>
+                                <a  ng-click="billOptionContainer$index = false;
+                                              editContainer$index =false;
+                                              showMore$index = true"
+                                    ng-show="billOptionContainer$index"
+                                    class="nav-link cursor">
+                                    <i class="ion-chevron-up"></i>
+                                    {{--{!! trans('messages.lbl_back') !!}--}}
                                 </a>
 
                             </span>
@@ -174,13 +184,6 @@
                                             class="nav-link cursor">
                                             <i class="ion-trash-b"></i>
                                             {!! trans('messages.lbl_remove') !!}
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a  ng-click="billOptionContainer$index = false;editContainer$index =false"
-                                            class="nav-link cursor">
-                                            <i class="ion-chevron-left"></i>
-                                            {!! trans('messages.lbl_back') !!}
                                         </a>
                                     </li>
                                 </ul>

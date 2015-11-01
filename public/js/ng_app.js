@@ -61,16 +61,6 @@ app.config(function($mdThemingProvider) {
 });
 
 
-app.controller('goalAutoController', function($scope, $http) {
-    $scope.autoCal = {  autoPrice: 0,
-                        autoDPmt: 0,
-                        autoNumPmt: 0,
-                        autoInterest: 0,
-                        autoPmt: 0
-                    };
-});
-
-
 
 app.controller('profileController', function($scope, $http,factory_userData,factory_userGoals,
                                             factory_userBills,factory_utils,
@@ -117,6 +107,10 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
         $scope.userTravelGoals = data;
     });
 
+    factory_userGoals.carBrandsList().success(function(data){
+        $scope.carBrandsList = data;
+    });
+
     factory_userBills.getBlls().success(function(data){
         $rootScope.rs_userBills = data;
     });
@@ -132,8 +126,6 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
     factory_userBills.billCate().success(function(response) {
        $scope.billCate = response;
     });
-
-
 
     factory_userCards.getCards().success(function(data){
         $scope.userCards = data;

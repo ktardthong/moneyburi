@@ -44,7 +44,8 @@
                                     '/js/controllers/SpendableChartController.js',
                                     '/js/controllers/userController.js',
                                     '/js/controllers/SpendingCategoriesChartController.js',
-                                    '/js/controllers/TransactionsController.js'
+                                    '/js/controllers/TransactionsController.js',
+                                    '/js/controllers/GoalCarController.js'
                                   )) !!}
      <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
 
