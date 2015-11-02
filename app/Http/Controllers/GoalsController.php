@@ -68,8 +68,22 @@ class GoalsController extends Controller
 
 
     //Get the list of user goal
+    //if 0 is completed 1 is in progress
     public static function getUserGoals()
     {
-        return \App\CardApp::getAllGoals();
+        if(Auth::user())
+        {
+            return \App\CardApp::getAllGoals();
+        }
+        else
+        {
+            echo "no user";
+        }
+    }
+
+    //Show only Completed Goal
+    public static function showCompletedGoal(Request $request)
+    {
+        return \App\CardApp::getAllGoals($request->active_goal_flg);
     }
 }

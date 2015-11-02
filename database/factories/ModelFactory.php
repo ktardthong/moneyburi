@@ -22,3 +22,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'birthdate' =>  '1990-01-01',
     ];
 });
+
+$factory->define(App\Transaction,function(){
+
+});
