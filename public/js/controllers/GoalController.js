@@ -1,31 +1,6 @@
 /*
 
 */
-app.controller('goalAutoController', function($scope, $http) {
-    $scope.autoCal = {  autoPrice: 0,
-                        autoDPmt: 0,
-                        autoNumPmt: 0,
-                        autoInterest: 0,
-                        autoPmt: 0
-                    };
-
-    $scope.addGoal = function() {
-
-        $.ajax({
-            method: "POST",
-            url: "/ajax/userName",
-            data:  {    fname: $('#init_firstname').val() ,
-                lname: $('#init_lastname').val(),
-                job:   $('#jobtype').val()
-            }
-        })
-            .done(function( msg ) {
-                window.location.href = '/init_setup_2';
-            });
-    };
-});
-
-
 app.controller('goalHomeController', function($scope, $http) {
     $scope.homeCal = {
         //homePrice: 0,
@@ -40,7 +15,45 @@ app.controller('goalHomeController', function($scope, $http) {
 
 
 
-app.controller('goalController', function($scope) {
+app.controller('goalController', function($scope,$http,factory_userGoals ) {
+
+
+
+
+    //Get active goals
+    $scope.getActiveGoals = function()
+    {
+        $http.get("/ajax/userGoals").success(function(data){
+            $scope.carBrandsList = data;
+        });
+
+        factory_userGoals.userGoalsFactory().success(function(data){
+            $scope.userGoals=data;
+        });
+    };
+
+    //Get completed goal
+    $scope.getCompletedGoal = function()
+    {
+        $.ajax({
+            method: "POST",
+            url: "/ajax/showCompletedGoal",
+            data:  {
+                active_goal_flg: 0
+            }
+        })
+        .done(function( msg ) {
+            $scope.userGoals=JSON.parse(msg);
+        });
+    };
+
+    $scope.momentFormat = function(date){
+        return moment(date).format("MMM DD, YYYY ");
+    };
+
+    $scope.momentMonth = function(created_at,duration){
+        return moment(created_at).add(duration, 'months').format(" MMM DD, YYYY");
+    };
 
     $scope.goal_templates =
         [

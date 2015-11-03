@@ -124,12 +124,15 @@ Route::get('goal/goal_summary',     'GoalsController@goal_summary');     //goal 
 Route::get('goal/goal_travel',      'GoalsController@goal_travel');     //goal summary card
 Route::get('goal/goal_buycar',      'GoalsController@goal_buycar');     //goal summary card
 Route::get('goal/goal_buyhome',     'GoalsController@goal_buyhome');     //goal summary card
+Route::get('goal/getCarBrands',     'GoalsController@getCarBrands');     //list of car brands
 
 Route::get('ajax/userGoals',        'GoalsController@getUserGoals');    //get the list of user goal
+Route::post('ajax/showCompletedGoal',       'GoalsController@showCompletedGoal');    //get the list of user goal
 Route::post('ajax/setGoalTravel',   'AjaxController@setGoalTravel');
 Route::post('ajax/setGoalTarget',   'AjaxController@setGoalTarget');
 Route::get('ajax/getUserTravelGoal',     'AjaxController@getUserTravelGoal');
 Route::get('ajax/getUserTargetGoal',     'AjaxController@getUserTargetGoal');
+Route::post('ajax/setCarGoal',           'AjaxController@setCarGoal');  //Set goal for car
 
 
 //mails

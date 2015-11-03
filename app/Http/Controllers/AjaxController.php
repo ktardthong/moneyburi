@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\CardApp;
 use Illuminate\Http\Request;
 use Validator;
 use App\User;
@@ -10,6 +11,7 @@ use App\UserJobs;
 use App\CateCore;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class AjaxController extends Controller
 {
@@ -115,39 +117,6 @@ class AjaxController extends Controller
     }
 
 
-    // FROM init_set up 2
-    public function userStatus(Request $request)
-    {
-        if(Auth::user()) {
-            DB::table('users')
-                ->where('id', Auth::user()->id)
-                ->update([
-                    'birthdate' =>  $request->bdate,
-                    'gender'    =>  $request->gender,
-                    'status'    =>  $request->status
-                ]);
-        }
-    }
-
-    //initi_setup4
-    public function userplan(Request $request)
-    {
-        if(Auth::user()){
-            echo ">>>";
-            echo $request->dd_saving;
-            echo $request->dd_spending;
-            DB::table('users')
-                ->where('id', Auth::user()->id)
-                ->update([
-                    'mth_saving'    =>  $request->mth_saving,
-                    'mth_spendable' =>  $request->mth_spending,
-                    'd_saving'      =>  $request->dd_saving,
-                    'd_spendable'   =>  $request->dd_spending
-                ]);
-        }
-
-    }
-
 
     //Goal Setting for general
     public function setGoalTarget(Request $request)
@@ -168,7 +137,7 @@ class AjaxController extends Controller
                     'mth_saving'=> round($request->savingMth,2), //number of saving per month
                     'month'     => $request->monthSelect,
                     'year'      => $request->yearSelect,
-                    'created_at'=> date('Y-m_d')
+                    'created_at'    => Carbon::now()
                   ];
             DB::table('goal_general')->insert($data);
         }
@@ -190,13 +159,37 @@ class AjaxController extends Controller
                         'lng'       => $request->lng,
                         'mth_saving'=> round($request->travelSavingMth,2),
                         'month'     => $request->monthSelect,
-                        'year'      => $request->yearSelect
+                        'year'      => $request->yearSelect,
+                        'created_at'    => Carbon::now()
                     ];
             print_r($data);
             DB::table('goal_travel')->insert($data);
 
         }
     }
+
+
+    //Goal Setting for car
+    public function setCarGoal(Request $request)
+    {
+        if(Auth::user()){
+
+            $data =[
+                'uid'           => Auth::user()->id,
+                'brand'         => $request->brand,
+                'price'         => $request->price,
+                'model'         => $request->model,
+                'duration'      => $request->duration,
+                'mth_saving'    => round($request->savingMth,2),
+                'created_at'    => Carbon::now()
+            ];
+            print_r($data);
+            DB::table('goal_car')->insert($data);
+
+        }
+    }
+
+
 
 
     //Add user bill

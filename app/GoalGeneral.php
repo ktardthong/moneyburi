@@ -18,4 +18,7 @@ class GoalGeneral  extends  Eloquent{
         }
     }
 
+
+
+
 } 
