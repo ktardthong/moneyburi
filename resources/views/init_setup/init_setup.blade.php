@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div ng-controller="profileController">
+    <div>
      <div ng-show="isLoaded">
 
         {{-- Cover --}}

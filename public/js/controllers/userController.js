@@ -10,7 +10,8 @@ app.controller('userController', function($scope,factory_userSpending,$rootScope
 
     $rootScope.rs_mthlySaving  =   $scope.userData.mth_saving;
 
-    $scope.ng_spendable =   $rootScope.rs_mthlyIncome - $rootScope.rs_sumBills - $rootScope.rs_mthlySaving;
+    $scope.ng_spendable =   $rootScope.rs_mthlyIncome - $rootScope.rs_sumBills - $rootScope.rs_mthlySaving - $rootScope.rs_userData.goal_saving;
+
     $scope.currency     =   $scope.userData.currency;
 
     $scope.ng_userfname    =    $scope.userData.firstname;
@@ -18,9 +19,9 @@ app.controller('userController', function($scope,factory_userSpending,$rootScope
     $scope.ng_email        =    $scope.userData.email;
 
 
-    $scope.labels = ["Bill", "Saving", "Spendable"];
-    $scope.colours=  ["#8D8D8D","#87D2DA","#1594A8"],
-    $scope.data = [ $rootScope.rs_sumBills, $rootScope.rs_mthlySaving,$scope.ng_spendable];
+    $scope.labels = ["Bill", "Saving", "Spendable","Goal Saving"];
+    $scope.colours=  ["#8D8D8D","#87D2DA","#1594A8","#C7E8EA"];
+    $scope.data = [ $rootScope.rs_sumBills, $rootScope.rs_mthlySaving,$scope.ng_spendable,$rootScope.rs_userData.goal_saving];
 
 
     //Delay the highlight on keyup
@@ -34,12 +35,11 @@ app.controller('userController', function($scope,factory_userSpending,$rootScope
 
 
     $rootScope.calPie = function(){
-        $scope.ng_spendable = $scope.rs_mthlyIncome - $rootScope.rs_sumBills - $scope.rs_mthlySaving;
+        $scope.ng_spendable =   $rootScope.rs_mthlyIncome - $rootScope.rs_sumBills - $rootScope.rs_mthlySaving - $rootScope.rs_userData.goal_saving;
 
-        $scope.labels = ["Bill", "Saving", "Spendable"];
-        $scope.data = [ $rootScope.rs_sumBills, $scope.rs_mthlySaving,$scope.ng_spendable];
+        $scope.labels = ["Bill", "Saving", "Spendable","Goal Saving"];
+        $scope.data = [ $rootScope.rs_sumBills, $rootScope.rs_mthlySaving,$scope.ng_spendable,$rootScope.rs_userData.goal_saving];
 
-        console.log($scope.data);
         $rootScope.rs_mthlyIncome = $scope.rs_mthlyIncome;
 
         typewatch(function()

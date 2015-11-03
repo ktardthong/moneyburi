@@ -49,21 +49,21 @@ class CardApp  extends  Eloquent{
             $goal_general = DB::table('goal_general')
                             ->where('uid',Auth::user()->id)
                             ->where('flg',$active_flg)
-                            ->select('uid','name','where','mth_saving',
+                            ->select('goal_general.id','uid','name','where','mth_saving',
                                      'duration','duration_complete',
                                      DB::RAW('1 as goal_type'),'created_at');
 
             $goal_travel =  DB::table('goal_travel')
                             ->where('uid',Auth::user()->id)
                             ->where('flg',$active_flg)
-                            ->select('uid','goal_travel.where_to','goal_travel.where_to', 'mth_saving',
+                            ->select('goal_travel.id','uid','goal_travel.where_to','goal_travel.where_to', 'mth_saving',
                                      'duration','duration_complete',
                                      DB::RAW('2 as goal_type'),'created_at');
 
             $goal_home =  DB::table('goal_home')
                             ->where('uid',Auth::user()->id)
                             ->where('flg',$active_flg)
-                            ->select('uid','name','where', 'mth_saving',
+                            ->select('goal_home.id','uid','name','where', 'mth_saving',
                                 'duration','duration_complete',
                                 DB::RAW('4 as goal_type'),'created_at');
 
@@ -71,13 +71,14 @@ class CardApp  extends  Eloquent{
                         ->join('carbrandname', 'goal_car.brand', '=', 'carbrandname.id')
                         ->where('uid',Auth::user()->id)
                         ->where('goal_car.flg',$active_flg)
-                        ->select('uid','model as name','carbrandname.images as ext', 'mth_saving',
+                        ->select('goal_car.id','uid','model as name','carbrandname.images as ext', 'mth_saving',
                                  'duration','duration_complete',
                                  DB::RAW('3 as goal_type'),'goal_car.created_at')
 
                         ->union($goal_travel)
                         ->union($goal_home)
                         ->union($goal_general)
+
                         ->get();
 
             return json_encode($goal);

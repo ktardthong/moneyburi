@@ -15,21 +15,54 @@ app.controller('goalHomeController', function($scope, $http) {
 
 
 
-app.controller('goalController', function($scope,$http,factory_userGoals ) {
+app.controller('goalController', function($scope,$rootScope,$http,factory_userGoals ) {
 
+    //Remove user goal
+    $scope.removeGoal = function(goal)
+    {
+        var adjustedSpendable = Number($rootScope.rs_userData.d_spendable) + Number(goal.mth_saving/30);
 
+        $rootScope.rs_userData.d_spendable = adjustedSpendable;
+
+        $.ajax({
+            method: "POST",
+            url: "/ajax/removeGoal",
+            data:  {
+                remove: 1,
+                goal: goal,
+                adjusted: adjustedSpendable
+            }
+        });
+
+    }
+
+    $scope.undoGoalRemove = function(goal)
+    {
+        var adjustedSpendable = Number($rootScope.rs_userData.d_spendable) - Number(goal.mth_saving/30);
+        $.ajax({
+            method: "POST",
+            url: "/ajax/removeGoal",
+            data:  {
+                remove: 0,
+                goal: goal,
+                adjusted: adjustedSpendable
+            }
+        });
+
+        $rootScope.rs_userData.d_spendable = adjustedSpendable;
+    }
 
 
     //Get active goals
     $scope.getActiveGoals = function()
     {
-        $http.get("/ajax/userGoals").success(function(data){
+/*        $http.get("/ajax/userGoals").success(function(data){
             $scope.carBrandsList = data;
         });
 
         factory_userGoals.userGoalsFactory().success(function(data){
             $scope.userGoals=data;
-        });
+        });*/
     };
 
     //Get completed goal

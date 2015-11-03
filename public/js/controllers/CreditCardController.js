@@ -65,7 +65,6 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
     $scope.showAdvanced = function(ev,card) {
 
         $scope.card_edit = card;
-        console.log($scope.card_edit);
         $mdDialog.show({
             controller: DialogController,
             templateUrl: '/app/creditcards/edit_card.tmpl.html',

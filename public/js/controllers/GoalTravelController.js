@@ -1,4 +1,4 @@
-app.controller('goalTravelController', function($scope, $http) {
+app.controller('goalTravelController', function($scope, $rootScope) {
 
     $scope.lat = undefined;
     $scope.lng = undefined;
@@ -11,10 +11,9 @@ app.controller('goalTravelController', function($scope, $http) {
         $scope.$apply();
     });
 
-    $http.get("/ajax/getUserTravelGoal")
-        .success(function(response) {
+    /*$http.get("/ajax/getUserTravelGoal").success(function(response) {
             $scope.travelGoals = response;
-    });
+    });*/
 
     $scope.savingMonth = 0;
 
@@ -69,9 +68,8 @@ app.controller('goalTravelController', function($scope, $http) {
                         yearSelect:     $scope.yearSelect
             }
         })
-        .done(function( msg ) {
-            console.log($scope.travelGoalForm)
-        });
+        var adjustedSpendable = Number($rootScope.rs_userData.d_spendable) - Number($scope.savingMonth/30);
+        $rootScope.rs_userData.d_spendable = adjustedSpendable;
     };
 });
 

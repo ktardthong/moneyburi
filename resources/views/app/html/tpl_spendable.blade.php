@@ -17,6 +17,7 @@
 
     <div class="col-xs-12 col-sm-6"  >
 
+        {{-- data[2] that's User Income --}}
         <canvas id="pie" class="chart chart-doughnut"
                 chart-data="data"
                 chart-labels="labels"
@@ -37,7 +38,7 @@
                 <label>{!! trans('messages.lbl_youCanSpend') !!}</label>
                 <span id="editDaySpendable">
                     <strong>
-                        @{{ (rs_mthlyIncome - rs_sumBills - rs_mthlySaving )/30 | currency: ''}}
+                        @{{ (rs_mthlyIncome - rs_sumBills - rs_mthlySaving - rs_userData.goal_saving )/30 | currency: ''}}
                     </strong>
                 </span>
             </div>
@@ -53,6 +54,7 @@
                 {!! trans('messages.lbl_perday') !!}
             </div>
         </div>
+
     </div>
 
 
@@ -100,13 +102,19 @@
             <bill-compact-list ng-init="showBilList=false" ng-show="showBilList"></bill-compact-list>
         </div>
 
-
+        {{-- Goal --}}
+        <div class="col-xs-12" ng-if="rs_userData.goal_saving > 0">
+            <label> <h4> - </h4> GOAL </label>
+            <h3>
+            @{{ rs_userData.goal_saving | currency: '' }}
+            </h3>
+        </div>
 
         <div class="container-fluid">
             <small><label> <b> = </b> {!! trans('messages.lbl_mth_spendable') !!} </label></small>
             <h3>
                 <span   ng-model="ng_spendable"
-                        id="editMonthlySpendable">@{{ (rs_mthlyIncome - rs_sumBills - rs_mthlySaving) }}</span>
+                        id="editMonthlySpendable">@{{ (rs_mthlyIncome - rs_sumBills - rs_mthlySaving - rs_userData.goal_saving ) }}</span>
             </h3>
             <hr>
         </div>
