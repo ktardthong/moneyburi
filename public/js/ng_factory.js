@@ -95,7 +95,7 @@ app.factory('factory_mfb',function($http){
                 }, {
                     label: 'Transactions',
                     icon: 'ion-calculator',
-                    url: '/app/html/card_transactions.html'
+                    url: '/transactions'
                 }];
             }
         }

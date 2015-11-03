@@ -33,6 +33,9 @@ app.config(function($routeProvider){
         .when('/user_finance',{
             templateUrl: '/init_setup_1'
         })
+        .when('/transactions',{
+            templateUrl: '/transactions'
+        })
         .otherwise({
             template: '<div> Nothing here </div>'
         })
@@ -163,7 +166,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
         [
             { name: 'Spendable'         , url: '/spendableCard'},
             { name: 'Goals'             , url: '/goal/card_goal'},
-            { name: 'Transactions'      , url: '/app/html/card_transactions.html'},
+            { name: 'Transactions'      , url: '/transactions'},
             { name: 'Bills'             , url: '/Bills'},
             { name: 'Credit cards'      , url: '/CreditCard'},
         ];

@@ -305,12 +305,26 @@ app.controller('transactionController', function($scope, $http, $filter) {
         scrollButtons:{ enable: false }
 
     };
+
+    $scope.bill = undefined;
+
+
 })
 
 .directive('transList', function() {
         return {
             restrict: 'E',
             templateUrl: '/transList'
+        };
+})
+
+.directive('addTrans', function() {
+        return {
+            restrict: 'E',
+            templateUrl: '/addTrans',
+            scope:{
+                bill: '=billValue'
+            }
         };
 })
 

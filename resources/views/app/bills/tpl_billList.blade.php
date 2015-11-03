@@ -1,6 +1,6 @@
 <div class="media bottom_border" ng-repeat="bill in listBillStatus" style="border-style: #fefefe; border-left-color: #9F9F9F">
   <div class="media-left" ng-if="bill.is_paid ==0">
-   pay
+      <button ng-click="bill.showTrans=true">pay</button>
   </div>
   <div class="media-left">
     <a href="#">
@@ -15,4 +15,8 @@
         @{{ bill.amount }}
     </div>
   </div>
+
+    <div ng-controller="transactionController" ng-init="bill.showTrans=false" ng-show="bill.showTrans" class="card card-block">
+        <add-trans billValue="bill"></add-trans>
+    </div>
 </div>

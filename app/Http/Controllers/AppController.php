@@ -63,4 +63,16 @@ class AppController extends Controller
     {
         return view('app.transactions.tpl_transRecent');
     }
+
+    //add trans
+    function addTrans()
+    {
+        return view('app.transactions.card_addTransaction');
+    }
+
+    //trans page
+    function transactions()
+    {
+        return view('app.transactions.card_transactions');
+    }
 }
