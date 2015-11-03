@@ -9,15 +9,7 @@ app.controller('goalAutoController', function($scope,$rootScope, $http) {
     };
 
     $scope.carCal = function(){
-        console.log($rootScope.rs_userData.d_spendable);
-        console.log($scope.autoPrice);
-        console.log($scope.car_month);
-
         $scope.spendableDay = $rootScope.rs_userData.d_spendable - (($scope.autoPrice/$scope.car_month)/30);
-        //var future = $scope.buyingYearSelect;
-        //$scope.yearDiff = new Date().getFullYear() - future;
-        //$scope.goalSubmit = true;
-        console.log($scope.spendableDay);
     };
 
     $scope.addCarGoal = function()

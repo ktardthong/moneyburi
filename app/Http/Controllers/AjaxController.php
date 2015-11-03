@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\CardApp;
+use App\GoalGeneral;
 use Illuminate\Http\Request;
 use Validator;
 use App\User;
@@ -131,7 +132,7 @@ class AjaxController extends Controller
                     'lat'       => $request->lat,
                     'lng'       => $request->lng,
                     'pmt'       => $request->targetNumPmt,
-                    'periods'   => $request->periods,
+                    'duration'   => $request->periods,
                     'lat'       => $request->lat,
                     'lng'       => $request->lng,
                     'mth_saving'=> round($request->savingMth,2), //number of saving per month
@@ -154,7 +155,7 @@ class AjaxController extends Controller
                         'budget'    => $request->travelAmount,
                         'pax'       => $request->travelPax,
                         'nights'    => $request->travelNights,
-                        'periods'   => $request->periods,
+                        'duration'   => $request->periods,
                         'lat'       => $request->lat,
                         'lng'       => $request->lng,
                         'mth_saving'=> round($request->travelSavingMth,2),
@@ -162,9 +163,10 @@ class AjaxController extends Controller
                         'year'      => $request->yearSelect,
                         'created_at'    => Carbon::now()
                     ];
-            print_r($data);
             DB::table('goal_travel')->insert($data);
 
+            //Update new spendable
+            \App\GoalGeneral::updateSpendable(round($request->travelSavingMth,2));
         }
     }
 

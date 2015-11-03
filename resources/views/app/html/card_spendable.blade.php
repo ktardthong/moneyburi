@@ -38,7 +38,7 @@
         <div class="container" id="goalContainer">
             <span class="lead">{!! trans('messages.lbl_setGoal') !!}</span>
         </div>
-        <div class="card card-block">
+        <div class="card card-block animated">
             <div class="page page-home" ng-include="'/goalController'"></div>
         </div>
 

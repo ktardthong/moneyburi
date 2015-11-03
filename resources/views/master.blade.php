@@ -30,6 +30,24 @@
 
     {!! Minify::javascript(array('/js/jquery.min.js')) !!}
 
+    {{--boot strap4 --}}
+    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+    {!! Minify::stylesheet(array('/css/angular-material.min.css',
+                                     '/css/ionicons.min.css',
+                                     '/css/font-awesome.min.css',
+                                     '/css/normalize.css',
+                                     '/css/component.css',
+                                     '/css/angular_animation.css',
+                                     '/css/jumbotron-narrow.css',
+                                     '/css/global.css',
+                                     '/css/jquery-ui.css'
+                                     )) !!}
+
+
+
+
 
     {{-- Angular --}}
     {!! Minify::javascript( array(  '/js/angular.min.js','/js/angular-route.min.js','/js/angular-animate.min.js',
@@ -57,20 +75,7 @@
     {!! Minify::stylesheetDir('/vendors/') !!}
 
 
-    {{--boot strap4 --}}
-    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
-    {!! Minify::stylesheet(array('/css/angular-material.min.css',
-                                     '/css/ionicons.min.css',
-                                     '/css/font-awesome.min.css',
-                                     '/css/normalize.css',
-                                     '/css/component.css',
-                                     '/css/angular_animation.css',
-                                     '/css/jumbotron-narrow.css',
-                                     '/css/global.css',
-                                     '/css/jquery-ui.css'
-                                     )) !!}
   </head>
 
 <body ng-app="App">
@@ -115,7 +120,7 @@
                             <span class="sr-only">Toggle Dropdown</span>
                           </button>
                           <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/profile">{!! trans('messages.lbl_home') !!}</a>
+                            <a class="dropdown-item" href="/">{!! trans('messages.lbl_home') !!}</a>
                             <a class="dropdown-item" href="/user">{!! trans('messages.lbl_setting') !!}</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">{!! trans('messages.lbl_logout') !!}</a>

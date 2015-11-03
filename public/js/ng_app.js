@@ -1,6 +1,12 @@
 var app = angular.module('App',['ngAnimate','ngRoute','ng-mfb','ngMaterial','chart.js','ngSanitize','gm',
                                 'ngMap','ngChartjsDirective','ngScrollbars']);
 
+//http://www.bennadel.com/blog/2935-enable-animations-explicitly-for-a-performance-boost-in-angularjs.htm?utm_content=buffer6cd7e&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
+app.config(
+function configureAnimate( $animateProvider ) {
+    $animateProvider.classNameFilter( /\banimated\b/ );
+});
+
 app.config(function($routeProvider){
     $routeProvider
         .when('/',{
@@ -81,6 +87,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
     $http.defaults.withCredentials = true;
     $scope.date = new Date();
 
+
     factory_userData.userDataFactory().success(function(data){
 
         $scope.userData=data;
@@ -89,6 +96,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
         $rootScope.rs_mthlyIncome   =   $scope.userData.mth_income;
         $rootScope.rs_mthlySaving   =   $scope.userData.mth_saving;
     });
+
 
     factory_userData.userJobs().success(function(data){
         $scope.userJobs=data;
@@ -311,5 +319,6 @@ app.directive('routeLoadingIndicator', function($rootScope) {
                 scope.isLoaded = true
             });
         }
-    };
+
+  };
 });

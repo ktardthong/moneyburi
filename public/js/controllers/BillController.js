@@ -1,10 +1,5 @@
 app.controller('billController', function($scope, $http,$rootScope,factory_userBills,$route, $routeParams, $location) {
 
-    /*$scope.$route = $route;
-    $scope.$location = $location;
-    $scope.$routeParams = $routeParams;*/
-
-    console.log($location.path());
 
     $scope.days     = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10,	11,	12,	13,	14,	15,	16,	17,	18,	19,	20,	21,	22,	23,	24,	25,	26,	27,	28,	29,	30,	31];
     $scope.displayAddNewBill = false;
@@ -59,10 +54,6 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
     {
         if($scope.ng_billAmount > 0)
         {
-            console.log($rootScope.rs_mthlyIncome);
-            console.log($rootScope.rs_mthlySaving);
-            console.log($scope.ng_billAmount);
-
             var amt = $rootScope.rs_mthlyIncome - $rootScope.rs_mthlySaving - $scope.ng_billAmount;
             if(amt > 0)
             {
@@ -72,7 +63,6 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
             {
                 $scope.displayAddNewBill = false;
             }
-            console.log(amt + $scope.displayAddNewBill);
         }
         else
         {
@@ -136,7 +126,6 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
         .done(function( msg ) {
             factory_userBills.sumBills().success(function(data) {
                 $rootScope.rs_sumBills = data;
-                console.log(data);
             });
         });
     }
