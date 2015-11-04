@@ -32,6 +32,7 @@ return array(
 
     'lbl_overview'          => 'Overview',
     'lbl_setGoal'           => 'Set your Goals',
+
     'lbl_addTrans'          => 'Add transaction',
     'lbl_spendingCate'      => 'Spending Categories',
 
@@ -90,5 +91,8 @@ return array(
     'goal_amount'           => 'How much?',
     'goal_where'            => 'Where?',
     'goal_created'          => 'Goal Created!',
-    'goal_allGoals'         => 'Show all goals'
+    'goal_allGoals'         => 'Show all goals',
+
+    'goal_travel'           => 'Travel Goal',
+    'goal_whenYouGo'        => 'When you want to go?'
 );

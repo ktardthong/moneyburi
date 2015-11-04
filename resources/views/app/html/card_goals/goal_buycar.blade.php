@@ -9,8 +9,8 @@
     </h4>
 
 
-    <div class="col-xs-12">
-        <div class="col-xs-12">
+    <div class="row">
+        <div class="container">
 
             {{-- Brands --}}
             <md-input-container md-no-float="" class="md-input-has-placeholder md-default-theme md-input-invalid">
@@ -66,26 +66,6 @@
             {!! Form::selectRange('months', 1, 100,1,['ng-model' => 'car_month','ng-change'=>'carCal()','class'=>'borderless'] ); !!}
 
 
-            {{-- Recommend or Suggest the goal --}}
-            <div ng-if="spendableDay > 0" style="margin:8px" class="box boxPadding">
-                <div class="col-sm-4">
-                    <img src="/img/a_boy.png" width="50px">
-                </div>
-                <div class="col-sm-8">
-                    Your Monthly payment @{{ autoPrice/car_month | currency: '' }}
-                    <br/>
-                    Your spendable will change from
-                    @{{ userData.d_spendable | currency: '' }}
-                    <i class="ion-arrow-right-c"></i>
-                    @{{ spendableDay | currency: '' }}
-                </div>
-            </div>
-
-
-            {{-- if the number is negative --}}
-            <div ng-if="spendableDay < 0" class="alert alert-danger">
-                You shouldn't set this goal
-            </div>
 
             <button class="btn btn-link" ng-click="showMore=true">more</button>
 
@@ -134,6 +114,25 @@
 
             </div>
 
+            {{-- Recommend or Suggest the goal --}}
+            <div ng-if="spendableDay > 0" style="margin:8px" class="box boxPadding">
+                <div class="col-sm-4">
+                    <img src="/img/a_boy.png" width="50px">
+                </div>
+                <div class="col-sm-8">
+                    Your Monthly payment @{{ autoPrice/car_month | currency: '' }}
+                    <br/>
+                    Your spendable will change from
+                    @{{ userData.d_spendable | currency: '' }}
+                    <i class="ion-arrow-right-c"></i>
+                    @{{ spendableDay | currency: '' }}
+                </div>
+            </div>
+        </div>
+
+        {{-- if the number is negative --}}
+        <div ng-if="spendableDay < 0" class="row alert alert-warning">
+            You shouldn't set this goal
         </div>
     </div>
 

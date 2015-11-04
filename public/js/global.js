@@ -28,26 +28,6 @@ $('#creditCard_false').click(function() {
 $('#addCreditCard').hide();
 
 
-function monthDiff(future)
-{
-    var start = new Date(future),
-        end   = new Date(),
-        diff = new Date(start -end);
-    month  = diff/1000/60/60/24/31;
-    return Math.round(month);
-}
-
-
-function dayDiff(future)
-{
-    var start = new Date(future),
-        end   = new Date(),
-        diff = new Date(start -end);
-    day  = diff/1000/60/60/24;
-    return Math.round(day);
-}
-
-
 
 
 // Smooth scroll for in page links - http://wibblystuff.blogspot.in/2014/04/in-page-smooth-scroll-using-css3.html

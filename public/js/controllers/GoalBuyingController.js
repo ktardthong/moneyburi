@@ -23,13 +23,12 @@ app.controller('goalTargetController', function($scope, $http) {
 
 
     $scope.goalCal = function(){
-        var future = $scope.buyingYearSelect+'-'+$scope.buyingMonthSelect;
-        var pmt    = $scope.targetPrice/monthDiff(future);
-        $scope.savingMonth = pmt;
-        $scope.mthPmt = pmt;
-        $scope.mthDiff= monthDiff(future);
-        //$scope.targetWhere = $('#targetWhere').val();
+
+        $scope.mthDiff = Math.round(Math.abs(moment().diff(moment([$scope.buying_years, $scope.buying_months, 1]), 'months', true)));
+        $scope.mthPmt = $scope.targetPrice/$scope.mthDiff;
+        $scope.travelLocation = $('#travelLocation').val();
         $scope.goalSubmit = true;
+
     }
 
 
@@ -51,8 +50,8 @@ app.controller('goalTargetController', function($scope, $http) {
                     lat:            $scope.lat,
                     lng:            $scope.lng,
                     periods:        $scope.mthDiff,
-                    monthSelect:    $scope.buyingMonthSelect,
-                    yearSelect:     $scope.buyingYearSelect
+                    monthSelect:    $scope.buying_months,
+                    yearSelect:     $scope.buying_years
                 }
         })
         .done(function (msg) {

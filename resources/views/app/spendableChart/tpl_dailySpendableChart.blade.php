@@ -1,5 +1,4 @@
 <div style="position: relative;" class="row">
-    <span class="lead">{!! date('Y-M-d') !!}</span>
     <div style="width: 100%; height: 10px; position: absolute;
                 top: 50%; left: 0; margin-top: -40px;
                 line-height:19px; text-align: center;

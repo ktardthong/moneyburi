@@ -68,8 +68,7 @@ class GoalsController extends Controller
 
 
     //Get the list of user goal
-    //if 0 is completed 1 is in progress
-    public static function getUserGoals()
+    public function getUserGoals()
     {
         if(Auth::user())
         {
@@ -127,7 +126,8 @@ class GoalsController extends Controller
 
         ->get();
 
-}
+    }
+
 
     public static function removeGoal(Request $request)
     {

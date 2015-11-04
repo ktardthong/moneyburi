@@ -86,7 +86,6 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
         $location.path(href)
     }
 
-
     $http.defaults.withCredentials = true;
     $scope.date = new Date();
 
@@ -325,3 +324,4 @@ app.directive('routeLoadingIndicator', function($rootScope) {
 
   };
 });
+

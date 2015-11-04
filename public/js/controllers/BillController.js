@@ -114,8 +114,6 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
     //Remove bill
     $scope.removeBill = function(data){
 
-        console.log("test>>> "+data);
-
         $.ajax({
             method: "POST",
             url: "/ajax/removeBills",

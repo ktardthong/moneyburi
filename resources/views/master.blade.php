@@ -48,6 +48,7 @@
 
 
 
+    {!! Minify::javascript(array('/js/global.js')) !!}
 
     {{-- Angular --}}
     {!! Minify::javascript( array(  '/js/angular.min.js','/js/angular-route.min.js','/js/angular-animate.min.js',
@@ -67,7 +68,7 @@
                                   )) !!}
      <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
 
-    {!! Minify::javascript(array('/js/global.js')) !!}
+
     {!! Minify::javascriptDir('/js/vendors/') !!}
 
     {{-- Vendors for JS and CSS--}}
@@ -142,11 +143,9 @@
     </nav>
 
 
-    <div class="container">
 
-	    @yield('content')
+    @yield('content')
 
-	</div>
 
 
 </body>

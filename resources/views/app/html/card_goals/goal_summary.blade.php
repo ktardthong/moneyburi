@@ -11,6 +11,12 @@
         </div>
     </div>
 
+
+    <div ng-if="rs_userGoals == ''">
+        No goals here
+    </div>
+
+
     {{-- Looping usergoals --}}
     <div ng-repeat="goal in userGoals" style="margin-right:10px;">
 

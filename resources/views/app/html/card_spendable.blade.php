@@ -1,16 +1,29 @@
-
+{{--
+    The main card
+ --}}
 <div class="container-fluid" >
-    <div style="position: absolute;z-index: 5;right: 10px;top:20px" class="col-xs-4 hidden-sm-down card"
-         ng-include="'/tpl_overview'"></div>
 
-    <div style="margin-top: 8px">&nbsp;</div>
+    <div class="container">
+        <div class="col-sm-8">
 
+        </div>
+        <div class="col-sm-4">
+            {{-- Only show this at Desktop level--}}
+            <div style="position:absolute ;z-index: 5;right: 10px;top:10px;width:220px" class="pull-right hidden-sm-down card">
+                <div ng-include="'/tpl_overview'"></div>
+            </div>
+        </div>
+    </div>
 
-    <div class="row">
+    <div class="row" style="background: #F1F1F1">
 
-        <div class="card card-block">
+        <div class="container">
+            <span class="lead">{!! date('M d, Y') !!}</span>
+        </div>
 
-            <div class="col-xs-12 col-sm-8" ng-controlloer="spendableChartController">
+        <div class="card card-block container">
+
+            <div class="row col-xs-12 col-sm-8" ng-controlloer="spendableChartController">
 
                 <daily-spendable-chart></daily-spendable-chart>
                 <div class="text-center ">
@@ -19,12 +32,6 @@
                     {!! trans('messages.lbl_addTrans') !!}
                     </a>
                 </div>
-
-                {{--<div ng-controller="transactionController" >--}}
-                    {{--<p>{!! trans('messages.lbl_recentTrans') !!}</p>--}}
-                    {{--<trans-recent></trans-recent>--}}
-                {{--</div>--}}
-                {{--<hr>--}}
 
             </div>
 
@@ -38,15 +45,15 @@
         <div class="container" id="goalContainer">
             <span class="lead">{!! trans('messages.lbl_setGoal') !!}</span>
         </div>
-        <div class="card card-block animated">
+        <div class="card card-block container">
             <div class="page page-home" ng-include="'/goalController'"></div>
         </div>
 
-
+        {{-- Overview --}}
         <div class="container">
             <span class="lead">{!! trans('messages.lbl_overview') !!}</span>
         </div>
-        <div class="card card-block">
+        <div class="card card-block container">
             <div align="center" style="margin: 0 0 10px 0;">
                 <div class="btn-group" data-toggle="buttons">
                     <label class="btn btn-primary-outline active" ng-click="showSpendableWeek()">
@@ -69,11 +76,11 @@
             </div>
         </div>
 
-    <!--Progress bar-->
-    <div class="container">
-        <span class="lead">{!! trans('messages.lbl_billCreditCard') !!}</span>
-    </div>
-    <div class="card card-block">
+        <!--Progress bar-->
+        <div class="container">
+            <span class="lead">{!! trans('messages.lbl_billCreditCard') !!}</span>
+        </div>
+        <div class="card card-block container">
 
         <div class="col-xs-12 col-sm-6" ng-controller="billController">
             <div class="clearfix">
