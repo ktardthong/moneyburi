@@ -209,7 +209,7 @@
 
             <div class="pull-right">
                 <small>
-                    <a href="@{{ templates[4].url }}">
+                    <a href="#@{{ templates[4].url }}">
                         <i class="ion-plus-circled"></i></a>
                 </small>
             </div>

@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\Inspire::class,
         \App\Console\Commands\DailySpendableTracker::class,
         \App\Console\Commands\WeeklyUpdateMail::class,
+        \App\Console\Commands\UpdateGoalDuration::class
 //        \App\Console\Commands\WeeklySpendableTracker::class
     ];
 
@@ -32,6 +33,9 @@ class Kernel extends ConsoleKernel
                  ->hourly();
 
         $schedule->command('DailySpendableTracker')
+                 ->everyMinute();
+
+        $schedule->command('UpdateGoalDuration')
                  ->everyMinute();
 
         $schedule->command('WeeklyUpdateMail')
