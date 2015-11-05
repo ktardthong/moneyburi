@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class UpdateGoalDuration extends Command
 {
@@ -76,6 +77,31 @@ class UpdateGoalDuration extends Command
         if(!DB::update($qh)){
             echo "log error - home";
         }
+
+        /**
+         * Update the flg to zero is goal completed
+        */
+        $qu="UPDATE 	goal_general
+             SET	    flg=0
+             WHERE		duration_complete = duration";
+        DB::update($qu);
+
+        $qu="UPDATE 	goal_travel
+             SET	    flg=0
+             WHERE		duration_complete = duration";
+        DB::update($qu);
+
+        $qu="UPDATE 	goal_car
+             SET	    flg=0
+             WHERE		duration_complete = duration";
+        DB::update($qu);
+
+        $qu="UPDATE 	goal_home
+             SET	    flg=0
+             WHERE		duration_complete = duration";
+        DB::update($qu);
+
+
 
     }
 }
