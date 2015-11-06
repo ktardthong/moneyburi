@@ -23,7 +23,7 @@ class PagesController extends Controller
     //The main container for the app - add your title and header here
     public function home()
     {
-        $page_title     =   "moneyburi!";
+        $page_title     =   "moneymore!";
         $page_descs     =   "";
         $location = Location::get();
         $quote = \App\MoneyQuote::orderByRaw("RAND()")->first();
@@ -148,7 +148,7 @@ class PagesController extends Controller
             }
             else
             {
-                return redirect('/login')->withErrors(trans('messages.label_auth_fail'));
+                return redirect('/#/login')->withErrors(trans('messages.label_auth_fail'));
             }
         }
         else

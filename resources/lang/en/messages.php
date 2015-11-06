@@ -94,5 +94,7 @@ return array(
     'goal_allGoals'         => 'Show all goals',
 
     'goal_travel'           => 'Travel Goal',
-    'goal_whenYouGo'        => 'When you want to go?'
+    'goal_whenYouGo'        => 'When you want to go?',
+
+    'label_auth_fail'       => 'Please check your username or password'
 );

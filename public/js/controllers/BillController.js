@@ -8,22 +8,44 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
     $rootScope.ng_billCate =1;
     $rootScope.ng_billDue =1;
 
-    $rootScope.showBill = false;
+    $rootScope.showBill     = false;
+    $rootScope.billOverview = true;
 
-    $scope.listBillStatus = $rootScope.rs_userBills;
+    //$scope.listBillStatus = $rootScope.rs_userBills;
 
-    var jsondata = $rootScope.rs_userBills;
+    $scope.bill_labels   = 0;
+    $scope.bill_data     = 0;
 
-    var bill_name=[];
-    var bill_amount=[];
 
-    for (var i = 0, l = jsondata.length; i < l; i++) {
-        bill_name[i]   = jsondata[i].name;
-        bill_amount[i] = jsondata[i].amount;
+    //Recal bill to be us in dough
+    $scope.billReCal = function(){
+
+        $scope.bill_labels   = null;
+        $scope.bill_data     = null;
+        factory_userBills.getBlls().success(function(data) {
+
+        var jsondata = data;
+        var bill_name=[];
+        var bill_amount=[];
+
+        for (var i = 0, l = jsondata.length; i < l; i++) {
+            bill_name[i]   = jsondata[i].name;
+            bill_amount[i] = jsondata[i].amount;
+        }
+
+        var billData = {
+            labels : bill_name,
+            value :   bill_amount
+
+        }
+
+        $scope.bill_labels   = bill_name;
+        $scope.bill_data     = bill_amount;
+
+        console.log($scope.bill_labels);
+        console.log($scope.bill_data);
+        });
     }
-
-    $scope.labels   = bill_name;
-    $scope.data     = bill_amount;
 
 
     $scope.billStatus = function($billlstatus)
@@ -84,17 +106,22 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
             }
         })
         .done(function( msg ) {
-            $http.get("/bill/getBills")
-                .success(function(response) {
-                    $scope.userBills = response;
-            });
 
             factory_userBills.sumBills().success(function(data) {
                 $rootScope.rs_sumBills     =   data;
-                $rootScope.calPie();
-                $('#userBillUpdate').effect("highlight", {color:'#F6C13C'}, 3500);
+                //$rootScope.calPie();
+                // $('#userBillUpdate').effect("highlight", {color:'#F6C13C'}, 3500);
             });
+
+            factory_userBills.getBlls().success(function(data){
+                $rootScope.rs_userBills = data;
+                $rootScope.billOverview = true;
+                $rootScope.showBill = false;
+            });
+
+                $scope.billReCal();
         });
+
     };
 
     //undoRemove bill
@@ -108,6 +135,11 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
             }
         })
         .done(function( msg ) {
+
+            factory_userBills.getBlls().success(function(data){
+                $rootScope.rs_userBills = data;
+            });
+
         });
     }
 
@@ -122,12 +154,20 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
             }
         })
         .done(function( msg ) {
+
             factory_userBills.sumBills().success(function(data) {
                 $rootScope.rs_sumBills = data;
             });
+
+            factory_userBills.getBlls().success(function(data){
+                $rootScope.rs_userBills = data;
+            });
+
+            $scope.billReCal();
         });
     }
 
+    $scope.billReCal();
 })
 
 
@@ -163,4 +203,5 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
         templateUrl: '/app/bills/tpl_cardSelect.html'
     };
 });
+
 

@@ -269,16 +269,6 @@ class AjaxController extends Controller
         }
     }
 
-
-    public function getUserTargetGoal()
-    {
-        if(Auth::user())
-        {
-            return \App\GoalGeneral::getUserTargetGoal();
-        }
-    }
-
-
     // Update user data
     public function updateUserData(Request $request)
     {

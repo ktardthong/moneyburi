@@ -7,18 +7,6 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class GoalGeneral  extends  Eloquent{
 
-    public static function getUserTargetGoal()
-    {
-        if(Auth::user())
-        {
-            $data = DB::table('goal_general')
-                ->where('uid',Auth::user()->id)
-                ->get();
-            return json_encode($data);
-        }
-    }
-
-
     //Update user spendable
     //Convert daily saving to reflect spendable
     public static function updateSpendable($goal_mth_saving)

@@ -20,16 +20,9 @@ app.factory('factory_userGoals', function($http) {
         userGoalsFactory: function () {
             return $http.get("/ajax/userGoals");
         },
-        userTravelLocation: function () {
-            return $http.get("/ajax/getUserTravelGoal");
-        },
         carBrandsList: function () {
             return $http.get("/goal/getCarBrands");
-        },
-        userTargetGoals: function (){
-            return $http.get("/ajax/getUserTargetGoal");
         }
-
     };
 });
 

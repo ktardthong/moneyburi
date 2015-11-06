@@ -25,6 +25,13 @@ body{
 
 }
 
+::selection {
+    background: #1594A8; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: #1594A8; /* Gecko Browsers */
+}
+
 .header-mb
 {
     background: #fff;

@@ -1,5 +1,11 @@
      <div class="container-fluid" style="margin-top:30px">
-
+           @if (count($errors) > 0)
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+          @endif
           <form class="form-signin card card_width container" method="post" action="/login">
 
             {!! csrf_field() !!}

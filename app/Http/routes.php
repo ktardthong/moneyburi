@@ -133,7 +133,6 @@ Route::post('ajax/showCompletedGoal',       'GoalsController@showCompletedGoal')
 Route::post('ajax/setGoalTravel',   'AjaxController@setGoalTravel');
 Route::post('ajax/setGoalTarget',   'AjaxController@setGoalTarget');
 Route::get('ajax/getUserTravelGoal',     'AjaxController@getUserTravelGoal');
-Route::get('ajax/getUserTargetGoal',     'AjaxController@getUserTargetGoal');
 Route::post('ajax/setCarGoal',           'AjaxController@setCarGoal');  //Set goal for car
 Route::post('ajax/removeGoal',           'GoalsController@removeGoal');  //Set goal for car
 

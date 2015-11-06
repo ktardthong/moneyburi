@@ -113,10 +113,6 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
         $scope.userGoals=data;
     });
 
-    factory_userGoals.userTravelLocation().success(function(data){
-        $scope.userTravelGoals = data;
-    });
-
     factory_userGoals.carBrandsList().success(function(data){
         $scope.carBrandsList = data;
     });
@@ -125,9 +121,9 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
         $rootScope.rs_userBills = data;
     });
 
-    factory_userBills.upComing().success(function(data){
+    /*factory_userBills.upComing().success(function(data){
         $scope.upComing = data;
-    });
+    });*/
 
     factory_userBills.sumBills().success(function(data) {
         $rootScope.rs_sumBills = data;
