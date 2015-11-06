@@ -26,7 +26,7 @@
             </div>
 
             <div class="row">
-                <div class="page page-right" ng-view>
+                <div class="page page-right animated" ng-view>
 
                 </div>
             </div>

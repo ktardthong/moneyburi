@@ -150,6 +150,10 @@ Route::get('/mail_weekly_update',function () {
 
 //Init setup
 Route::get('init_setup',function () {
+
+    if(!Auth::user()){
+        return view('pages.login');
+    }
     $page_title = "First time set up -  Moneyburi";
     $page_descs = "";
 

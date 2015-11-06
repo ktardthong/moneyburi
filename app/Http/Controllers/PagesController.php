@@ -49,6 +49,31 @@ class PagesController extends Controller
     }
 
 
+    //View Bill
+    public function bill()
+    {
+        if(Auth::user()){
+            echo "user";
+            return view('pages.billView');
+        }
+        else
+        {
+            return redirect("/");
+        }
+    }
+
+
+    //View Creditcards
+    public function creditcards()
+    {
+        if(Auth::user()){
+            return view('pages.creditcardView');
+        }
+        else {
+            return redirect("/");
+        }
+    }
+
     //Login template
     public function login()
     {
@@ -248,54 +273,5 @@ class PagesController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
-    }
-
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-
-    //View Bill
-    public function bill()
-    {
-        return view('pages.billView');
-    }
-
-
-    //View Creditcards
-    public function creditcards()
-    {
-        return view('pages.creditcardView');
     }
 }

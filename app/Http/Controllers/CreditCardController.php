@@ -13,7 +13,12 @@ class CreditCardController extends Controller
     //The main card page
     public  function index()
     {
-        return view('app.creditcards.CreditCardView');
+        if(Auth::user()){
+            return view('app.creditcards.CreditCardView');
+        }
+        else{
+            return view('pages.login');
+        }
     }
 
     //List of user creditcards

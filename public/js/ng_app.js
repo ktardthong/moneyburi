@@ -30,9 +30,6 @@ app.config(function($routeProvider){
         .when('/setup',{
             templateUrl: '/init_setup'
         })
-        .when('/user_finance',{
-            templateUrl: '/init_setup_1'
-        })
         .when('/transactions',{
             templateUrl: '/transactions'
         })

@@ -45,10 +45,10 @@ class ProfileController extends Controller
     {
         if(empty(Auth::user()->id))
         {
-            return redirect('/login');
+            return redirect('/#/login');
         }
 
-        $page_title     =   "Profile - Moneyburi";
+        $page_title     =   "Profile - MoneyMore";
         $page_descs     =   "";
         $quote = \App\MoneyQuote::orderByRaw("RAND()")->first();
 

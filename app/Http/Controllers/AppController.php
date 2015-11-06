@@ -16,9 +16,15 @@ use Carbon\Carbon;
 class AppController extends Controller
 {
 
+    //The main card for our app
     function spendableCard()
     {
-        return view('app.html.card_spendable');
+        if(Auth::user()){
+            return view('app.html.card_spendable');
+        }
+        else{
+            return view('pages.login');
+        }
     }
 
     //Spendable Overview
@@ -58,7 +64,7 @@ class AppController extends Controller
         return view('app.transactions.tpl_transList');
     }
 
-    //recent trans
+    //recent transr
     function transRecent()
     {
         return view('app.transactions.tpl_transRecent');

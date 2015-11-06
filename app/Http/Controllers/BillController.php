@@ -68,9 +68,15 @@ class BillController extends Controller
         return view('app.bills.tpl_userBill');
     }
 
-    //Card display for bill
+    //Main Card display for bill
     public function billCard()
     {
-        return View::make('app.bills.tpl_billCard');
+        if(Auth::user()){
+            return view('app.bills.tpl_billCard');
+        }
+        else{
+            return view('pages.login');
+        }
+
     }
 }

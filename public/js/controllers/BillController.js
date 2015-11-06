@@ -106,7 +106,6 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
             }
         })
         .done(function( msg ) {
-
             factory_userBills.sumBills().success(function(data) {
                 $rootScope.rs_sumBills     =   data;
                 //$rootScope.calPie();
@@ -115,7 +114,7 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
 
             factory_userBills.getBlls().success(function(data){
                 $rootScope.rs_userBills = data;
-                $rootScope.billOverview = true;
+                //$rootScope.billOverview = true;
                 $rootScope.showBill = false;
             });
 
