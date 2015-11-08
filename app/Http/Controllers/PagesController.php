@@ -8,7 +8,7 @@ use App\User;
 use Auth;
 use Socialite;
 use Illuminate\Routing\Controller;
-use Stevebauman\Location\Facades\Location;
+    use Stevebauman\Location\Facades\Location;
 use Mail;
 use Illuminate\Support\Facades\Redirect as Redirect;
 
@@ -35,7 +35,7 @@ class PagesController extends Controller
                 return redirect("init_setup");
             }
         }
-        return view('app',compact('page_title','page_descs','location','quote'));
+        return view('app',compact('page_title','page_descs','location', 'quote'));
     }
 
 
@@ -43,7 +43,8 @@ class PagesController extends Controller
     public function welcome()
     {
         if(Auth::user()){
-            return redirect("profile");
+//            return redirect("profile");
+            return view('app.html.card_spendable');
         }
         return view('welcome');
     }
@@ -169,7 +170,8 @@ class PagesController extends Controller
                 Mail::send('mails.weekly_update', ['user' =>  $user], function ($m) use ($user) {
                     $m->to($user->email, $user->firstname.(' ').$user->lastname)->subject('Weekly Update from Moneyburi');
                 });
-                return redirect("/");
+                return redirect('/#/profile');
+
             }
             else
             {

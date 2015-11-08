@@ -5,7 +5,13 @@
         <h4 class="pull-left">Card list</h4>
     </div>
 
-    <div class="card card-block lead" ng-show="addCardVisible" ng-show="false">
+    {{-- If there is no cards ask user to add one --}}
+    <div ng-if="!userCards.length" class="text-muted">You don't have card yet, why don't add one?
+            <button class="btn btn-link"  ng-click="addCardVisible=true"><i class="ion-plus"></i> Add </button>
+    </div>
+
+    {{-- Add card form --}}
+    <div class="card card-block lead" ng-show="addCardVisible" ng-init="addCardVisible=false">
 
         <div class="row">
             <button class="btn btn-link pull-right" ng-click="addCardVisible=false">hide</button>
@@ -14,14 +20,13 @@
         <div class="lead" >
             <ul class="nav nav-pills nav-stacked">
                 <li class="nav-item clearfix">
-                    Issuer
-                    <select ng-model="ng_ccIssuer">
+
+                    <select ng-model="ng_ccIssuer" class="borderless">
                         <option ng-selected="ccIssuer.selected== BBL"
                                 ng-repeat="ccIssuer in ccIssuer" value="@{{ ccIssuer.id }}">@{{ ccIssuer.name }}</option>
                     </select>
                     <p>
-                        Type
-                        <select ng-model="ng_ccTypes">
+                        <select ng-model="ng_ccTypes" class="borderless">
                             <option ng-selected="ccIssuer.selected== BBL" class="form-control"
                                     ng-repeat="ccType in ccTypes" value="@{{ ccType.id }}">@{{ ccType.name }}</option>
                         </select>
@@ -33,14 +38,11 @@
                                ng-model="ng_cardLimit">
                     </p>
                     <label>Due on </label>
-                    <select  ng-controller="thisController" ng-mode="billDue" id="billDue">
+                    <select  ng-controller="thisController" ng-mode="billDue" id="billDue" class="borderless">
                         <option ng-repeat="day in days" value="@{{day}}">@{{day}}</option>
                     </select>
-                    <label> of the month</label>
 
-                    <div class="row">
-                        <input ng-model="lastFour" class="borderless" placeholder="Last four digit">
-                    </div>
+                    <input ng-model="lastFour" class="borderless" placeholder="Last four digit">
 
                     <div class="row">
                         <button class="btn btn-link pull-right" ng-click="cardMoreDetail=true; btnControl =true">show more</button>
@@ -48,7 +50,7 @@
                     </div>
 
                     <!-- More details-->
-                    <div class="container-fluid"  ng-show="cardMoreDetail" ng-show="false">
+                    <div ng-show="cardMoreDetail" ng-show="false">
 
                         <input type="text" class="input-lg form-control borderless" placeholder="Note for this card" ng-model="ng_cardNote">
 
@@ -70,9 +72,7 @@
     </div>
 
 
-    <div ng-if="!userCards.length" class="text-muted">You don't have card yet, why don't add one?
-            <button class="btn btn-link"  ng-click="addCardVisible=true"><i class="ion-plus"></i> Add </button>
-        </div>
+
 
         <div ng-if="userCards.length" class="text-muted card container-fluid">
             <card-list></card-list>

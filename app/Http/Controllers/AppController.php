@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 
-use App\Transaction;
-use Illuminate\Http\Request;
-use Symfony\Component\VarDumper\Tests\Caster\CasterTest;
 use Validator;
 use App\User;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use Log;
-use Carbon\Carbon;
+use Stevebauman\Location\Facades\Location;
 
 class AppController extends Controller
 {
@@ -25,6 +22,12 @@ class AppController extends Controller
         else{
             return view('pages.login');
         }
+    }
+
+    public function location()
+    {
+        $location = Location::get();
+        return "$location->cityName ,$location->countryCode  - From your Internet address";
     }
 
     //Spendable Overview

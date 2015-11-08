@@ -11,10 +11,11 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
     $rootScope.showBill     = false;
     $rootScope.billOverview = true;
 
-    //$scope.listBillStatus = $rootScope.rs_userBills;
+    $scope.listBillStatus = $rootScope.rs_userBills;
 
     $scope.bill_labels   = 0;
     $scope.bill_data     = 0;
+
 
 
     //Recal bill to be us in dough
@@ -108,8 +109,7 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
         .done(function( msg ) {
             factory_userBills.sumBills().success(function(data) {
                 $rootScope.rs_sumBills     =   data;
-                //$rootScope.calPie();
-                // $('#userBillUpdate').effect("highlight", {color:'#F6C13C'}, 3500);
+                $rootScope.calPie();
             });
 
             factory_userBills.getBlls().success(function(data){
@@ -120,7 +120,7 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
 
                 $scope.billReCal();
         });
-
+        $('#userBillUpdate').effect("highlight", {color:'#F6C13C'}, 3500);
     };
 
     //undoRemove bill
@@ -135,9 +135,14 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
         })
         .done(function( msg ) {
 
+            factory_userBills.sumBills().success(function(data) {
+                $rootScope.rs_sumBills = data;
+            });
+
             factory_userBills.getBlls().success(function(data){
                 $rootScope.rs_userBills = data;
             });
+            $('#userBillUpdate').effect("highlight", {color:'#F6C13C'}, 2000);
 
         });
     }
@@ -161,7 +166,7 @@ app.controller('billController', function($scope, $http,$rootScope,factory_userB
             factory_userBills.getBlls().success(function(data){
                 $rootScope.rs_userBills = data;
             });
-
+            $('#userBillUpdate').effect("highlight", {color:'#F6C13C'}, 3500);
             $scope.billReCal();
         });
     }

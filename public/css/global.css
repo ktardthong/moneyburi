@@ -21,15 +21,15 @@ body{
     color: #60605A;
 	padding-top: 65px;
     background-color: #F1F1F1;
-    height: auto;
+    /*height: auto;*/
 
 }
 
 ::selection {
-    background: #1594A8; /* WebKit/Blink Browsers */
+    background: #88d2db; /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-    background: #1594A8; /* Gecko Browsers */
+    background: #88d2db; /* Gecko Browsers */
 }
 
 .header-mb

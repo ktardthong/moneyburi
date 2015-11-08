@@ -1,4 +1,4 @@
-<div class="row" style="margin: auto" class="wrapper" ng-controller="goalController">
+<div class="row animated" style="margin: auto" class="wrapper" ng-controller="goalController">
 
     <div align="center" style="margin: 0 0 10px 0;">
         <div class="btn-group" data-toggle="buttons">
@@ -34,14 +34,14 @@
                  You will gain from
                  @{{ rs_userData.d_spendable}}
                  ->
-                 @{{ Number(rs_userData.d_spendable) + Number(goal.mth_saving) }}
+                 @{{ Number(rs_userData.d_spendable) + Number(goal.mth_saving) | currency: '' }}
                  <a ng-click="goalContainer$index = true;
                               removeGoalConfirm$index = false;
                               undoGoalRemove(goal)" class="cursor">Undo</a>
             </div>
 
             {{-- Media Container --}}
-            <div class="media list-mb" ng-init="goalContainer$index = true" ng-show="goalContainer$index">
+            <div class="media list-mb card card-block" ng-init="goalContainer$index = true" ng-show="goalContainer$index">
 
                 <div class="media-left">
                     <a href="#">
@@ -54,8 +54,8 @@
 
 
                 <div class="media-body">
-
-                    <h4 class="media-heading ng-binding pull-left">
+                    <div class="clearfix">
+                    <h4 class="lead media-heading ng-binding pull-left">
                         @{{ goal.name }}
                     </h4>
 
@@ -64,46 +64,44 @@
                             <i class="ion-chevron-down"></i>
                         </a>
                     </div>
-
-                    <span class="pull-right">
-
-                        <small>
-                            <div>
-                                Created Date @{{ momentFormat(goal.created_at) }}
-                                <br>
-                                Achievement Date @{{ momentMonth(goal.created_at,goal.duration)  }}
-
-                            </div>
-
-                            <div>
-                                Saving per month@{{ goal.mth_saving | currency: '' }}
-                            </div>
-
-                            <div>
-                                Duration @{{ goal.duration_complete  }} /@{{ goal.duration  }}
-                                <progress   class="progress progress-info"
-                                            value="@{{ goal.duration_complete  }}"
-                                            max="@{{ goal.duration  }}">@{{ goal.duration_complete  }}%</progress>
-                            </div>
-                        </small>
-                    </span>
-
+                    </div>
+                    <div class="media-body">
+                        <progress   class="progress progress-info"
+                                    value="@{{ goal.duration_complete  }}"
+                                    max="@{{ goal.duration  }}">@{{ goal.duration_complete  }}%</progress>
+                    </div>
                 </div> {{-- end media body--}}
+
+
 
                 {{-- Dispaly optional index stuff --}}
                 <div ng-show="goalOption$index" ng-init="goalOption$index = false">
-                    <div class="container-fluid">
-                        <ul class="nav nav-pills">
-                            <li class="nav-item">
-                                <a  ng-click="goalContainer$index=false;
-                                              removeGoalConfirm$index=true;
-                                              removeGoal(goal)"
-                                    class="nav-link cursor">
-                                    <i class="ion-trash-b"></i>
-                                    {!! trans('messages.lbl_remove') !!}
-                                </a>
-                            </li>
-                        </ul>
+
+                    <div class="container">
+
+                        <small>
+                            Completed @{{ goal.duration_complete  }} /@{{ goal.duration  }}
+                            <div>
+                                <i class="fa fa-clock-o"></i> Created @{{ momentFormat(goal.created_at) }}
+                                <br>
+                                <i class="fa fa-trophy"></i> Due on @{{ momentMonth(goal.created_at,goal.duration)  }}
+                                <br>
+                                <i class="fa fa-money"></i>Saving per month@{{ goal.mth_saving | currency: '' }}
+                            </div>
+                            <div class="container-fluid">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item">
+                                        <a  ng-click="goalContainer$index=false;
+                                                      removeGoalConfirm$index=true;
+                                                      removeGoal(goal)"
+                                            class="nav-link cursor">
+                                            <i class="ion-trash-b"></i>
+                                            {!! trans('messages.lbl_remove') !!}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </small>
                     </div>
                 </div>
 

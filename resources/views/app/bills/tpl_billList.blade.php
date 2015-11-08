@@ -1,11 +1,13 @@
+<div ng-if="listBillStatus.length == 0">nothing here</div>
 {{-- List the bills --}}
-<div class="media" ng-repeat="bill in rs_userBills" style="border-style: #fefefe; border-left-color: #9F9F9F">
+<div class="media" ng-repeat="bill in listBillStatus" style="border-style: #fefefe; border-left-color: #9F9F9F">
     {{-- If bill remove then we show alert here--}}
     <div class="alert alert-warning"
        ng-init="removeBillConfirm$index = false"
        ng-show="removeBillConfirm$index">
 
        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
        <span aria-hidden="true">&times;</span></button>
 
        {!! trans('messages.lbl_youRemove') !!}

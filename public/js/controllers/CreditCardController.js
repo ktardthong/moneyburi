@@ -56,10 +56,11 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
         .done(function( msg ) {
             $scope.cardListShow = true;
         });
+
         $http.get("/card/getCards")
             .success(function(response) {
-                $scope.userCards = response;
-            });
+                $scope.rs_userCards = response;
+        });
     };
 
     $scope.showAdvanced = function(ev,card) {

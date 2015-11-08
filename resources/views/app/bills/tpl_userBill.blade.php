@@ -7,9 +7,9 @@
 
 
     <div class="text-muted pull-right">
-        <small>
+        {{--<small>
             <a ng-click="showBilList=true" href="#"> <i class="ion-ios-list-outline"></i> {!! trans('messages.lbl_billShow') !!} </a>
-        </small>
+        </small>--}}
         <small>
             <a ng-click="$root.showBill=true" href="#"> <i class="ion-plus"></i> {!! trans('messages.lbl_billAdd') !!} </a>
         </small>

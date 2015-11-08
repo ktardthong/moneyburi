@@ -17,6 +17,7 @@ app.controller('goalHomeController', function($scope, $http) {
 
 app.controller('goalController', function($scope,$rootScope,$http,factory_userGoals ) {
 
+    $scope.userGoals;
 
     //Remove user goal
     $scope.removeGoal = function(goal)
@@ -57,7 +58,6 @@ app.controller('goalController', function($scope,$rootScope,$http,factory_userGo
     //Get active goals
     $scope.getActiveGoals = function()
     {
-        $http.get("/ajax/userGoals");
         factory_userGoals.userGoalsFactory().success(function(data){
             $scope.userGoals=data;
         });
@@ -69,6 +69,7 @@ app.controller('goalController', function($scope,$rootScope,$http,factory_userGo
         $.ajax({
             method: "POST",
             url: "/ajax/showCompletedGoal",
+            async: false,
             data:  {
                 active_goal_flg: 0
             }

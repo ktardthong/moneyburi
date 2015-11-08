@@ -23,10 +23,10 @@
                 chart-labels="labels"
                 chart-legend="true"
                 chart-colours="colours"
-                ng-if="data[2] > 0">
+                ng-if="rs_mthlyIncome > 0">
         </canvas>
 
-        <div ng-if="data[2] <= 0">
+        <div ng-if="rs_mthlyIncome <= 0">
             <h1>Please add data on the right</h1>
             <img src="/img/a_boy.png" class="img-responsive" width="80px">
 
@@ -97,7 +97,6 @@
         {{-- Monthly Bills --}}
         <div class="col-xs-12">
             <label> <h4> - </h4> {!! trans('messages.lbl_mth_bills') !!}</label>
-            @{{ $root.showBill }}
             <user-bill></user-bill>
             <bill-compact-list ng-init="showBilList=false" ng-show="showBilList"></bill-compact-list>
         </div>

@@ -167,6 +167,7 @@ class AjaxController extends Controller
 
             //Update new spendable
             \App\GoalGeneral::updateSpendable(round($request->travelSavingMth,2));
+
         }
     }
 

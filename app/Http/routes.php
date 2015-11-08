@@ -3,9 +3,6 @@
 //Language switcher
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 
-
-
-
 //APP - Angular
 Route::get('/tpl_overview','AppController@tpl_overview');
 Route::get('/goalController', 'AppController@goalController');

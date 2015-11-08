@@ -14,7 +14,7 @@
     {{-- Main container--}}
     <div ng-controller="profileController">
 
-        <div class="col-xs-12 col-sm-12">
+        <div class="col-xs-12 col-sm-12" style="background: #F1f1f1">
 
             {{-- On page Load show Money Quote --}}
             <div ng-show='isRouteLoading' class='loading-indicator'>
@@ -26,7 +26,7 @@
             </div>
 
             <div class="row">
-                <div class="page page-right animated" ng-view>
+                <div class="page page-right" ng-view>
 
                 </div>
             </div>
