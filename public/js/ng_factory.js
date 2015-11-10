@@ -65,6 +65,9 @@ app.factory('factory_userCards', function($http) {
         },
         ccTypes: function(){
             return $http.get("/ajax/ccTypes");
+        },
+        sumMonthlyTransaction: function(){
+            return $http.get("/card/sumMonthTransaction");
         }
     }
 });

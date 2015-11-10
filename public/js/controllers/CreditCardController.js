@@ -1,4 +1,4 @@
-app.controller('CardController', function($scope,$http,$mdDialog) {
+app.controller('CardController', function($scope,$http,$mdDialog,factory_userCards) {
 
     $scope.days     = [1,	2,	3,	4,	5,	6,	7,	8,	9,	10,	11,	12,	13,	14,	15,	16,	17,	18,	19,	20,	21,	22,	23,	24,	25,	26,	27,	28,	29,	30,	31];
 
@@ -16,6 +16,9 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
         })
 
         .done(function( msg ) {
+            factory_userCards.getCards().success(function(data){
+                $rootScope.userCards = data;
+            });
         });
     };
 
@@ -40,6 +43,7 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
         $.ajax({
             method: "POST",
             url: "/card/addCard",
+            async:false,
             data:  {
 
                 type:       $scope.ng_ccTypes,
@@ -55,12 +59,15 @@ app.controller('CardController', function($scope,$http,$mdDialog) {
 
         .done(function( msg ) {
             $scope.cardListShow = true;
+            factory_userCards.getCards().success(function(data){
+                $rootScope.userCards = data;
+            });
         });
 
-        $http.get("/card/getCards")
+        /*$http.get("/card/getCards")
             .success(function(response) {
-                $scope.rs_userCards = response;
-        });
+                $scope.userCards = response;
+        });*/
     };
 
     $scope.showAdvanced = function(ev,card) {

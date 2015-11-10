@@ -27,6 +27,7 @@ return array(
     'lbl_yourBalance'       => 'Your Balance',
     'lbl_thisWeek'          => 'This week',
     'lbl_thisMonth'         => 'This month',
+    'lbl_thisMonthSpending' => 'This month spending',
     'lbl_thisYear'          => 'This year',
     'lbl_recentTrans'          => 'Recent Transactions',
 
@@ -60,7 +61,7 @@ return array(
     'lbl_edit'              => 'Edit',
     'lbl_remove'            => 'Remove',
     'lbl_back'              => 'Back',
-    'lbl_cc_endwith'        => 'ending with',
+    'lbl_cc_endwith'        => 'last four',
     'lbl_youRemove'         => 'You have removed',
 
 
@@ -96,5 +97,18 @@ return array(
     'goal_travel'           => 'Travel Goal',
     'goal_whenYouGo'        => 'When you want to go?',
 
-    'label_auth_fail'       => 'Please check your username or password'
+    'label_auth_fail'       => 'Please check your username or password',
+
+    //Front page marketing messages, number indicate the cards order
+    'mkt_1_header'  =>'Welcome to more you',
+    'mkt_1'         =>'',
+
+    'mkt_2_header'  =>  'Set your number Manage your ',
+    'mkt_2'         =>  "MoneyMore provides an easy way for you to set your spendable(that's your daily spending). By setting your spendable you can confidently makesure that you will never overspend your budget, again.",
+
+    'mkt_3_header'  =>  'Plan your future and succeed',
+    'mkt_3'         =>  "We all have goals that we want to acheive in our life, with MoneyMore you can easily manage your goal with your spendable making sure that you will succeed in achieving your goal.",
+
+    'mkt_4_header'  =>  "Set your number Manage your spending",
+    'mkt_4'         =>  "MoneyMore provides an easy way for you to set your spendable(that's your daily spending). By setting your spendable you can confidently makesure that you will never overspend your budget, again."
 );

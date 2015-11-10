@@ -131,7 +131,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
     });
 
     factory_userCards.getCards().success(function(data){
-        $scope.userCards = data;
+        $rootScope.userCards = data;
     });
 
     factory_userCards.ccIssuer().success(function(data){
@@ -139,6 +139,10 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
     });
     factory_userCards.ccTypes().success(function(data){
         $scope.ccTypes = data;
+    });
+
+    factory_userCards.sumMonthlyTransaction().success(function(data){
+        $scope.sumAmountCC = data;
     });
 
 

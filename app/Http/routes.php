@@ -101,7 +101,8 @@ Route::get('card/getCards',       'CreditCardController@getCC');
 Route::post('card/addCard',       'CreditCardController@addCard');
 Route::post('card/removeCard',    'CreditCardController@removeCard');
 Route::post('card/undoRemoveCard',    'CreditCardController@undoRemoveCard');
-
+Route::get('card/sumMonthTransaction', 'CreditCardController@sumMonthTransaction');
+Route::get('card/useCardTransaction', 'CreditCardController@useCardTransaction');
 
 //Spendable Tracker
 Route::get('spendableTracker/get',       'SpendableController@get');

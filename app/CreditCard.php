@@ -11,26 +11,48 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 class CreditCard extends  Eloquent{
     protected $table = 'cc_users';
 
-    //get the bill list
+    //Get the list of Currently Active Creditcards and current usage for the current month
     public static function get()
     {
         if (Auth::user()->id) {
-            $data = \App\CreditCard::where('cc_users.flg',1)
-                                    ->where('cc_users.uid',Auth::user()->id)
-                                    ->join('cc_issuer', 'cc_users.cc_issuer', '=', 'cc_issuer.id')
-                                    ->join('cc_types', 'cc_users.cc_types', '=', 'cc_types.id')
-                                    ->select('cc_issuer.name as issuer_name',
-                                             'cc_types.name as type_name',
+            $data = DB::table('transaction')
+                    ->groupBy('cc_users.id')
+                    ->whereRaw('MONTH(trans_date) = ?', [date('m')])
+                    ->where('transaction.flg',1)
+                    ->where('pmt_type',2)
+                    ->where('cc_users.flg',1)
+                    ->where('transaction.uid',Auth::user()->id)
+                    ->join('cc_users', 'transaction.cc_id', '=', 'cc_users.id')
+                    ->join('cc_issuer', 'cc_users.cc_issuer', '=', 'cc_issuer.id')
+                    ->join('cc_types', 'cc_users.cc_types', '=', 'cc_types.id')
+                    ->select('amount','cc_issuer.name',
                                              'cc_users.card_notes',
                                              'cc_users.cc_limit',
                                              'cc_users.due_date',
                                              'cc_users.exp_mth',
                                              'cc_users.exp_year',
                                              'cc_users.last_four',
-                                             'cc_types.cc_icon',
-                                             'cc_users.id'
-                                            )
-                                    ->get();
+                                             'cc_users.id',
+
+                             'cc_types.cc_icon')
+                    ->get();
+
+//            $data = \App\CreditCard::where('cc_users.flg',1)
+//                                    ->where('cc_users.uid',Auth::user()->id)
+//                                    ->join('cc_issuer', 'cc_users.cc_issuer', '=', 'cc_issuer.id')
+//                                    ->join('cc_types', 'cc_users.cc_types', '=', 'cc_types.id')
+//                                    ->select('cc_issuer.name as issuer_name',
+//                                             'cc_types.name as type_name',
+//                                             'cc_users.card_notes',
+//                                             'cc_users.cc_limit',
+//                                             'cc_users.due_date',
+//                                             'cc_users.exp_mth',
+//                                             'cc_users.exp_year',
+//                                             'cc_users.last_four',
+//                                             'cc_types.cc_icon',
+//                                             'cc_users.id'
+/*                                            )
+                                    ->get();*/
             return json_encode($data);
         }
         else

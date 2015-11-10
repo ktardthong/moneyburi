@@ -41,7 +41,7 @@
             </div>
 
             {{-- Media Container --}}
-            <div class="media list-mb card card-block" ng-init="goalContainer$index = true" ng-show="goalContainer$index">
+            <div class="media list-mb" ng-init="goalContainer$index = true" ng-show="goalContainer$index">
 
                 <div class="media-left">
                     <a href="#">

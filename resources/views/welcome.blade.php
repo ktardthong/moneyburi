@@ -1,15 +1,24 @@
 <div class="container">
 
-    <div class="row card card-block" align="center">
-        <img src="/img/home_screen.gif" style="max-width: 300px;" class="img-responsive">
+    <div class="row featurette card card-block">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">{!! trans('messages.mkt_1_header') !!}</h2>
+          <p class="text-justify text-muted">
+            {!! trans('messages.mkt_1') !!}
+          </p>
+          <a href="#register" class="btn btn-primary">Register</a>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="500x500"
+                src="/img/home_screen.gif" data-holder-rendered="true">
+        </div>
     </div>
 
     <div class="row featurette card card-block">
         <div class="col-md-7">
-          <h3 class="featurette-heading">Set your number <span class="text-muted">Manage your spending</span></h3>
+          <h3 class="featurette-heading">{!! trans('messages.mkt_2_header') !!}</h3>
           <p class="text-justify text-muted">
-            MoneyMore provides an easy way for you to set your spendable(that's your daily spending).
-            By setting your spendable you can confidently makesure that you will never overspend your budget, again.
+            {!! trans('messages.mkt_2') !!}
           </p>
         </div>
         <div class="col-md-5">
@@ -22,10 +31,9 @@
 
     <div class="row featurette card card-block">
         <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">Plan your future  <span class="text-muted"> and succeed </span></h2>
+          <h2 class="featurette-heading">{!! trans('messages.mkt_3_header') !!}</h2>
           <p class="text-justify text-muted">
-            We all have goals that we want to acheive in our life, with MoneyMore you can easily manage your goal with your spendable
-            making sure that you will succeed in achieving your goal.
+            {!! trans('messages.mkt_3') !!}
           </p>
         </div>
         <div class="col-md-5 col-md-pull-7">
@@ -33,4 +41,21 @@
                 src="/img/goalSetting.PNG" data-holder-rendered="true">
         </div>
     </div>
+
+    <div class="row featurette card card-block">
+        <div class="col-md-7">
+          <h3 class="featurette-heading">{!! trans('messages.mkt_4_header') !!}</h3>
+          <p class="text-justify text-muted">
+            {!! trans('messages.mkt_4') !!}
+          </p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block"
+               data-src="holder.js/500x500/auto"
+               alt="500x500"
+               src="/img/spendable.PNG" data-holder-rendered="true">
+        </div>
+    </div>
+
+
 </div>

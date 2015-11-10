@@ -87,49 +87,49 @@
         </div>
 
         <!--Progress bar-->
-        <div class="container">
+{{--        <div class="container">
             <span class="lead">{!! trans('messages.lbl_billCreditCard') !!}</span>
-        </div>
-        <div class="card card-block container">
+        </div>--}}
 
-        <div class="col-xs-12 col-sm-6" ng-controller="billController">
-            <div class="clearfix">
+        <div class="container">
 
-                <span class="lead">{!! trans('messages.lbl_billUpcoming') !!}</span>
-
+            <div class="col-xs-12 col-sm-6" ng-controller="billController">
                 <div class="pull-right">
                     <small>
                         <a href="#@{{  templates[3].url }}">
                             <i class="ion-plus-circled"></i></a>
                     </small>
                 </div>
+                <span class="lead">{!! trans('messages.lbl_billUpcoming') !!}</span>
 
-                <div ng-if="!$root.rs_userBills">{!! trans('messages.lbl_billNone') !!}</div>
+                <div class="clearfix card card-block row">
 
-                {{-- Bill List --}}
-                <bill-list></bill-list>
-            </div>
-        </div>
+                    <div ng-if="!$root.rs_userBills">{!! trans('messages.lbl_billNone') !!}</div>
 
-
-        {{-- Credit card stuff --}}
-        <div class="col-xs-12 col-sm-6">
-
-            <span class="lead">{!! trans('messages.lbl_creditCard') !!}</span>
-
-            <div class="pull-right">
-                <small>
-                    <a href="#@{{ templates[4].url }}">
-                        <i class="ion-plus-circled"></i></a>
-                </small>
+                    {{-- Bill List --}}
+                    <bill-list></bill-list>
+                </div>
             </div>
 
-            <div ng-controller="CardController">
-                <card-list></card-list>
+
+            {{-- Credit card stuff --}}
+            <div class="col-xs-12 col-sm-6">
+
+                <span class="lead">{!! trans('messages.lbl_creditCard') !!}</span>
+
+                <div class="pull-right">
+                    <small>
+                        <a href="#@{{ templates[4].url }}">
+                            <i class="ion-plus-circled"></i></a>
+                    </small>
+                </div>
+
+                <div ng-controller="CardController">
+                    <card-list></card-list>
+                </div>
             </div>
-        </div>
         {{-- end col-sm-6 --}}
-    </div>
+        </div>
 
 
 
