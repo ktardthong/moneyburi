@@ -57,4 +57,17 @@ class Transaction extends Model
         }
         return json_encode($data);
     }
+
+    //Get the sum of user spending for the month
+    public static function userMonthlySpending()
+    {
+        $data = DB::table('users')
+            ->where('uid', Auth::user()->id)
+            ->rightjoin('transaction','transaction.uid','=','users.id')
+            ->whereRaw('MONTH(trans_date) = ?', [date('m')])
+            ->select('users.mth_spendable',DB::raw('sum(transaction.amount) as monthSpending'))
+            ->get() ;
+
+        return $data;
+    }
 }

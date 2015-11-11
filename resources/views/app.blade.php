@@ -14,21 +14,29 @@
     {{-- Main container--}}
     <div ng-controller="profileController">
 
-        <div class="col-xs-12 col-sm-12" style="background: #F1f1f1">
+        <div class="container-fluid" style="background: #F1f1f1">
 
             {{-- On page Load show Money Quote --}}
-            <div ng-show='isRouteLoading' class='loading-indicator'>
-                <div class='loading-indicator-body' align="center">
-                    <h3 class='loading-title'>Loading...</h3>
-                    {!! $quote['quote'] !!} - {!! $quote['author'] !!}
-                    <route-loading-indicator></route-loading-indicator>
+            <div ng-show="isRouteLoading"
+                 style="position: absolute; width:70%;
+                            top:100px;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            vertical-align: middle;
+                            margin: auto;">
+                <div class="loading-indicator">
+                    <div class='loading-indicator-body' align="center">
+                        <h3 class='loading-title'>Loading...</h3>
+                        {!! $quote['quote'] !!} - {!! $quote['author'] !!}
+                        <route-loading-indicator></route-loading-indicator>
+                    </div>
                 </div>
+
             </div>
 
             <div class="row">
-                <div class="page page-right" ng-view>
-
-                </div>
+                <div class="page page-right" ng-view></div>
             </div>
 
             <?php if(\Auth::user()): ?>
@@ -47,18 +55,15 @@
                             icon="@{{mfb.icon}}" label="@{{ mfb.label }}"></a>
                 </nav>
 
-
             </div>
             <?php endif; ?>
 
+            <div align="center" class="text-muted">
+                <small>
+                    {{ $location->cityName }}, {{ $location->countryCode  }} - From your Internet address
+                </small>
+            </div>
 
-
-
-        <div align="center" class="text-muted">
-            <small>
-                {{ $location->cityName }}, {{ $location->countryCode  }} - From your Internet address
-            </small>
         </div>
-
     </div>
 @stop

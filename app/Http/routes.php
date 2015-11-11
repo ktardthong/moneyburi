@@ -10,6 +10,8 @@ Route::get('/dailySpendableDough', 'AppController@dailyDough');
 Route::get('/spendableChart', 'AppController@spendableChart');
 
 Route::get('/spendableCard', 'AppController@spendableCard');    //the main card
+Route::get('/monthlySpendableChart','AppController@monthlySpendableChart');
+
 //Route::get('/spendableChart', 'AppController@spendableChart');
 
 Route::get('/spendingCateChart', 'AppController@spendingCategoriesChart');
@@ -48,6 +50,7 @@ Route::get('/showTransaction'   ,   'TransactionController@show');
 Route::post('/add_transaction'  ,   'TransactionController@add_transaction');
 Route::get('/getAllTransactions',   'TransactionController@getAllTransactionsForCurrentUser');
 Route::get('/todaySpending'     ,   'TransactionController@todaySpending');
+Route::get('/userMonthlySpending',  'TransactionController@userMonthlySpending');
 
 
 //Upload image

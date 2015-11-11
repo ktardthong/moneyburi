@@ -55,6 +55,15 @@ app.factory('factory_utils',function($http){
     }
 });
 
+app.factory('factory_transaction',function($http){
+    return {
+        userMonthlySpending:function(){
+            return $http.get("/userMonthlySpending");
+        }
+    }
+})
+
+
 app.factory('factory_userCards', function($http) {
     return {
         getCards: function (){

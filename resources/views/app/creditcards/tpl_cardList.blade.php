@@ -1,4 +1,4 @@
-<div class="card card-block"  ng-repeat="card in userCards">
+<div ng-repeat="card in userCards">
 
     <div class="alert alert-warning" ng-init="removeConfirm$index = false" ng-show="removeConfirm$index">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -14,9 +14,10 @@
     </div>
 
     {{-- The card holder format --}}
-    <div ng-init="mediaContainer$index = true" ng-show="mediaContainer$index">
+    <div ng-init="mediaContainer$index = true" ng-show="mediaContainer$index" class="card card-block">
         <div class="media-left">
-            <a href="#">
+            <a class="cursor">
+                <img src="/img/@{{ card.icon }}" width="150px" class="img-responsive">
                 <i class="@{{ card.cc_icon }} fa-2x"></i>
             </a>
         </div>

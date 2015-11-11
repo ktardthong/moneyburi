@@ -74,7 +74,7 @@
 
 
 
-        <div ng-if="userCards.length" class="text-muted card container-fluid">
+        <div ng-if="userCards.length" class="text-muted container-fluid">
             <card-list></card-list>
     </div>
 

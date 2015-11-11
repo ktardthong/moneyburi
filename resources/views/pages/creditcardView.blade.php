@@ -70,7 +70,7 @@
     </div>
 
     <h4>Card list</h4>
-    <div class="card card-block">
+    <div>
         <card-list></card-list>
     </div>
 

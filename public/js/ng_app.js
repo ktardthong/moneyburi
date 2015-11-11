@@ -73,6 +73,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
                                             factory_userCards,
                                             factory_mfb,
                                             factory_userSpending,
+                                            factory_transaction,
                                             $rootScope,$route, $routeParams, $location) {
 
     $scope.$route = $route;
@@ -143,6 +144,16 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
 
     factory_userCards.sumMonthlyTransaction().success(function(data){
         $scope.sumAmountCC = data;
+    });
+
+    factory_transaction.userMonthlySpending().success(function(data){
+        $rootScope.monthlyRemain = data[0]["mth_spendable"] - data[0]["monthSpending"]; //total - spent
+        $rootScope.data_monthlhlySpent = data[0]["monthSpending"];
+        var json = {
+            "data": [   data[0]["monthSpending"], data[0]["mth_spendable"] ],
+            "labels":   ["Spent", "Spendable"],
+            "colours":  ["#8D8D8D","#87D2DA"]};
+        $rootScope.rs_userMonthlySpending = json;
     });
 
 

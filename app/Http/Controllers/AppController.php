@@ -24,6 +24,7 @@ class AppController extends Controller
         }
     }
 
+
     public function location()
     {
         $location = Location::get();
@@ -54,6 +55,13 @@ class AppController extends Controller
     {
         return view('app.spendableChart.tpl_spendableChart');
     }
+
+    //Dough monthly spendable chart
+    function monthlySpendableChart()
+    {
+        return view('app.spendableChart.tpl_monthlySpendableChart');
+    }
+
 
     //horizontal bar graph showing Spending Categories
     function spendingCategoriesChart()

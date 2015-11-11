@@ -81,4 +81,14 @@ class TransactionController extends Controller
         }
     }
 
+
+    //Get user month spending for the current month
+    public function userMonthlySpending()
+    {
+        if(Auth::user())
+        {
+            return \App\Transaction::userMonthlySpending();
+        }
+    }
+
 }

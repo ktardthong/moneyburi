@@ -33,6 +33,7 @@ return array(
 
     'lbl_overview'          => 'Overview',
     'lbl_setGoal'           => 'Set your Goals',
+    'lbl_ads'               => 'From our advertisers',
 
     'lbl_addTrans'          => 'Add transaction',
     'lbl_spendingCate'      => 'Spending Categories',

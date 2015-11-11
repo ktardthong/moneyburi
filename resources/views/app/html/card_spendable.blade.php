@@ -17,7 +17,10 @@
 
     <div class="row" style="background: #F1F1F1">
 
+
+
         <div class="container">
+            <h2 class="text-left">Hello, you!</h2>
             <span class="lead">{!! date('M d, Y') !!}</span>
         </div>
 

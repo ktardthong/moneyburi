@@ -2,7 +2,7 @@
  * Created by cholathit on 10/15/15.
  */
 
-app.controller('transactionController', function($scope, $http, $filter) {
+app.controller('transactionController', function($scope, $http, $filter,$rootScope) {
     //$scope.pageClass = 'show-transaction';
 
     $http.get("/ajax/billCate")
@@ -341,4 +341,11 @@ app.controller('transactionController', function($scope, $http, $filter) {
             //    scrollHeight: '=height'
             //}
         };
+})
+
+.directive('monthlySpendableChart', function() {
+    return {
+        restrict: 'E',
+        templateUrl: '/monthlySpendableChart'
+    };
 });

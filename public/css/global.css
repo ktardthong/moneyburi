@@ -24,7 +24,10 @@ body{
     /*height: auto;*/
 
 }
-
+.grid-item {
+    min-width: 50%;
+    margin: 0 auto 20px;
+}
 ::selection {
     background: #88d2db; /* WebKit/Blink Browsers */
 }
