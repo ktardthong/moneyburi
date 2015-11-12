@@ -21,7 +21,7 @@
 
         </div>
         <div class="pull-right">
-            <a a href="#"><i class="fa fa-plus fa-x"></i></a>
+            <a href="#"><i class="fa fa-plus fa-x"></i></a>
         </div>
     </div>
 

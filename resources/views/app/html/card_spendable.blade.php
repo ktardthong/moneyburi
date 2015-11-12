@@ -40,7 +40,7 @@
 
                 <daily-spendable-chart></daily-spendable-chart>
                 <div class="text-center ">
-                    <a href="#" class="lead" ng-click="nav(templates[3].url)">
+                    <a href="#@{{  templates[2].url }}" class="lead">
                     <i class="ion-plus-circled"></i>
                     {!! trans('messages.lbl_addTrans') !!}
                     </a>

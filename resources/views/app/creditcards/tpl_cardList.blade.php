@@ -17,8 +17,8 @@
     <div ng-init="mediaContainer$index = true" ng-show="mediaContainer$index" class="card card-block">
         <div class="media-left">
             <a class="cursor">
-                <img src="/img/@{{ card.icon }}" width="150px" class="img-responsive">
-                <i class="@{{ card.cc_icon }} fa-2x"></i>
+                {{--<img src="/img/@{{ card.icon }}" width="150px" class="img-responsive">--}}
+                {{--<i class="@{{ card.cc_icon }} fa-2x"></i>--}}
             </a>
         </div>
 

@@ -56,9 +56,9 @@
     </div>
 
 
-    <div id="spendableContainer" ng-show="showAddTransaction">
-        <div ng-include="'/app/html/card_addTransaction.html'"></div>
-    </div>
+    {{--<div id="spendableContainer" ng-show="showAddTransaction">--}}
+        {{--<div ng-include="'/app/html/card_addTransaction.html'"></div>--}}
+    {{--</div>--}}
 
     <div id="spendableOverview" ng-hide="showAddTransaction">
 

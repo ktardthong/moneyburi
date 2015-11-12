@@ -2,7 +2,7 @@
  * Created by cholathit on 10/15/15.
  */
 
-app.controller('transactionController', function($scope, $http, $filter,$rootScope) {
+app.controller('transactionController', function($scope, $http, $filter, $rootScope, factory_transaction) {
     //$scope.pageClass = 'show-transaction';
 
     $http.get("/ajax/billCate")
@@ -15,13 +15,14 @@ app.controller('transactionController', function($scope, $http, $filter,$rootSco
             $scope.transRepeat = response;
         });
 
-    $scope.pmtTypes={};
-    $http.get("/ajax/pmtTypes")
-        .success(function(response) {
-            $scope.pmtTypes = response;
+    //$scope.pmtTypes=[];
+    factory_transaction.pmtTypes().success(function(data) {
+            $scope.pmtTypes = data;
+            console.log(data);
+
         });
 
-    $scope.transTypes={};
+    //$scope.transTypes={};
     $http.get("/ajax/transTypes")
         .success(function(response) {
             $scope.transTypes = response;
@@ -236,52 +237,6 @@ app.controller('transactionController', function($scope, $http, $filter,$rootSco
 
         $scope.location_id = $scope.location.getPlace().id;
         $scope.location_provider = 'Google';
-
-        //
-        //var location = $scope.location.getPlace().geometry.location;
-        //$scope.lat = location.lat();
-        //$scope.lng = location.lng();
-        ////$scope.cityName = location.city
-        //
-        //console.log($scope.location.getPlace().address_components);
-        //console.log($scope.location.getPlace());
-        //
-        //var address = $scope.location.getPlace().address_components;
-        //$scope.address_com = [];
-        //angular.forEach(address, function(value){
-        //    $scope.address_com.push(
-        //        {
-        //            type: value.types[0],
-        //            short_name: value.short_name,
-        //            long_name: value.long_name
-        //        }
-        //    );
-        //});
-        //
-        //var locality ='';
-        //var administrative_area_level_1 = '';
-        //var administrative_area_level_2 = '';
-        //
-        //console.log($scope.address_com);
-        //if($filter('filter')($scope.address_com, {type: 'locality'}, true).length > 0) {
-        //    locality = $filter('filter')($scope.address_com, {type: 'locality'}, true)[0].short_name;
-        //}
-        //if($filter('filter')($scope.address_com, {type: 'administrative_area_level_1'}, true).length > 0) {
-        //    administrative_area_level_1 = $filter('filter')($scope.address_com, {type: 'administrative_area_level_1'}, true)[0].short_name;
-        //}
-        //if($filter('filter')($scope.address_com, {type: 'administrative_area_level_2'}, true).length > 0) {
-        //    administrative_area_level_2 = $filter('filter')($scope.address_com, {type: 'administrative_area_level_2'}, true)[0].short_name;
-        //}
-        //
-        //$scope.cityName = locality+', '+administrative_area_level_1+', '+administrative_area_level_2;
-        //
-        //if($filter('filter')($scope.address_com, {type: 'postal_code'}, true).length > 0) {
-        //    $scope.postalCode = $filter('filter')($scope.address_com, {type: 'postal_code'}, true)[0].short_name;
-        //}
-        //if($filter('filter')($scope.address_com, {type: 'country'}, true).length > 0) {
-        //    $scope.countryCode = $filter('filter')($scope.address_com, {type: 'country'}, true)[0].short_name;
-        //}
-
         $scope.$apply();
     });
 
@@ -307,7 +262,6 @@ app.controller('transactionController', function($scope, $http, $filter,$rootSco
     };
 
     $scope.bill = undefined;
-
 
 })
 

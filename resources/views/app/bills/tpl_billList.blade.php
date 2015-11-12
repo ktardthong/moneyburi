@@ -79,7 +79,7 @@
               <div class="container-fluid">
                   <ul class="nav nav-pills">
                       <li class="nav-item" ng-if="bill.is_paid ==0">
-                          <a  ng-click="editContainer$index=true"
+                          <a  ng-click="editContainer$index=true; bill.showTrans=!bill.showTrans"
                               class="nav-link cursor">
                               <i class="ion-compose"></i>
                               pay
@@ -97,5 +97,11 @@
                   </ul>
               </div>
           </div>
+
+          <div ng-init="bill.showTrans=false" ng-show="bill.showTrans" class="card card-block">
+              <div ng-include="'/addTrans'"></div>
+              {{--<add-trans></add-trans>--}}
+          </div>
+
       </div> {{-- media list --}}
 </div> {{--  end media --}}

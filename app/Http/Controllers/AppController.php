@@ -75,7 +75,7 @@ class AppController extends Controller
         return view('app.transactions.tpl_transList');
     }
 
-    //recent transr
+    //recent trans
     function transRecent()
     {
         return view('app.transactions.tpl_transRecent');
@@ -90,6 +90,11 @@ class AppController extends Controller
     //trans page
     function transactions()
     {
-        return view('app.transactions.card_transactions');
+        if(Auth::user()){
+            return view('app.transactions.card_transactions');
+        }
+        else{
+            return view('pages.login');
+        }
     }
 }

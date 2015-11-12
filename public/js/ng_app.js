@@ -30,8 +30,8 @@ app.config(function($routeProvider){
         .when('/setup',{
             templateUrl: '/init_setup'
         })
-        .when('/transactions',{
-            templateUrl: '/transactions'
+        .when('/Transactions',{
+            templateUrl: '/transCard'
         })
         .otherwise({
             template: '<div> Nothing here </div>'
@@ -197,7 +197,7 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
         [
             { name: 'Spendable'         , url: '/spendableCard'},
             { name: 'Goals'             , url: '/goal/card_goal'},
-            { name: 'Transactions'      , url: '/transactions'},
+            { name: 'Transactions'      , url: '/Transactions'},
             { name: 'Bills'             , url: '/Bills'},
             { name: 'Credit cards'      , url: '/CreditCard'},
         ];
@@ -228,6 +228,10 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
             window.location.href = '/';
         });
     }
+
+    factory_transaction.pmtTypes().success(function(data) {
+        $rootScope.pmtTypes = data;
+    });
 });
 
 

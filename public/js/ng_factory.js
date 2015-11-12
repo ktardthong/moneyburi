@@ -59,6 +59,10 @@ app.factory('factory_transaction',function($http){
     return {
         userMonthlySpending:function(){
             return $http.get("/userMonthlySpending");
+        },
+
+        pmtTypes:function(){
+            return $http.get("/ajax/pmtTypes");
         }
     }
 })
@@ -100,7 +104,7 @@ app.factory('factory_mfb',function($http){
                 }, {
                     label: 'Transactions',
                     icon: 'ion-calculator',
-                    url: '/transactions'
+                    url: '/Transactions'
                 }];
             }
         }

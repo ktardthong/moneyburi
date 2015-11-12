@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ReferenceTableSeeder::class);
         $this->call(SpendableTrackerTableSeeder::class);
         $this->call(MoneyQuoteSeeder::class);
-//        $this->call(WeekTrackerSeeder::class);
         $this->call(carBrandSeeder::class);
         Model::reguard();
     }

@@ -60,7 +60,7 @@ app.controller('CardController', function($scope,$http,$mdDialog,factory_userCar
         .done(function( msg ) {
             $scope.cardListShow = true;
             factory_userCards.getCards().success(function(data){
-                $rootScope.userCards = data;
+                //$rootScope.userCards = data;
             });
         });
 

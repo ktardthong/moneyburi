@@ -18,7 +18,7 @@ Route::get('/spendingCateChart', 'AppController@spendingCategoriesChart');
 Route::get('/transList', 'AppController@transList');
 Route::get('/transRecent', 'AppController@transRecent');
 Route::get('/addTrans', 'AppController@addTrans');
-Route::get('/transactions', 'AppController@transactions');
+Route::get('/transCard', 'AppController@transactions');
 
 
 

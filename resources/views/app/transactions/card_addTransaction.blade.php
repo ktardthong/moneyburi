@@ -3,8 +3,8 @@
 
         <div class="btn-group btn-block" data-toggle="buttons" >
             <label class="btn btn-primary-outline" ng-repeat="p in pmtTypes"
-                   ng-class="{'active':p.id == $parent.defaultPmtType}" ng-click="pmtSelected(p.id)">
-                <input type="radio" ng-model="$parent.selectedPmtType" ng-value="p.id">
+                   ng-class="{'active':p.id == defaultPmtType}" ng-click="pmtSelected(p.id)">
+                <input type="radio" ng-model="selectedPmtType" ng-value="p.id">
                 @{{p.name}}
             </label>
         </div>
@@ -63,7 +63,7 @@
             </md-input-container>
         </p>
 
-        <button type="button" class="btn btn-default btn-sm pull-left" ng-click="backAddTransaction()"><i class="fa fa-arrow-left fa"></i> back</button>
+        {{--<button type="button" class="btn btn-default btn-sm pull-left" ng-click="backAddTransaction()"><i class="fa fa-arrow-left fa"></i> back</button>--}}
         <button ng-click="doAdd()" class="btn btn-info btn-sm pull-right">+ Add</button>
 
     </form>
