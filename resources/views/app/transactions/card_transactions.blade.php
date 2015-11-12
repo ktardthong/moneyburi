@@ -1,4 +1,4 @@
-<div ng-controller="transactionController" style="max-width: 400px;margin: auto;" class="card">
+<div class="card card_width">
 {{--<div class="card card-block">--}}
     <add-trans></add-trans>
 {{--</div>--}}

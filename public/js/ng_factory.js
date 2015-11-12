@@ -143,7 +143,7 @@ app.factory('factory_userSpending',function($http){
                                 percentageInnerCutout : 80, // This is 0 for Pie charts
 
                                 //Number - Amount of animation steps
-                                animationSteps : 100,
+                                animationSteps : 80,
 
                                 //Boolean - Whether we animate the rotation of the Doughnut
                                 animateRotate : true

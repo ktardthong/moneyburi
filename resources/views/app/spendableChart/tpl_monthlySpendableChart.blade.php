@@ -6,21 +6,21 @@
 
         <div class="text-center">
             <small>
-                <h6>{!! trans('messages.lbl_spendable') !!}</h6>
+                <h6>{!! date('M ') !!}</h6>
             </small>
         </div>
 
-        <h4>
-            <strong ng-if="$root.monthlyRemain !=0">
-            @{{ $root.rs_userMonthlySpending.data[1] - $root.rs_userMonthlySpending.data[0] | currency: '' }}
-            </strong>
-        </h4>
+        <h5>
+            <small>
+                <strong ng-if="$root.monthlyRemain !=0">
+                @{{ $root.rs_userMonthlySpending.data[1] - $root.rs_userMonthlySpending.data[0] | currency: '' }}
+                </strong>
+            <small>
+        </h5>
 
         <div class="text-center">
-            <small>
-                {!! trans('messages.lbl_from') !!}
-                @{{ $root.rs_userMonthlySpending.data[1] | currency: '' }}
-            </small>
+            {!! trans('messages.lbl_from') !!}
+            @{{ $root.rs_userMonthlySpending.data[1] | currency: '' }}
         </div>
 
     </div>

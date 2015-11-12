@@ -35,7 +35,7 @@
 
             </div>
 
-            <div class="row">
+            <div class="row" ng-controller="transactionController">
                 <div class="page page-right" ng-view></div>
             </div>
 

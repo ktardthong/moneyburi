@@ -20,7 +20,17 @@
 
 
         <div class="container">
-            <h2 class="text-left">Hello, you!</h2>
+            <?php
+            $welcome = 'Hi';
+            if (date("H") < 12) {
+                $welcome = 'Good morning';
+            } else if (date('H') > 11 && date("H") < 18) {
+                $welcome = 'Good afternoon';
+            } else if(date('H') > 17) {
+                $welcome = 'Good evening';
+            }
+            ?>
+            <h2 class="text-left">{{ $welcome }}, @{{ userData.firstname }}!</h2>
             <span class="lead">{!! date('M d, Y') !!}</span>
         </div>
 
@@ -89,28 +99,28 @@
             </div>
         </div>
 
-        <!--Progress bar-->
-{{--        <div class="container">
-            <span class="lead">{!! trans('messages.lbl_billCreditCard') !!}</span>
-        </div>--}}
 
         <div class="container">
 
             <div class="col-xs-12 col-sm-6" ng-controller="billController">
-                <div class="pull-right">
-                    <small>
-                        <a href="#@{{  templates[3].url }}">
-                            <i class="ion-plus-circled"></i></a>
-                    </small>
-                </div>
-                <span class="lead">{!! trans('messages.lbl_billUpcoming') !!}</span>
+                <div class="row">
 
-                <div class="clearfix card card-block row">
+                    <div class="pull-right">
+                        <small>
+                            <a href="#@{{  templates[3].url }}">
+                                <i class="ion-plus-circled"></i></a>
+                        </small>
+                    </div>
+                    <span class="lead">{!! trans('messages.lbl_billUpcoming') !!}</span>
 
-                    <div ng-if="!$root.rs_userBills">{!! trans('messages.lbl_billNone') !!}</div>
+                    <div class="clearfix card card-block">
 
-                    {{-- Bill List --}}
-                    <bill-list></bill-list>
+                        <div ng-if="!$root.rs_userBills">{!! trans('messages.lbl_billNone') !!}</div>
+
+                        {{-- Bill List --}}
+                        <bill-list></bill-list>
+                    </div>
+
                 </div>
             </div>
 

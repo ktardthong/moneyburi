@@ -1,4 +1,4 @@
-<div class="container" ng-controller="transactionController">
+<div class="container">
     <form class="transaction">
 
         <div class="btn-group btn-block" data-toggle="buttons" >
