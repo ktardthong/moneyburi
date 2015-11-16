@@ -2,51 +2,53 @@
  * Created by cholathit on 10/15/15.
  */
 
-app.controller('transactionController', function($scope, $http, $filter, $rootScope, factory_transaction) {
+app.controller('transactionController', function($scope, $http, $filter, $rootScope, factory_transaction, factory_userBills, factory_utils, $route, $routeParams, $location) {
     //$scope.pageClass = 'show-transaction';
 
-    $http.get("/ajax/billCate")
-        .success(function(response) {
-            $scope.cateCore = response;
-        });
+    $scope.cateCore = $rootScope.cateCore;
+    //$http.get("/ajax/billCate")
+    //    .success(function(response) {
+    //        $scope.cateCore = response;
+    //    });
 
-    $http.get("/ajax/transRepeat")
-        .success(function(response) {
-            $scope.transRepeat = response;
-        });
+    $scope.transRepeat = $rootScope.transRepeat;
+            //$http.get("/ajax/transRepeat")
+    //    .success(function(response) {
+    //        $scope.transRepeat = response;
+    //    });
 
-    //$scope.pmtTypes=[];
-    factory_transaction.pmtTypes().success(function(data) {
-            $scope.pmtTypes = data;
-            console.log(data);
+    $scope.pmtTypes = $rootScope.pmtTypes;
+    //factory_transaction.pmtTypes().success(function(data) {
+    //        $scope.pmtTypes = data;
+    //        //console.log(data);
+    //    });
 
-        });
+    $scope.transTypes =  $rootScope.transTypes;
+    //$http.get("/ajax/transTypes")
+    //    .success(function(response) {
+    //        $scope.transTypes = response;
+    //    });
 
-    //$scope.transTypes={};
-    $http.get("/ajax/transTypes")
-        .success(function(response) {
-            $scope.transTypes = response;
-        });
+    $scope.creditCards = $rootScope.userCards;
+    //$http.get("/card/getCards")
+    //    .success(function(response) {
+    //        $scope.creditCards = response;
+    //    });
 
-    $http.get("/card/getCards")
-        .success(function(response) {
-            $scope.creditCards = response;
-        });
-
-    $http.get("/bill/getBills")
-        .success(function(response) {
-            $scope.bills = response;
-        });
+    $scope.bills = $rootScope.rs_userBills;
+    //$http.get("/bill/getBills")
+    //    .success(function(response) {
+    //        $scope.bills = response;
+    //    });
 
     /*$http.get("/ajax/userData")
         .success(function(response) {
             $scope.userData = response;
         });*/
 
-    $http.get("/ajax/currency")
-        .success(function(response) {
-            $scope.currencies = response;
-        });
+    factory_utils.getCurrency().success(function(data){
+        $scope.currencies=data;
+    });
 
     $scope.listData = [];
 
@@ -98,6 +100,7 @@ app.controller('transactionController', function($scope, $http, $filter, $rootSc
     $scope.trans_date = new Date();
     $scope.selectedCC = 0;
     $scope.selectedBill = 0;
+    $scope.selectedCate = 0;
 
     $scope.doAdd = function() {
         var obj = {
@@ -212,23 +215,6 @@ app.controller('transactionController', function($scope, $http, $filter, $rootSc
         return selectedIcon[0].color.code;
     };
 
-    //$scope.getTransRange = function(range) {
-    //    switch(range) {
-    //        case "all":
-    //            return $scope.listData;
-    //            break;
-    //        case "week":
-    //            //return $filter('range')($scope.listData, {trans_date: }, true);
-    //            break;
-    //
-    //        default:
-    //            return $scope.listData;
-    //    }
-    //};
-
-    //$scope.lat = undefined;
-    //$scope.lng = undefined;
-
     $scope.location_id = null;
     $scope.location_provider = null;
 
@@ -261,8 +247,6 @@ app.controller('transactionController', function($scope, $http, $filter, $rootSc
 
     };
 
-    $scope.bill = undefined;
-
 })
 
 .directive('transList', function() {
@@ -276,24 +260,58 @@ app.controller('transactionController', function($scope, $http, $filter, $rootSc
         return {
             restrict: 'E',
             templateUrl: '/addTrans',
-            scope:{
-                bill: '=billValue'
-            }
+            scope: false
         };
 })
 
-.directive('transRecent', function() {
-        //var fn = function(scope, element, attributes) {
-        //    scope.scroll_config.setHeight = scope.scrollHeight;
-        //};
+.directive('addBillTrans', function() {
+    return {
+        restrict: 'AEC',
+        templateUrl: '/addTrans',
+        scope: {
+            bill: '='
+        },
+        link: function($scope, element, attrs, controller, transcludeFn) {
 
+        },
+        controller: function($scope,factory_transaction,$rootScope,factory_utils){
+            console.log($scope.bill);
+            $scope.cateCore = $rootScope.cateCore;
+            $scope.pmtTypes = $rootScope.pmtTypes;
+            $scope.transTypes =  $rootScope.transTypes;
+            $scope.creditCards = $rootScope.userCards;
+            $scope.bills = $rootScope.rs_userBills;
+
+            factory_utils.getCurrency().success(function(data){
+                $scope.currencies=data;
+            });
+
+            $scope.amount = parseFloat($scope.bill.amount);
+
+            $scope.pmtSelected = function(id){
+                $scope.selectedPmtType = id;
+            };
+
+            $scope.transSelected = function(id){
+                $scope.selectedTransType = id;
+            };
+
+            $scope.defaultPmtType = 1;
+            $scope.defaultTransType = 3;
+
+            $scope.trans_date = new Date();
+            $scope.selectedCC = 0;
+            $scope.selectedBill = $scope.bill.id;
+            $scope.selectedCate = $scope.bill.cateId;
+        }
+
+    };
+})
+
+.directive('transRecent', function() {
         return {
             restrict: 'E',
             templateUrl: '/transRecent'
-            //link: fn,
-            //scope: {
-            //    scrollHeight: '=height'
-            //}
         };
 })
 

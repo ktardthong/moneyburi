@@ -232,6 +232,12 @@ app.controller('profileController', function($scope, $http,factory_userData,fact
     factory_transaction.pmtTypes().success(function(data) {
         $rootScope.pmtTypes = data;
     });
+    factory_userBills.billCate().success(function(data) {
+        $rootScope.cateCore = data;
+    });
+    factory_transaction.transTypes().success(function(data) {
+        $rootScope.transTypes = data;
+    });
 });
 
 
@@ -336,6 +342,8 @@ app.controller('thisController', function($scope, $http, $filter,factory_userDat
 
         }
     );
+
+
 
 });
 

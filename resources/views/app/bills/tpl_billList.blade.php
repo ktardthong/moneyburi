@@ -99,8 +99,7 @@
           </div>
 
           <div ng-init="bill.showTrans=false" ng-show="bill.showTrans" class="card card-block">
-              <div ng-include="'/addTrans'"></div>
-              {{--<add-trans></add-trans>--}}
+              <add-bill-trans bill="bill"></add-bill-trans>
           </div>
 
       </div> {{-- media list --}}

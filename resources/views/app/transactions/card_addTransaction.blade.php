@@ -3,7 +3,7 @@
 
         <div class="btn-group btn-block" data-toggle="buttons" >
             <label class="btn btn-primary-outline" ng-repeat="p in pmtTypes"
-                   ng-class="{'active':p.id == defaultPmtType}" ng-click="pmtSelected(p.id)">
+                   ng-class="{'active':p.id == defaultPmtType}" ng-click="pmtSelected(p.id)" ng-init="selectedPmtType = defaultPmtType">
                 <input type="radio" ng-model="selectedPmtType" ng-value="p.id">
                 @{{p.name}}
             </label>
@@ -11,7 +11,7 @@
 
         <div class="btn-group btn-block" data-toggle="buttons">
             <label class="btn btn-primary-outline" ng-repeat="t in transTypes track by t.id" id="trans_type"
-                   ng-class="{'active':t.id == $parent.defaultTransType}" ng-click="transSelected(t.id)">
+                   ng-class="{'active':t.id == $parent.defaultTransType}" ng-click="transSelected(t.id)" ng-init="selectedTransType = defaultTransType">
                 <input type="radio"ng-model="selectedTransType" ng-value="t.id">
                 @{{t.name}}
             </label>
@@ -24,12 +24,18 @@
         </p>
 
         <p>
+            <md-select ng-show="selectedTransType==3" ng-model="selectedBill"  placeholder="Select Bill">
+                <md-option ng-value="bill.id" ng-repeat="bill in bills">@{{bill.name}} @{{bill.amount}}</md-option>
+            </md-select>
+        </p>
+
+        <p>
             <!--<input type="date" ng-model="trans_date" id="trans_date" class="input input-md form-control" value>-->
             <md-datepicker ng-model="trans_date"></md-datepicker>
         </p>
 
         <p>
-            <md-select ng-model="cate_id" placeholder="Select Category" >
+            <md-select ng-model="cate_id" ng-init="cate_id=selectedCate" placeholder="Select Category" >
                 <md-option ng-value="cate.id" ng-repeat="cate in cateCore">@{{cate.name}}</md-option>
             </md-select>
         </p>
