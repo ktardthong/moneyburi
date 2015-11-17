@@ -23,7 +23,7 @@ Route::get('/transCard', 'AppController@transactions');
 
 
 //PAGES
-Route::get('/','PagesController@home');
+Route::get('/','PagesController@index');
 Route::get('/welcome', 'PagesController@welcome');
 Route::get('/login','PagesController@login');
 Route::post('/login','PagesController@post_login');

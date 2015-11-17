@@ -1,4 +1,17 @@
-<div class="container">
+@extends('master')
+
+@section('title')
+    {{ $page_title }}
+@stop
+
+@section('description')
+    {{$page_descs}}
+@stop
+
+
+@section('content')
+
+<div class="container card_width">
 
     <div class="row featurette card card-block">
         <div class="col-md-7 col-md-push-5">
@@ -59,3 +72,5 @@
 
 
 </div>
+
+@stop

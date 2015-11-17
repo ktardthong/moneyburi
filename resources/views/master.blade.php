@@ -3,71 +3,32 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="description" content="@yield('description')">
-
     <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/favicon/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <meta name="csrf-token" content="{!! csrf_token() !!}">
 
     <title>@yield('title')</title>
 
-    {!! Minify::javascript(array('/js/jquery.min.js')) !!}
 
-    {{--boot strap4 --}}
+    {{-- BOWER, for anything is from vendors and might have update in the future --}}
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/moment/min/moment-with-locales.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+
+
+    {{--Alpha Boot strap4 --}}
     <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 
-    {!! Minify::stylesheet(array('/css/angular-material.min.css',
-                                     '/css/ionicons.min.css',
-                                     '/css/font-awesome.min.css',
-                                     '/css/normalize.css',
-                                     '/css/component.css',
-                                     '/css/angular_animation.css',
-                                     '/css/jumbotron-narrow.css',
-                                     '/css/global.css',
-                                     '/css/jquery-ui.css'
-                                     )) !!}
-
-
-
-
-    {!! Minify::javascript(array('/js/global.js')) !!}
-
-    {{-- Angular --}}
-    {!! Minify::javascript( array(  '/js/angular.min.js','/js/angular-route.min.js','/js/angular-animate.min.js',
-                                    '/js/angular-aria.min.js','/js/angular-sanitize.min.js',
-                                    '/js/ng_app.js',
-                                    '/js/ng_factory.js',
-                                    '/js/controllers/BillController.js',
-                                    '/js/controllers/CreditCardController.js',
-                                    '/js/controllers/GoalBuyingController.js',
-                                    '/js/controllers/GoalController.js',
-                                    '/js/controllers/GoalTravelController.js',
-                                    '/js/controllers/SpendableChartController.js',
-                                    '/js/controllers/userController.js',
-                                    '/js/controllers/SpendingCategoriesChartController.js',
-                                    '/js/controllers/TransactionsController.js',
-                                    '/js/controllers/GoalCarController.js'
-                                  )) !!}
-     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
-
+    {{-- Versioning for our custom ng-js --}}
+    <script src="{!! elixir('js/all.js') !!}"></script>
 
     {!! Minify::javascriptDir('/js/vendors/') !!}
 
@@ -77,9 +38,10 @@
 
 
 
+    <link rel="stylesheet" href="/css/app.css">
   </head>
 
-<body ng-app="App">
+<body>
      <nav class="navbar navbar-fixed-top header-mb">
       <div class="container">
             <a class="navbar-brand" href="/"> moneymore<small>.xyz</small> </a>
@@ -121,7 +83,7 @@
                             <span class="sr-only">Toggle Dropdown</span>
                           </button>
                           <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/">{!! trans('messages.lbl_home') !!}</a>
+                            <a class="dropdown-item" href="/profile">{!! trans('messages.lbl_home') !!}</a>
                             <a class="dropdown-item" href="/user">{!! trans('messages.lbl_setting') !!}</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/logout">{!! trans('messages.lbl_logout') !!}</a>
@@ -131,10 +93,10 @@
 
                 @else
                     <li class="nav-item">
-                      <a class="nav-link" href="#register">{!! trans('messages.lbl_register') !!}</a>
+                      <a class="nav-link" href="/register">{!! trans('messages.lbl_register') !!}</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#login">{!! trans('messages.lbl_login') !!}</a>
+                      <a class="nav-link" href="/login">{!! trans('messages.lbl_login') !!}</a>
                     </li>
                 @endif
               </ul>
@@ -148,19 +110,20 @@
 
 
 
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-68665611-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
 </body>
-<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-68665611-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
 
 </html>
 

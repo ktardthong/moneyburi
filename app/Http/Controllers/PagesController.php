@@ -14,9 +14,31 @@ use Illuminate\Support\Facades\Redirect as Redirect;
 
 class PagesController extends Controller
 {
+
+    /*
+     * Tha welcome page
+     * */
     public function index()
     {
-        return redirect('/');
+        $page_title     =   "Welcome to Moneymore!";
+        $page_descs     =   "";
+        return view('welcome',compact('page_title','page_descs'));
+    }
+
+    //Login template
+    public function login()
+    {
+        $page_title     =   "Login - Moneymore!";
+        $page_descs     =   "";
+        return view('pages.login',compact('page_title','page_descs'));
+    }
+
+    //Register page
+    public function register()
+    {
+        $page_title     =   "Register - Moneymore!";
+        $page_descs     =   "";
+        return view('pages.register', compact('page_title', 'page_descs'));
     }
 
 
@@ -46,7 +68,7 @@ class PagesController extends Controller
 //            return redirect("profile");
             return view('app.html.card_spendable');
         }
-        return view('welcome');
+
     }
 
 
@@ -75,11 +97,7 @@ class PagesController extends Controller
         }
     }
 
-    //Login template
-    public function login()
-    {
-        return view('pages.login');
-    }
+
 
 
     public function loginFB(Request $request)
@@ -135,10 +153,7 @@ class PagesController extends Controller
     }
 
 
-    public function register()
-    {
-        return view('pages.register', compact('page_title', 'page_descs'));
-    }
+
 
 
     //When setup complete, route to this url to update the init_setup flg
@@ -167,10 +182,10 @@ class PagesController extends Controller
             if (!empty($user))
             {
                 Auth::loginUsingId($user->id);
-                Mail::send('mails.weekly_update', ['user' =>  $user], function ($m) use ($user) {
+                /*Mail::send('mails.weekly_update', ['user' =>  $user], function ($m) use ($user) {
                     $m->to($user->email, $user->firstname.(' ').$user->lastname)->subject('Weekly Update from Moneyburi');
-                });
-                return redirect('/#/profile');
+                });*/
+                return redirect('/profile');
 
             }
             else

@@ -1,7 +1,18 @@
-{{--
-    The main card
- --}}
-<div class="container-fluid" >
+@extends('master')
+
+@section('title')
+    {{ $page_title }}
+@stop
+
+@section('description')
+    {{$page_descs}}
+@stop
+
+
+@section('content')
+
+{{--  The main card  --}}
+<div class="container-fluid" ng-cloak  ng-app="App">
 
     <div class="container">
         <div class="col-sm-8">
@@ -156,3 +167,4 @@
     });
 
 </script>
+@stop

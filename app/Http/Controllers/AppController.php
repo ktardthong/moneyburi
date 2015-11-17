@@ -17,7 +17,10 @@ class AppController extends Controller
     function spendableCard()
     {
         if(Auth::user()){
-            return view('app.html.card_spendable');
+
+            $page_title     =   "Welcome to Moneymore!";
+            $page_descs     =   "";
+            return view('app.html.card_spendable',compact('page_title','page_descs'));
         }
         else{
             return view('pages.login');

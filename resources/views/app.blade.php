@@ -12,7 +12,7 @@
 @section('content')
 
     {{-- Main container--}}
-    <div ng-controller="profileController">
+    <div ng-controller="profileController"  ng-cloak  ng-app="App">
 
         <div class="container-fluid" style="background: #F1f1f1">
 
