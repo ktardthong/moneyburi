@@ -60,15 +60,10 @@ app.factory('factory_transaction',function($http){
         userMonthlySpending:function(){
             return $http.get("/userMonthlySpending");
         },
+
         pmtTypes:function(){
             return $http.get("/ajax/pmtTypes");
-        },
-        transRepeat:function(){
-            return $http.get("/ajax/transRepeat");
-        },
-        transTypes:function(){
-            return $http.get("/ajax/transTypes");
-        },
+        }
     }
 })
 

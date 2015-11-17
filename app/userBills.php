@@ -28,7 +28,7 @@ class userBills extends  Eloquent{
                                     ->select('user_bills.id as id',
                                              'user_bills.amount',
                                              'user_bills.is_paid',
-                                             'user_bills.due_date','category_core.id as cateId','category_core.name')
+                                             'user_bills.due_date','category_core.name')
                                     ->get();
             return json_encode($data);
         }
@@ -120,7 +120,7 @@ class userBills extends  Eloquent{
                                 ->select('user_bills.id as id',
                                     'user_bills.amount',
                                     'user_bills.is_paid',
-                                    'user_bills.due_date', 'category_core.id as cateId','category_core.name')
+                                    'user_bills.due_date','category_core.name')
                                 ->orderBy('user_bills.due_date', 'asc');
          return json_encode($data->get());
     }

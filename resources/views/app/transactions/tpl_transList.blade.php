@@ -31,22 +31,33 @@
 
                                 <span class="fa-stack fa-pull-left" style="margin-top: -5px;">
                                     <!--<i class="fa fa-circle-o fa-stack-2x"></i>-->
-                                    <i class="@{{getCateIcon(t.cate_id)}} fa-stack-1x"></i>
+                                    <i class="{{getCateIcon(t.cate_id)}} fa-stack-1x"></i>
                                 </span>
-                <h6 class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" data-target="#collapse@{{$index}}"
-                   aria-expanded="false" aria-controls="#collapse@{{$index}}" >
-                   &emsp;&emsp;You spent @{{t.currency[0].currency_sym}}@{{t.amount}} on @{{t.cate_obj[0].name}} at @{{t.location}}
+                <h6 class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" data-target="#collapse{{$index}}"
+                   aria-expanded="false" aria-controls="#collapse{{$index}}" >
+                   &emsp;&emsp;You spent {{t.currency[0].currency_sym}}{{t.amount}} on {{t.cate_obj[0].name}} at {{t.location}}
                 </h6>
-                <small><i class="@{{propertyIcons('datetime')}}"></i>&emsp;|&emsp;@{{t.trans_date}}</small>
+                <small><i class="{{propertyIcons('datetime')}}"></i>&emsp;|&emsp;{{t.trans_date}}</small>
 
 
-                <li id="collapse@{{$index}}" class="accordion-inner collapse">
+                <li id="collapse{{$index}}" class="accordion-inner collapse">
                     <!--<div class="accordion-inner">-->
-                    <small> <i class="@{{getTransTypeIcon(t.trans_type)}}"></i> @{{t.trans_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;
-                        <i class="@{{getPmtIcon(t.pmt_type)}}"></i> @{{t.pmt_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;
-                        |&emsp;&emsp;Added on: @{{t.created_at}} </small>
+                    <small> <i class="{{getTransTypeIcon(t.trans_type)}}"></i> {{t.trans_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;
+                        <i class="{{getPmtIcon(t.pmt_type)}}"></i> {{t.pmt_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;
+                        |&emsp;&emsp;Added on: {{t.created_at}} </small>
                     <!--</div>-->
                 </li>
             </ul>
         </div>
     </div>
+
+
+<!--<md-list-item class="md-2-line" ng-repeat="t in listData | orderBy:'-trans_date' | orderBy:'-created_at'">-->
+    <!--<md-icon md-icon="getCateIcon(t.cate_id)" ng-if="$index !== 2" ng-class="{'md-avatar-icon': $index === 1}"></md-icon>-->
+    <!--<div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">-->
+        <!--<small> You spent {{t.currency[0].currency_sym}}{{t.amount}} on {{t.cate_obj[0].name}} at {{t.location}} </small>-->
+        <!--<small> <i class="{{getTransTypeIcon(t.trans_type)}}"></i> {{t.trans_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;-->
+            <!--<i class="{{getPmtIcon(t.pmt_type)}}"></i> {{t.pmt_type_obj[0].name}} &emsp;&emsp;|&emsp;&emsp;-->
+            <!--|&emsp;&emsp;Added on: {{t.created_at}} </small>-->
+    <!--</div>-->
+<!--</md-list-item>-->
