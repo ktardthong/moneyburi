@@ -28,7 +28,7 @@ elixir(function(mix) {
     //mix.phpUnit().phpSpec();
 
     mix.browserSync({
-        proxy: '192.168.0.105:8888'
+        proxy: '0.0.0.0:8888'
     })
 
     // Application Scripts
