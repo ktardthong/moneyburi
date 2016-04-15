@@ -21,6 +21,8 @@
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <!-- <script src="bower_components/tether/dist/js/tether.min.js"></script> -->
+
 
 
     {{--Alpha Boot strap4 --}}
@@ -44,14 +46,15 @@
 <body>
      <nav class="navbar navbar-fixed-top header-mb">
       <div class="container">
-            <a class="navbar-brand" href="/"> moneymore<small>.xyz</small> </a>
+            <a class="navbar-brand" href="/"> Moneymore<small>.xyz</small> </a>
             <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header">
               &#9776;
             </button>
 
-           <div class="collapse navbar-toggleable-xs" id="navbar-header">
+            <!-- disable app functions for now -->
+           <!-- <div class="collapse navbar-toggleable-xs" id="navbar-header"> -->
 
-              <ul class="nav navbar-nav pull-right">
+              <!-- <ul class="nav navbar-nav pull-right">
 
                 <li class="nav-item">
                     <div class="btn-group">
@@ -99,8 +102,8 @@
                       <a class="nav-link" href="/login">{!! trans('messages.lbl_login') !!}</a>
                     </li>
                 @endif
-              </ul>
-           </div>
+              </ul> -->
+           <!-- </div> -->
       </div>
     </nav>
 
@@ -126,5 +129,3 @@
 </body>
 
 </html>
-
-

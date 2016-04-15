@@ -101,15 +101,16 @@ return array(
     'label_auth_fail'       => 'Please check your username or password',
 
     //Front page marketing messages, number indicate the cards order
-    'mkt_1_header'  =>'Welcome to more you',
-    'mkt_1'         =>'',
+    'mkt_1_header'  =>'Welcome to the new, more YOU!',
+    'mkt_1'         =>'Moneymore is launching soon to help you easily manage your finances and achieve your next financial goal in no time!',
+    'mkt_1_1'         =>'Please let us know that you are interested so we can let you know via email as soon as the app becomes available.',
 
-    'mkt_2_header'  =>  'Set your number Manage your ',
-    'mkt_2'         =>  "MoneyMore provides an easy way for you to set your spendable(that's your daily spending). By setting your spendable you can confidently makesure that you will never overspend your budget, again.",
+    'mkt_2_header'  =>  'Spendables: Set your number, manage your spending',
+    'mkt_2'         =>  "Moneymore provides an easy way for you to set your spendable(that's your daily spending). By setting your spendable you can confidently makesure that you will never overspend your budget, again.",
 
-    'mkt_3_header'  =>  'Plan your future and succeed',
-    'mkt_3'         =>  "We all have goals that we want to acheive in our life, with MoneyMore you can easily manage your goal with your spendable making sure that you will succeed in achieving your goal.",
+    'mkt_3_header'  =>  'Goals: Plan your future and succeed',
+    'mkt_3'         =>  "We all have goals that we want to acheive in our life, with Moneymore you can easily manage your goal with your spendable making sure that you will succeed in achieving your goal.",
 
-    'mkt_4_header'  =>  "Set your number Manage your spending",
-    'mkt_4'         =>  "MoneyMore provides an easy way for you to set your spendable(that's your daily spending). By setting your spendable you can confidently makesure that you will never overspend your budget, again."
+    'mkt_4_header'  =>  "Social: Compare with people around you",
+    'mkt_4'         =>  "Moneymore analyzes and shows you how you spend and your saving performance against people in the same area, or similar financial situations. This social features lets you better assess your next spending and goal setting."
 );
