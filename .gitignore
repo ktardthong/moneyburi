@@ -8,3 +8,8 @@ Homestead.json
 /public/.htaccess
 /public/profile
 /public/userimg
+
+/public/js/all.js
+/public/js/all.js.map
+/public/css/app.css
+/public/css/app.css.map
